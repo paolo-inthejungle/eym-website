@@ -1,0 +1,1577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>European Youth Movement</title>
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --blue-eu: #003399;
+            --blue-eu-light: #1a4db3;
+            --blue-eu-dark: #001f66;
+            --gold-eu: #FFCC00;
+            --white: #ffffff;
+            --gray-100: #f5f6f8;
+            --gray-200: #e8eaee;
+            --gray-300: #d1d5db;
+            --gray-500: #6b7280;
+            --gray-700: #374151;
+            --gray-900: #111827;
+            --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font);
+            color: var(--gray-700);
+            background: var(--white);
+            line-height: 1.6;
+        }
+
+        /* ── HEADER ── */
+        header {
+            background: var(--blue-eu);
+            color: var(--white);
+            padding: 0 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            padding: 0.65rem 0;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            text-decoration: none;
+            color: var(--white);
+            flex-shrink: 0;
+        }
+
+        /* Circular logo — border-radius 50% crops the image into a circle */
+        .logo-wrap {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: var(--white);
+            border: 2px solid var(--gold-eu);
+        }
+
+        .logo-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+        }
+
+        .brand-text { display: flex; flex-direction: column; }
+
+        .brand-name {
+            font-size: 1.05rem;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: 0.01em;
+        }
+
+        .brand-tagline {
+            font-size: 0.68rem;
+            color: var(--gold-eu);
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        /* ── NAV ── */
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 0.1rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            display: block;
+            padding: 0.4rem 0.85rem;
+            color: rgba(255,255,255,0.88);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            border-radius: 6px;
+            transition: background 0.18s, color 0.18s;
+            letter-spacing: 0.02em;
+        }
+
+        nav a:hover, nav a.active {
+            background: rgba(255,255,255,0.14);
+            color: var(--white);
+        }
+
+        /* ── STARS STRIP ── */
+        .stars-strip {
+            background: var(--gold-eu);
+            text-align: center;
+            padding: 0.45rem 2rem;
+            font-size: 1rem;
+            letter-spacing: 0.35em;
+            color: var(--blue-eu-dark);
+        }
+
+        /* ── HERO ── */
+        .hero {
+            background: linear-gradient(135deg, var(--blue-eu-dark) 0%, var(--blue-eu) 55%, var(--blue-eu-light) 100%);
+            color: var(--white);
+            padding: 6rem 2rem 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1.5' fill='rgba(255,204,0,0.12)'/%3E%3C/svg%3E") repeat;
+            pointer-events: none;
+        }
+
+        .hero-inner {
+            max-width: 820px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .hero-eyebrow {
+            display: inline-block;
+            background: rgba(255,204,0,0.18);
+            color: var(--gold-eu);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 0.35rem 1rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255,204,0,0.35);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 1.25rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 span { color: var(--gold-eu); }
+
+        .hero p {
+            font-size: clamp(1rem, 2.2vw, 1.18rem);
+            color: rgba(255,255,255,0.82);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--gold-eu);
+            color: var(--blue-eu-dark);
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: transform 0.18s, box-shadow 0.18s;
+            box-shadow: 0 4px 16px rgba(255,204,0,0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255,204,0,0.4);
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: transparent;
+            color: var(--white);
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            border: 2px solid rgba(255,255,255,0.5);
+            transition: border-color 0.18s, background 0.18s;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--white);
+            background: rgba(255,255,255,0.08);
+        }
+
+        /* ── GENERIC SECTION ── */
+        .section {
+            padding: 5rem 2rem;
+            scroll-margin-top: 70px;
+        }
+
+        .section-alt { background: var(--gray-100); }
+
+        .section-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: 0.73rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--blue-eu);
+            margin-bottom: 0.5rem;
+        }
+
+        .section h2 {
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 800;
+            color: var(--gray-900);
+            margin-bottom: 0.9rem;
+            letter-spacing: -0.01em;
+        }
+
+        .section-lead {
+            font-size: 1.05rem;
+            color: var(--gray-500);
+            max-width: 640px;
+            margin-bottom: 2.5rem;
+        }
+
+        /* ── DIVIDER ── */
+        .sub-divider {
+            border: none;
+            border-top: 1px solid var(--gray-200);
+            margin: 3.5rem 0;
+        }
+
+        .sub-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 1.5rem;
+        }
+
+        /* ── CARD GRID ── */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+
+        .section-alt .card { background: var(--white); }
+
+        .card:hover {
+            box-shadow: 0 8px 28px rgba(0,51,153,0.1);
+            transform: translateY(-3px);
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(0,51,153,0.08);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1.02rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 0.45rem;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: var(--gray-500);
+            line-height: 1.65;
+        }
+
+        /* ── OBJECTIVES (numbered) ── */
+        .objectives-list {
+            display: grid;
+            gap: 1.2rem;
+        }
+
+        .obj-item {
+            display: flex;
+            gap: 1.2rem;
+            align-items: flex-start;
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 10px;
+            padding: 1.2rem 1.5rem;
+        }
+
+        .obj-num {
+            min-width: 36px;
+            height: 36px;
+            background: var(--blue-eu);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .obj-item strong {
+            display: block;
+            font-size: 0.97rem;
+            color: var(--gray-900);
+            margin-bottom: 0.25rem;
+        }
+
+        .obj-item p {
+            font-size: 0.88rem;
+            color: var(--gray-500);
+            margin: 0;
+        }
+
+        /* ── NEWSLETTER ── */
+        .newsletter-box {
+            background: linear-gradient(135deg, var(--blue-eu-dark), var(--blue-eu));
+            border-radius: 16px;
+            padding: 3rem;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .newsletter-box h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .newsletter-box p {
+            color: rgba(255,255,255,0.78);
+            margin-bottom: 1.8rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 0.75rem;
+            max-width: 460px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            min-width: 200px;
+            padding: 0.75rem 1.1rem;
+            border-radius: 8px;
+            border: none;
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        .newsletter-form button {
+            background: var(--gold-eu);
+            color: var(--blue-eu-dark);
+            border: none;
+            padding: 0.75rem 1.6rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.92rem;
+            cursor: pointer;
+            transition: opacity 0.18s;
+        }
+
+        .newsletter-form button:hover { opacity: 0.88; }
+
+        /* ── POLICIES — working groups ── */
+        .wg-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .wg-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-top: 4px solid var(--blue-eu);
+            border-radius: 10px;
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .wg-card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--gray-900);
+        }
+
+        .wg-card p {
+            font-size: 0.88rem;
+            color: var(--gray-500);
+            flex: 1;
+        }
+
+        .wg-card a.telegram-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: #2AABEE;
+            color: #fff;
+            padding: 0.5rem 1.1rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            align-self: flex-start;
+            transition: opacity 0.18s;
+        }
+
+        .wg-card a.telegram-btn:hover { opacity: 0.85; }
+
+        /* ── PAPERS ── */
+        .papers-list {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .paper-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            padding: 1.1rem 1.4rem;
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+        }
+
+        .paper-badge {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+
+        .paper-badge.position { background: rgba(0,51,153,0.1); color: var(--blue-eu); }
+        .paper-badge.article  { background: rgba(255,204,0,0.25); color: #7a5c00; }
+
+        .paper-item strong {
+            display: block;
+            font-size: 0.95rem;
+            color: var(--gray-900);
+            margin-bottom: 0.15rem;
+        }
+
+        .paper-item span {
+            font-size: 0.83rem;
+            color: var(--gray-500);
+        }
+
+        /* ── MOVEMENT – org chart rows ── */
+        .org-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.4rem;
+        }
+
+        .member-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 1.6rem;
+            text-align: center;
+        }
+
+        .member-avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: rgba(0,51,153,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            margin: 0 auto 0.9rem;
+        }
+
+        .member-card h4 {
+            font-size: 0.97rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 0.2rem;
+        }
+
+        .member-role {
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--blue-eu);
+            margin-bottom: 0.5rem;
+        }
+
+        .member-card p {
+            font-size: 0.83rem;
+            color: var(--gray-500);
+            margin-bottom: 0.6rem;
+        }
+
+        .member-card a {
+            font-size: 0.82rem;
+            color: var(--blue-eu);
+            text-decoration: none;
+        }
+
+        .member-card a:hover { text-decoration: underline; }
+
+        /* ── STATUTE LIST ── */
+        .statute-list {
+            list-style: none;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .statute-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-left: 4px solid var(--blue-eu);
+            border-radius: 8px;
+            padding: 1.2rem 1.5rem;
+        }
+
+        .statute-num {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--blue-eu);
+            background: rgba(0,51,153,0.07);
+            border-radius: 6px;
+            padding: 0.2rem 0.55rem;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+
+        .statute-item p { font-size: 0.93rem; color: var(--gray-700); }
+        .statute-item strong { display: block; color: var(--gray-900); margin-bottom: 0.2rem; }
+
+        /* ── TERRITORY – Europe Map ── */
+        .map-container {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .map-container h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 0.3rem;
+        }
+
+        .map-container p {
+            font-size: 0.88rem;
+            color: var(--gray-500);
+            margin-bottom: 1.5rem;
+        }
+
+        .europe-map {
+            width: 100%;
+            max-width: 780px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .europe-map polygon,
+        .europe-map path {
+            fill: var(--gray-200);
+            stroke: var(--white);
+            stroke-width: 1.5;
+            transition: fill 0.2s;
+            cursor: pointer;
+        }
+
+        .europe-map polygon:hover,
+        .europe-map path:hover {
+            fill: var(--blue-eu-light);
+            opacity: 0.85;
+        }
+
+        /* Classes for future DB coloring */
+        .europe-map .has-members { fill: var(--blue-eu); }
+
+        .map-legend {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+            justify-content: center;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.82rem;
+            color: var(--gray-500);
+        }
+
+        .legend-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+
+        /* ── EVENTS – Calendar ── */
+        .events-placeholder {
+            background: var(--white);
+            border: 2px dashed var(--gray-300);
+            border-radius: 12px;
+            padding: 4rem 2rem;
+            text-align: center;
+            color: var(--gray-500);
+        }
+
+        .events-placeholder .cal-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .events-placeholder h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gray-700);
+            margin-bottom: 0.4rem;
+        }
+
+        /* ── NEWS ── */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .news-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+
+        .news-card:hover {
+            box-shadow: 0 8px 28px rgba(0,51,153,0.1);
+            transform: translateY(-3px);
+        }
+
+        .news-card-img {
+            height: 160px;
+            background: linear-gradient(135deg, var(--blue-eu-dark), var(--blue-eu-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+
+        .news-card-body { padding: 1.4rem; }
+
+        .news-tag {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--blue-eu);
+            margin-bottom: 0.5rem;
+        }
+
+        .news-card-body h3 {
+            font-size: 0.97rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 0.4rem;
+            line-height: 1.4;
+        }
+
+        .news-card-body p {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            line-height: 1.55;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--blue-eu-dark);
+            color: rgba(255,255,255,0.75);
+            padding: 3rem 2rem 2rem;
+        }
+
+        .footer-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 2.5rem;
+        }
+
+        .footer-logo-wrap {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: var(--white);
+            border: 2px solid var(--gold-eu);
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-logo-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+        }
+
+        .footer-brand p {
+            font-size: 0.87rem;
+            line-height: 1.7;
+            margin-top: 0.5rem;
+        }
+
+        footer h4 {
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold-eu);
+            margin-bottom: 1rem;
+        }
+
+        footer ul { list-style: none; display: grid; gap: 0.5rem; }
+
+        footer ul a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.88rem;
+            transition: color 0.15s;
+        }
+
+        footer ul a:hover { color: var(--white); }
+
+        .footer-bottom {
+            max-width: 1100px;
+            margin: 2rem auto 0;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 900px) {
+            .footer-inner { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                gap: 0.6rem;
+                padding: 0.75rem 0;
+            }
+
+            nav ul {
+                gap: 0.05rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .footer-inner { grid-template-columns: 1fr; }
+
+            .footer-bottom {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .newsletter-box { padding: 2rem 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="header-inner">
+            <a href="#home" class="brand">
+                <div class="logo-wrap">
+                    <img src="logo1.jpg" alt="EYM logo">
+                </div>
+                <div class="brand-text">
+                    <span class="brand-name">European Youth Movement</span>
+                    <span class="brand-tagline">European Youth Association</span>
+                </div>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#policies">Policies</a></li>
+                    <li><a href="#movement">Movement</a></li>
+                    <li><a href="#territory">Territory</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#news">News</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- STARS STRIP -->
+    <div class="stars-strip">★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★</div>
+
+    <!-- ═══════════════════════════ HOME ═══════════════════════════ -->
+    <section id="home">
+
+        <!-- HERO -->
+        <div class="hero">
+            <div class="hero-inner">
+                <span class="hero-eyebrow">European Youth Association</span>
+                <h1>Building together<br><span>tomorrow's Europe</span></h1>
+                <p>European Youth Movement gives voice to new generations in shaping a fairer, more democratic and united Europe — one policy at a time.</p>
+                <div class="hero-buttons">
+                    <a href="#movement" class="btn-primary">Join the Movement →</a>
+                    <a href="#policies" class="btn-outline">Explore our Policies</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- EU CHALLENGES -->
+        <div class="section">
+            <div class="section-inner">
+                <p class="section-label">Why we exist</p>
+                <h2>Key Challenges for Europe</h2>
+                <p class="section-lead">The European Union faces defining challenges that require the active voice of young citizens. These are the topics at the heart of our work.</p>
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-icon">🌿</div>
+                        <h3>Climate &amp; Environment</h3>
+                        <p>Advancing the Green Deal, climate justice and sustainable development for future generations across the continent.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">💻</div>
+                        <h3>Digital Transition</h3>
+                        <p>Ensuring a fair, inclusive and rights-respecting digital future — from AI governance to digital literacy.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🗳️</div>
+                        <h3>Democracy &amp; Rule of Law</h3>
+                        <p>Defending democratic institutions, press freedom and the rule of law as cornerstones of the European project.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🌍</div>
+                        <h3>Migration &amp; Integration</h3>
+                        <p>Promoting humane migration policies and social cohesion across Europe's diverse communities.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">📈</div>
+                        <h3>Economic Inequality</h3>
+                        <p>Tackling youth unemployment, precarious labour and the growing gap between European regions and generations.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🛡️</div>
+                        <h3>European Defence &amp; Security</h3>
+                        <p>Building a credible European strategic autonomy while preserving peace and multilateralism.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- OBJECTIVES -->
+        <div class="section section-alt">
+            <div class="section-inner">
+                <p class="section-label">Our strategic plan</p>
+                <h2>Objectives</h2>
+                <p class="section-lead">We pursue concrete goals to make young Europeans' voices heard at every level of governance.</p>
+                <div class="objectives-list">
+                    <div class="obj-item">
+                        <div class="obj-num">1</div>
+                        <div>
+                            <strong>Expand the network across Europe</strong>
+                            <p>Recruit members and national coordinators in every EU member state to build a truly pan-European movement.</p>
+                        </div>
+                    </div>
+                    <div class="obj-item">
+                        <div class="obj-num">2</div>
+                        <div>
+                            <strong>Publish policy proposals</strong>
+                            <p>Produce rigorous position papers and policy briefs on the key EU challenges, submitted to European institutions.</p>
+                        </div>
+                    </div>
+                    <div class="obj-item">
+                        <div class="obj-num">3</div>
+                        <div>
+                            <strong>Foster political education</strong>
+                            <p>Organise training events, simulations and debates to empower young citizens with political knowledge and skills.</p>
+                        </div>
+                    </div>
+                    <div class="obj-item">
+                        <div class="obj-num">4</div>
+                        <div>
+                            <strong>Engage with EU institutions</strong>
+                            <p>Establish formal dialogue channels with the European Parliament, Commission and other EU bodies.</p>
+                        </div>
+                    </div>
+                    <div class="obj-item">
+                        <div class="obj-num">5</div>
+                        <div>
+                            <strong>Build a media presence</strong>
+                            <p>Grow our communications through social media, a newsletter, articles and media appearances to broaden our reach.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEWSLETTER -->
+        <div class="section">
+            <div class="section-inner">
+                <div class="newsletter-box">
+                    <h3>Stay informed</h3>
+                    <p>Subscribe to our newsletter — open to everyone, members and non-members alike.</p>
+                    <form class="newsletter-form" onsubmit="return false;">
+                        <input type="email" placeholder="Your email address">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ═══════════════════════════ POLICIES ═══════════════════════════ -->
+    <section class="section section-alt" id="policies">
+        <div class="section-inner">
+            <p class="section-label">Working Groups</p>
+            <h2>Policies</h2>
+            <p class="section-lead">Each thematic area is led by a dedicated working group. Join the conversation on Telegram and read the positions our members have developed.</p>
+
+            <div class="wg-grid">
+                <div class="wg-card">
+                    <div class="card-icon" style="background:rgba(34,197,94,0.1);">🌿</div>
+                    <h3>Climate &amp; Environment</h3>
+                    <p>Green Deal, climate justice, biodiversity and sustainable development policies.</p>
+                    <a href="#" class="telegram-btn">📩 Join on Telegram</a>
+                </div>
+                <div class="wg-card">
+                    <div class="card-icon" style="background:rgba(99,102,241,0.1);">💻</div>
+                    <h3>Digital &amp; Technology</h3>
+                    <p>AI governance, digital rights, data protection and the future of work.</p>
+                    <a href="#" class="telegram-btn">📩 Join on Telegram</a>
+                </div>
+                <div class="wg-card">
+                    <div class="card-icon" style="background:rgba(239,68,68,0.1);">🗳️</div>
+                    <h3>Democracy &amp; Institutions</h3>
+                    <p>Rule of law, electoral reform, EU institutional development and civic participation.</p>
+                    <a href="#" class="telegram-btn">📩 Join on Telegram</a>
+                </div>
+                <div class="wg-card">
+                    <div class="card-icon" style="background:rgba(245,158,11,0.1);">🌍</div>
+                    <h3>Migration &amp; Human Rights</h3>
+                    <p>Migration policy, refugee rights, integration and social cohesion across Europe.</p>
+                    <a href="#" class="telegram-btn">📩 Join on Telegram</a>
+                </div>
+                <div class="wg-card">
+                    <div class="card-icon" style="background:rgba(20,184,166,0.1);">📈</div>
+                    <h3>Economy &amp; Social Policy</h3>
+                    <p>Youth employment, economic convergence, social Europe and welfare systems.</p>
+                    <a href="#" class="telegram-btn">📩 Join on Telegram</a>
+                </div>
+                <div class="wg-card">
+                    <div class="card-icon" style="background:rgba(0,51,153,0.1);">🛡️</div>
+                    <h3>Defence &amp; Foreign Policy</h3>
+                    <p>European strategic autonomy, NATO relations, Eastern neighbourhood and multilateralism.</p>
+                    <a href="#" class="telegram-btn">📩 Join on Telegram</a>
+                </div>
+            </div>
+
+            <hr class="sub-divider">
+
+            <p class="sub-title">Position Papers &amp; Articles</p>
+            <div class="papers-list">
+                <div class="paper-item">
+                    <span class="paper-badge position">Position Paper</span>
+                    <div>
+                        <strong>Towards a European Youth Climate Act — recommendations for COP30</strong>
+                        <span>Climate &amp; Environment · February 2026</span>
+                    </div>
+                </div>
+                <div class="paper-item">
+                    <span class="paper-badge article">Article</span>
+                    <div>
+                        <strong>Why the EU AI Act matters for the next generation</strong>
+                        <span>Digital &amp; Technology · January 2026</span>
+                    </div>
+                </div>
+                <div class="paper-item">
+                    <span class="paper-badge position">Position Paper</span>
+                    <div>
+                        <strong>Strengthening the Rule of Law Mechanism: a youth perspective</strong>
+                        <span>Democracy &amp; Institutions · December 2025</span>
+                    </div>
+                </div>
+                <div class="paper-item">
+                    <span class="paper-badge article">Article</span>
+                    <div>
+                        <strong>Youth unemployment in Southern Europe: structural causes and EU responses</strong>
+                        <span>Economy &amp; Social Policy · November 2025</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════ MOVEMENT ═══════════════════════════ -->
+    <section class="section" id="movement">
+        <div class="section-inner">
+            <p class="section-label">Who we are</p>
+            <h2>The Movement</h2>
+            <p class="section-lead">A pan-European association built on a clear organisational structure, a founding statute and a shared code of ethics.</p>
+
+            <!-- Organisational structure -->
+            <p class="sub-title">Organisational Structure</p>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">🏛️</div>
+                    <h3>General Assembly</h3>
+                    <p>The sovereign body of the movement. All members participate in strategic decisions, statutes and elections.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">⚡</div>
+                    <h3>Executive Board</h3>
+                    <p>The governing body responsible for day-to-day leadership, coordination and external representation.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📌</div>
+                    <h3>Thematic Coordinators</h3>
+                    <p>One coordinator per working group, responsible for policy development and member engagement on each topic.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📣</div>
+                    <h3>Communication Delegates</h3>
+                    <p>Team responsible for press relations, social media, the newsletter and external communications strategy.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🗺️</div>
+                    <h3>National Coordinators</h3>
+                    <p>Representatives based in each EU member state, responsible for member recruitment and local activities.</p>
+                </div>
+            </div>
+
+            <hr class="sub-divider">
+
+            <!-- Statute -->
+            <p class="sub-title">Statute</p>
+            <ul class="statute-list">
+                <li class="statute-item">
+                    <span class="statute-num">Art. 1</span>
+                    <p><strong>Name and Registered Office</strong>The association is named "European Youth Movement" (EYM). It is legally registered in Italy and operates throughout the national and international territory.</p>
+                </li>
+                <li class="statute-item">
+                    <span class="statute-num">Art. 2</span>
+                    <p><strong>Objectives</strong>The association pursues civic, solidarity-based and socially useful objectives through the promotion of European values, youth political education and democratic participation.</p>
+                </li>
+                <li class="statute-item">
+                    <span class="statute-num">Art. 3</span>
+                    <p><strong>Activities</strong>The association organises events, conferences, awareness campaigns, training activities and cooperation projects with European institutions and related organisations.</p>
+                </li>
+                <li class="statute-item">
+                    <span class="statute-num">Art. 4</span>
+                    <p><strong>Members</strong>Any natural person who shares the values and statutory objectives of the association may join, regardless of nationality, gender or political belief.</p>
+                </li>
+                <li class="statute-item">
+                    <span class="statute-num">Art. 5</span>
+                    <p><strong>Governing Bodies</strong>The governing bodies are: the General Assembly, the Board of Directors and the President. All positions are elective and renewed periodically.</p>
+                </li>
+            </ul>
+
+            <hr class="sub-divider">
+
+            <!-- Code of Ethics -->
+            <p class="sub-title">Code of Ethics</p>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">⚖️</div>
+                    <h3>Integrity</h3>
+                    <p>All members act with honesty and transparency in every activity of the movement, avoiding conflicts of interest.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🤝</div>
+                    <h3>Respect</h3>
+                    <p>We foster an inclusive environment where diversity of background and opinion is respected and valued.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🌐</div>
+                    <h3>European Spirit</h3>
+                    <p>Our actions are guided by European values: human dignity, freedom, democracy, equality and the rule of law.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📢</div>
+                    <h3>Accountability</h3>
+                    <p>Leaders are accountable to the membership and operate within the bounds set by the statute and the General Assembly.</p>
+                </div>
+            </div>
+
+            <hr class="sub-divider">
+
+            <!-- Executive Board -->
+            <p class="sub-title">Executive Board</p>
+            <div class="org-grid">
+                <div class="member-card">
+                    <div class="member-avatar">👤</div>
+                    <h4>— To be announced —</h4>
+                    <div class="member-role">President</div>
+                    <p>Leading the movement's strategic direction and external representation.</p>
+                    <a href="mailto:team.europeanyouthmovement@gmail.com">team.europeanyouthmovement@gmail.com</a>
+                </div>
+                <div class="member-card">
+                    <div class="member-avatar">👤</div>
+                    <h4>— To be announced —</h4>
+                    <div class="member-role">Secretary General</div>
+                    <p>Overseeing internal coordination, governance and official documentation.</p>
+                    <a href="mailto:team.europeanyouthmovement@gmail.com">team.europeanyouthmovement@gmail.com</a>
+                </div>
+                <div class="member-card">
+                    <div class="member-avatar">👤</div>
+                    <h4>— To be announced —</h4>
+                    <div class="member-role">Treasurer</div>
+                    <p>Managing finances, fundraising and financial transparency of the association.</p>
+                    <a href="mailto:team.europeanyouthmovement@gmail.com">team.europeanyouthmovement@gmail.com</a>
+                </div>
+            </div>
+
+            <hr class="sub-divider">
+
+            <!-- Thematic Coordinators -->
+            <p class="sub-title">Thematic Coordinators</p>
+            <div class="org-grid">
+                <div class="member-card">
+                    <div class="member-avatar">🌿</div>
+                    <h4>— To be announced —</h4>
+                    <div class="member-role">Climate &amp; Environment</div>
+                    <a href="mailto:team.europeanyouthmovement@gmail.com">team.europeanyouthmovement@gmail.com</a>
+                </div>
+                <div class="member-card">
+                    <div class="member-avatar">💻</div>
+                    <h4>— To be announced —</h4>
+                    <div class="member-role">Digital &amp; Technology</div>
+                    <a href="mailto:team.europeanyouthmovement@gmail.com">team.europeanyouthmovement@gmail.com</a>
+                </div>
+                <div class="member-card">
+                    <div class="member-avatar">🗳️</div>
+                    <h4>— To be announced —</h4>
+                    <div class="member-role">Democracy &amp; Institutions</div>
+                    <a href="mailto:team.europeanyouthmovement@gmail.com">team.europeanyouthmovement@gmail.com</a>
+                </div>
+                <div class="member-card">
+                    <div class="member-avatar">🌍</div>
+                    <h4>— To be announced —</h4>
+                    <div class="member-role">Migration &amp; Human Rights</div>
+                    <a href="mailto:team.europeanyouthmovement@gmail.com">team.europeanyouthmovement@gmail.com</a>
+                </div>
+                <div class="member-card">
+                    <div class="member-avatar">📈</div>
+                    <h4>— To be announced —</h4>
+                    <div class="member-role">Economy &amp; Social Policy</div>
+                    <a href="mailto:team.europeanyouthmovement@gmail.com">team.europeanyouthmovement@gmail.com</a>
+                </div>
+                <div class="member-card">
+                    <div class="member-avatar">🛡️</div>
+                    <h4>— To be announced —</h4>
+                    <div class="member-role">Defence &amp; Foreign Policy</div>
+                    <a href="mailto:team.europeanyouthmovement@gmail.com">team.europeanyouthmovement@gmail.com</a>
+                </div>
+            </div>
+
+            <hr class="sub-divider">
+
+            <!-- Communication Delegates -->
+            <p class="sub-title">Communication Delegates</p>
+            <div class="org-grid">
+                <div class="member-card">
+                    <div class="member-avatar">📣</div>
+                    <h4>— To be announced —</h4>
+                    <div class="member-role">Head of Communications</div>
+                    <a href="mailto:team.europeanyouthmovement@gmail.com">team.europeanyouthmovement@gmail.com</a>
+                </div>
+                <div class="member-card">
+                    <div class="member-avatar">📱</div>
+                    <h4>— To be announced —</h4>
+                    <div class="member-role">Social Media Delegate</div>
+                    <a href="mailto:team.europeanyouthmovement@gmail.com">team.europeanyouthmovement@gmail.com</a>
+                </div>
+                <div class="member-card">
+                    <div class="member-avatar">✍️</div>
+                    <h4>— To be announced —</h4>
+                    <div class="member-role">Press &amp; Editorial Delegate</div>
+                    <a href="mailto:team.europeanyouthmovement@gmail.com">team.europeanyouthmovement@gmail.com</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════ TERRITORY ═══════════════════════════ -->
+    <section class="section section-alt" id="territory">
+        <div class="section-inner">
+            <p class="section-label">Our presence</p>
+            <h2>Territory</h2>
+            <p class="section-lead">The European Youth Movement is growing across Europe. The map below will show registered members by country as our network expands.</p>
+
+            <!-- Europe Map -->
+            <div class="map-container">
+                <h3>Members across Europe</h3>
+                <p>Hover over a country to learn more. Countries will be highlighted as members join. Database integration coming soon.</p>
+
+                <svg viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg" class="europe-map" role="img" aria-label="Map of Europe">
+                    <title>Map of Europe — European Youth Movement</title>
+
+                    <!-- Iceland -->
+                    <polygon id="IS" title="Iceland" points="55,78 90,65 145,68 175,78 170,100 140,112 85,110 60,98"/>
+
+                    <!-- Norway -->
+                    <path id="NO" title="Norway" d="M325,170 340,148 355,120 375,90 405,68 440,52 480,42 520,38 560,42 595,52 610,65 595,80 555,88 515,96 480,108 450,122 420,138 398,158 378,175 360,185"/>
+
+                    <!-- Sweden -->
+                    <polygon id="SE" title="Sweden" points="395,180 420,145 450,122 488,108 525,100 548,105 548,140 538,170 520,195 505,212 480,222 455,218 425,205"/>
+
+                    <!-- Finland -->
+                    <polygon id="FI" title="Finland" points="548,105 575,82 608,68 640,62 665,78 672,108 668,145 650,175 625,188 598,192 568,185 548,168 548,140"/>
+
+                    <!-- Estonia -->
+                    <polygon id="EE" title="Estonia" points="548,192 590,186 620,192 615,210 575,215 548,208"/>
+
+                    <!-- Latvia -->
+                    <polygon id="LV" title="Latvia" points="548,210 618,212 630,228 618,242 570,245 545,232"/>
+
+                    <!-- Lithuania -->
+                    <polygon id="LT" title="Lithuania" points="545,235 618,245 628,260 595,272 552,268 538,252"/>
+
+                    <!-- Denmark -->
+                    <polygon id="DK" title="Denmark" points="382,188 402,175 422,178 428,196 420,212 400,220 382,210"/>
+
+                    <!-- UK — Great Britain -->
+                    <path id="GB" title="United Kingdom" d="M238,180 258,158 284,145 308,152 318,175 315,200 300,220 278,238 252,248 230,232 220,208 228,192"/>
+
+                    <!-- Ireland -->
+                    <polygon id="IE" title="Ireland" points="195,212 218,200 238,214 232,238 210,248 192,232"/>
+
+                    <!-- Netherlands -->
+                    <polygon id="NL" title="Netherlands" points="328,218 360,212 372,228 358,245 328,245 318,232"/>
+
+                    <!-- Belgium -->
+                    <polygon id="BE" title="Belgium" points="320,248 362,242 374,258 355,268 318,265 310,255"/>
+
+                    <!-- Luxembourg (small) -->
+                    <polygon id="LU" title="Luxembourg" points="355,268 372,262 378,278 362,282 352,276"/>
+
+                    <!-- France -->
+                    <path id="FR" title="France" d="M248,262 282,252 320,252 355,265 375,262 382,292 378,330 358,358 320,372 280,368 248,348 232,315 240,280"/>
+
+                    <!-- Switzerland -->
+                    <polygon id="CH" title="Switzerland" points="355,295 398,290 415,302 402,318 368,320 348,308"/>
+
+                    <!-- Germany -->
+                    <path id="DE" title="Germany" d="M358,218 402,210 448,215 462,238 458,268 442,285 408,290 380,288 358,275 352,255 365,238"/>
+
+                    <!-- Austria -->
+                    <polygon id="AT" title="Austria" points="400,292 450,285 472,292 468,312 432,318 405,315 398,305"/>
+
+                    <!-- Poland -->
+                    <polygon id="PL" title="Poland" points="452,218 495,212 548,218 555,245 545,272 510,278 465,275 448,255 448,235"/>
+
+                    <!-- Czech Republic -->
+                    <polygon id="CZ" title="Czech Republic" points="408,255 450,248 470,258 462,278 438,282 405,278 398,265"/>
+
+                    <!-- Slovakia -->
+                    <polygon id="SK" title="Slovakia" points="468,268 512,262 535,270 528,285 495,292 465,288 460,278"/>
+
+                    <!-- Hungary -->
+                    <polygon id="HU" title="Hungary" points="450,318 492,308 528,315 535,335 512,348 468,348 442,335"/>
+
+                    <!-- Romania -->
+                    <polygon id="RO" title="Romania" points="518,285 558,278 598,285 608,312 598,342 562,352 528,345 510,322"/>
+
+                    <!-- Moldova (small) -->
+                    <polygon id="MD" title="Moldova" points="600,315 620,308 628,330 610,342 598,335"/>
+
+                    <!-- Ukraine -->
+                    <polygon id="UA" title="Ukraine" points="538,258 580,252 638,255 688,268 712,298 700,328 660,345 618,348 580,342 548,330 530,308 532,278"/>
+
+                    <!-- Belarus -->
+                    <polygon id="BY" title="Belarus" points="548,228 592,222 638,228 648,255 635,272 595,278 555,272 538,252"/>
+
+                    <!-- Slovenia -->
+                    <polygon id="SI" title="Slovenia" points="425,322 455,318 462,332 448,342 425,338"/>
+
+                    <!-- Croatia -->
+                    <polygon id="HR" title="Croatia" points="425,342 462,335 478,348 470,372 445,385 420,368 415,350"/>
+
+                    <!-- Bosnia & Herzegovina -->
+                    <polygon id="BA" title="Bosnia &amp; Herzegovina" points="452,348 482,342 498,358 490,380 465,388 445,378 448,360"/>
+
+                    <!-- Serbia -->
+                    <polygon id="RS" title="Serbia" points="480,345 515,340 528,358 522,385 498,398 472,392 458,372 472,352"/>
+
+                    <!-- Montenegro (small) -->
+                    <polygon id="ME" title="Montenegro" points="462,392 490,385 498,400 480,412 460,405"/>
+
+                    <!-- North Macedonia -->
+                    <polygon id="MK" title="North Macedonia" points="498,398 525,390 535,408 512,420 495,412"/>
+
+                    <!-- Albania -->
+                    <polygon id="AL" title="Albania" points="465,408 492,402 500,418 492,438 468,440 458,422"/>
+
+                    <!-- Bulgaria -->
+                    <polygon id="BG" title="Bulgaria" points="520,358 558,350 592,360 588,390 558,402 522,395 512,375"/>
+
+                    <!-- Greece -->
+                    <path id="GR" title="Greece" d="M478,445 498,438 530,430 562,420 588,432 582,462 558,482 530,490 505,478 482,462 478,448"/>
+
+                    <!-- Kosovo (small) -->
+                    <polygon id="XK" title="Kosovo" points="498,408 520,402 525,420 505,428 492,420"/>
+
+                    <!-- Spain -->
+                    <path id="ES" title="Spain" d="M198,302 242,280 285,272 332,278 360,300 368,332 348,365 302,385 248,390 205,368 188,338 192,315"/>
+
+                    <!-- Portugal -->
+                    <polygon id="PT" title="Portugal" points="190,318 212,308 245,318 242,388 215,392 188,368"/>
+
+                    <!-- Italy — boot shape -->
+                    <path id="IT" title="Italy" d="M368,322 402,318 425,330 428,355 422,385 438,412 428,435 408,428 395,402 375,372 358,342 355,322"/>
+
+                    <!-- Malta (tiny) -->
+                    <polygon id="MT" title="Malta" points="400,480 412,476 416,484 404,488"/>
+
+                    <!-- Cyprus (small) -->
+                    <polygon id="CY" title="Cyprus" points="668,468 698,462 712,470 705,482 672,485"/>
+
+                    <!-- Norway label territory label -->
+
+                    <!-- Sea background frame -->
+                </svg>
+
+                <div class="map-legend">
+                    <div class="legend-item">
+                        <div class="legend-dot" style="background:var(--gray-200); border: 1px solid var(--gray-300);"></div>
+                        No registered members yet
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-dot" style="background:var(--blue-eu);"></div>
+                        Active members present
+                    </div>
+                </div>
+            </div>
+
+            <hr class="sub-divider">
+
+            <!-- National Coordinators -->
+            <p class="sub-title">National Coordinators</p>
+            <div class="org-grid">
+                <div class="member-card">
+                    <div class="member-avatar">🇮🇹</div>
+                    <h4>— To be announced —</h4>
+                    <div class="member-role">Italy</div>
+                    <a href="mailto:team.europeanyouthmovement@gmail.com">team.europeanyouthmovement@gmail.com</a>
+                </div>
+                <div class="member-card">
+                    <div class="member-avatar">🌍</div>
+                    <h4>Your country?</h4>
+                    <div class="member-role">Become a Coordinator</div>
+                    <p>We are looking for national coordinators across Europe.</p>
+                    <a href="mailto:team.europeanyouthmovement@gmail.com">Apply here</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════ EVENTS ═══════════════════════════ -->
+    <section class="section" id="events">
+        <div class="section-inner">
+            <p class="section-label">What's on</p>
+            <h2>Events</h2>
+            <p class="section-lead">Conferences, debates, training sessions and more — all our upcoming events in one place.</p>
+            <div class="events-placeholder">
+                <div class="cal-icon">📅</div>
+                <h3>Calendar coming soon</h3>
+                <p>Our events calendar is being set up. Check back shortly or subscribe to the newsletter to be notified first.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════ NEWS ═══════════════════════════ -->
+    <section class="section section-alt" id="news">
+        <div class="section-inner">
+            <p class="section-label">Press &amp; Media</p>
+            <h2>News</h2>
+            <p class="section-lead">Articles from external contributors about the movement, interviews and media appearances.</p>
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-card-img">📰</div>
+                    <div class="news-card-body">
+                        <div class="news-tag">Press</div>
+                        <h3>European Youth Movement launches with pan-European ambitions</h3>
+                        <p>A new youth association aims to bridge the gap between young Europeans and EU institutions...</p>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-card-img">🎙️</div>
+                    <div class="news-card-body">
+                        <div class="news-tag">Interview</div>
+                        <h3>What do young Europeans want from the EU? EYM speaks out</h3>
+                        <p>In a recent interview, EYM representatives outlined the movement's vision for a more democratic Europe...</p>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-card-img">▶️</div>
+                    <div class="news-card-body">
+                        <div class="news-tag">YouTube</div>
+                        <h3>EYM at the European Parliament Youth Conference</h3>
+                        <p>Watch our delegates present EYM's position papers at the latest EP youth event...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="footer-logo-wrap">
+                    <img src="logo1.jpg" alt="EYM logo">
+                </div>
+                <strong style="color:#fff; font-size:1rem;">European Youth Movement</strong>
+                <p>A pan-European youth association committed to building a more democratic, inclusive and solidary Europe.</p>
+            </div>
+            <div>
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#policies">Policies</a></li>
+                    <li><a href="#movement">Movement</a></li>
+                    <li><a href="#territory">Territory</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#news">News</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Movement</h4>
+                <ul>
+                    <li><a href="#movement">Statute</a></li>
+                    <li><a href="#movement">Code of Ethics</a></li>
+                    <li><a href="#movement">Executive Board</a></li>
+                    <li><a href="#territory">National Coordinators</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:team.europeanyouthmovement@gmail.com">team.europeanyouthmovement@gmail.com</a></li>
+                    <li><a href="#">@EuropeanYouthMovement</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 European Youth Movement. All rights reserved.</span>
+            <span>★ For a united and democratic Europe ★</span>
+        </div>
+    </footer>
+
+    <script>
+        // Active nav link on scroll
+        const sections = document.querySelectorAll('[id]');
+        const navLinks = document.querySelectorAll('nav a');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(a => a.classList.remove('active'));
+                    const active = document.querySelector(`nav a[href="#${entry.target.id}"]`);
+                    if (active) active.classList.add('active');
+                }
+            });
+        }, { threshold: 0.25, rootMargin: '-70px 0px 0px 0px' });
+
+        sections.forEach(s => observer.observe(s));
+
+        // Country tooltip on hover
+        document.querySelectorAll('.europe-map polygon, .europe-map path').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                el.style.opacity = '0.85';
+            });
+            el.addEventListener('mouseleave', () => {
+                el.style.opacity = '';
+            });
+        });
+    </script>
+
+</body>
+</html>
