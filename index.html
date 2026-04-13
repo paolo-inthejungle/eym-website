@@ -869,7 +869,7 @@
                 </div>
                 <div class="brand-text">
                     <span class="brand-name">European Youth Movement</span>
-                    <span class="brand-tagline">European Youth Association</span>
+                    <span class="brand-tagline">Mai Come Voi</span>
                 </div>
             </a>
             <nav>
@@ -894,7 +894,7 @@
         <!-- HERO -->
         <div class="hero">
             <div class="hero-inner">
-                <span class="hero-eyebrow">European Youth Association</span>
+                <span class="hero-eyebrow">Be part of the change!</span>
                 <h1>Building together<br><span>tomorrow's Europe</span></h1>
                 <p>European Youth Movement gives voice to new generations in shaping a fairer, more democratic and united Europe — one policy at a time.</p>
                 <div class="hero-buttons">
@@ -997,10 +997,11 @@
                 <div class="newsletter-box">
                     <h3>Stay informed</h3>
                     <p>Subscribe to our newsletter — open to everyone, members and non-members alike.</p>
-                    <form class="newsletter-form" onsubmit="return false;">
-                        <input type="email" placeholder="Your email address">
-                        <button type="submit">Subscribe</button>
+                    <form class="newsletter-form" id="newsletter-form">
+                        <input type="email" id="newsletter-email" placeholder="Your email address" required>
+                        <button type="submit" id="newsletter-btn">Subscribe</button>
                     </form>
+                    <p id="newsletter-msg" style="margin-top:1rem; font-size:0.9rem; display:none;"></p>
                 </div>
             </div>
         </div>
@@ -1570,6 +1571,44 @@
             el.addEventListener('mouseleave', () => {
                 el.style.opacity = '';
             });
+        });
+
+        document.getElementById('newsletter-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('newsletter-email').value.trim();
+            const btn = document.getElementById('newsletter-btn');
+            const msg = document.getElementById('newsletter-msg');
+
+            btn.disabled = true;
+            btn.textContent = 'Sending...';
+            msg.style.display = 'none';
+
+            try {
+                const res = await fetch('http://localhost:3000/api/subscribe', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email })
+                });
+                const data = await res.json();
+
+                if (data.success) {
+                    msg.textContent = data.duplicate
+                        ? 'You are already subscribed!'
+                        : 'Successfully subscribed! Welcome aboard.';
+                    msg.style.color = '#4ade80';
+                    document.getElementById('newsletter-email').value = '';
+                } else {
+                    msg.textContent = data.error || 'Something went wrong.';
+                    msg.style.color = '#f87171';
+                }
+            } catch {
+                msg.textContent = 'Connection error. Please try again.';
+                msg.style.color = '#f87171';
+            }
+
+            msg.style.display = 'block';
+            btn.disabled = false;
+            btn.textContent = 'Subscribe';
         });
     </script>
 
