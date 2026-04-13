@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
@@ -44,7 +43,6 @@ app.post('/api/subscribe', async (req, res) => {
   }
 });
 
-=======
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
@@ -90,5 +88,4 @@ app.post('/api/subscribe', async (req, res) => {
   }
 });
 
->>>>>>> 02c2408dde3dc1167d7b04c65b14e3595aa4576c
 app.listen(3000, () => console.log('Server attivo su porta 3000'));
