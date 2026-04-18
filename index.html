@@ -2038,6 +2038,11 @@
                 container.innerHTML = svgText;
 
                 const svg = container.querySelector('svg');
+                const w = svg.getAttribute('width')  || '680';
+                const h = svg.getAttribute('height') || '540';
+                if (!svg.getAttribute('viewBox')) {
+                    svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+                }
                 svg.removeAttribute('width');
                 svg.removeAttribute('height');
                 svg.style.width = '100%';
