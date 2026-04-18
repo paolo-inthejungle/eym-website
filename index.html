@@ -632,10 +632,10 @@
             margin-bottom: 1.5rem;
         }
 
-        /* ── EU MAP (inline SVG) ── */
+        /* ── EUROPE MAP (inline SVG) ── */
         #eu-map-container {
             width: 100%;
-            max-width: 680px;
+            max-width: 720px;
             margin: 0 auto 1rem;
             position: relative;
         }
@@ -646,29 +646,25 @@
             display: block;
         }
 
-        /* Non-EU / background countries — keep them subtle */
-        #eu-map-container svg path,
-        #eu-map-container svg polygon {
-            transition: filter 0.15s, opacity 0.15s;
-            cursor: default;
-        }
-
-        /* EU member states (blue) — highlight on hover */
-        #eu-map-container svg path.eu-country,
-        #eu-map-container svg polygon.eu-country {
+        /* All countries: uniform gray base, override inline styles */
+        #eu-map-container svg path[id],
+        #eu-map-container svg polygon[id] {
+            fill: #c8cdd6 !important;
+            stroke: #ffffff !important;
+            stroke-width: 0.5px !important;
+            transition: fill 0.18s, filter 0.18s;
             cursor: pointer;
         }
 
-        #eu-map-container svg path.eu-country:hover,
-        #eu-map-container svg polygon.eu-country:hover {
-            filter: brightness(1.35) drop-shadow(0 0 4px rgba(0,51,153,0.5));
-            opacity: 0.85;
+        /* Countries with EYM members */
+        #eu-map-container svg .has-members {
+            fill: var(--blue-eu) !important;
         }
 
-        /* has-members override (future DB) */
-        #eu-map-container svg path.has-members,
-        #eu-map-container svg polygon.has-members {
-            fill: #4ade80 !important;
+        /* Hover: darken slightly */
+        #eu-map-container svg path[id]:hover,
+        #eu-map-container svg polygon[id]:hover {
+            filter: brightness(0.82);
         }
 
         /* Tooltip */
@@ -685,6 +681,7 @@
             transition: opacity 0.12s;
             z-index: 300;
             white-space: nowrap;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.25);
         }
 
         #map-tooltip.visible { opacity: 1; }
@@ -1606,17 +1603,17 @@
             <!-- Europe Map -->
             <div class="map-container">
                 <h3>Members across Europe</h3>
-                <p>Countries will be highlighted as members join. Database integration coming soon.</p>
+                <p>Hover over a country to see its name. Countries highlighted in blue have registered EYM members.</p>
                 <div id="eu-map-container" aria-label="Interactive map of the European Union"></div>
                 <div id="map-tooltip"></div>
                 <div class="map-legend">
                     <div class="legend-item">
-                        <div class="legend-dot" style="background:var(--blue-eu);"></div>
-                        EU Member States
+                        <div class="legend-dot" style="background:#c8cdd6; border:1px solid #aaa;"></div>
+                        No EYM members yet
                     </div>
                     <div class="legend-item">
-                        <div class="legend-dot" style="background:#4ade80;"></div>
-                        Active EYM members (coming soon)
+                        <div class="legend-dot" style="background:var(--blue-eu);"></div>
+                        Countries with EYM members
                     </div>
                 </div>
             </div>
@@ -2021,16 +2018,19 @@
     </div>
 
     <script>
-        // ── EU MAP — fetch, inject inline, add interactivity ──
-        const EU_COUNTRIES = new Set([
-            'at','be','bg','cy','cz','de','dk','ee','es','fi',
-            'fr','gr','hr','hu','ie','it','lt','lu','lv','mt',
-            'nl','pl','pt','ro','se','si','sk'
+        // ── EUROPE MAP — fetch, inject inline, add interactivity ──
+
+        // Countries with EYM members (ISO 3166-1 alpha-2, lowercase)
+        const MEMBER_COUNTRIES = new Set([
+            'it', 'de', 'es', 'fr', 'be', 'fi', 'se', 'gr', 'ro'
         ]);
+
+        // Clean up SVG title text
+        const cleanName = s => s.replace(/old\s*|obsolete|\(|\)/gi, '').trim();
 
         const tooltip = document.getElementById('map-tooltip');
 
-        async function loadEUMap() {
+        async function loadEuropeMap() {
             try {
                 const res = await fetch('European_Union_main_map.svg');
                 const svgText = await res.text();
@@ -2040,42 +2040,42 @@
                 const svg = container.querySelector('svg');
                 svg.removeAttribute('width');
                 svg.removeAttribute('height');
-                svg.setAttribute('viewBox', svg.getAttribute('viewBox') || '0 0 680 540');
+                svg.style.width = '100%';
+                svg.style.height = 'auto';
 
-                // Tag EU countries and add interactivity
                 svg.querySelectorAll('path[id], polygon[id]').forEach(el => {
                     const id = el.id.toLowerCase().split('-')[0];
                     const titleEl = el.querySelector('title');
-                    const countryName = titleEl ? titleEl.textContent.replace(/Old |obsolete|\(|\)/g, '').trim() : null;
+                    const name = titleEl ? cleanName(titleEl.textContent) : null;
 
-                    if (EU_COUNTRIES.has(id)) {
-                        el.classList.add('eu-country');
+                    // Mark countries with members
+                    if (MEMBER_COUNTRIES.has(id)) {
+                        el.classList.add('has-members');
+                    }
 
-                        el.addEventListener('mouseenter', e => {
-                            if (countryName) {
-                                tooltip.textContent = countryName;
-                                tooltip.classList.add('visible');
-                            }
+                    // Tooltip + hover for all countries with a title
+                    if (name) {
+                        el.addEventListener('mouseenter', () => {
+                            tooltip.textContent = name + (MEMBER_COUNTRIES.has(id) ? ' ★' : '');
+                            tooltip.classList.add('visible');
                         });
-
                         el.addEventListener('mousemove', e => {
                             tooltip.style.left = (e.clientX + 14) + 'px';
-                            tooltip.style.top  = (e.clientY - 32) + 'px';
+                            tooltip.style.top  = (e.clientY - 36) + 'px';
                         });
-
                         el.addEventListener('mouseleave', () => {
                             tooltip.classList.remove('visible');
                         });
                     }
                 });
-            } catch (e) {
-                // fallback: show static image if fetch fails
-                const container = document.getElementById('eu-map-container');
-                container.innerHTML = '<img src="map.png" alt="EU Map" style="width:100%;">';
+
+            } catch {
+                document.getElementById('eu-map-container').innerHTML =
+                    '<img src="map.png" alt="Europe map" style="width:100%;">';
             }
         }
 
-        loadEUMap();
+        loadEuropeMap();
 
         // ── Modal open/close ──
         function openModal(id) {

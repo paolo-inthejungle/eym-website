@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -oP '\\(?<=id=\"\\)[a-z]{2,3}\\(?=\"\\)' \"c:/Users/Administrator/Desktop/eym/European_Union_main_map.svg\")"
+    ]
+  }
+}
