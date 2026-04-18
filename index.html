@@ -856,6 +856,320 @@
 
             .newsletter-box { padding: 2rem 1.2rem; }
         }
+
+        /* ── WHY JOIN US ── */
+        .why-join {
+            background: linear-gradient(160deg, var(--blue-eu-dark) 0%, var(--blue-eu) 100%);
+            color: var(--white);
+            padding: 5rem 2rem;
+        }
+
+        .why-join .section-label { color: var(--gold-eu); }
+
+        .why-join h2 {
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .why-join .section-lead {
+            color: rgba(255,255,255,0.82);
+            max-width: 700px;
+            font-size: 1.1rem;
+        }
+
+        .why-pillars {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .why-pillar {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .why-pillar h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--gold-eu);
+            margin-bottom: 0.7rem;
+        }
+
+        .why-pillar p {
+            font-size: 0.93rem;
+            color: rgba(255,255,255,0.82);
+            line-height: 1.7;
+        }
+
+        .why-cta-box {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 14px;
+            padding: 2.5rem;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .why-cta-box .doer-motto {
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            font-weight: 800;
+            color: var(--gold-eu);
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .why-cta-box p {
+            color: rgba(255,255,255,0.82);
+            max-width: 560px;
+            margin: 0 auto 1.8rem;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .why-cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.15);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.4);
+            transition: background 0.18s;
+        }
+
+        .btn-download:hover { background: rgba(255,255,255,0.25); }
+
+        /* ── POLICIES — 4 groups with expandable panel ── */
+        .wg-card .solutions-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: transparent;
+            color: var(--blue-eu);
+            border: 1px solid var(--blue-eu);
+            padding: 0.45rem 1rem;
+            border-radius: 6px;
+            font-size: 0.84rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.18s, color 0.18s;
+            align-self: flex-start;
+        }
+
+        .wg-card .solutions-btn:hover {
+            background: var(--blue-eu);
+            color: var(--white);
+        }
+
+        /* ── DOWNLOAD BUTTONS (statute / code) ── */
+        .download-row {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .btn-dl-eu {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--blue-eu);
+            color: var(--white);
+            padding: 0.7rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: background 0.18s;
+        }
+
+        .btn-dl-eu:hover { background: var(--blue-eu-light); }
+
+        /* ── MOVEMENT ORG — clickable cards ── */
+        .org-clickable {
+            cursor: pointer;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+
+        .org-clickable:hover {
+            box-shadow: 0 8px 28px rgba(0,51,153,0.15);
+            transform: translateY(-3px);
+        }
+
+        .org-open-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            margin-top: 0.8rem;
+            background: transparent;
+            color: var(--blue-eu);
+            border: 1px solid var(--blue-eu);
+            padding: 0.4rem 0.9rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.18s, color 0.18s;
+        }
+
+        .org-open-btn:hover {
+            background: var(--blue-eu);
+            color: var(--white);
+        }
+
+        /* ── MODAL ── */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.55);
+            z-index: 200;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .modal-overlay.open { display: flex; }
+
+        .modal-box {
+            background: var(--white);
+            border-radius: 16px;
+            max-width: 640px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 24px 64px rgba(0,0,0,0.25);
+            animation: modalIn 0.22s ease;
+        }
+
+        @keyframes modalIn {
+            from { transform: translateY(16px); opacity: 0; }
+            to   { transform: translateY(0);    opacity: 1; }
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem 1.8rem 1.2rem;
+            border-bottom: 1px solid var(--gray-200);
+            position: sticky;
+            top: 0;
+            background: var(--white);
+            z-index: 1;
+        }
+
+        .modal-header h3 {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--gray-900);
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.4rem;
+            cursor: pointer;
+            color: var(--gray-500);
+            line-height: 1;
+            padding: 0.2rem;
+            transition: color 0.15s;
+        }
+
+        .modal-close:hover { color: var(--gray-900); }
+
+        .modal-body {
+            padding: 1.5rem 1.8rem 2rem;
+        }
+
+        .modal-body p {
+            font-size: 0.95rem;
+            color: var(--gray-700);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .modal-body ul {
+            padding-left: 1.2rem;
+            display: grid;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-body ul li {
+            font-size: 0.93rem;
+            color: var(--gray-700);
+            line-height: 1.6;
+        }
+
+        .modal-body .modal-member-grid {
+            display: grid;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .modal-member-row {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            padding: 1rem 1.2rem;
+            background: var(--gray-100);
+            border-radius: 10px;
+        }
+
+        .modal-member-row .m-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(0,51,153,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .modal-member-row .m-info h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 0.1rem;
+        }
+
+        .modal-member-row .m-info .m-role {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--blue-eu);
+            margin-bottom: 0.3rem;
+        }
+
+        .modal-member-row .m-info p {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            margin: 0;
+        }
+
+        .modal-member-row .m-info a {
+            font-size: 0.82rem;
+            color: var(--blue-eu);
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
@@ -904,42 +1218,28 @@
             </div>
         </div>
 
-        <!-- EU CHALLENGES -->
-        <div class="section">
+        <!-- WHY JOIN US -->
+        <div class="why-join">
             <div class="section-inner">
-                <p class="section-label">Why we exist</p>
-                <h2>Key Challenges for Europe</h2>
-                <p class="section-lead">The European Union faces defining challenges that require the active voice of young citizens. These are the topics at the heart of our work.</p>
-                <div class="card-grid">
-                    <div class="card">
-                        <div class="card-icon">🌿</div>
-                        <h3>Climate &amp; Environment</h3>
-                        <p>Advancing the Green Deal, climate justice and sustainable development for future generations across the continent.</p>
+                <p class="section-label">Why join us</p>
+                <h2>Why Join Us</h2>
+                <p class="section-lead">The only way to build a European future is to take personal responsibility for change — and the new generations have the strength to do it.</p>
+                <div class="why-pillars">
+                    <div class="why-pillar">
+                        <h3>Shape Your Identity Through Community</h3>
+                        <p>Only by knowing one another, acknowledging different realities and sharing a common political journey can we truly feel like citizens of Europe and create the conditions to act together.</p>
                     </div>
-                    <div class="card">
-                        <div class="card-icon">💻</div>
-                        <h3>Digital Transition</h3>
-                        <p>Ensuring a fair, inclusive and rights-respecting digital future — from AI governance to digital literacy.</p>
+                    <div class="why-pillar">
+                        <h3>Debate to Propose</h3>
+                        <p>Social, cultural and political diversity is not a limitation — it is the fertile ground on which to cultivate dialogue and give rise to shared political positions, capable of combining unity of vision with respect for differences.</p>
                     </div>
-                    <div class="card">
-                        <div class="card-icon">🗳️</div>
-                        <h3>Democracy &amp; Rule of Law</h3>
-                        <p>Defending democratic institutions, press freedom and the rule of law as cornerstones of the European project.</p>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon">🌍</div>
-                        <h3>Migration &amp; Integration</h3>
-                        <p>Promoting humane migration policies and social cohesion across Europe's diverse communities.</p>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon">📈</div>
-                        <h3>Economic Inequality</h3>
-                        <p>Tackling youth unemployment, precarious labour and the growing gap between European regions and generations.</p>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon">🛡️</div>
-                        <h3>European Defence &amp; Security</h3>
-                        <p>Building a credible European strategic autonomy while preserving peace and multilateralism.</p>
+                </div>
+                <div class="why-cta-box">
+                    <div class="doer-motto">Don't think as a voter,<br>think as a doer!</div>
+                    <p>United by a pragmatic, positive approach to finding solutions together. Make your contribution and be an active part of change — join the European Youth Movement.</p>
+                    <div class="why-cta-buttons">
+                        <a href="#movement" class="btn-primary">Join the Movement →</a>
+                        <a href="manifesto.pdf" download class="btn-download">⬇ Download the Founding Manifesto</a>
                     </div>
                 </div>
             </div>
@@ -1017,40 +1317,40 @@
 
             <div class="wg-grid">
                 <div class="wg-card">
-                    <div class="card-icon" style="background:rgba(34,197,94,0.1);">🌿</div>
-                    <h3>Climate &amp; Environment</h3>
-                    <p>Green Deal, climate justice, biodiversity and sustainable development policies.</p>
-                    <a href="#" class="telegram-btn">📩 Join on Telegram</a>
+                    <div class="card-icon" style="background:rgba(0,51,153,0.1);">🛡️</div>
+                    <h3>Foreign Policy &amp; Defense</h3>
+                    <p>European strategic autonomy, defence cooperation, NATO relations, Eastern neighbourhood and EU foreign policy.</p>
+                    <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
+                        <a href="#" class="telegram-btn">📩 Telegram</a>
+                        <button class="solutions-btn" onclick="openModal('modal-fpd')">Explore Solutions →</button>
+                    </div>
                 </div>
                 <div class="wg-card">
-                    <div class="card-icon" style="background:rgba(99,102,241,0.1);">💻</div>
-                    <h3>Digital &amp; Technology</h3>
-                    <p>AI governance, digital rights, data protection and the future of work.</p>
-                    <a href="#" class="telegram-btn">📩 Join on Telegram</a>
+                    <div class="card-icon" style="background:rgba(34,197,94,0.1);">⚡</div>
+                    <h3>Energy &amp; Environment</h3>
+                    <p>Green Deal, energy transition, climate justice, biodiversity and sustainable development across Europe.</p>
+                    <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
+                        <a href="#" class="telegram-btn">📩 Telegram</a>
+                        <button class="solutions-btn" onclick="openModal('modal-ee')">Explore Solutions →</button>
+                    </div>
                 </div>
                 <div class="wg-card">
-                    <div class="card-icon" style="background:rgba(239,68,68,0.1);">🗳️</div>
-                    <h3>Democracy &amp; Institutions</h3>
-                    <p>Rule of law, electoral reform, EU institutional development and civic participation.</p>
-                    <a href="#" class="telegram-btn">📩 Join on Telegram</a>
+                    <div class="card-icon" style="background:rgba(239,68,68,0.1);">⚖️</div>
+                    <h3>Justice</h3>
+                    <p>Rule of law, judicial independence, fundamental rights, anti-corruption and democratic institutions.</p>
+                    <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
+                        <a href="#" class="telegram-btn">📩 Telegram</a>
+                        <button class="solutions-btn" onclick="openModal('modal-jus')">Explore Solutions →</button>
+                    </div>
                 </div>
                 <div class="wg-card">
                     <div class="card-icon" style="background:rgba(245,158,11,0.1);">🌍</div>
-                    <h3>Migration &amp; Human Rights</h3>
-                    <p>Migration policy, refugee rights, integration and social cohesion across Europe.</p>
-                    <a href="#" class="telegram-btn">📩 Join on Telegram</a>
-                </div>
-                <div class="wg-card">
-                    <div class="card-icon" style="background:rgba(20,184,166,0.1);">📈</div>
-                    <h3>Economy &amp; Social Policy</h3>
-                    <p>Youth employment, economic convergence, social Europe and welfare systems.</p>
-                    <a href="#" class="telegram-btn">📩 Join on Telegram</a>
-                </div>
-                <div class="wg-card">
-                    <div class="card-icon" style="background:rgba(0,51,153,0.1);">🛡️</div>
-                    <h3>Defence &amp; Foreign Policy</h3>
-                    <p>European strategic autonomy, NATO relations, Eastern neighbourhood and multilateralism.</p>
-                    <a href="#" class="telegram-btn">📩 Join on Telegram</a>
+                    <h3>Immigration &amp; Human Rights</h3>
+                    <p>Migration policy, refugee rights, integration, social cohesion and the protection of fundamental freedoms.</p>
+                    <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
+                        <a href="#" class="telegram-btn">📩 Telegram</a>
+                        <button class="solutions-btn" onclick="openModal('modal-ihr')">Explore Solutions →</button>
+                    </div>
                 </div>
             </div>
 
@@ -1061,29 +1361,29 @@
                 <div class="paper-item">
                     <span class="paper-badge position">Position Paper</span>
                     <div>
-                        <strong>Towards a European Youth Climate Act — recommendations for COP30</strong>
-                        <span>Climate &amp; Environment · February 2026</span>
+                        <strong>Towards a European Youth Energy Act — a just transition for all</strong>
+                        <span>Energy &amp; Environment · February 2026</span>
                     </div>
                 </div>
                 <div class="paper-item">
                     <span class="paper-badge article">Article</span>
                     <div>
-                        <strong>Why the EU AI Act matters for the next generation</strong>
-                        <span>Digital &amp; Technology · January 2026</span>
+                        <strong>Strengthening the Rule of Law Mechanism: a youth perspective</strong>
+                        <span>Justice · January 2026</span>
                     </div>
                 </div>
                 <div class="paper-item">
                     <span class="paper-badge position">Position Paper</span>
                     <div>
-                        <strong>Strengthening the Rule of Law Mechanism: a youth perspective</strong>
-                        <span>Democracy &amp; Institutions · December 2025</span>
+                        <strong>European Strategic Autonomy: the case for a youth-led defence debate</strong>
+                        <span>Foreign Policy &amp; Defense · December 2025</span>
                     </div>
                 </div>
                 <div class="paper-item">
                     <span class="paper-badge article">Article</span>
                     <div>
-                        <strong>Youth unemployment in Southern Europe: structural causes and EU responses</strong>
-                        <span>Economy &amp; Social Policy · November 2025</span>
+                        <strong>A humane EU migration pact: rights-based approaches for the next generation</strong>
+                        <span>Immigration &amp; Human Rights · November 2025</span>
                     </div>
                 </div>
             </div>
@@ -1104,26 +1404,31 @@
                     <div class="card-icon">🏛️</div>
                     <h3>General Assembly</h3>
                     <p>The sovereign body of the movement. All members participate in strategic decisions, statutes and elections.</p>
+                    <button class="org-open-btn" onclick="openModal('modal-org-ga')">View Members →</button>
                 </div>
                 <div class="card">
                     <div class="card-icon">⚡</div>
                     <h3>Executive Board</h3>
                     <p>The governing body responsible for day-to-day leadership, coordination and external representation.</p>
+                    <button class="org-open-btn" onclick="openModal('modal-org-eb')">View Members →</button>
                 </div>
                 <div class="card">
                     <div class="card-icon">📌</div>
                     <h3>Thematic Coordinators</h3>
                     <p>One coordinator per working group, responsible for policy development and member engagement on each topic.</p>
+                    <button class="org-open-btn" onclick="openModal('modal-org-tc')">View Members →</button>
                 </div>
                 <div class="card">
                     <div class="card-icon">📣</div>
                     <h3>Communication Delegates</h3>
                     <p>Team responsible for press relations, social media, the newsletter and external communications strategy.</p>
+                    <button class="org-open-btn" onclick="openModal('modal-org-cd')">View Members →</button>
                 </div>
                 <div class="card">
                     <div class="card-icon">🗺️</div>
                     <h3>National Coordinators</h3>
                     <p>Representatives based in each EU member state, responsible for member recruitment and local activities.</p>
+                    <button class="org-open-btn" onclick="openModal('modal-org-nc')">View Members →</button>
                 </div>
             </div>
 
@@ -1131,54 +1436,18 @@
 
             <!-- Statute -->
             <p class="sub-title">Statute</p>
-            <ul class="statute-list">
-                <li class="statute-item">
-                    <span class="statute-num">Art. 1</span>
-                    <p><strong>Name and Registered Office</strong>The association is named "European Youth Movement" (EYM). It is legally registered in Italy and operates throughout the national and international territory.</p>
-                </li>
-                <li class="statute-item">
-                    <span class="statute-num">Art. 2</span>
-                    <p><strong>Objectives</strong>The association pursues civic, solidarity-based and socially useful objectives through the promotion of European values, youth political education and democratic participation.</p>
-                </li>
-                <li class="statute-item">
-                    <span class="statute-num">Art. 3</span>
-                    <p><strong>Activities</strong>The association organises events, conferences, awareness campaigns, training activities and cooperation projects with European institutions and related organisations.</p>
-                </li>
-                <li class="statute-item">
-                    <span class="statute-num">Art. 4</span>
-                    <p><strong>Members</strong>Any natural person who shares the values and statutory objectives of the association may join, regardless of nationality, gender or political belief.</p>
-                </li>
-                <li class="statute-item">
-                    <span class="statute-num">Art. 5</span>
-                    <p><strong>Governing Bodies</strong>The governing bodies are: the General Assembly, the Board of Directors and the President. All positions are elective and renewed periodically.</p>
-                </li>
-            </ul>
+            <p style="color:var(--gray-500);font-size:0.95rem;margin-bottom:1.2rem;">The founding statute governs the life of the association, its objectives, activities and governing bodies.</p>
+            <div class="download-row">
+                <a href="statute.pdf" download class="btn-dl-eu">⬇ Download the Statute (PDF)</a>
+            </div>
 
             <hr class="sub-divider">
 
             <!-- Code of Ethics -->
             <p class="sub-title">Code of Ethics</p>
-            <div class="card-grid">
-                <div class="card">
-                    <div class="card-icon">⚖️</div>
-                    <h3>Integrity</h3>
-                    <p>All members act with honesty and transparency in every activity of the movement, avoiding conflicts of interest.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🤝</div>
-                    <h3>Respect</h3>
-                    <p>We foster an inclusive environment where diversity of background and opinion is respected and valued.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🌐</div>
-                    <h3>European Spirit</h3>
-                    <p>Our actions are guided by European values: human dignity, freedom, democracy, equality and the rule of law.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">📢</div>
-                    <h3>Accountability</h3>
-                    <p>Leaders are accountable to the membership and operate within the bounds set by the statute and the General Assembly.</p>
-                </div>
+            <p style="color:var(--gray-500);font-size:0.95rem;margin-bottom:1.2rem;">The code of ethics defines the values and conduct expected of all members — integrity, respect, accountability and the European spirit.</p>
+            <div class="download-row">
+                <a href="code-of-ethics.pdf" download class="btn-dl-eu">⬇ Download the Code of Ethics (PDF)</a>
             </div>
 
             <hr class="sub-divider">
@@ -1215,39 +1484,27 @@
             <p class="sub-title">Thematic Coordinators</p>
             <div class="org-grid">
                 <div class="member-card">
-                    <div class="member-avatar">🌿</div>
+                    <div class="member-avatar">🛡️</div>
                     <h4>— To be announced —</h4>
-                    <div class="member-role">Climate &amp; Environment</div>
+                    <div class="member-role">Foreign Policy &amp; Defense</div>
                     <a href="mailto:team.europeanyouthmovement@gmail.com">team.europeanyouthmovement@gmail.com</a>
                 </div>
                 <div class="member-card">
-                    <div class="member-avatar">💻</div>
+                    <div class="member-avatar">⚡</div>
                     <h4>— To be announced —</h4>
-                    <div class="member-role">Digital &amp; Technology</div>
+                    <div class="member-role">Energy &amp; Environment</div>
                     <a href="mailto:team.europeanyouthmovement@gmail.com">team.europeanyouthmovement@gmail.com</a>
                 </div>
                 <div class="member-card">
-                    <div class="member-avatar">🗳️</div>
+                    <div class="member-avatar">⚖️</div>
                     <h4>— To be announced —</h4>
-                    <div class="member-role">Democracy &amp; Institutions</div>
+                    <div class="member-role">Justice</div>
                     <a href="mailto:team.europeanyouthmovement@gmail.com">team.europeanyouthmovement@gmail.com</a>
                 </div>
                 <div class="member-card">
                     <div class="member-avatar">🌍</div>
                     <h4>— To be announced —</h4>
-                    <div class="member-role">Migration &amp; Human Rights</div>
-                    <a href="mailto:team.europeanyouthmovement@gmail.com">team.europeanyouthmovement@gmail.com</a>
-                </div>
-                <div class="member-card">
-                    <div class="member-avatar">📈</div>
-                    <h4>— To be announced —</h4>
-                    <div class="member-role">Economy &amp; Social Policy</div>
-                    <a href="mailto:team.europeanyouthmovement@gmail.com">team.europeanyouthmovement@gmail.com</a>
-                </div>
-                <div class="member-card">
-                    <div class="member-avatar">🛡️</div>
-                    <h4>— To be announced —</h4>
-                    <div class="member-role">Defence &amp; Foreign Policy</div>
+                    <div class="member-role">Immigration &amp; Human Rights</div>
                     <a href="mailto:team.europeanyouthmovement@gmail.com">team.europeanyouthmovement@gmail.com</a>
                 </div>
             </div>
@@ -1546,7 +1803,308 @@
         </div>
     </footer>
 
+    <!-- ═══════════════ MODALS — POLICIES ═══════════════ -->
+
+    <!-- Foreign Policy & Defense -->
+    <div class="modal-overlay" id="modal-fpd">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>🛡️ Foreign Policy &amp; Defense</h3>
+                <button class="modal-close" onclick="closeModal('modal-fpd')">✕</button>
+            </div>
+            <div class="modal-body">
+                <p>The Foreign Policy &amp; Defense working group develops EYM's positions on European strategic autonomy, transatlantic relations, EU enlargement and conflict prevention.</p>
+                <p><strong>Our proposed solutions include:</strong></p>
+                <ul>
+                    <li>Strengthening the EU's Common Foreign and Security Policy (CFSP) through majority voting</li>
+                    <li>Increasing investment in joint European defence capabilities and reducing fragmentation</li>
+                    <li>Deepening EU–NATO cooperation while maintaining European strategic independence</li>
+                    <li>Advancing EU enlargement to the Western Balkans and Eastern neighbourhood with credible reform conditionality</li>
+                    <li>Creating a dedicated youth consultation mechanism within EU foreign policy institutions</li>
+                </ul>
+                <p>Position papers and detailed proposals from this group are published in the <a href="#policies">Policies</a> section.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Energy & Environment -->
+    <div class="modal-overlay" id="modal-ee">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>⚡ Energy &amp; Environment</h3>
+                <button class="modal-close" onclick="closeModal('modal-ee')">✕</button>
+            </div>
+            <div class="modal-body">
+                <p>The Energy &amp; Environment working group works on accelerating the green transition, ensuring energy security and advocating for climate justice across Europe.</p>
+                <p><strong>Our proposed solutions include:</strong></p>
+                <ul>
+                    <li>Accelerating the phase-out of fossil fuels with a fair, just transition plan for workers and regions</li>
+                    <li>Strengthening the EU Emissions Trading System and extending carbon pricing across all sectors</li>
+                    <li>Investing in pan-European renewable energy infrastructure and grid interconnections</li>
+                    <li>Introducing a European Climate Youth Budget to fund green innovation led by young people</li>
+                    <li>Embedding biodiversity protection in all EU sectoral policies</li>
+                </ul>
+                <p>Position papers and detailed proposals from this group are published in the <a href="#policies">Policies</a> section.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Justice -->
+    <div class="modal-overlay" id="modal-jus">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>⚖️ Justice</h3>
+                <button class="modal-close" onclick="closeModal('modal-jus')">✕</button>
+            </div>
+            <div class="modal-body">
+                <p>The Justice working group defends the rule of law, fundamental rights and democratic institutions across Europe, and proposes systemic reforms to ensure accountability and fairness.</p>
+                <p><strong>Our proposed solutions include:</strong></p>
+                <ul>
+                    <li>Strengthening the EU Rule of Law mechanism with binding financial conditionality</li>
+                    <li>Creating an independent EU anti-corruption body with investigative powers</li>
+                    <li>Reforming the EU Charter of Fundamental Rights to include digital rights</li>
+                    <li>Improving access to justice for young people through legal aid and simplified procedures</li>
+                    <li>Promoting judicial independence benchmarks as part of EU accession criteria</li>
+                </ul>
+                <p>Position papers and detailed proposals from this group are published in the <a href="#policies">Policies</a> section.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Immigration & Human Rights -->
+    <div class="modal-overlay" id="modal-ihr">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>🌍 Immigration &amp; Human Rights</h3>
+                <button class="modal-close" onclick="closeModal('modal-ihr')">✕</button>
+            </div>
+            <div class="modal-body">
+                <p>The Immigration &amp; Human Rights working group advocates for humane, rights-based migration policies and the protection of fundamental freedoms for all people in Europe.</p>
+                <p><strong>Our proposed solutions include:</strong></p>
+                <ul>
+                    <li>Reforming the Common European Asylum System to guarantee fair, swift and dignified procedures</li>
+                    <li>Establishing a permanent EU resettlement mechanism with mandatory member state participation</li>
+                    <li>Combating racism, xenophobia and discrimination through binding EU anti-discrimination law</li>
+                    <li>Promoting integration policies co-designed with migrant communities</li>
+                    <li>Strengthening protection for unaccompanied minors across the EU</li>
+                </ul>
+                <p>Position papers and detailed proposals from this group are published in the <a href="#policies">Policies</a> section.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════ MODALS — MOVEMENT ORG GROUPS ═══════════════ -->
+
+    <!-- General Assembly -->
+    <div class="modal-overlay" id="modal-org-ga">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>🏛️ General Assembly</h3>
+                <button class="modal-close" onclick="closeModal('modal-org-ga')">✕</button>
+            </div>
+            <div class="modal-body">
+                <p>The General Assembly is the sovereign deliberative body of the European Youth Movement. It brings together all members to decide on the movement's strategy, statute and leadership.</p>
+                <p>Member profiles and bios will be published here as the assembly is constituted.</p>
+                <div class="modal-member-grid">
+                    <div class="modal-member-row">
+                        <div class="m-avatar">👤</div>
+                        <div class="m-info">
+                            <h4>— To be announced —</h4>
+                            <div class="m-role">General Assembly Member</div>
+                            <p>Bio and contact details coming soon.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Executive Board -->
+    <div class="modal-overlay" id="modal-org-eb">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>⚡ Executive Board</h3>
+                <button class="modal-close" onclick="closeModal('modal-org-eb')">✕</button>
+            </div>
+            <div class="modal-body">
+                <p>The Executive Board leads the day-to-day activities of EYM, coordinates working groups and represents the movement externally.</p>
+                <div class="modal-member-grid">
+                    <div class="modal-member-row">
+                        <div class="m-avatar">👤</div>
+                        <div class="m-info">
+                            <h4>— To be announced —</h4>
+                            <div class="m-role">President</div>
+                            <p>Leading the movement's strategic direction and external representation.</p>
+                            <a href="mailto:team.europeanyouthmovement@gmail.com">team.europeanyouthmovement@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="modal-member-row">
+                        <div class="m-avatar">👤</div>
+                        <div class="m-info">
+                            <h4>— To be announced —</h4>
+                            <div class="m-role">Secretary General</div>
+                            <p>Overseeing internal coordination, governance and official documentation.</p>
+                            <a href="mailto:team.europeanyouthmovement@gmail.com">team.europeanyouthmovement@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="modal-member-row">
+                        <div class="m-avatar">👤</div>
+                        <div class="m-info">
+                            <h4>— To be announced —</h4>
+                            <div class="m-role">Treasurer</div>
+                            <p>Managing finances, fundraising and financial transparency.</p>
+                            <a href="mailto:team.europeanyouthmovement@gmail.com">team.europeanyouthmovement@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Thematic Coordinators -->
+    <div class="modal-overlay" id="modal-org-tc">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>📌 Thematic Coordinators</h3>
+                <button class="modal-close" onclick="closeModal('modal-org-tc')">✕</button>
+            </div>
+            <div class="modal-body">
+                <p>Each working group is led by a thematic coordinator responsible for policy research, member engagement and position paper publication.</p>
+                <div class="modal-member-grid">
+                    <div class="modal-member-row">
+                        <div class="m-avatar">🛡️</div>
+                        <div class="m-info">
+                            <h4>— To be announced —</h4>
+                            <div class="m-role">Foreign Policy &amp; Defense Coordinator</div>
+                            <a href="mailto:team.europeanyouthmovement@gmail.com">team.europeanyouthmovement@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="modal-member-row">
+                        <div class="m-avatar">⚡</div>
+                        <div class="m-info">
+                            <h4>— To be announced —</h4>
+                            <div class="m-role">Energy &amp; Environment Coordinator</div>
+                            <a href="mailto:team.europeanyouthmovement@gmail.com">team.europeanyouthmovement@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="modal-member-row">
+                        <div class="m-avatar">⚖️</div>
+                        <div class="m-info">
+                            <h4>— To be announced —</h4>
+                            <div class="m-role">Justice Coordinator</div>
+                            <a href="mailto:team.europeanyouthmovement@gmail.com">team.europeanyouthmovement@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="modal-member-row">
+                        <div class="m-avatar">🌍</div>
+                        <div class="m-info">
+                            <h4>— To be announced —</h4>
+                            <div class="m-role">Immigration &amp; Human Rights Coordinator</div>
+                            <a href="mailto:team.europeanyouthmovement@gmail.com">team.europeanyouthmovement@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Communication Delegates -->
+    <div class="modal-overlay" id="modal-org-cd">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>📣 Communication Delegates</h3>
+                <button class="modal-close" onclick="closeModal('modal-org-cd')">✕</button>
+            </div>
+            <div class="modal-body">
+                <p>The communication team manages EYM's press relations, social media, newsletter and external visibility.</p>
+                <div class="modal-member-grid">
+                    <div class="modal-member-row">
+                        <div class="m-avatar">📣</div>
+                        <div class="m-info">
+                            <h4>— To be announced —</h4>
+                            <div class="m-role">Head of Communications</div>
+                            <a href="mailto:team.europeanyouthmovement@gmail.com">team.europeanyouthmovement@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="modal-member-row">
+                        <div class="m-avatar">📱</div>
+                        <div class="m-info">
+                            <h4>— To be announced —</h4>
+                            <div class="m-role">Social Media Delegate</div>
+                            <a href="mailto:team.europeanyouthmovement@gmail.com">team.europeanyouthmovement@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="modal-member-row">
+                        <div class="m-avatar">✍️</div>
+                        <div class="m-info">
+                            <h4>— To be announced —</h4>
+                            <div class="m-role">Press &amp; Editorial Delegate</div>
+                            <a href="mailto:team.europeanyouthmovement@gmail.com">team.europeanyouthmovement@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- National Coordinators -->
+    <div class="modal-overlay" id="modal-org-nc">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>🗺️ National Coordinators</h3>
+                <button class="modal-close" onclick="closeModal('modal-org-nc')">✕</button>
+            </div>
+            <div class="modal-body">
+                <p>National coordinators represent EYM in their country, recruit local members and organise national activities.</p>
+                <div class="modal-member-grid">
+                    <div class="modal-member-row">
+                        <div class="m-avatar">🇮🇹</div>
+                        <div class="m-info">
+                            <h4>— To be announced —</h4>
+                            <div class="m-role">Italy</div>
+                            <a href="mailto:team.europeanyouthmovement@gmail.com">team.europeanyouthmovement@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="modal-member-row">
+                        <div class="m-avatar">🌍</div>
+                        <div class="m-info">
+                            <h4>Become a coordinator</h4>
+                            <div class="m-role">Your country</div>
+                            <p>We are recruiting national coordinators across Europe.</p>
+                            <a href="mailto:team.europeanyouthmovement@gmail.com">Apply here</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
+        // Modal open/close
+        function openModal(id) {
+            document.getElementById(id).classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        // Close modal on overlay click
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', e => {
+                if (e.target === overlay) closeModal(overlay.id);
+            });
+        });
+
+        // Close modal on Escape
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal-overlay.open').forEach(m => closeModal(m.id));
+            }
+        });
+
         // Active nav link on scroll
         const sections = document.querySelectorAll('[id]');
         const navLinks = document.querySelectorAll('nav a');
@@ -1563,16 +2121,7 @@
 
         sections.forEach(s => observer.observe(s));
 
-        // Country tooltip on hover
-        document.querySelectorAll('.europe-map polygon, .europe-map path').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                el.style.opacity = '0.85';
-            });
-            el.addEventListener('mouseleave', () => {
-                el.style.opacity = '';
-            });
-        });
-
+        // Newsletter form
         document.getElementById('newsletter-form').addEventListener('submit', async (e) => {
             e.preventDefault();
             const email = document.getElementById('newsletter-email').value.trim();
@@ -1584,7 +2133,7 @@
             msg.style.display = 'none';
 
             try {
-                const res = await fetch('http://localhost:3000/api/subscribe', {
+                const res = await fetch('/.netlify/functions/subscribe', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email })
