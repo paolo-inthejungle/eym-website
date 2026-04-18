@@ -632,30 +632,12 @@
             margin-bottom: 1.5rem;
         }
 
-        .europe-map {
+        .europe-map-img {
             width: 100%;
-            max-width: 780px;
+            max-width: 620px;
             display: block;
-            margin: 0 auto;
+            margin: 0 auto 1.2rem;
         }
-
-        .europe-map polygon,
-        .europe-map path {
-            fill: var(--gray-200);
-            stroke: var(--white);
-            stroke-width: 1.5;
-            transition: fill 0.2s;
-            cursor: pointer;
-        }
-
-        .europe-map polygon:hover,
-        .europe-map path:hover {
-            fill: var(--blue-eu-light);
-            opacity: 0.85;
-        }
-
-        /* Classes for future DB coloring */
-        .europe-map .has-members { fill: var(--blue-eu); }
 
         .map-legend {
             display: flex;
@@ -1447,7 +1429,7 @@
             <p class="sub-title">Code of Ethics</p>
             <p style="color:var(--gray-500);font-size:0.95rem;margin-bottom:1.2rem;">The code of ethics defines the values and conduct expected of all members — integrity, respect, accountability and the European spirit.</p>
             <div class="download-row">
-                <a href="code-of-ethics.pdf" download class="btn-dl-eu">⬇ Download the Code of Ethics (PDF)</a>
+                <a href="Ethics-Code.pdf" download class="btn-dl-eu">⬇ Download the Code of Ethics (PDF)</a>
             </div>
 
             <hr class="sub-divider">
@@ -1546,144 +1528,16 @@
             <!-- Europe Map -->
             <div class="map-container">
                 <h3>Members across Europe</h3>
-                <p>Hover over a country to learn more. Countries will be highlighted as members join. Database integration coming soon.</p>
-
-                <svg viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg" class="europe-map" role="img" aria-label="Map of Europe">
-                    <title>Map of Europe — European Youth Movement</title>
-
-                    <!-- Iceland -->
-                    <polygon id="IS" title="Iceland" points="55,78 90,65 145,68 175,78 170,100 140,112 85,110 60,98"/>
-
-                    <!-- Norway -->
-                    <path id="NO" title="Norway" d="M325,170 340,148 355,120 375,90 405,68 440,52 480,42 520,38 560,42 595,52 610,65 595,80 555,88 515,96 480,108 450,122 420,138 398,158 378,175 360,185"/>
-
-                    <!-- Sweden -->
-                    <polygon id="SE" title="Sweden" points="395,180 420,145 450,122 488,108 525,100 548,105 548,140 538,170 520,195 505,212 480,222 455,218 425,205"/>
-
-                    <!-- Finland -->
-                    <polygon id="FI" title="Finland" points="548,105 575,82 608,68 640,62 665,78 672,108 668,145 650,175 625,188 598,192 568,185 548,168 548,140"/>
-
-                    <!-- Estonia -->
-                    <polygon id="EE" title="Estonia" points="548,192 590,186 620,192 615,210 575,215 548,208"/>
-
-                    <!-- Latvia -->
-                    <polygon id="LV" title="Latvia" points="548,210 618,212 630,228 618,242 570,245 545,232"/>
-
-                    <!-- Lithuania -->
-                    <polygon id="LT" title="Lithuania" points="545,235 618,245 628,260 595,272 552,268 538,252"/>
-
-                    <!-- Denmark -->
-                    <polygon id="DK" title="Denmark" points="382,188 402,175 422,178 428,196 420,212 400,220 382,210"/>
-
-                    <!-- UK — Great Britain -->
-                    <path id="GB" title="United Kingdom" d="M238,180 258,158 284,145 308,152 318,175 315,200 300,220 278,238 252,248 230,232 220,208 228,192"/>
-
-                    <!-- Ireland -->
-                    <polygon id="IE" title="Ireland" points="195,212 218,200 238,214 232,238 210,248 192,232"/>
-
-                    <!-- Netherlands -->
-                    <polygon id="NL" title="Netherlands" points="328,218 360,212 372,228 358,245 328,245 318,232"/>
-
-                    <!-- Belgium -->
-                    <polygon id="BE" title="Belgium" points="320,248 362,242 374,258 355,268 318,265 310,255"/>
-
-                    <!-- Luxembourg (small) -->
-                    <polygon id="LU" title="Luxembourg" points="355,268 372,262 378,278 362,282 352,276"/>
-
-                    <!-- France -->
-                    <path id="FR" title="France" d="M248,262 282,252 320,252 355,265 375,262 382,292 378,330 358,358 320,372 280,368 248,348 232,315 240,280"/>
-
-                    <!-- Switzerland -->
-                    <polygon id="CH" title="Switzerland" points="355,295 398,290 415,302 402,318 368,320 348,308"/>
-
-                    <!-- Germany -->
-                    <path id="DE" title="Germany" d="M358,218 402,210 448,215 462,238 458,268 442,285 408,290 380,288 358,275 352,255 365,238"/>
-
-                    <!-- Austria -->
-                    <polygon id="AT" title="Austria" points="400,292 450,285 472,292 468,312 432,318 405,315 398,305"/>
-
-                    <!-- Poland -->
-                    <polygon id="PL" title="Poland" points="452,218 495,212 548,218 555,245 545,272 510,278 465,275 448,255 448,235"/>
-
-                    <!-- Czech Republic -->
-                    <polygon id="CZ" title="Czech Republic" points="408,255 450,248 470,258 462,278 438,282 405,278 398,265"/>
-
-                    <!-- Slovakia -->
-                    <polygon id="SK" title="Slovakia" points="468,268 512,262 535,270 528,285 495,292 465,288 460,278"/>
-
-                    <!-- Hungary -->
-                    <polygon id="HU" title="Hungary" points="450,318 492,308 528,315 535,335 512,348 468,348 442,335"/>
-
-                    <!-- Romania -->
-                    <polygon id="RO" title="Romania" points="518,285 558,278 598,285 608,312 598,342 562,352 528,345 510,322"/>
-
-                    <!-- Moldova (small) -->
-                    <polygon id="MD" title="Moldova" points="600,315 620,308 628,330 610,342 598,335"/>
-
-                    <!-- Ukraine -->
-                    <polygon id="UA" title="Ukraine" points="538,258 580,252 638,255 688,268 712,298 700,328 660,345 618,348 580,342 548,330 530,308 532,278"/>
-
-                    <!-- Belarus -->
-                    <polygon id="BY" title="Belarus" points="548,228 592,222 638,228 648,255 635,272 595,278 555,272 538,252"/>
-
-                    <!-- Slovenia -->
-                    <polygon id="SI" title="Slovenia" points="425,322 455,318 462,332 448,342 425,338"/>
-
-                    <!-- Croatia -->
-                    <polygon id="HR" title="Croatia" points="425,342 462,335 478,348 470,372 445,385 420,368 415,350"/>
-
-                    <!-- Bosnia & Herzegovina -->
-                    <polygon id="BA" title="Bosnia &amp; Herzegovina" points="452,348 482,342 498,358 490,380 465,388 445,378 448,360"/>
-
-                    <!-- Serbia -->
-                    <polygon id="RS" title="Serbia" points="480,345 515,340 528,358 522,385 498,398 472,392 458,372 472,352"/>
-
-                    <!-- Montenegro (small) -->
-                    <polygon id="ME" title="Montenegro" points="462,392 490,385 498,400 480,412 460,405"/>
-
-                    <!-- North Macedonia -->
-                    <polygon id="MK" title="North Macedonia" points="498,398 525,390 535,408 512,420 495,412"/>
-
-                    <!-- Albania -->
-                    <polygon id="AL" title="Albania" points="465,408 492,402 500,418 492,438 468,440 458,422"/>
-
-                    <!-- Bulgaria -->
-                    <polygon id="BG" title="Bulgaria" points="520,358 558,350 592,360 588,390 558,402 522,395 512,375"/>
-
-                    <!-- Greece -->
-                    <path id="GR" title="Greece" d="M478,445 498,438 530,430 562,420 588,432 582,462 558,482 530,490 505,478 482,462 478,448"/>
-
-                    <!-- Kosovo (small) -->
-                    <polygon id="XK" title="Kosovo" points="498,408 520,402 525,420 505,428 492,420"/>
-
-                    <!-- Spain -->
-                    <path id="ES" title="Spain" d="M198,302 242,280 285,272 332,278 360,300 368,332 348,365 302,385 248,390 205,368 188,338 192,315"/>
-
-                    <!-- Portugal -->
-                    <polygon id="PT" title="Portugal" points="190,318 212,308 245,318 242,388 215,392 188,368"/>
-
-                    <!-- Italy — boot shape -->
-                    <path id="IT" title="Italy" d="M368,322 402,318 425,330 428,355 422,385 438,412 428,435 408,428 395,402 375,372 358,342 355,322"/>
-
-                    <!-- Malta (tiny) -->
-                    <polygon id="MT" title="Malta" points="400,480 412,476 416,484 404,488"/>
-
-                    <!-- Cyprus (small) -->
-                    <polygon id="CY" title="Cyprus" points="668,468 698,462 712,470 705,482 672,485"/>
-
-                    <!-- Norway label territory label -->
-
-                    <!-- Sea background frame -->
-                </svg>
-
+                <p>Countries will be highlighted as members join. Database integration coming soon.</p>
+                <img src="map.png" alt="Map of Europe — European Youth Movement" class="europe-map-img">
                 <div class="map-legend">
                     <div class="legend-item">
-                        <div class="legend-dot" style="background:var(--gray-200); border: 1px solid var(--gray-300);"></div>
-                        No registered members yet
+                        <div class="legend-dot" style="background:var(--blue-eu);"></div>
+                        EU Member States
                     </div>
                     <div class="legend-item">
-                        <div class="legend-dot" style="background:var(--blue-eu);"></div>
-                        Active members present
+                        <div class="legend-dot" style="background:#4ade80;"></div>
+                        Active EYM members (coming soon)
                     </div>
                 </div>
             </div>
