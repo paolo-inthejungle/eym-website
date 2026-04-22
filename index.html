@@ -44,7 +44,10 @@
             top: 0;
             z-index: 100;
             box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+            transition: box-shadow 0.25s;
         }
+
+        header.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.32); }
 
         .header-inner {
             max-width: 1200px;
@@ -259,6 +262,19 @@
             text-transform: uppercase;
             color: var(--blue-eu);
             margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-label::before {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 2px;
+            background: var(--gold-eu);
+            border-radius: 1px;
+            flex-shrink: 0;
         }
 
         .section h2 {
@@ -284,10 +300,12 @@
         }
 
         .sub-title {
-            font-size: 1.3rem;
+            font-size: 1.15rem;
             font-weight: 700;
             color: var(--gray-900);
             margin-bottom: 1.5rem;
+            padding-left: 0.85rem;
+            border-left: 3px solid var(--blue-eu);
         }
 
         /* ── CARD GRID ── */
@@ -300,6 +318,7 @@
         .card {
             background: var(--white);
             border: 1px solid var(--gray-200);
+            border-top: 3px solid var(--blue-eu);
             border-radius: 12px;
             padding: 2rem;
             transition: box-shadow 0.2s, transform 0.2s;
@@ -308,21 +327,24 @@
         .section-alt .card { background: var(--white); }
 
         .card:hover {
-            box-shadow: 0 8px 28px rgba(0,51,153,0.1);
+            box-shadow: 0 8px 28px rgba(0,51,153,0.12);
             transform: translateY(-3px);
         }
 
         .card-icon {
-            width: 48px;
-            height: 48px;
+            width: 52px;
+            height: 52px;
             background: rgba(0,51,153,0.08);
-            border-radius: 10px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            margin-bottom: 1.1rem;
+            transition: transform 0.2s;
         }
+
+        .card:hover .card-icon { transform: scale(1.1); }
 
         .card h3 {
             font-size: 1.02rem;
@@ -531,16 +553,24 @@
         .member-card {
             background: var(--white);
             border: 1px solid var(--gray-200);
+            border-top: 3px solid var(--blue-eu);
             border-radius: 12px;
             padding: 1.6rem;
             text-align: center;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+
+        .member-card:hover {
+            box-shadow: 0 6px 22px rgba(0,51,153,0.1);
+            transform: translateY(-2px);
         }
 
         .member-avatar {
             width: 64px;
             height: 64px;
             border-radius: 50%;
-            background: rgba(0,51,153,0.1);
+            background: linear-gradient(135deg, rgba(0,51,153,0.06) 0%, rgba(0,51,153,0.15) 100%);
+            border: 1.5px solid rgba(0,51,153,0.13);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1067,22 +1097,23 @@
         .org-open-btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.3rem;
+            gap: 0.35rem;
             margin-top: 0.8rem;
             background: transparent;
             color: var(--blue-eu);
-            border: 1px solid var(--blue-eu);
-            padding: 0.4rem 0.9rem;
+            border: 1.5px solid var(--blue-eu);
+            padding: 0.45rem 1rem;
             border-radius: 6px;
             font-size: 0.8rem;
             font-weight: 600;
             cursor: pointer;
-            transition: background 0.18s, color 0.18s;
+            transition: background 0.18s, color 0.18s, transform 0.15s;
         }
 
         .org-open-btn:hover {
             background: var(--blue-eu);
             color: var(--white);
+            transform: translateX(2px);
         }
 
         /* ── MODAL ── */
@@ -1230,7 +1261,17 @@
             grid-template-columns: repeat(3, 1fr);
         }
 
-        @media (max-width: 720px) {
+        @media (max-width: 960px) and (min-width: 601px) {
+            .org-grid-3col { grid-template-columns: repeat(2, 1fr); }
+            .org-grid-3col > :last-child:nth-child(odd) {
+                grid-column: 1 / -1;
+                max-width: calc(50% - 0.7rem);
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        @media (max-width: 600px) {
             .org-grid-3col { grid-template-columns: 1fr; }
         }
     </style>
@@ -1385,7 +1426,7 @@
             <p class="section-lead">Each thematic area is led by a dedicated working group. Join the conversation on Telegram and read the positions our members have developed.</p>
 
             <div class="wg-grid">
-                <div class="wg-card">
+                <div class="wg-card" style="border-top-color:#003399;">
                     <div class="card-icon" style="background:rgba(0,51,153,0.1);">🛡️</div>
                     <h3>Foreign Policy &amp; Defense</h3>
                     <p>European strategic autonomy, defence cooperation, NATO relations, Eastern neighbourhood and EU foreign policy.</p>
@@ -1395,7 +1436,7 @@
                         <a href="policies/foreign-policy-defense.html" class="solutions-btn" style="text-decoration:none;">📄 Position Papers</a>
                     </div>
                 </div>
-                <div class="wg-card">
+                <div class="wg-card" style="border-top-color:#15803d;">
                     <div class="card-icon" style="background:rgba(34,197,94,0.1);">⚡</div>
                     <h3>Energy &amp; Environment</h3>
                     <p>Green Deal, energy transition, climate justice, biodiversity and sustainable development across Europe.</p>
@@ -1405,8 +1446,8 @@
                         <a href="policies/energy-environment.html" class="solutions-btn" style="text-decoration:none;">📄 Position Papers</a>
                     </div>
                 </div>
-                <div class="wg-card">
-                    <div class="card-icon" style="background:rgba(239,68,68,0.1);">⚖️</div>
+                <div class="wg-card" style="border-top-color:#7c3aed;">
+                    <div class="card-icon" style="background:rgba(124,58,237,0.1);">⚖️</div>
                     <h3>Justice</h3>
                     <p>Rule of law, judicial independence, fundamental rights, anti-corruption and democratic institutions.</p>
                     <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
@@ -1415,8 +1456,8 @@
                         <a href="policies/justice.html" class="solutions-btn" style="text-decoration:none;">📄 Position Papers</a>
                     </div>
                 </div>
-                <div class="wg-card">
-                    <div class="card-icon" style="background:rgba(245,158,11,0.1);">🌍</div>
+                <div class="wg-card" style="border-top-color:#b45309;">
+                    <div class="card-icon" style="background:rgba(180,83,9,0.1);">🌍</div>
                     <h3>Immigration &amp; Human Rights</h3>
                     <p>Migration policy, refugee rights, integration, social cohesion and the protection of fundamental freedoms.</p>
                     <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
@@ -2262,6 +2303,12 @@
                 document.querySelectorAll('.modal-overlay.open').forEach(m => closeModal(m.id));
             }
         });
+
+        // Header shadow on scroll
+        const headerEl = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            headerEl.classList.toggle('scrolled', window.scrollY > 30);
+        }, { passive: true });
 
         // Active nav link on scroll
         const sections = document.querySelectorAll('[id]');
