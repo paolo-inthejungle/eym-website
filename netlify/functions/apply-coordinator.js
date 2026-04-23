@@ -45,7 +45,7 @@ exports.handler = async (event) => {
     },
     body: JSON.stringify({
       sender: { name: 'EYM Website', email: 'info@eym-europe.eu' },
-      to: [{ email: 'info@eym-europe.eu', name: 'European Youth Movement' }],
+      to: [{ email: 'join@eym-europe.eu', name: 'European Youth Movement' }],
       replyTo: { email: email.trim(), name: name.trim() },
       subject: `National Coordinator Application – ${country}`,
       htmlContent,
