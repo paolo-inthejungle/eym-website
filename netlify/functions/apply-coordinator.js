@@ -44,8 +44,8 @@ exports.handler = async (event) => {
       'api-key': process.env.BREVO_API_KEY,
     },
     body: JSON.stringify({
-      sender: { name: 'EYM Website', email: 'team.europeanyouthmovement@gmail.com' },
-      to: [{ email: 'team.europeanyouthmovement@gmail.com', name: 'European Youth Movement' }],
+      sender: { name: 'EYM Website', email: 'info@eym-europe.eu' },
+      to: [{ email: 'info@eym-europe.eu', name: 'European Youth Movement' }],
       replyTo: { email: email.trim(), name: name.trim() },
       subject: `National Coordinator Application – ${country}`,
       htmlContent,

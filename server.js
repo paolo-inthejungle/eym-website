@@ -6,7 +6,7 @@ const app = express();
 
 app.use(express.static(path.join(__dirname)));
 
-app.use(cors({ origin: 'https://europeanyouthmovement.netlify.app' }));
+app.use(cors({ origin: 'https://www.eym-europe.eu' }));
 app.use(express.json());
 
 app.post('/api/subscribe', async (req, res) => {
