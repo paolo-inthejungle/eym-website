@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply as National Coordinator — European Youth Movement</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --blue-eu: #003399;
+            --blue-eu-light: #1a4db3;
+            --blue-eu-dark: #001f66;
+            --gold-eu: #FFCC00;
+            --white: #ffffff;
+            --gray-100: #f5f6f8;
+            --gray-200: #e8eaee;
+            --gray-300: #d1d5db;
+            --gray-500: #6b7280;
+            --gray-700: #374151;
+            --gray-900: #111827;
+            --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            --radius: 10px;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font);
+            background: var(--gray-100);
+            color: var(--gray-700);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ── HEADER ── */
+        header {
+            background: var(--blue-eu);
+            padding: 0 2rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+        }
+
+        .header-inner {
+            max-width: 960px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.7rem 0;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            text-decoration: none;
+            color: var(--white);
+        }
+
+        .logo-wrap {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: var(--white);
+            border: 2px solid var(--gold-eu);
+            flex-shrink: 0;
+        }
+
+        .logo-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+        }
+
+        .brand-name {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .back-link {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: color 0.15s, transform 0.15s;
+        }
+
+        .back-link:hover { color: var(--white); transform: translateX(-2px); }
+
+        /* ── HERO ── */
+        .page-hero {
+            background: linear-gradient(135deg, var(--blue-eu-dark), var(--blue-eu));
+            color: var(--white);
+            text-align: center;
+            padding: 3.5rem 2rem 3rem;
+        }
+
+        .page-hero .eyebrow {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--gold-eu);
+            margin-bottom: 0.75rem;
+        }
+
+        .page-hero h1 {
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+        }
+
+        .page-hero p {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.8);
+            max-width: 520px;
+            margin: 0 auto;
+            line-height: 1.65;
+        }
+
+        /* ── FORM CARD ── */
+        .form-wrap {
+            flex: 1;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 3rem 1.5rem 4rem;
+        }
+
+        .form-card {
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 4px 32px rgba(0,0,0,0.09);
+            padding: 2.5rem 2.5rem 2rem;
+            width: 100%;
+            max-width: 560px;
+        }
+
+        .form-card h2 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--gray-900);
+            margin-bottom: 0.3rem;
+        }
+
+        .form-card .form-sub {
+            font-size: 0.88rem;
+            color: var(--gray-500);
+            margin-bottom: 2rem;
+            line-height: 1.55;
+        }
+
+        /* ── INFO BOX ── */
+        .info-box {
+            background: rgba(0,51,153,0.05);
+            border: 1px solid rgba(0,51,153,0.15);
+            border-left: 3px solid var(--blue-eu);
+            border-radius: var(--radius);
+            padding: 1rem 1.2rem;
+            margin-bottom: 1.8rem;
+            font-size: 0.87rem;
+            color: var(--gray-700);
+            line-height: 1.6;
+        }
+
+        .info-box strong { color: var(--blue-eu); }
+
+        /* ── FORM FIELDS ── */
+        .field-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            margin-bottom: 1.2rem;
+        }
+
+        label {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--gray-700);
+        }
+
+        label .req { color: var(--blue-eu); margin-left: 2px; }
+
+        input, select, textarea {
+            padding: 0.72rem 1rem;
+            border: 1.5px solid var(--gray-200);
+            border-radius: var(--radius);
+            font-size: 0.93rem;
+            font-family: var(--font);
+            color: var(--gray-900);
+            background: var(--white);
+            transition: border-color 0.18s, box-shadow 0.18s;
+            outline: none;
+            width: 100%;
+        }
+
+        input::placeholder, textarea::placeholder { color: var(--gray-300); }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--blue-eu);
+            box-shadow: 0 0 0 3px rgba(0,51,153,0.1);
+        }
+
+        input.error, select.error, textarea.error { border-color: #ef4444; }
+
+        textarea {
+            resize: vertical;
+            min-height: 140px;
+            line-height: 1.6;
+        }
+
+        .field-hint {
+            font-size: 0.78rem;
+            color: var(--gray-500);
+        }
+
+        /* ── SUBMIT ── */
+        .btn-submit {
+            width: 100%;
+            background: var(--blue-eu);
+            color: var(--white);
+            border: none;
+            padding: 0.9rem 2rem;
+            border-radius: var(--radius);
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.18s, transform 0.15s;
+            letter-spacing: 0.01em;
+        }
+
+        .btn-submit:hover:not(:disabled) {
+            background: var(--blue-eu-light);
+            transform: translateY(-1px);
+        }
+
+        .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+        /* ── MESSAGES ── */
+        .form-msg {
+            display: none;
+            margin-top: 1.2rem;
+            padding: 1rem 1.2rem;
+            border-radius: var(--radius);
+            font-size: 0.92rem;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .form-msg.success {
+            background: rgba(74,222,128,0.12);
+            border: 1px solid rgba(74,222,128,0.4);
+            color: #166534;
+        }
+
+        .form-msg.error {
+            background: rgba(239,68,68,0.08);
+            border: 1px solid rgba(239,68,68,0.3);
+            color: #991b1b;
+        }
+
+        .form-divider {
+            border: none;
+            border-top: 1px solid var(--gray-200);
+            margin: 1.8rem 0 1.4rem;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--gray-500);
+        }
+
+        .footer-note a {
+            color: var(--blue-eu);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .footer-note a:hover { text-decoration: underline; }
+
+        /* ── SUCCESS STATE ── */
+        .success-panel {
+            display: none;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        .success-panel .checkmark {
+            width: 64px;
+            height: 64px;
+            background: rgba(74,222,128,0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.2rem;
+        }
+
+        .success-panel h3 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--gray-900);
+            margin-bottom: 0.5rem;
+        }
+
+        .success-panel p {
+            font-size: 0.93rem;
+            color: var(--gray-500);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: var(--blue-eu);
+            color: var(--white);
+            padding: 0.7rem 1.6rem;
+            border-radius: var(--radius);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: background 0.18s;
+        }
+
+        .btn-back-home:hover { background: var(--blue-eu-light); }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--blue-eu-dark);
+            color: rgba(255,255,255,0.5);
+            text-align: center;
+            padding: 1.2rem 2rem;
+            font-size: 0.8rem;
+        }
+
+        footer a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+        }
+
+        footer a:hover { color: var(--white); }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 560px) {
+            .field-row { grid-template-columns: 1fr; }
+            .form-card { padding: 1.8rem 1.4rem 1.4rem; }
+            .page-hero { padding: 2.5rem 1.2rem 2rem; }
+            .brand-name { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-inner">
+        <a href="index.html" class="brand">
+            <div class="logo-wrap">
+                <img src="newlogo.jpeg" alt="EYM logo">
+            </div>
+            <span class="brand-name">European Youth Movement</span>
+        </a>
+        <a href="index.html" class="back-link">← Back to site</a>
+    </div>
+</header>
+
+<div class="page-hero">
+    <div class="eyebrow">Get Involved</div>
+    <h1>Apply as National Coordinator</h1>
+    <p>Represent the European Youth Movement in your country and help build the next generation of European leaders.</p>
+</div>
+
+<div class="form-wrap">
+    <div class="form-card">
+
+        <!-- FORM -->
+        <div id="form-section">
+            <h2>Coordinator application</h2>
+            <p class="form-sub">All fields marked with <span style="color:var(--blue-eu);">*</span> are required. We will get back to you within a few days.</p>
+
+            <div class="info-box">
+                <strong>What does a National Coordinator do?</strong> National Coordinators represent EYM in their country, recruit new members, organise local events and act as the primary contact for their national community.
+            </div>
+
+            <form id="apply-form" novalidate>
+
+                <div class="field-row">
+                    <div class="field">
+                        <label for="name">Full name <span class="req">*</span></label>
+                        <input type="text" id="name" name="name" placeholder="e.g. Anna Müller" autocomplete="name" required>
+                    </div>
+                    <div class="field">
+                        <label for="email">Email address <span class="req">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="your@email.com" autocomplete="email" required>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="country">Country you wish to represent <span class="req">*</span></label>
+                    <select id="country" name="country" required>
+                        <option value="" disabled selected>Select your country…</option>
+                        <optgroup label="EU Member States">
+                            <option value="Austria">Austria</option>
+                            <option value="Belgium">Belgium</option>
+                            <option value="Bulgaria">Bulgaria</option>
+                            <option value="Croatia">Croatia</option>
+                            <option value="Cyprus">Cyprus</option>
+                            <option value="Czech Republic">Czech Republic</option>
+                            <option value="Denmark">Denmark</option>
+                            <option value="Estonia">Estonia</option>
+                            <option value="Finland">Finland</option>
+                            <option value="France">France</option>
+                            <option value="Germany">Germany</option>
+                            <option value="Greece">Greece</option>
+                            <option value="Hungary">Hungary</option>
+                            <option value="Ireland">Ireland</option>
+                            <option value="Italy">Italy</option>
+                            <option value="Latvia">Latvia</option>
+                            <option value="Lithuania">Lithuania</option>
+                            <option value="Luxembourg">Luxembourg</option>
+                            <option value="Malta">Malta</option>
+                            <option value="Netherlands">Netherlands</option>
+                            <option value="Poland">Poland</option>
+                            <option value="Portugal">Portugal</option>
+                            <option value="Romania">Romania</option>
+                            <option value="Slovakia">Slovakia</option>
+                            <option value="Slovenia">Slovenia</option>
+                            <option value="Spain">Spain</option>
+                            <option value="Sweden">Sweden</option>
+                        </optgroup>
+                        <optgroup label="Other European countries">
+                            <option value="Albania">Albania</option>
+                            <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Iceland">Iceland</option>
+                            <option value="Kosovo">Kosovo</option>
+                            <option value="Liechtenstein">Liechtenstein</option>
+                            <option value="Moldova">Moldova</option>
+                            <option value="Montenegro">Montenegro</option>
+                            <option value="North Macedonia">North Macedonia</option>
+                            <option value="Norway">Norway</option>
+                            <option value="Serbia">Serbia</option>
+                            <option value="Switzerland">Switzerland</option>
+                            <option value="Turkey">Turkey</option>
+                            <option value="Ukraine">Ukraine</option>
+                            <option value="United Kingdom">United Kingdom</option>
+                        </optgroup>
+                        <optgroup label="Other">
+                            <option value="Other">Other</option>
+                        </optgroup>
+                    </select>
+                    <span class="field-hint">If your country already has a coordinator, we may invite you to assist them.</span>
+                </div>
+
+                <div class="field">
+                    <label for="message">Motivation <span class="req">*</span></label>
+                    <textarea id="message" name="message" placeholder="Tell us why you want to become a National Coordinator, your background, and what you would bring to the role…" required></textarea>
+                    <span class="field-hint">Min. 3–4 sentences. Be specific about what you'd like to achieve in your country.</span>
+                </div>
+
+                <button type="submit" class="btn-submit" id="submit-btn">
+                    Send Application →
+                </button>
+
+                <div class="form-msg" id="form-msg"></div>
+
+            </form>
+
+            <hr class="form-divider">
+            <p class="footer-note">
+                Questions? Write to us at <a href="mailto:team.europeanyouthmovement@gmail.com">team.europeanyouthmovement@gmail.com</a>
+            </p>
+        </div>
+
+        <!-- SUCCESS STATE -->
+        <div class="success-panel" id="success-panel">
+            <div class="checkmark">✓</div>
+            <h3>Application received!</h3>
+            <p>Thank you for applying. We will review your application and get back to you at the email you provided within a few days.</p>
+            <a href="index.html" class="btn-back-home">← Back to the site</a>
+        </div>
+
+    </div>
+</div>
+
+<footer>
+    © 2026 European Youth Movement · <a href="index.html">europeanyouthmovement.eu</a>
+</footer>
+
+<script>
+    const form   = document.getElementById('apply-form');
+    const btn    = document.getElementById('submit-btn');
+    const msg    = document.getElementById('form-msg');
+
+    function showMsg(text, type) {
+        msg.textContent = text;
+        msg.className   = 'form-msg ' + type;
+        msg.style.display = 'block';
+    }
+
+    function validate() {
+        let ok = true;
+        ['name', 'email', 'country', 'message'].forEach(id => {
+            const el = document.getElementById(id);
+            if (!el.value.trim()) {
+                el.classList.add('error');
+                ok = false;
+            } else {
+                el.classList.remove('error');
+            }
+        });
+        const emailEl = document.getElementById('email');
+        if (emailEl.value && !emailEl.value.includes('@')) {
+            emailEl.classList.add('error');
+            ok = false;
+        }
+        if (!ok) showMsg('Please fill in all required fields correctly.', 'error');
+        return ok;
+    }
+
+    ['name', 'email', 'country', 'message'].forEach(id => {
+        document.getElementById(id).addEventListener('input', function() {
+            this.classList.remove('error');
+            msg.style.display = 'none';
+        });
+    });
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        msg.style.display = 'none';
+
+        if (!validate()) return;
+
+        btn.disabled    = true;
+        btn.textContent = 'Sending…';
+
+        const payload = {
+            name:    document.getElementById('name').value.trim(),
+            email:   document.getElementById('email').value.trim(),
+            country: document.getElementById('country').value,
+            message: document.getElementById('message').value.trim(),
+        };
+
+        try {
+            const res  = await fetch('/.netlify/functions/apply-coordinator', {
+                method:  'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body:    JSON.stringify(payload),
+            });
+            const data = await res.json();
+
+            if (data.success) {
+                document.getElementById('form-section').style.display = 'none';
+                document.getElementById('success-panel').style.display = 'block';
+                return;
+            }
+            showMsg(data.error || 'Something went wrong. Please try again.', 'error');
+        } catch {
+            showMsg('Connection error. Please check your internet and try again.', 'error');
+        }
+
+        btn.disabled    = false;
+        btn.textContent = 'Send Application →';
+    });
+</script>
+
+</body>
+</html>
