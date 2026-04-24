@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../assets/logos/v3 monogramma/EYM v3 monogramma per immagini profilo.png" type="image/png">
     <title>Join the Movement — European Youth Movement</title>
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -379,13 +380,13 @@
 
     <header>
         <div class="header-inner">
-            <a href="index.html" class="brand">
+            <a href="../index.html" class="brand">
                 <div class="logo-wrap">
-                    <img src="newlogo.jpeg" alt="EYM logo">
+                    <img src="../assets/logos/v3 monogramma/EYM v3 monogramma per immagini profilo.png" alt="EYM logo">
                 </div>
                 <span class="brand-name">European Youth Movement</span>
             </a>
-            <a href="index.html" class="back-link">← Back to site</a>
+            <a href="../index.html" class="back-link">← Back to site</a>
         </div>
     </header>
 
@@ -493,7 +494,7 @@
                     <div class="checkbox-row">
                         <input type="checkbox" id="accept-terms" name="acceptTerms" required>
                         <label for="accept-terms">
-                            I have read and accept the <a href="Ethics-Code.pdf" target="_blank">Code of Ethics</a> and the <a href="manifesto.pdf" target="_blank">Founding Manifesto</a> of the European Youth Movement. <span class="req">*</span>
+                            I have read and accept the <a href="../assets/docs/ethics-code.pdf" target="_blank">Code of Ethics</a> and the <a href="../assets/docs/manifesto.pdf" target="_blank">Founding Manifesto</a> of the European Youth Movement. <span class="req">*</span>
                         </label>
                     </div>
 
@@ -523,14 +524,14 @@
                 <div class="checkmark">✓</div>
                 <h3>Welcome to the Movement!</h3>
                 <p>Your membership request has been received. You will hear from us shortly with next steps and access to your working group.</p>
-                <a href="index.html" class="btn-back-home">← Back to the site</a>
+                <a href="../index.html" class="btn-back-home">← Back to the site</a>
             </div>
 
         </div>
     </div>
 
     <footer>
-        © 2026 European Youth Movement · <a href="index.html" style="color:rgba(255,255,255,0.6);text-decoration:none;">www.eym-europe.eu</a>
+        © 2026 European Youth Movement · <a href="../index.html" style="color:rgba(255,255,255,0.6);text-decoration:none;">www.eym-europe.eu</a>
     </footer>
 
     <script>
@@ -588,7 +589,7 @@
             };
 
             try {
-                const res  = await fetch('/.netlify/functions/signup', {
+                const res  = await fetch('/api/signup', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload),
@@ -598,7 +599,7 @@
                 if (data.success) {
                     // If newsletter checkbox ticked, also subscribe to newsletter
                     if (document.getElementById('accept-newsletter').checked) {
-                        await fetch('/.netlify/functions/subscribe', {
+                        await fetch('/api/subscribe', {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify({ email: payload.email }),

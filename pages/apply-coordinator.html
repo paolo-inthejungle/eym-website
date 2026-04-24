@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../assets/logos/v3 monogramma/EYM v3 monogramma per immagini profilo.png" type="image/png">
     <title>Apply as National Coordinator — European Youth Movement</title>
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -372,13 +373,13 @@
 
 <header>
     <div class="header-inner">
-        <a href="index.html" class="brand">
+        <a href="../index.html" class="brand">
             <div class="logo-wrap">
-                <img src="newlogo.jpeg" alt="EYM logo">
+                <img src="../assets/logos/v3 monogramma/EYM v3 monogramma per immagini profilo.png" alt="EYM logo">
             </div>
             <span class="brand-name">European Youth Movement</span>
         </a>
-        <a href="index.html" class="back-link">← Back to site</a>
+        <a href="../index.html" class="back-link">← Back to site</a>
     </div>
 </header>
 
@@ -495,14 +496,14 @@
             <div class="checkmark">✓</div>
             <h3>Application received!</h3>
             <p>Thank you for applying. We will review your application and get back to you at the email you provided within a few days.</p>
-            <a href="index.html" class="btn-back-home">← Back to the site</a>
+            <a href="../index.html" class="btn-back-home">← Back to the site</a>
         </div>
 
     </div>
 </div>
 
 <footer>
-    © 2026 European Youth Movement · <a href="index.html">www.eym-europe.eu</a>
+    © 2026 European Youth Movement · <a href="../index.html">www.eym-europe.eu</a>
 </footer>
 
 <script>
@@ -560,7 +561,7 @@
         };
 
         try {
-            const res  = await fetch('/.netlify/functions/apply-coordinator', {
+            const res  = await fetch('/api/apply-coordinator', {
                 method:  'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body:    JSON.stringify(payload),

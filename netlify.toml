@@ -2,6 +2,31 @@
   publish = "."
   functions = "netlify/functions"
 
+[[redirects]]
+  from = "/signup"
+  to = "/pages/signup"
+  status = 301
+
+[[redirects]]
+  from = "/apply-coordinator"
+  to = "/pages/apply-coordinator"
+  status = 301
+
+[[redirects]]
+  from = "/api/subscribe"
+  to = "/.netlify/functions/subscribe"
+  status = 200
+
+[[redirects]]
+  from = "/api/signup"
+  to = "/.netlify/functions/signup"
+  status = 200
+
+[[redirects]]
+  from = "/api/apply-coordinator"
+  to = "/.netlify/functions/apply-coordinator"
+  status = 200
+
 [[headers]]
   for = "/*"
   [headers.values]

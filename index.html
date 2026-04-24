@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/logos/v3 monogramma/EYM v3 monogramma per immagini profilo.png" type="image/png">
     <title>European Youth Movement</title>
     <style>
         *, *::before, *::after {
@@ -75,7 +76,7 @@
             border-radius: 50%;
             overflow: hidden;
             flex-shrink: 0;
-            background: var(--white);
+            background: var(--blue-eu);
             border: 2px solid var(--gold-eu);
         }
 
@@ -1283,7 +1284,7 @@
         <div class="header-inner">
             <a href="#home" class="brand">
                 <div class="logo-wrap">
-                    <img src="newlogo.jpeg" alt="EYM logo">
+                    <img src="assets/logos/v3 monogramma/EYM v3 monogramma per immagini profilo.png" alt="EYM monogram">
                 </div>
                 <div class="brand-text">
                     <span class="brand-name">European Youth Movement</span>
@@ -1322,7 +1323,7 @@
                 <h1>Building together<br><span>tomorrow's Europe</span></h1>
                 <p>European Youth Movement gives voice to new generations in shaping a fairer, more democratic and united Europe — one policy at a time.</p>
                 <div class="hero-buttons">
-                    <a href="signup.html" class="btn-primary">Join the Movement →</a>
+                    <a href="pages/signup.html" class="btn-primary">Join the Movement →</a>
                     <a href="#policies" class="btn-outline">Explore our Policies</a>
                 </div>
             </div>
@@ -1348,8 +1349,8 @@
                     <div class="doer-motto">Don't think as a voter,<br>think as a doer!</div>
                     <p>United by a pragmatic, positive approach to finding solutions together. Make your contribution and be an active part of change — join the European Youth Movement.</p>
                     <div class="why-cta-buttons">
-                        <a href="signup.html" class="btn-primary">Join the Movement →</a>
-                        <a href="manifesto.pdf" download class="btn-download">⬇ Download the Founding Manifesto</a>
+                        <a href="pages/signup.html" class="btn-primary">Join the Movement →</a>
+                        <a href="assets/docs/manifesto.pdf" download class="btn-download">⬇ Download the Founding Manifesto</a>
                     </div>
                 </div>
             </div>
@@ -1589,7 +1590,7 @@
             <p class="sub-title">Code of Ethics</p>
             <p style="color:var(--gray-500);font-size:0.95rem;margin-bottom:1.2rem;">The code of ethics defines the values and conduct expected of all members — integrity, respect, accountability and the European spirit.</p>
             <div class="download-row">
-                <a href="Ethics-Code.pdf" download class="btn-dl-eu">⬇ Download the Code of Ethics (PDF)</a>
+                <a href="assets/docs/ethics-code.pdf" download class="btn-dl-eu">⬇ Download the Code of Ethics (PDF)</a>
             </div>
 
             <hr class="sub-divider">
@@ -1810,7 +1811,7 @@
             </div>
             <p style="color:var(--gray-500);font-size:0.93rem;margin-top:1.4rem;margin-bottom:0.9rem;">We are looking for national coordinators in every EU member state. Interested in representing EYM in your country?</p>
             <div class="download-row">
-                <a href="apply-coordinator.html" class="btn-dl-eu">✉ Apply as Coordinator</a>
+                <a href="pages/apply-coordinator.html" class="btn-dl-eu">✉ Apply as Coordinator</a>
             </div>
         </div>
     </section>
@@ -1880,7 +1881,7 @@
         <div class="footer-inner">
             <div class="footer-brand">
                 <div class="footer-logo-wrap">
-                    <img src="newlogo.jpeg" alt="EYM logo">
+                    <img src="assets/logos/v3 monogramma/EYM v3 monogramma per immagini profilo.png" alt="EYM monogram">
                 </div>
                 <strong style="color:#fff; font-size:1rem;">European Youth Movement</strong>
                 <p>A pan-European youth association committed to building a more democratic, inclusive and solidary Europe.</p>
@@ -2349,7 +2350,7 @@
                 </div>
                 <div style="margin-top:1.2rem; padding-top:1.2rem; border-top:1px solid var(--gray-200);">
                     <p style="font-size:0.9rem;color:var(--gray-500);margin-bottom:0.8rem;">Interested in coordinating EYM in your country?</p>
-                    <a href="apply-coordinator.html" class="btn-dl-eu" style="font-size:0.85rem;padding:0.55rem 1.2rem;">✉ Apply as Coordinator</a>
+                    <a href="pages/apply-coordinator.html" class="btn-dl-eu" style="font-size:0.85rem;padding:0.55rem 1.2rem;">✉ Apply as Coordinator</a>
                 </div>
             </div>
         </div>
@@ -2370,7 +2371,7 @@
 
         async function loadEuropeMap() {
             try {
-                const res = await fetch('European_Union_main_map.svg');
+                const res = await fetch('assets/images/european-union-map.svg');
                 const svgText = await res.text();
                 const container = document.getElementById('eu-map-container');
                 container.innerHTML = svgText;
@@ -2479,7 +2480,7 @@
             msg.style.display = 'none';
 
             try {
-                const res = await fetch('/.netlify/functions/subscribe', {
+                const res = await fetch('/api/subscribe', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email })
