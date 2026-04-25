@@ -15,24 +15,24 @@
             <div class="logo-wrap"><img src="../assets/logos/v3 monogramma/EYM v3 monogramma per immagini profilo.png" alt="EYM"></div>
             <span class="brand-name">European Youth Movement</span>
         </a>
-        <a href="../index.html#policies" class="back-link">← Policies</a>
+        <a href="../index.html#policies" class="back-link" data-i18n="common.back_policies">← Policies</a>
     </div>
 </header>
 
 <div class="page-hero" style="--accent:#0891b2;">
     <div class="wg-icon">📖</div>
-    <div class="eyebrow">Working Group</div>
-    <h1>Education</h1>
-    <p>European education policy, youth mobility, Erasmus+, skills development and lifelong learning frameworks.</p>
+    <div class="eyebrow" data-i18n="policies_page.wg_eyebrow">Working Group</div>
+    <h1 data-i18n="policies_page.edu_title">Education</h1>
+    <p data-i18n="policies_page.edu_desc">European education policy, youth mobility, Erasmus+, skills development and lifelong learning frameworks.</p>
 </div>
 
 <main class="papers-main">
 
     <div class="filters">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="position">Position Papers</button>
-        <button class="filter-btn" data-filter="article">Articles</button>
-        <button class="filter-btn" data-filter="brief">Policy Briefs</button>
+        <button class="filter-btn active" data-filter="all" data-i18n="policies_page.filter_all">All</button>
+        <button class="filter-btn" data-filter="position" data-i18n="policies_page.filter_position">Position Papers</button>
+        <button class="filter-btn" data-filter="article" data-i18n="policies_page.filter_article">Articles</button>
+        <button class="filter-btn" data-filter="brief" data-i18n="policies_page.filter_brief">Policy Briefs</button>
     </div>
 
     <div class="papers-list" id="papers-list">
@@ -41,20 +41,21 @@
 
     <div class="empty-state" id="empty-state">
         <div class="empty-icon">📄</div>
-        <h3>No publications yet</h3>
+        <h3 data-i18n="policies_page.empty_title">No publications yet</h3>
         <p>Position papers, articles and policy briefs from the Education working group will appear here as they are published.</p>
         <div class="empty-actions">
-            <a href="https://www.instagram.com/europeanyouthmovement/" target="_blank" rel="noopener" class="btn-outline-sm">Follow us on Instagram</a>
-            <a href="../index.html#home" class="btn-outline-sm">Subscribe to newsletter</a>
+            <a href="https://www.instagram.com/europeanyouthmovement/" target="_blank" rel="noopener" class="btn-outline-sm" data-i18n="policies_page.empty_instagram">Follow us on Instagram</a>
+            <a href="../index.html#home" class="btn-outline-sm" data-i18n="policies_page.empty_newsletter">Subscribe to newsletter</a>
         </div>
     </div>
 </main>
 
 <footer>
-    <span>© 2026 European Youth Movement</span>
+    <span data-i18n="footer.copyright">© 2026 European Youth Movement</span>
     <a href="../index.html">Back to main site →</a>
 </footer>
 
 <script src="policies.js"></script>
+<script src="/assets/js/i18n.js"></script>
 </body>
 </html>

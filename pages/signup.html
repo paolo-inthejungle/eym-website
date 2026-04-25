@@ -386,7 +386,7 @@
                 </div>
                 <span class="brand-name">European Youth Movement</span>
             </a>
-            <a href="../index.html" class="back-link">← Back to site</a>
+            <a href="../index.html" class="back-link" data-i18n="signup.back">← Back to site</a>
         </div>
     </header>
 
@@ -401,31 +401,31 @@
 
             <!-- FORM -->
             <div id="form-section">
-                <h2>Create your membership</h2>
-                <p class="form-sub">All fields marked with <span style="color:var(--blue-eu);">*</span> are required.</p>
+                <h2 data-i18n="signup.form_title">Join the European Youth Movement</h2>
+                <p class="form-sub" data-i18n="signup.form_lead">Complete the form below to become a member. We'll review your application and be in touch shortly.</p>
 
                 <form id="signup-form" novalidate>
 
                     <div class="field-row">
                         <div class="field">
-                            <label for="firstName">First name <span class="req">*</span></label>
+                            <label for="firstName"><span data-i18n="signup.firstname">First Name</span> <span class="req">*</span></label>
                             <input type="text" id="firstName" name="firstName" placeholder="e.g. Anna" autocomplete="given-name" required>
                         </div>
                         <div class="field">
-                            <label for="lastName">Last name <span class="req">*</span></label>
+                            <label for="lastName"><span data-i18n="signup.lastname">Last Name</span> <span class="req">*</span></label>
                             <input type="text" id="lastName" name="lastName" placeholder="e.g. Müller" autocomplete="family-name" required>
                         </div>
                     </div>
 
                     <div class="field">
-                        <label for="email">Email address <span class="req">*</span></label>
+                        <label for="email"><span data-i18n="signup.email">Email Address</span> <span class="req">*</span></label>
                         <input type="email" id="email" name="email" placeholder="your@email.com" autocomplete="email" required>
                     </div>
 
                     <div class="field">
-                        <label for="country">Country <span class="req">*</span></label>
+                        <label for="country"><span data-i18n="signup.country">Country</span> <span class="req">*</span></label>
                         <select id="country" name="country" required>
-                            <option value="" disabled selected>Select your country…</option>
+                            <option value="" disabled selected data-i18n="signup.country_placeholder">Select your country</option>
                             <optgroup label="EU Member States">
                                 <option value="Austria">Austria</option>
                                 <option value="Belgium">Belgium</option>
@@ -480,9 +480,9 @@
                     </div>
 
                     <div class="field">
-                        <label for="workingGroup">Working group of interest <span style="color:var(--gray-300);font-weight:400;">(optional)</span></label>
+                        <label for="workingGroup"><span data-i18n="signup.wg_label">Working group of interest</span> <span style="color:var(--gray-300);font-weight:400;" data-i18n="signup.wg_optional">(optional)</span></label>
                         <select id="workingGroup" name="workingGroup">
-                            <option value="" selected>No preference</option>
+                            <option value="" selected data-i18n="signup.wg_no_pref">No preference</option>
                             <option value="Foreign Policy">Foreign Policy</option>
                             <option value="Defence & Security">Defence &amp; Security</option>
                             <option value="Energy & Environment">Energy &amp; Environment</option>
@@ -491,25 +491,26 @@
                             <option value="Healthcare">Healthcare</option>
                             <option value="Immigration & Human Rights">Immigration &amp; Human Rights</option>
                         </select>
-                        <span class="field-hint">You can join more working groups after registration.</span>
+                        <span class="field-hint" data-i18n="signup.wg_hint">You can join more working groups after registration.</span>
                     </div>
 
                     <div class="checkbox-row">
                         <input type="checkbox" id="accept-terms" name="acceptTerms" required>
-                        <label for="accept-terms">
-                            I have read and accept the <a href="../assets/docs/ethics-code.pdf" target="_blank">Code of Ethics</a> and the <a href="../assets/docs/manifesto.pdf" target="_blank">Founding Manifesto</a> of the European Youth Movement. <span class="req">*</span>
+                        <label for="accept-terms" data-i18n-html="signup.ethics_html">
+                            I have read and accept the <a href="../assets/docs/ethics-code.pdf" target="_blank">Code of Ethics</a> and the <a href="../assets/docs/manifesto.pdf" target="_blank">Founding Manifesto</a> of the European Youth Movement.
                         </label>
+                        <span class="req" style="margin-top:2px;flex-shrink:0;">*</span>
                     </div>
 
                     <div class="checkbox-row">
                         <input type="checkbox" id="accept-newsletter" name="acceptNewsletter">
-                        <label for="accept-newsletter">
-                            I also want to subscribe to the EYM newsletter to stay updated on events, publications and news.
+                        <label for="accept-newsletter" data-i18n="signup.newsletter_label">
+                            I'd like to receive the EYM newsletter
                         </label>
                     </div>
 
-                    <button type="submit" class="btn-submit" id="submit-btn">
-                        Join the Movement →
+                    <button type="submit" class="btn-submit" id="submit-btn" data-i18n="signup.submit">
+                        Submit Application →
                     </button>
 
                     <div class="form-msg" id="form-msg"></div>
@@ -518,16 +519,16 @@
 
                 <hr class="form-divider">
                 <p class="already-member">
-                    Questions? Write to us at <a href="mailto:join@eym-europe.eu">join@eym-europe.eu</a>
+                    <span data-i18n="signup.questions">Questions? Write to us at</span> <a href="mailto:join@eym-europe.eu">join@eym-europe.eu</a>
                 </p>
             </div>
 
             <!-- SUCCESS STATE -->
             <div class="success-panel" id="success-panel">
                 <div class="checkmark">✓</div>
-                <h3>Welcome to the Movement!</h3>
-                <p>Your membership request has been received. You will hear from us shortly with next steps and access to your working group.</p>
-                <a href="../index.html" class="btn-back-home">← Back to the site</a>
+                <h3 data-i18n="signup.success_title">Welcome to the Movement!</h3>
+                <p data-i18n="signup.success_text">Your membership request has been received. You will hear from us shortly with next steps and access to your working group.</p>
+                <a href="../index.html" class="btn-back-home" data-i18n="signup.back_home">← Back to the site</a>
             </div>
 
         </div>
@@ -581,7 +582,7 @@
             if (!validate()) return;
 
             btn.disabled = true;
-            btn.textContent = 'Sending…';
+            btn.textContent = '...';
 
             const payload = {
                 firstName:    document.getElementById('firstName').value.trim(),
@@ -620,9 +621,10 @@
             }
 
             btn.disabled = false;
-            btn.textContent = 'Join the Movement →';
+            btn.textContent = EYM.t('signup.submit');
         });
     </script>
+    <script src="/assets/js/i18n.js"></script>
 
 </body>
 </html>

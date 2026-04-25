@@ -1257,6 +1257,34 @@
             text-decoration: none;
         }
 
+        /* ── LANGUAGE SWITCHER ── */
+        .lang-switcher {
+            display: flex;
+            gap: 0.2rem;
+            flex-shrink: 0;
+        }
+        .lang-switcher button {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.3);
+            color: rgba(255,255,255,0.7);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            padding: 0.22rem 0.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+        .lang-switcher button:hover,
+        .lang-switcher button.lang-active {
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255,255,255,0.7);
+            color: var(--white);
+        }
+        @media (max-width: 700px) {
+            .lang-switcher { display: none; }
+        }
+
         /* ── 3-COLUMN ORG GRID (for sections with 9 members) ── */
         .org-grid-3col {
             grid-template-columns: repeat(3, 1fr);
@@ -1293,19 +1321,26 @@
             </a>
             <nav>
                 <ul>
-                    <li><a href="#home" class="active">Home</a></li>
-                    <li><a href="#policies">Policies</a></li>
-                    <li><a href="#movement">Movement</a></li>
-                    <li><a href="#territory">Territory</a></li>
-                    <li><a href="#events">Events</a></li>
-                    <li><a href="#news">News</a></li>
+                    <li><a href="#home" class="active" data-i18n="nav.home">Home</a></li>
+                    <li><a href="#policies" data-i18n="nav.policies">Policies</a></li>
+                    <li><a href="#movement" data-i18n="nav.movement">Movement</a></li>
+                    <li><a href="#territory" data-i18n="nav.territory">Territory</a></li>
+                    <li><a href="#events" data-i18n="nav.events">Events</a></li>
+                    <li><a href="#news" data-i18n="nav.news">News</a></li>
                 </ul>
             </nav>
+            <div class="lang-switcher">
+                <button data-lang="en" onclick="EYM.setLang('en')">EN</button>
+                <button data-lang="it" onclick="EYM.setLang('it')">IT</button>
+                <button data-lang="fr" onclick="EYM.setLang('fr')">FR</button>
+                <button data-lang="es" onclick="EYM.setLang('es')">ES</button>
+                <button data-lang="de" onclick="EYM.setLang('de')">DE</button>
+            </div>
             <a href="https://www.instagram.com/europeanyouthmovement/" target="_blank" rel="noopener" class="ig-btn" aria-label="Follow us on Instagram">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
                 </svg>
-                Instagram
+                <span data-i18n="nav.instagram">Instagram</span>
             </a>
         </div>
     </header>
@@ -1319,12 +1354,12 @@
         <!-- HERO -->
         <div class="hero">
             <div class="hero-inner">
-                <span class="hero-eyebrow">Be part of the change!</span>
-                <h1>Building together<br><span>tomorrow's Europe</span></h1>
-                <p>European Youth Movement gives voice to new generations in shaping a fairer, more democratic and united Europe — one policy at a time.</p>
+                <span class="hero-eyebrow" data-i18n="hero.eyebrow">Be part of the change!</span>
+                <h1 data-i18n-html="hero.title_html">Building together<br><span>tomorrow's Europe</span></h1>
+                <p data-i18n="hero.lead">European Youth Movement gives voice to new generations in shaping a fairer, more democratic and united Europe — one policy at a time.</p>
                 <div class="hero-buttons">
-                    <a href="pages/signup.html" class="btn-primary">Join the Movement →</a>
-                    <a href="#policies" class="btn-outline">Explore our Policies</a>
+                    <a href="pages/signup.html" class="btn-primary" data-i18n="hero.join">Join the Movement →</a>
+                    <a href="#policies" class="btn-outline" data-i18n="hero.explore">Explore our Policies</a>
                 </div>
             </div>
         </div>
@@ -1332,25 +1367,25 @@
         <!-- WHY JOIN US -->
         <div class="why-join">
             <div class="section-inner">
-                <p class="section-label">Why join us</p>
-                <h2>Why Join Us</h2>
-                <p class="section-lead">The only way to build a European future is to take personal responsibility for change — and the new generations have the strength to do it.</p>
+                <p class="section-label" data-i18n="why.label">Why join us</p>
+                <h2 data-i18n="why.title">Why Join Us</h2>
+                <p class="section-lead" data-i18n="why.lead">The only way to build a European future is to take personal responsibility for change — and the new generations have the strength to do it.</p>
                 <div class="why-pillars">
                     <div class="why-pillar">
-                        <h3>Shape Your Identity Through Community</h3>
-                        <p>Only by knowing one another, acknowledging different realities and sharing a common political journey can we truly feel like citizens of Europe and create the conditions to act together.</p>
+                        <h3 data-i18n="why.pillar1_title">Shape Your Identity Through Community</h3>
+                        <p data-i18n="why.pillar1_text">Only by knowing one another, acknowledging different realities and sharing a common political journey can we truly feel like citizens of Europe and create the conditions to act together.</p>
                     </div>
                     <div class="why-pillar">
-                        <h3>Debate to Propose</h3>
-                        <p>Social, cultural and political diversity is not a limitation — it is the fertile ground on which to cultivate dialogue and give rise to shared political positions, capable of combining unity of vision with respect for differences.</p>
+                        <h3 data-i18n="why.pillar2_title">Debate to Propose</h3>
+                        <p data-i18n="why.pillar2_text">Social, cultural and political diversity is not a limitation — it is the fertile ground on which to cultivate dialogue and give rise to shared political positions, capable of combining unity of vision with respect for differences.</p>
                     </div>
                 </div>
                 <div class="why-cta-box">
-                    <div class="doer-motto">Don't think as a voter,<br>think as a doer!</div>
-                    <p>United by a pragmatic, positive approach to finding solutions together. Make your contribution and be an active part of change — join the European Youth Movement.</p>
+                    <div class="doer-motto" data-i18n-html="why.motto">Don't think as a voter,<br>think as a doer!</div>
+                    <p data-i18n="why.cta_text">United by a pragmatic, positive approach to finding solutions together. Make your contribution and be an active part of change — join the European Youth Movement.</p>
                     <div class="why-cta-buttons">
-                        <a href="pages/signup.html" class="btn-primary">Join the Movement →</a>
-                        <a href="assets/docs/manifesto.pdf" download class="btn-download">⬇ Download the Founding Manifesto</a>
+                        <a href="pages/signup.html" class="btn-primary" data-i18n="why.join">Join the Movement →</a>
+                        <a href="assets/docs/manifesto.pdf" download class="btn-download" data-i18n="why.download">⬇ Download the Founding Manifesto</a>
                     </div>
                 </div>
             </div>
@@ -1359,43 +1394,43 @@
         <!-- OBJECTIVES -->
         <div class="section section-alt">
             <div class="section-inner">
-                <p class="section-label">Our strategic plan</p>
-                <h2>Objectives</h2>
-                <p class="section-lead">We pursue concrete goals to make young Europeans' voices heard at every level of governance.</p>
+                <p class="section-label" data-i18n="objectives.label">Our strategic plan</p>
+                <h2 data-i18n="objectives.title">Objectives</h2>
+                <p class="section-lead" data-i18n="objectives.lead">We pursue concrete goals to make young Europeans' voices heard at every level of governance.</p>
                 <div class="objectives-list">
                     <div class="obj-item">
                         <div class="obj-num">1</div>
                         <div>
-                            <strong>Expand the network across Europe</strong>
-                            <p>Recruit members and national coordinators in every EU member state to build a truly pan-European movement.</p>
+                            <strong data-i18n="objectives.o1_title">Expand the network across Europe</strong>
+                            <p data-i18n="objectives.o1_text">Recruit members and national coordinators in every EU member state to build a truly pan-European movement.</p>
                         </div>
                     </div>
                     <div class="obj-item">
                         <div class="obj-num">2</div>
                         <div>
-                            <strong>Publish policy proposals</strong>
-                            <p>Produce rigorous position papers and policy briefs on the key EU challenges, submitted to European institutions.</p>
+                            <strong data-i18n="objectives.o2_title">Publish policy proposals</strong>
+                            <p data-i18n="objectives.o2_text">Produce rigorous position papers and policy briefs on the key EU challenges, submitted to European institutions.</p>
                         </div>
                     </div>
                     <div class="obj-item">
                         <div class="obj-num">3</div>
                         <div>
-                            <strong>Foster political education</strong>
-                            <p>Organise training events, simulations and debates to empower young citizens with political knowledge and skills.</p>
+                            <strong data-i18n="objectives.o3_title">Foster political education</strong>
+                            <p data-i18n="objectives.o3_text">Organise training events, simulations and debates to empower young citizens with political knowledge and skills.</p>
                         </div>
                     </div>
                     <div class="obj-item">
                         <div class="obj-num">4</div>
                         <div>
-                            <strong>Engage with EU institutions</strong>
-                            <p>Establish formal dialogue channels with the European Parliament, Commission and other EU bodies.</p>
+                            <strong data-i18n="objectives.o4_title">Engage with EU institutions</strong>
+                            <p data-i18n="objectives.o4_text">Establish formal dialogue channels with the European Parliament, Commission and other EU bodies.</p>
                         </div>
                     </div>
                     <div class="obj-item">
                         <div class="obj-num">5</div>
                         <div>
-                            <strong>Build a media presence</strong>
-                            <p>Grow our communications through social media, a newsletter, articles and media appearances to broaden our reach.</p>
+                            <strong data-i18n="objectives.o5_title">Build a media presence</strong>
+                            <p data-i18n="objectives.o5_text">Grow our communications through social media, a newsletter, articles and media appearances to broaden our reach.</p>
                         </div>
                     </div>
                 </div>
@@ -1406,11 +1441,11 @@
         <div class="section">
             <div class="section-inner">
                 <div class="newsletter-box">
-                    <h3>Stay informed</h3>
-                    <p>Subscribe to our newsletter — open to everyone, members and non-members alike.</p>
+                    <h3 data-i18n="newsletter.title">Stay informed</h3>
+                    <p data-i18n="newsletter.lead">Subscribe to our newsletter — open to everyone, members and non-members alike.</p>
                     <form class="newsletter-form" id="newsletter-form">
-                        <input type="email" id="newsletter-email" placeholder="Your email address" required>
-                        <button type="submit" id="newsletter-btn">Subscribe</button>
+                        <input type="email" id="newsletter-email" placeholder="Your email address" data-i18n-placeholder="newsletter.placeholder" required>
+                        <button type="submit" id="newsletter-btn" data-i18n="newsletter.submit">Subscribe</button>
                     </form>
                     <p id="newsletter-msg" style="margin-top:1rem; font-size:0.9rem; display:none;"></p>
                 </div>
@@ -1422,86 +1457,86 @@
     <!-- ═══════════════════════════ POLICIES ═══════════════════════════ -->
     <section class="section section-alt" id="policies">
         <div class="section-inner">
-            <p class="section-label">Working Groups</p>
-            <h2>Policies</h2>
-            <p class="section-lead">Each thematic area is led by a dedicated working group. Join the conversation on Telegram and read the positions our members have developed.</p>
+            <p class="section-label" data-i18n="policies_section.label">Working Groups</p>
+            <h2 data-i18n="policies_section.title">Policies</h2>
+            <p class="section-lead" data-i18n="policies_section.lead">Each thematic area is led by a dedicated working group. Join the conversation on Telegram and read the positions our members have developed.</p>
 
             <div class="wg-grid">
                 <div class="wg-card" style="border-top-color:#003399;">
                     <div class="card-icon" style="background:rgba(0,51,153,0.1);">🌍</div>
-                    <h3>Foreign Policy</h3>
-                    <p>EU foreign policy, strategic autonomy, transatlantic relations, Eastern neighbourhood and EU enlargement.</p>
+                    <h3 data-i18n="policies_section.wg.fp_title">Foreign Policy</h3>
+                    <p data-i18n="policies_section.wg.fp_desc">EU foreign policy, strategic autonomy, transatlantic relations, Eastern neighbourhood and EU enlargement.</p>
                     <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
-                        <a href="https://t.me/c/3666610956/3" class="telegram-btn" target="_blank" rel="noopener">📩 Telegram</a>
-                        <button class="solutions-btn" onclick="openModal('modal-fp')">Explore Solutions →</button>
-                        <a href="policies/foreign-policy.html" class="solutions-btn" style="text-decoration:none;">📄 Position Papers</a>
+                        <a href="https://t.me/c/3666610956/3" class="telegram-btn" target="_blank" rel="noopener" data-i18n="common.telegram">📩 Telegram</a>
+                        <button class="solutions-btn" onclick="openModal('modal-fp')" data-i18n="common.explore_solutions">Explore Solutions →</button>
+                        <a href="policies/foreign-policy.html" class="solutions-btn" style="text-decoration:none;" data-i18n="common.position_papers">📄 Position Papers</a>
                     </div>
                 </div>
                 <div class="wg-card" style="border-top-color:#1e3a8a;">
                     <div class="card-icon" style="background:rgba(30,58,138,0.1);">🛡️</div>
-                    <h3>Defence &amp; Security</h3>
-                    <p>European strategic autonomy, defence cooperation, NATO relations and joint military capabilities for a sovereign Europe.</p>
+                    <h3 data-i18n="policies_section.wg.ds_title">Defence &amp; Security</h3>
+                    <p data-i18n="policies_section.wg.ds_desc">European strategic autonomy, defence cooperation, NATO relations and joint military capabilities for a sovereign Europe.</p>
                     <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
-                        <a href="https://t.me/c/3666610956/4" class="telegram-btn" target="_blank" rel="noopener">📩 Telegram</a>
-                        <button class="solutions-btn" onclick="openModal('modal-ds')">Explore Solutions →</button>
-                        <a href="policies/defence-security.html" class="solutions-btn" style="text-decoration:none;">📄 Position Papers</a>
+                        <a href="https://t.me/c/3666610956/4" class="telegram-btn" target="_blank" rel="noopener" data-i18n="common.telegram">📩 Telegram</a>
+                        <button class="solutions-btn" onclick="openModal('modal-ds')" data-i18n="common.explore_solutions">Explore Solutions →</button>
+                        <a href="policies/defence-security.html" class="solutions-btn" style="text-decoration:none;" data-i18n="common.position_papers">📄 Position Papers</a>
                     </div>
                 </div>
                 <div class="wg-card" style="border-top-color:#15803d;">
                     <div class="card-icon" style="background:rgba(34,197,94,0.1);">⚡</div>
-                    <h3>Energy &amp; Environment</h3>
-                    <p>Green Deal, energy transition, climate justice, biodiversity and sustainable development across Europe.</p>
+                    <h3 data-i18n="policies_section.wg.ee_title">Energy &amp; Environment</h3>
+                    <p data-i18n="policies_section.wg.ee_desc">Green Deal, energy transition, climate justice, biodiversity and sustainable development across Europe.</p>
                     <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
-                        <a href="https://t.me/c/3666610956/8" class="telegram-btn" target="_blank" rel="noopener">📩 Telegram</a>
-                        <button class="solutions-btn" onclick="openModal('modal-ee')">Explore Solutions →</button>
-                        <a href="policies/energy-environment.html" class="solutions-btn" style="text-decoration:none;">📄 Position Papers</a>
+                        <a href="https://t.me/c/3666610956/8" class="telegram-btn" target="_blank" rel="noopener" data-i18n="common.telegram">📩 Telegram</a>
+                        <button class="solutions-btn" onclick="openModal('modal-ee')" data-i18n="common.explore_solutions">Explore Solutions →</button>
+                        <a href="policies/energy-environment.html" class="solutions-btn" style="text-decoration:none;" data-i18n="common.position_papers">📄 Position Papers</a>
                     </div>
                 </div>
                 <div class="wg-card" style="border-top-color:#7c3aed;">
                     <div class="card-icon" style="background:rgba(124,58,237,0.1);">⚖️</div>
-                    <h3>Justice</h3>
-                    <p>Rule of law, judicial independence, fundamental rights, anti-corruption and democratic institutions.</p>
+                    <h3 data-i18n="policies_section.wg.jus_title">Justice</h3>
+                    <p data-i18n="policies_section.wg.jus_desc">Rule of law, judicial independence, fundamental rights, anti-corruption and democratic institutions.</p>
                     <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
-                        <a href="https://t.me/c/3666610956/9" class="telegram-btn" target="_blank" rel="noopener">📩 Telegram</a>
-                        <button class="solutions-btn" onclick="openModal('modal-jus')">Explore Solutions →</button>
-                        <a href="policies/justice.html" class="solutions-btn" style="text-decoration:none;">📄 Position Papers</a>
+                        <a href="https://t.me/c/3666610956/9" class="telegram-btn" target="_blank" rel="noopener" data-i18n="common.telegram">📩 Telegram</a>
+                        <button class="solutions-btn" onclick="openModal('modal-jus')" data-i18n="common.explore_solutions">Explore Solutions →</button>
+                        <a href="policies/justice.html" class="solutions-btn" style="text-decoration:none;" data-i18n="common.position_papers">📄 Position Papers</a>
                     </div>
                 </div>
                 <div class="wg-card" style="border-top-color:#0891b2;">
                     <div class="card-icon" style="background:rgba(8,145,178,0.1);">📖</div>
-                    <h3>Education</h3>
-                    <p>European education policy, youth mobility, Erasmus+, skills development and lifelong learning frameworks.</p>
+                    <h3 data-i18n="policies_section.wg.edu_title">Education</h3>
+                    <p data-i18n="policies_section.wg.edu_desc">European education policy, youth mobility, Erasmus+, skills development and lifelong learning frameworks.</p>
                     <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
-                        <a href="https://t.me/c/3666610956/11" class="telegram-btn" target="_blank" rel="noopener">📩 Telegram</a>
-                        <button class="solutions-btn" onclick="openModal('modal-edu')">Explore Solutions →</button>
-                        <a href="policies/education.html" class="solutions-btn" style="text-decoration:none;">📄 Position Papers</a>
+                        <a href="https://t.me/c/3666610956/11" class="telegram-btn" target="_blank" rel="noopener" data-i18n="common.telegram">📩 Telegram</a>
+                        <button class="solutions-btn" onclick="openModal('modal-edu')" data-i18n="common.explore_solutions">Explore Solutions →</button>
+                        <a href="policies/education.html" class="solutions-btn" style="text-decoration:none;" data-i18n="common.position_papers">📄 Position Papers</a>
                     </div>
                 </div>
                 <div class="wg-card" style="border-top-color:#dc2626;">
                     <div class="card-icon" style="background:rgba(220,38,38,0.1);">➕</div>
-                    <h3>Healthcare</h3>
-                    <p>European Health Union, mental health, cross-border healthcare access and pharmaceutical policy.</p>
+                    <h3 data-i18n="policies_section.wg.hc_title">Healthcare</h3>
+                    <p data-i18n="policies_section.wg.hc_desc">European Health Union, mental health, cross-border healthcare access and pharmaceutical policy.</p>
                     <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
-                        <a href="https://t.me/c/3666610956/12" class="telegram-btn" target="_blank" rel="noopener">📩 Telegram</a>
-                        <button class="solutions-btn" onclick="openModal('modal-hc')">Explore Solutions →</button>
-                        <a href="policies/healthcare.html" class="solutions-btn" style="text-decoration:none;">📄 Position Papers</a>
+                        <a href="https://t.me/c/3666610956/12" class="telegram-btn" target="_blank" rel="noopener" data-i18n="common.telegram">📩 Telegram</a>
+                        <button class="solutions-btn" onclick="openModal('modal-hc')" data-i18n="common.explore_solutions">Explore Solutions →</button>
+                        <a href="policies/healthcare.html" class="solutions-btn" style="text-decoration:none;" data-i18n="common.position_papers">📄 Position Papers</a>
                     </div>
                 </div>
                 <div class="wg-card" style="border-top-color:#b45309;">
                     <div class="card-icon" style="background:rgba(180,83,9,0.1);">🪢</div>
-                    <h3>Immigration &amp; Human Rights</h3>
-                    <p>Migration policy, refugee rights, integration, social cohesion and the protection of fundamental freedoms.</p>
+                    <h3 data-i18n="policies_section.wg.ihr_title">Immigration &amp; Human Rights</h3>
+                    <p data-i18n="policies_section.wg.ihr_desc">Migration policy, refugee rights, integration, social cohesion and the protection of fundamental freedoms.</p>
                     <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
-                        <a href="https://t.me/c/3666610956/10" class="telegram-btn" target="_blank" rel="noopener">📩 Telegram</a>
-                        <button class="solutions-btn" onclick="openModal('modal-ihr')">Explore Solutions →</button>
-                        <a href="policies/immigration-human-rights.html" class="solutions-btn" style="text-decoration:none;">📄 Position Papers</a>
+                        <a href="https://t.me/c/3666610956/10" class="telegram-btn" target="_blank" rel="noopener" data-i18n="common.telegram">📩 Telegram</a>
+                        <button class="solutions-btn" onclick="openModal('modal-ihr')" data-i18n="common.explore_solutions">Explore Solutions →</button>
+                        <a href="policies/immigration-human-rights.html" class="solutions-btn" style="text-decoration:none;" data-i18n="common.position_papers">📄 Position Papers</a>
                     </div>
                 </div>
             </div>
 
             <hr class="sub-divider">
 
-            <p class="sub-title">Position Papers &amp; Articles</p>
+            <p class="sub-title" data-i18n="policies_section.papers_title">Position Papers &amp; Articles</p>
             <div class="papers-list">
                 <div class="paper-item">
                     <span class="paper-badge position">Position Paper</span>
@@ -1538,196 +1573,196 @@
     <!-- ═══════════════════════════ MOVEMENT ═══════════════════════════ -->
     <section class="section" id="movement">
         <div class="section-inner">
-            <p class="section-label">Who we are</p>
-            <h2>The Movement</h2>
-            <p class="section-lead">A pan-European association built on a clear organisational structure, a founding statute and a shared code of ethics.</p>
+            <p class="section-label" data-i18n="movement.label">Who we are</p>
+            <h2 data-i18n="movement.title">The Movement</h2>
+            <p class="section-lead" data-i18n="movement.lead">A pan-European association built on a clear organisational structure, a founding statute and a shared code of ethics.</p>
 
             <!-- Organisational structure -->
-            <p class="sub-title">Organisational Structure</p>
+            <p class="sub-title" data-i18n="movement.org_title">Organisational Structure</p>
             <div class="card-grid">
                 <div class="card">
                     <div class="card-icon">🏛️</div>
-                    <h3>General Assembly</h3>
-                    <p>The sovereign body of the movement. All members participate in strategic decisions, statutes and elections.</p>
-                    <button class="org-open-btn" onclick="openModal('modal-org-ga')">View Members →</button>
+                    <h3 data-i18n="movement.ga_title">General Assembly</h3>
+                    <p data-i18n="movement.ga_desc">The sovereign body of the movement. All members participate in strategic decisions, statutes and elections.</p>
+                    <button class="org-open-btn" onclick="openModal('modal-org-ga')" data-i18n="common.view_members">View Members →</button>
                 </div>
                 <div class="card">
                     <div class="card-icon">⚡</div>
-                    <h3>Executive Board</h3>
-                    <p>The governing body responsible for day-to-day leadership, coordination and external representation.</p>
-                    <button class="org-open-btn" onclick="openModal('modal-org-eb')">View Members →</button>
+                    <h3 data-i18n="movement.eb_title">Executive Board</h3>
+                    <p data-i18n="movement.eb_desc">The governing body responsible for day-to-day leadership, coordination and external representation.</p>
+                    <button class="org-open-btn" onclick="openModal('modal-org-eb')" data-i18n="common.view_members">View Members →</button>
                 </div>
                 <div class="card">
                     <div class="card-icon">📌</div>
-                    <h3>Thematic Coordinators</h3>
-                    <p>One coordinator per working group, responsible for policy development and member engagement on each topic.</p>
-                    <button class="org-open-btn" onclick="openModal('modal-org-tc')">View Members →</button>
+                    <h3 data-i18n="movement.tc_title">Thematic Coordinators</h3>
+                    <p data-i18n="movement.tc_desc">One coordinator per working group, responsible for policy development and member engagement on each topic.</p>
+                    <button class="org-open-btn" onclick="openModal('modal-org-tc')" data-i18n="common.view_members">View Members →</button>
                 </div>
                 <div class="card">
                     <div class="card-icon">📣</div>
-                    <h3>Communication &amp; Marketing</h3>
-                    <p>Team responsible for social media, editorial content, the newsletter and external communications strategy.</p>
-                    <button class="org-open-btn" onclick="openModal('modal-org-cd')">View Members →</button>
+                    <h3 data-i18n="movement.cm_title">Communication &amp; Marketing</h3>
+                    <p data-i18n="movement.cm_desc">Team responsible for social media, editorial content, the newsletter and external communications strategy.</p>
+                    <button class="org-open-btn" onclick="openModal('modal-org-cd')" data-i18n="common.view_members">View Members →</button>
                 </div>
                 <div class="card">
                     <div class="card-icon">🗺️</div>
-                    <h3>National Coordinators</h3>
-                    <p>Representatives based in each EU member state, responsible for member recruitment and local activities.</p>
-                    <button class="org-open-btn" onclick="openModal('modal-org-nc')">View Members →</button>
+                    <h3 data-i18n="movement.nc_title">National Coordinators</h3>
+                    <p data-i18n="movement.nc_desc">Representatives based in each EU member state, responsible for member recruitment and local activities.</p>
+                    <button class="org-open-btn" onclick="openModal('modal-org-nc')" data-i18n="common.view_members">View Members →</button>
                 </div>
             </div>
 
             <hr class="sub-divider">
 
             <!-- Statute -->
-            <p class="sub-title">Statute</p>
-            <p style="color:var(--gray-500);font-size:0.95rem;margin-bottom:1.2rem;">The founding statute governs the life of the association, its objectives, activities and governing bodies.</p>
-            <p style="color:var(--gray-500);font-size:0.9rem;font-style:italic;">The statute document will be available for download shortly.</p>
+            <p class="sub-title" data-i18n="movement.statute_title">Statute</p>
+            <p style="color:var(--gray-500);font-size:0.95rem;margin-bottom:1.2rem;" data-i18n="movement.statute_desc">The founding statute governs the life of the association, its objectives, activities and governing bodies.</p>
+            <p style="color:var(--gray-500);font-size:0.9rem;font-style:italic;" data-i18n="movement.statute_soon">The statute document will be available for download shortly.</p>
 
             <hr class="sub-divider">
 
             <!-- Code of Ethics -->
-            <p class="sub-title">Code of Ethics</p>
-            <p style="color:var(--gray-500);font-size:0.95rem;margin-bottom:1.2rem;">The code of ethics defines the values and conduct expected of all members — integrity, respect, accountability and the European spirit.</p>
+            <p class="sub-title" data-i18n="movement.ethics_title">Code of Ethics</p>
+            <p style="color:var(--gray-500);font-size:0.95rem;margin-bottom:1.2rem;" data-i18n="movement.ethics_desc">The code of ethics defines the values and conduct expected of all members — integrity, respect, accountability and the European spirit.</p>
             <div class="download-row">
-                <a href="assets/docs/ethics-code.pdf" download class="btn-dl-eu">⬇ Download the Code of Ethics (PDF)</a>
+                <a href="assets/docs/ethics-code.pdf" download class="btn-dl-eu" data-i18n="movement.ethics_download">⬇ Download the Code of Ethics (PDF)</a>
             </div>
 
             <hr class="sub-divider">
 
             <!-- Executive Board -->
-            <p class="sub-title">Executive Board</p>
+            <p class="sub-title" data-i18n="movement.eb_section">Executive Board</p>
             <div class="org-grid org-grid-3col">
                 <div class="member-card">
                     <div class="member-avatar">👤</div>
                     <h4>Luca Magliani 🇮🇹</h4>
-                    <div class="member-role">President</div>
+                    <div class="member-role" data-i18n="movement.roles.president">President</div>
                 </div>
                 <div class="member-card">
                     <div class="member-avatar">👤</div>
                     <h4>Paolo Tarantino 🇮🇹</h4>
-                    <div class="member-role">Vice-President</div>
+                    <div class="member-role" data-i18n="movement.roles.vice_president">Vice-President</div>
                 </div>
                 <div class="member-card">
                     <div class="member-avatar">👤</div>
                     <h4>Lorenzo Miccio 🇮🇹</h4>
-                    <div class="member-role">Vice-President</div>
+                    <div class="member-role" data-i18n="movement.roles.vice_president">Vice-President</div>
                 </div>
                 <div class="member-card">
                     <div class="member-avatar">👤</div>
                     <h4>Heidi Tauriainen 🇫🇮</h4>
-                    <div class="member-role">Secretary General</div>
+                    <div class="member-role" data-i18n="movement.roles.secretary_general">Secretary General</div>
                 </div>
                 <div class="member-card">
                     <div class="member-avatar">👤</div>
-                    <h4>— Pending Charge —</h4>
-                    <div class="member-role">Treasurer</div>
+                    <h4 data-i18n="common.pending_charge">— Pending Charge —</h4>
+                    <div class="member-role" data-i18n="movement.roles.treasurer">Treasurer</div>
                 </div>
                 <div class="member-card">
                     <div class="member-avatar">👤</div>
                     <h4>Saara Vuoninen 🇫🇮</h4>
-                    <div class="member-role">Member of the Executive Board</div>
+                    <div class="member-role" data-i18n="movement.roles.eb_member">Member of the Executive Board</div>
                 </div>
                 <div class="member-card">
                     <div class="member-avatar">👤</div>
                     <h4>Rebeca Munteanu 🇬🇷 🇷🇴</h4>
-                    <div class="member-role">Member of the Executive Board</div>
+                    <div class="member-role" data-i18n="movement.roles.eb_member">Member of the Executive Board</div>
                 </div>
                 <div class="member-card">
                     <div class="member-avatar">👤</div>
                     <h4>Alberto Cannoletta 🇮🇹</h4>
-                    <div class="member-role">Member of the Executive Board</div>
+                    <div class="member-role" data-i18n="movement.roles.eb_member">Member of the Executive Board</div>
                 </div>
                 <div class="member-card">
                     <div class="member-avatar">👤</div>
-                    <h4>— Pending Charge —</h4>
-                    <div class="member-role">Member of the Executive Board</div>
+                    <h4 data-i18n="common.pending_charge">— Pending Charge —</h4>
+                    <div class="member-role" data-i18n="movement.roles.eb_member">Member of the Executive Board</div>
                 </div>
             </div>
 
             <hr class="sub-divider">
 
             <!-- Legal Department -->
-            <p class="sub-title">Legal Department</p>
+            <p class="sub-title" data-i18n="movement.legal_section">Legal Department</p>
             <div class="org-grid">
                 <div class="member-card">
                     <div class="member-avatar">👤</div>
                     <h4>Alessandro Tuzza 🇮🇹</h4>
-                    <div class="member-role">Chief of the Legal Team</div>
+                    <div class="member-role" data-i18n="movement.roles.legal_chief">Chief of the Legal Team</div>
                 </div>
                 <div class="member-card">
                     <div class="member-avatar">👤</div>
                     <h4>Guillermo Aguayo 🇪🇸</h4>
-                    <div class="member-role">Ethic and Arbitrary Chief</div>
+                    <div class="member-role" data-i18n="movement.roles.ethics_chief">Ethic and Arbitrary Chief</div>
                 </div>
                 <div class="member-card">
                     <div class="member-avatar">👤</div>
                     <h4>Gianmario De Rosa 🇮🇹</h4>
-                    <div class="member-role">Financial Audit</div>
+                    <div class="member-role" data-i18n="movement.roles.financial_audit">Financial Audit</div>
                 </div>
                 <div class="member-card">
                     <div class="member-avatar">👤</div>
                     <h4>Marcos Castillo 🇪🇸</h4>
-                    <div class="member-role">Member of the Legal Team</div>
+                    <div class="member-role" data-i18n="movement.roles.legal_member">Member of the Legal Team</div>
                 </div>
             </div>
 
             <hr class="sub-divider">
 
             <!-- Thematic Coordinators -->
-            <p class="sub-title">Thematic Coordinators</p>
+            <p class="sub-title" data-i18n="movement.tc_section">Thematic Coordinators</p>
             <div class="org-grid">
                 <div class="member-card">
                     <div class="member-avatar">🌍</div>
-                    <h4>— To be announced —</h4>
-                    <div class="member-role">Foreign Policy</div>
+                    <h4 data-i18n="common.tba">— To be announced —</h4>
+                    <div class="member-role" data-i18n="movement.tc_roles.fp">Foreign Policy</div>
                 </div>
                 <div class="member-card">
                     <div class="member-avatar">🛡️</div>
-                    <h4>— To be announced —</h4>
-                    <div class="member-role">Defence &amp; Security</div>
+                    <h4 data-i18n="common.tba">— To be announced —</h4>
+                    <div class="member-role" data-i18n="movement.tc_roles.ds">Defence &amp; Security</div>
                 </div>
                 <div class="member-card">
                     <div class="member-avatar">⚡</div>
-                    <h4>— To be announced —</h4>
-                    <div class="member-role">Energy &amp; Environment</div>
+                    <h4 data-i18n="common.tba">— To be announced —</h4>
+                    <div class="member-role" data-i18n="movement.tc_roles.ee">Energy &amp; Environment</div>
                 </div>
                 <div class="member-card">
                     <div class="member-avatar">⚖️</div>
-                    <h4>— To be announced —</h4>
-                    <div class="member-role">Justice</div>
+                    <h4 data-i18n="common.tba">— To be announced —</h4>
+                    <div class="member-role" data-i18n="movement.tc_roles.jus">Justice</div>
                 </div>
                 <div class="member-card">
                     <div class="member-avatar">📖</div>
-                    <h4>— To be announced —</h4>
-                    <div class="member-role">Education</div>
+                    <h4 data-i18n="common.tba">— To be announced —</h4>
+                    <div class="member-role" data-i18n="movement.tc_roles.edu">Education</div>
                 </div>
                 <div class="member-card">
                     <div class="member-avatar">➕</div>
-                    <h4>— To be announced —</h4>
-                    <div class="member-role">Healthcare</div>
+                    <h4 data-i18n="common.tba">— To be announced —</h4>
+                    <div class="member-role" data-i18n="movement.tc_roles.hc">Healthcare</div>
                 </div>
                 <div class="member-card">
                     <div class="member-avatar">🪢</div>
-                    <h4>— To be announced —</h4>
-                    <div class="member-role">Immigration &amp; Human Rights</div>
+                    <h4 data-i18n="common.tba">— To be announced —</h4>
+                    <div class="member-role" data-i18n="movement.tc_roles.ihr">Immigration &amp; Human Rights</div>
                 </div>
             </div>
 
             <hr class="sub-divider">
 
             <!-- Communication & Marketing Department -->
-            <p class="sub-title">Communication &amp; Marketing Department</p>
+            <p class="sub-title" data-i18n="movement.cm_section">Communication &amp; Marketing Department</p>
             <div class="org-grid">
                 <div class="member-card">
                     <div class="member-avatar">👤</div>
                     <h4>Erica Kinnunen 🇫🇮</h4>
-                    <div class="member-role">Head of Social Media Team</div>
+                    <div class="member-role" data-i18n="movement.roles.social_media_head">Head of Social Media Team</div>
                 </div>
                 <div class="member-card">
                     <div class="member-avatar">👤</div>
                     <h4>Simona Verdesca 🇮🇹</h4>
-                    <div class="member-role">Head of Editorial Team</div>
+                    <div class="member-role" data-i18n="movement.roles.editorial_head">Head of Editorial Team</div>
                 </div>
             </div>
         </div>
@@ -1736,24 +1771,24 @@
     <!-- ═══════════════════════════ TERRITORY ═══════════════════════════ -->
     <section class="section section-alt" id="territory">
         <div class="section-inner">
-            <p class="section-label">Our presence</p>
-            <h2>Territory</h2>
-            <p class="section-lead">The European Youth Movement is growing across Europe. The map below will show registered members by country as our network expands.</p>
+            <p class="section-label" data-i18n="territory.label">Our presence</p>
+            <h2 data-i18n="territory.title">Territory</h2>
+            <p class="section-lead" data-i18n="territory.lead">The European Youth Movement is growing across Europe. The map below will show registered members by country as our network expands.</p>
 
             <!-- Europe Map -->
             <div class="map-container">
-                <h3>Members across Europe</h3>
-                <p>Hover over a country to see its name. Countries highlighted in blue have registered EYM members.</p>
+                <h3 data-i18n="territory.map_title">Members across Europe</h3>
+                <p data-i18n="territory.map_desc">Hover over a country to see its name. Countries highlighted in blue have registered EYM members.</p>
                 <div id="eu-map-container" aria-label="Interactive map of the European Union"></div>
                 <div id="map-tooltip"></div>
                 <div class="map-legend">
                     <div class="legend-item">
                         <div class="legend-dot" style="background:#c8cdd6; border:1px solid #aaa;"></div>
-                        No EYM members yet
+                        <span data-i18n="territory.legend_none">No EYM members yet</span>
                     </div>
                     <div class="legend-item">
                         <div class="legend-dot" style="background:var(--blue-eu);"></div>
-                        Countries with EYM members
+                        <span data-i18n="territory.legend_active">Countries with EYM members</span>
                     </div>
                 </div>
             </div>
@@ -1761,57 +1796,57 @@
             <hr class="sub-divider">
 
             <!-- National Coordinators -->
-            <p class="sub-title">National Coordinators</p>
+            <p class="sub-title" data-i18n="territory.nc_title">National Coordinators</p>
             <div class="org-grid org-grid-3col">
                 <div class="member-card">
                     <div class="member-avatar">👤</div>
-                    <h4>— To be announced —</h4>
+                    <h4 data-i18n="common.tba">— To be announced —</h4>
                     <div class="member-role">Italy 🇮🇹</div>
                 </div>
                 <div class="member-card">
                     <div class="member-avatar">👤</div>
-                    <h4>— To be announced —</h4>
+                    <h4 data-i18n="common.tba">— To be announced —</h4>
                     <div class="member-role">Germany 🇩🇪</div>
                 </div>
                 <div class="member-card">
                     <div class="member-avatar">👤</div>
-                    <h4>— To be announced —</h4>
+                    <h4 data-i18n="common.tba">— To be announced —</h4>
                     <div class="member-role">Spain 🇪🇸</div>
                 </div>
                 <div class="member-card">
                     <div class="member-avatar">👤</div>
-                    <h4>— To be announced —</h4>
+                    <h4 data-i18n="common.tba">— To be announced —</h4>
                     <div class="member-role">France 🇫🇷</div>
                 </div>
                 <div class="member-card">
                     <div class="member-avatar">👤</div>
-                    <h4>— To be announced —</h4>
+                    <h4 data-i18n="common.tba">— To be announced —</h4>
                     <div class="member-role">Belgium 🇧🇪</div>
                 </div>
                 <div class="member-card">
                     <div class="member-avatar">👤</div>
-                    <h4>— To be announced —</h4>
+                    <h4 data-i18n="common.tba">— To be announced —</h4>
                     <div class="member-role">Finland 🇫🇮</div>
                 </div>
                 <div class="member-card">
                     <div class="member-avatar">👤</div>
-                    <h4>— To be announced —</h4>
+                    <h4 data-i18n="common.tba">— To be announced —</h4>
                     <div class="member-role">Sweden 🇸🇪</div>
                 </div>
                 <div class="member-card">
                     <div class="member-avatar">👤</div>
-                    <h4>— To be announced —</h4>
+                    <h4 data-i18n="common.tba">— To be announced —</h4>
                     <div class="member-role">Greece 🇬🇷</div>
                 </div>
                 <div class="member-card">
                     <div class="member-avatar">👤</div>
-                    <h4>— To be announced —</h4>
+                    <h4 data-i18n="common.tba">— To be announced —</h4>
                     <div class="member-role">Romania 🇷🇴</div>
                 </div>
             </div>
-            <p style="color:var(--gray-500);font-size:0.93rem;margin-top:1.4rem;margin-bottom:0.9rem;">We are looking for national coordinators in every EU member state. Interested in representing EYM in your country?</p>
+            <p style="color:var(--gray-500);font-size:0.93rem;margin-top:1.4rem;margin-bottom:0.9rem;" data-i18n="territory.nc_cta">We are looking for national coordinators in every EU member state. Interested in representing EYM in your country?</p>
             <div class="download-row">
-                <a href="pages/apply-coordinator.html" class="btn-dl-eu">✉ Apply as Coordinator</a>
+                <a href="pages/apply-coordinator.html" class="btn-dl-eu" data-i18n="territory.apply_btn">✉ Apply as Coordinator</a>
             </div>
         </div>
     </section>
@@ -1819,13 +1854,13 @@
     <!-- ═══════════════════════════ EVENTS ═══════════════════════════ -->
     <section class="section" id="events">
         <div class="section-inner">
-            <p class="section-label">What's on</p>
-            <h2>Events</h2>
-            <p class="section-lead">Conferences, debates, training sessions and more — all our upcoming events in one place.</p>
+            <p class="section-label" data-i18n="events.label">What's on</p>
+            <h2 data-i18n="events.title">Events</h2>
+            <p class="section-lead" data-i18n="events.lead">Conferences, debates, training sessions and more — all our upcoming events in one place.</p>
             <div class="events-placeholder">
                 <div class="cal-icon">📅</div>
-                <h3>Calendar coming soon</h3>
-                <p>Our events calendar is being set up. Check back shortly or subscribe to the newsletter to be notified first.</p>
+                <h3 data-i18n="events.soon_title">Calendar coming soon</h3>
+                <p data-i18n="events.soon_text">Our events calendar is being set up. Check back shortly or subscribe to the newsletter to be notified first.</p>
             </div>
         </div>
     </section>
@@ -1833,32 +1868,32 @@
     <!-- ═══════════════════════════ NEWS ═══════════════════════════ -->
     <section class="section section-alt" id="news">
         <div class="section-inner">
-            <p class="section-label">Press &amp; Media</p>
-            <h2>News</h2>
-            <p class="section-lead">Articles from external contributors about the movement, interviews and media appearances.</p>
+            <p class="section-label" data-i18n="news.label">Press &amp; Media</p>
+            <h2 data-i18n="news.title">News</h2>
+            <p class="section-lead" data-i18n="news.lead">Articles from external contributors about the movement, interviews and media appearances.</p>
             <div class="news-grid">
                 <div class="news-card">
                     <div class="news-card-img">📰</div>
                     <div class="news-card-body">
-                        <div class="news-tag">Press</div>
-                        <h3>European Youth Movement launches with pan-European ambitions</h3>
-                        <p>A new youth association aims to bridge the gap between young Europeans and EU institutions...</p>
+                        <div class="news-tag" data-i18n="news.tag_press">Press</div>
+                        <h3 data-i18n="news.n1_title">European Youth Movement launches with pan-European ambitions</h3>
+                        <p data-i18n="news.n1_text">A new youth association aims to bridge the gap between young Europeans and EU institutions...</p>
                     </div>
                 </div>
                 <div class="news-card">
                     <div class="news-card-img">🎙️</div>
                     <div class="news-card-body">
-                        <div class="news-tag">Interview</div>
-                        <h3>What do young Europeans want from the EU? EYM speaks out</h3>
-                        <p>In a recent interview, EYM representatives outlined the movement's vision for a more democratic Europe...</p>
+                        <div class="news-tag" data-i18n="news.tag_interview">Interview</div>
+                        <h3 data-i18n="news.n2_title">What do young Europeans want from the EU? EYM speaks out</h3>
+                        <p data-i18n="news.n2_text">In a recent interview, EYM representatives outlined the movement's vision for a more democratic Europe...</p>
                     </div>
                 </div>
                 <div class="news-card">
                     <div class="news-card-img">▶️</div>
                     <div class="news-card-body">
-                        <div class="news-tag">YouTube</div>
-                        <h3>EYM at the European Parliament Youth Conference</h3>
-                        <p>Watch our delegates present EYM's position papers at the latest EP youth event...</p>
+                        <div class="news-tag" data-i18n="news.tag_youtube">YouTube</div>
+                        <h3 data-i18n="news.n3_title">EYM at the European Parliament Youth Conference</h3>
+                        <p data-i18n="news.n3_text">Watch our delegates present EYM's position papers at the latest EP youth event...</p>
                     </div>
                 </div>
                 <div class="news-card" style="border-top: 4px solid #E1306C;">
@@ -1866,9 +1901,9 @@
                         <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:48px;height:48px;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
                     </div>
                     <div class="news-card-body">
-                        <div class="news-tag" style="color:#E1306C;">Instagram</div>
-                        <h3>Follow us on Instagram</h3>
-                        <p>Updates, events and behind-the-scenes content from the European Youth Movement community.</p>
+                        <div class="news-tag" style="color:#E1306C;" data-i18n="news.tag_instagram">Instagram</div>
+                        <h3 data-i18n="news.ig_title">Follow us on Instagram</h3>
+                        <p data-i18n="news.ig_text">Updates, events and behind-the-scenes content from the European Youth Movement community.</p>
                         <a href="https://www.instagram.com/europeanyouthmovement/" target="_blank" rel="noopener" style="display:inline-block;margin-top:0.8rem;background:#E1306C;color:#fff;padding:0.45rem 1.1rem;border-radius:6px;font-size:0.85rem;font-weight:600;text-decoration:none;">@europeanyouthmovement →</a>
                     </div>
                 </div>
@@ -1884,30 +1919,30 @@
                     <img src="assets/logos/v3 monogramma/EYM v3 monogramma per immagini profilo.png" alt="EYM monogram">
                 </div>
                 <strong style="color:#fff; font-size:1rem;">European Youth Movement</strong>
-                <p>A pan-European youth association committed to building a more democratic, inclusive and solidary Europe.</p>
+                <p data-i18n="footer.brand_desc">A pan-European youth association committed to building a more democratic, inclusive and solidary Europe.</p>
             </div>
             <div>
-                <h4>Navigation</h4>
+                <h4 data-i18n="footer.nav_title">Navigation</h4>
                 <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#policies">Policies</a></li>
-                    <li><a href="#movement">Movement</a></li>
-                    <li><a href="#territory">Territory</a></li>
-                    <li><a href="#events">Events</a></li>
-                    <li><a href="#news">News</a></li>
+                    <li><a href="#home" data-i18n="nav.home">Home</a></li>
+                    <li><a href="#policies" data-i18n="nav.policies">Policies</a></li>
+                    <li><a href="#movement" data-i18n="nav.movement">Movement</a></li>
+                    <li><a href="#territory" data-i18n="nav.territory">Territory</a></li>
+                    <li><a href="#events" data-i18n="nav.events">Events</a></li>
+                    <li><a href="#news" data-i18n="nav.news">News</a></li>
                 </ul>
             </div>
             <div>
-                <h4>Movement</h4>
+                <h4 data-i18n="footer.movement_title">Movement</h4>
                 <ul>
-                    <li><a href="#movement">Statute</a></li>
-                    <li><a href="#movement">Code of Ethics</a></li>
-                    <li><a href="#movement">Executive Board</a></li>
-                    <li><a href="#territory">National Coordinators</a></li>
+                    <li><a href="#movement" data-i18n="footer.statute">Statute</a></li>
+                    <li><a href="#movement" data-i18n="footer.ethics">Code of Ethics</a></li>
+                    <li><a href="#movement" data-i18n="footer.board">Executive Board</a></li>
+                    <li><a href="#territory" data-i18n="footer.nc">National Coordinators</a></li>
                 </ul>
             </div>
             <div>
-                <h4>Contact</h4>
+                <h4 data-i18n="footer.contact_title">Contact</h4>
                 <ul>
                     <li><a href="mailto:info@eym-europe.eu">info@eym-europe.eu</a></li>
                     <li><a href="mailto:join@eym-europe.eu">join@eym-europe.eu</a></li>
@@ -1916,8 +1951,8 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <span>© 2026 European Youth Movement. All rights reserved.</span>
-            <span>★ For a united and democratic Europe ★</span>
+            <span data-i18n="footer.copyright">© 2026 European Youth Movement. All rights reserved.</span>
+            <span data-i18n="footer.motto">★ For a united and democratic Europe ★</span>
         </div>
     </footer>
 
@@ -1927,10 +1962,10 @@
     <div class="modal-overlay" id="modal-fp">
         <div class="modal-box">
             <div class="modal-header">
-                <h3>🌍 Foreign Policy</h3>
+                <h3 data-i18n="modals.fp_title">🌍 Foreign Policy</h3>
                 <button class="modal-close" onclick="closeModal('modal-fp')">✕</button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" data-i18n-html="modals.fp_body">
                 <p>The Foreign Policy working group develops EYM's positions on the EU's role in the world, transatlantic relations, EU enlargement and conflict prevention in the European neighbourhood.</p>
                 <p><strong>Our proposed solutions include:</strong></p>
                 <ul>
@@ -1949,10 +1984,10 @@
     <div class="modal-overlay" id="modal-ds">
         <div class="modal-box">
             <div class="modal-header">
-                <h3>🛡️ Defence &amp; Security</h3>
+                <h3 data-i18n="modals.ds_title">🛡️ Defence &amp; Security</h3>
                 <button class="modal-close" onclick="closeModal('modal-ds')">✕</button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" data-i18n-html="modals.ds_body">
                 <p>The Defence &amp; Security working group advocates for a stronger, more autonomous European defence posture and the development of joint military capabilities for a sovereign Europe.</p>
                 <p><strong>Our proposed solutions include:</strong></p>
                 <ul>
@@ -1971,10 +2006,10 @@
     <div class="modal-overlay" id="modal-ee">
         <div class="modal-box">
             <div class="modal-header">
-                <h3>⚡ Energy &amp; Environment</h3>
+                <h3 data-i18n="modals.ee_title">⚡ Energy &amp; Environment</h3>
                 <button class="modal-close" onclick="closeModal('modal-ee')">✕</button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" data-i18n-html="modals.ee_body">
                 <p>The Energy &amp; Environment working group works on accelerating the green transition, ensuring energy security and advocating for climate justice across Europe.</p>
                 <p><strong>Our proposed solutions include:</strong></p>
                 <ul>
@@ -1993,10 +2028,10 @@
     <div class="modal-overlay" id="modal-jus">
         <div class="modal-box">
             <div class="modal-header">
-                <h3>⚖️ Justice</h3>
+                <h3 data-i18n="modals.jus_title">⚖️ Justice</h3>
                 <button class="modal-close" onclick="closeModal('modal-jus')">✕</button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" data-i18n-html="modals.jus_body">
                 <p>The Justice working group defends the rule of law, fundamental rights and democratic institutions across Europe, and proposes systemic reforms to ensure accountability and fairness.</p>
                 <p><strong>Our proposed solutions include:</strong></p>
                 <ul>
@@ -2015,10 +2050,10 @@
     <div class="modal-overlay" id="modal-edu">
         <div class="modal-box">
             <div class="modal-header">
-                <h3>📖 Education</h3>
+                <h3 data-i18n="modals.edu_title">📖 Education</h3>
                 <button class="modal-close" onclick="closeModal('modal-edu')">✕</button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" data-i18n-html="modals.edu_body">
                 <p>The Education working group advocates for accessible, high-quality education and youth mobility across Europe, championing Erasmus+ and lifelong learning as pillars of European identity.</p>
                 <p><strong>Our proposed solutions include:</strong></p>
                 <ul>
@@ -2037,10 +2072,10 @@
     <div class="modal-overlay" id="modal-hc">
         <div class="modal-box">
             <div class="modal-header">
-                <h3>➕ Healthcare</h3>
+                <h3 data-i18n="modals.hc_title">➕ Healthcare</h3>
                 <button class="modal-close" onclick="closeModal('modal-hc')">✕</button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" data-i18n-html="modals.hc_body">
                 <p>The Healthcare working group advocates for a genuine European Health Union, addressing mental health, cross-border care and pharmaceutical policy for a healthier, more resilient Europe.</p>
                 <p><strong>Our proposed solutions include:</strong></p>
                 <ul>
@@ -2059,10 +2094,10 @@
     <div class="modal-overlay" id="modal-ihr">
         <div class="modal-box">
             <div class="modal-header">
-                <h3>🪢 Immigration &amp; Human Rights</h3>
+                <h3 data-i18n="modals.ihr_title">🪢 Immigration &amp; Human Rights</h3>
                 <button class="modal-close" onclick="closeModal('modal-ihr')">✕</button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" data-i18n-html="modals.ihr_body">
                 <p>The Immigration &amp; Human Rights working group advocates for humane, rights-based migration policies and the protection of fundamental freedoms for all people in Europe.</p>
                 <p><strong>Our proposed solutions include:</strong></p>
                 <ul>
@@ -2083,19 +2118,21 @@
     <div class="modal-overlay" id="modal-org-ga">
         <div class="modal-box">
             <div class="modal-header">
-                <h3>🏛️ General Assembly</h3>
+                <h3 data-i18n="modals.ga_title">🏛️ General Assembly</h3>
                 <button class="modal-close" onclick="closeModal('modal-org-ga')">✕</button>
             </div>
             <div class="modal-body">
-                <p>The General Assembly is the sovereign deliberative body of the European Youth Movement. It brings together all members to decide on the movement's strategy, statute and leadership.</p>
-                <p>Member profiles and bios will be published here as the assembly is constituted.</p>
+                <div data-i18n-html="modals.ga_body">
+                    <p>The General Assembly is the sovereign deliberative body of the European Youth Movement. It brings together all members to decide on the movement's strategy, statute and leadership.</p>
+                    <p>Member profiles and bios will be published here as the assembly is constituted.</p>
+                </div>
                 <div class="modal-member-grid">
                     <div class="modal-member-row">
                         <div class="m-avatar">👤</div>
                         <div class="m-info">
-                            <h4>— To be announced —</h4>
-                            <div class="m-role">General Assembly Member</div>
-                            <p>Bio and contact details coming soon.</p>
+                            <h4 data-i18n="common.tba">— To be announced —</h4>
+                            <div class="m-role" data-i18n="modals.ga_member_role">General Assembly Member</div>
+                            <p data-i18n="modals.ga_member_bio">Bio and contact details coming soon.</p>
                         </div>
                     </div>
                 </div>
@@ -2107,73 +2144,75 @@
     <div class="modal-overlay" id="modal-org-eb">
         <div class="modal-box">
             <div class="modal-header">
-                <h3>⚡ Executive Board</h3>
+                <h3 data-i18n="modals.eb_title">⚡ Executive Board</h3>
                 <button class="modal-close" onclick="closeModal('modal-org-eb')">✕</button>
             </div>
             <div class="modal-body">
-                <p>The Executive Board leads the day-to-day activities of EYM, coordinates working groups and represents the movement externally.</p>
+                <div data-i18n-html="modals.eb_body">
+                    <p>The Executive Board leads the day-to-day activities of EYM, coordinates working groups and represents the movement externally.</p>
+                </div>
                 <div class="modal-member-grid">
                     <div class="modal-member-row">
                         <div class="m-avatar">👤</div>
                         <div class="m-info">
                             <h4>Luca Magliani 🇮🇹</h4>
-                            <div class="m-role">President</div>
+                            <div class="m-role" data-i18n="movement.roles.president">President</div>
                         </div>
                     </div>
                     <div class="modal-member-row">
                         <div class="m-avatar">👤</div>
                         <div class="m-info">
                             <h4>Paolo Tarantino 🇮🇹</h4>
-                            <div class="m-role">Vice-President</div>
+                            <div class="m-role" data-i18n="movement.roles.vice_president">Vice-President</div>
                         </div>
                     </div>
                     <div class="modal-member-row">
                         <div class="m-avatar">👤</div>
                         <div class="m-info">
                             <h4>Lorenzo Miccio 🇮🇹</h4>
-                            <div class="m-role">Vice-President</div>
+                            <div class="m-role" data-i18n="movement.roles.vice_president">Vice-President</div>
                         </div>
                     </div>
                     <div class="modal-member-row">
                         <div class="m-avatar">👤</div>
                         <div class="m-info">
                             <h4>Heidi Tauriainen 🇫🇮</h4>
-                            <div class="m-role">Secretary General</div>
+                            <div class="m-role" data-i18n="movement.roles.secretary_general">Secretary General</div>
                         </div>
                     </div>
                     <div class="modal-member-row">
                         <div class="m-avatar">👤</div>
                         <div class="m-info">
-                            <h4>— Pending Charge —</h4>
-                            <div class="m-role">Treasurer</div>
+                            <h4 data-i18n="common.pending_charge">— Pending Charge —</h4>
+                            <div class="m-role" data-i18n="movement.roles.treasurer">Treasurer</div>
                         </div>
                     </div>
                     <div class="modal-member-row">
                         <div class="m-avatar">👤</div>
                         <div class="m-info">
                             <h4>Sara Vuoninen 🇫🇮</h4>
-                            <div class="m-role">Member of the Executive Board</div>
+                            <div class="m-role" data-i18n="movement.roles.eb_member">Member of the Executive Board</div>
                         </div>
                     </div>
                     <div class="modal-member-row">
                         <div class="m-avatar">👤</div>
                         <div class="m-info">
                             <h4>Rebeca Munteanu 🇬🇷 🇷🇴</h4>
-                            <div class="m-role">Member of the Executive Board</div>
+                            <div class="m-role" data-i18n="movement.roles.eb_member">Member of the Executive Board</div>
                         </div>
                     </div>
                     <div class="modal-member-row">
                         <div class="m-avatar">👤</div>
                         <div class="m-info">
                             <h4>Alberto Cannoletta 🇮🇹</h4>
-                            <div class="m-role">Member of the Executive Board</div>
+                            <div class="m-role" data-i18n="movement.roles.eb_member">Member of the Executive Board</div>
                         </div>
                     </div>
                     <div class="modal-member-row">
                         <div class="m-avatar">👤</div>
                         <div class="m-info">
-                            <h4>— Pending Charge —</h4>
-                            <div class="m-role">Member of the Executive Board</div>
+                            <h4 data-i18n="common.pending_charge">— Pending Charge —</h4>
+                            <div class="m-role" data-i18n="movement.roles.eb_member">Member of the Executive Board</div>
                         </div>
                     </div>
                 </div>
@@ -2185,59 +2224,61 @@
     <div class="modal-overlay" id="modal-org-tc">
         <div class="modal-box">
             <div class="modal-header">
-                <h3>📌 Thematic Coordinators</h3>
+                <h3 data-i18n="modals.tc_title">📌 Thematic Coordinators</h3>
                 <button class="modal-close" onclick="closeModal('modal-org-tc')">✕</button>
             </div>
             <div class="modal-body">
-                <p>Each working group is led by a thematic coordinator responsible for policy research, member engagement and position paper publication.</p>
+                <div data-i18n-html="modals.tc_body">
+                    <p>Each working group is led by a thematic coordinator responsible for policy research, member engagement and position paper publication.</p>
+                </div>
                 <div class="modal-member-grid">
                     <div class="modal-member-row">
                         <div class="m-avatar">🌍</div>
                         <div class="m-info">
-                            <h4>— To be announced —</h4>
-                            <div class="m-role">Foreign Policy Coordinator</div>
+                            <h4 data-i18n="common.tba">— To be announced —</h4>
+                            <div class="m-role" data-i18n="modals.tc_fp">Foreign Policy Coordinator</div>
                         </div>
                     </div>
                     <div class="modal-member-row">
                         <div class="m-avatar">🛡️</div>
                         <div class="m-info">
-                            <h4>— To be announced —</h4>
-                            <div class="m-role">Defence &amp; Security Coordinator</div>
+                            <h4 data-i18n="common.tba">— To be announced —</h4>
+                            <div class="m-role" data-i18n="modals.tc_ds">Defence &amp; Security Coordinator</div>
                         </div>
                     </div>
                     <div class="modal-member-row">
                         <div class="m-avatar">⚡</div>
                         <div class="m-info">
-                            <h4>— To be announced —</h4>
-                            <div class="m-role">Energy &amp; Environment Coordinator</div>
+                            <h4 data-i18n="common.tba">— To be announced —</h4>
+                            <div class="m-role" data-i18n="modals.tc_ee">Energy &amp; Environment Coordinator</div>
                         </div>
                     </div>
                     <div class="modal-member-row">
                         <div class="m-avatar">⚖️</div>
                         <div class="m-info">
-                            <h4>— To be announced —</h4>
-                            <div class="m-role">Justice Coordinator</div>
+                            <h4 data-i18n="common.tba">— To be announced —</h4>
+                            <div class="m-role" data-i18n="modals.tc_jus">Justice Coordinator</div>
                         </div>
                     </div>
                     <div class="modal-member-row">
                         <div class="m-avatar">📖</div>
                         <div class="m-info">
-                            <h4>— To be announced —</h4>
-                            <div class="m-role">Education Coordinator</div>
+                            <h4 data-i18n="common.tba">— To be announced —</h4>
+                            <div class="m-role" data-i18n="modals.tc_edu">Education Coordinator</div>
                         </div>
                     </div>
                     <div class="modal-member-row">
                         <div class="m-avatar">➕</div>
                         <div class="m-info">
-                            <h4>— To be announced —</h4>
-                            <div class="m-role">Healthcare Coordinator</div>
+                            <h4 data-i18n="common.tba">— To be announced —</h4>
+                            <div class="m-role" data-i18n="modals.tc_hc">Healthcare Coordinator</div>
                         </div>
                     </div>
                     <div class="modal-member-row">
                         <div class="m-avatar">🪢</div>
                         <div class="m-info">
-                            <h4>— To be announced —</h4>
-                            <div class="m-role">Immigration &amp; Human Rights Coordinator</div>
+                            <h4 data-i18n="common.tba">— To be announced —</h4>
+                            <div class="m-role" data-i18n="modals.tc_ihr">Immigration &amp; Human Rights Coordinator</div>
                         </div>
                     </div>
                 </div>
@@ -2249,24 +2290,26 @@
     <div class="modal-overlay" id="modal-org-cd">
         <div class="modal-box">
             <div class="modal-header">
-                <h3>📣 Communication &amp; Marketing</h3>
+                <h3 data-i18n="modals.cd_title">📣 Communication &amp; Marketing</h3>
                 <button class="modal-close" onclick="closeModal('modal-org-cd')">✕</button>
             </div>
             <div class="modal-body">
-                <p>The Communication &amp; Marketing Department manages EYM's social media presence, editorial output, newsletter and external communications strategy.</p>
+                <div data-i18n-html="modals.cd_body">
+                    <p>The Communication &amp; Marketing Department manages EYM's social media presence, editorial output, newsletter and external communications strategy.</p>
+                </div>
                 <div class="modal-member-grid">
                     <div class="modal-member-row">
                         <div class="m-avatar">👤</div>
                         <div class="m-info">
                             <h4>Erica Kinnunen 🇫🇮</h4>
-                            <div class="m-role">Head of Social Media Team</div>
+                            <div class="m-role" data-i18n="movement.roles.social_media_head">Head of Social Media Team</div>
                         </div>
                     </div>
                     <div class="modal-member-row">
                         <div class="m-avatar">👤</div>
                         <div class="m-info">
                             <h4>Simona Verdesca 🇮🇹</h4>
-                            <div class="m-role">Head of Editorial Team</div>
+                            <div class="m-role" data-i18n="movement.roles.editorial_head">Head of Editorial Team</div>
                         </div>
                     </div>
                 </div>
@@ -2278,79 +2321,81 @@
     <div class="modal-overlay" id="modal-org-nc">
         <div class="modal-box">
             <div class="modal-header">
-                <h3>🗺️ National Coordinators</h3>
+                <h3 data-i18n="modals.nc_title">🗺️ National Coordinators</h3>
                 <button class="modal-close" onclick="closeModal('modal-org-nc')">✕</button>
             </div>
             <div class="modal-body">
-                <p>National coordinators represent EYM in their country, recruit local members and organise national activities.</p>
+                <div data-i18n-html="modals.nc_body">
+                    <p>National coordinators represent EYM in their country, recruit local members and organise national activities.</p>
+                </div>
                 <div class="modal-member-grid">
                     <div class="modal-member-row">
                         <div class="m-avatar">👤</div>
                         <div class="m-info">
-                            <h4>— To be announced —</h4>
+                            <h4 data-i18n="common.tba">— To be announced —</h4>
                             <div class="m-role">Italy 🇮🇹</div>
                         </div>
                     </div>
                     <div class="modal-member-row">
                         <div class="m-avatar">👤</div>
                         <div class="m-info">
-                            <h4>— To be announced —</h4>
+                            <h4 data-i18n="common.tba">— To be announced —</h4>
                             <div class="m-role">Germany 🇩🇪</div>
                         </div>
                     </div>
                     <div class="modal-member-row">
                         <div class="m-avatar">👤</div>
                         <div class="m-info">
-                            <h4>— To be announced —</h4>
+                            <h4 data-i18n="common.tba">— To be announced —</h4>
                             <div class="m-role">Spain 🇪🇸</div>
                         </div>
                     </div>
                     <div class="modal-member-row">
                         <div class="m-avatar">👤</div>
                         <div class="m-info">
-                            <h4>— To be announced —</h4>
+                            <h4 data-i18n="common.tba">— To be announced —</h4>
                             <div class="m-role">France 🇫🇷</div>
                         </div>
                     </div>
                     <div class="modal-member-row">
                         <div class="m-avatar">👤</div>
                         <div class="m-info">
-                            <h4>— To be announced —</h4>
+                            <h4 data-i18n="common.tba">— To be announced —</h4>
                             <div class="m-role">Belgium 🇧🇪</div>
                         </div>
                     </div>
                     <div class="modal-member-row">
                         <div class="m-avatar">👤</div>
                         <div class="m-info">
-                            <h4>— To be announced —</h4>
+                            <h4 data-i18n="common.tba">— To be announced —</h4>
                             <div class="m-role">Finland 🇫🇮</div>
                         </div>
                     </div>
                     <div class="modal-member-row">
                         <div class="m-avatar">👤</div>
                         <div class="m-info">
-                            <h4>— To be announced —</h4>
+                            <h4 data-i18n="common.tba">— To be announced —</h4>
                             <div class="m-role">Sweden 🇸🇪</div>
                         </div>
                     </div>
                     <div class="modal-member-row">
                         <div class="m-avatar">👤</div>
                         <div class="m-info">
-                            <h4>— To be announced —</h4>
+                            <h4 data-i18n="common.tba">— To be announced —</h4>
                             <div class="m-role">Greece 🇬🇷</div>
                         </div>
                     </div>
                     <div class="modal-member-row">
                         <div class="m-avatar">👤</div>
                         <div class="m-info">
-                            <h4>— To be announced —</h4>
+                            <h4 data-i18n="common.tba">— To be announced —</h4>
                             <div class="m-role">Romania 🇷🇴</div>
                         </div>
                     </div>
                 </div>
                 <div style="margin-top:1.2rem; padding-top:1.2rem; border-top:1px solid var(--gray-200);">
-                    <p style="font-size:0.9rem;color:var(--gray-500);margin-bottom:0.8rem;">Interested in coordinating EYM in your country?</p>
-                    <a href="pages/apply-coordinator.html" class="btn-dl-eu" style="font-size:0.85rem;padding:0.55rem 1.2rem;">✉ Apply as Coordinator</a>
+                    <p style="font-size:0.9rem;color:var(--gray-500);margin-bottom:0.8rem;" data-i18n="territory.nc_cta">Interested in coordinating EYM in your country?</p>
+                    <a href="pages/apply-coordinator.html" class="btn-dl-eu" style="font-size:0.85rem;padding:0.55rem 1.2rem;" data-i18n="territory.apply_btn">✉ Apply as Coordinator</a>
                 </div>
             </div>
         </div>
@@ -2476,7 +2521,7 @@
             const msg = document.getElementById('newsletter-msg');
 
             btn.disabled = true;
-            btn.textContent = 'Sending...';
+            btn.textContent = '...';
             msg.style.display = 'none';
 
             try {
@@ -2489,24 +2534,25 @@
 
                 if (data.success) {
                     msg.textContent = data.duplicate
-                        ? 'You are already subscribed!'
-                        : 'Successfully subscribed! Welcome aboard.';
+                        ? EYM.t('newsletter.already')
+                        : EYM.t('newsletter.success');
                     msg.style.color = '#4ade80';
                     document.getElementById('newsletter-email').value = '';
                 } else {
-                    msg.textContent = data.error || 'Something went wrong.';
+                    msg.textContent = data.error || EYM.t('newsletter.error');
                     msg.style.color = '#f87171';
                 }
             } catch {
-                msg.textContent = 'Connection error. Please try again.';
+                msg.textContent = EYM.t('newsletter.error');
                 msg.style.color = '#f87171';
             }
 
             msg.style.display = 'block';
             btn.disabled = false;
-            btn.textContent = 'Subscribe';
+            btn.textContent = EYM.t('newsletter.submit');
         });
     </script>
+    <script src="/assets/js/i18n.js"></script>
 
 </body>
 </html>

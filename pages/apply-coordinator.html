@@ -379,7 +379,7 @@
             </div>
             <span class="brand-name">European Youth Movement</span>
         </a>
-        <a href="../index.html" class="back-link">← Back to site</a>
+        <a href="../index.html" class="back-link" data-i18n="apply.back">← Back to site</a>
     </div>
 </header>
 
@@ -394,30 +394,30 @@
 
         <!-- FORM -->
         <div id="form-section">
-            <h2>Coordinator application</h2>
-            <p class="form-sub">All fields marked with <span style="color:var(--blue-eu);">*</span> are required. We will get back to you within a few days.</p>
+            <h2 data-i18n="apply.form_title">Apply as National Coordinator</h2>
+            <p class="form-sub" data-i18n="apply.form_lead">Fill in the form below to apply as a national coordinator for the European Youth Movement in your country.</p>
 
             <div class="info-box">
-                <strong>What does a National Coordinator do?</strong> National Coordinators represent EYM in their country, recruit new members, organise local events and act as the primary contact for their national community.
+                <strong data-i18n="apply.info_title">What does a National Coordinator do?</strong> <span data-i18n="apply.info_text">National Coordinators are EYM's local representatives. They recruit members, organise activities in their country, and act as a bridge between their national community and the EYM Executive Board.</span>
             </div>
 
             <form id="apply-form" novalidate>
 
                 <div class="field-row">
                     <div class="field">
-                        <label for="name">Full name <span class="req">*</span></label>
+                        <label for="name"><span data-i18n="apply.fullname">Full Name</span> <span class="req">*</span></label>
                         <input type="text" id="name" name="name" placeholder="e.g. Anna Müller" autocomplete="name" required>
                     </div>
                     <div class="field">
-                        <label for="email">Email address <span class="req">*</span></label>
+                        <label for="email"><span data-i18n="apply.email">Email Address</span> <span class="req">*</span></label>
                         <input type="email" id="email" name="email" placeholder="your@email.com" autocomplete="email" required>
                     </div>
                 </div>
 
                 <div class="field">
-                    <label for="country">Country you wish to represent <span class="req">*</span></label>
+                    <label for="country"><span data-i18n="apply.country">Country</span> <span class="req">*</span></label>
                     <select id="country" name="country" required>
-                        <option value="" disabled selected>Select your country…</option>
+                        <option value="" disabled selected data-i18n="apply.country_placeholder">Select your country</option>
                         <optgroup label="EU Member States">
                             <option value="Austria">Austria</option>
                             <option value="Belgium">Belgium</option>
@@ -472,13 +472,12 @@
                 </div>
 
                 <div class="field">
-                    <label for="message">Motivation <span class="req">*</span></label>
-                    <textarea id="message" name="message" placeholder="Tell us why you want to become a National Coordinator, your background, and what you would bring to the role…" required></textarea>
-                    <span class="field-hint">Min. 3–4 sentences. Be specific about what you'd like to achieve in your country.</span>
+                    <label for="message"><span data-i18n="apply.motivation_label">Motivation</span> <span class="req">*</span></label>
+                    <textarea id="message" name="message" data-i18n-placeholder="apply.motivation_placeholder" placeholder="Tell us why you want to become a national coordinator and what you would bring to the role..." required></textarea>
                 </div>
 
-                <button type="submit" class="btn-submit" id="submit-btn">
-                    Send Application →
+                <button type="submit" class="btn-submit" id="submit-btn" data-i18n="apply.submit">
+                    Submit Application →
                 </button>
 
                 <div class="form-msg" id="form-msg"></div>
@@ -487,16 +486,16 @@
 
             <hr class="form-divider">
             <p class="footer-note">
-                Questions? Write to us at <a href="mailto:info@eym-europe.eu">info@eym-europe.eu</a>
+                <span data-i18n="apply.questions">Questions? Write to us at</span> <a href="mailto:info@eym-europe.eu">info@eym-europe.eu</a>
             </p>
         </div>
 
         <!-- SUCCESS STATE -->
         <div class="success-panel" id="success-panel">
             <div class="checkmark">✓</div>
-            <h3>Application received!</h3>
-            <p>Thank you for applying. We will review your application and get back to you at the email you provided within a few days.</p>
-            <a href="../index.html" class="btn-back-home">← Back to the site</a>
+            <h3 data-i18n="apply.success_title">Application received!</h3>
+            <p data-i18n="apply.success_text">Thank you for applying as a National Coordinator. We'll review your application and get back to you soon.</p>
+            <a href="../index.html" class="btn-back-home" data-i18n="apply.back_home">← Back to the site</a>
         </div>
 
     </div>
@@ -551,7 +550,7 @@
         if (!validate()) return;
 
         btn.disabled    = true;
-        btn.textContent = 'Sending…';
+        btn.textContent = '...';
 
         const payload = {
             name:    document.getElementById('name').value.trim(),
@@ -579,9 +578,10 @@
         }
 
         btn.disabled    = false;
-        btn.textContent = 'Send Application →';
+        btn.textContent = EYM.t('apply.submit');
     });
 </script>
+<script src="/assets/js/i18n.js"></script>
 
 </body>
 </html>
