@@ -689,7 +689,8 @@
         }
 
         /* Countries with EYM members */
-        #eu-map-container svg .has-members {
+        #eu-map-container svg path[id].has-members,
+        #eu-map-container svg polygon[id].has-members {
             fill: var(--blue-eu) !important;
         }
 
