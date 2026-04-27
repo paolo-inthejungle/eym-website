@@ -291,6 +291,7 @@
             color: var(--gray-500);
             max-width: 640px;
             margin-bottom: 2.5rem;
+            text-wrap: balance;
         }
 
         /* ── DIVIDER ── */
@@ -1577,6 +1578,12 @@
                     <button class="org-open-btn" onclick="openModal('modal-org-eb')" data-i18n="common.view_members">View Members →</button>
                 </div>
                 <div class="card">
+                    <div class="card-icon">⚖️</div>
+                    <h3 data-i18n="movement.legal_section">Legal Department</h3>
+                    <p data-i18n="movement.ld_desc">Responsible for legal oversight, ethics enforcement, financial auditing and the integrity of the movement's governance.</p>
+                    <button class="org-open-btn" onclick="openModal('modal-org-ld')" data-i18n="common.view_members">View Members →</button>
+                </div>
+                <div class="card">
                     <div class="card-icon">📌</div>
                     <h3 data-i18n="movement.tc_title">Thematic Coordinators</h3>
                     <p data-i18n="movement.tc_desc">One coordinator per working group, responsible for policy development and member engagement on each topic.</p>
@@ -1594,26 +1601,20 @@
                     <p data-i18n="movement.nc_desc">Representatives based in each EU member state, responsible for member recruitment and local activities.</p>
                     <button class="org-open-btn" onclick="openModal('modal-org-nc')" data-i18n="common.view_members">View Members →</button>
                 </div>
-                <div class="card">
-                    <div class="card-icon">⚖️</div>
-                    <h3 data-i18n="movement.legal_section">Legal Department</h3>
-                    <p data-i18n="movement.ld_desc">Responsible for legal oversight, ethics enforcement, financial auditing and the integrity of the movement's governance.</p>
-                    <button class="org-open-btn" onclick="openModal('modal-org-ld')" data-i18n="common.view_members">View Members →</button>
-                </div>
             </div>
 
             <hr class="sub-divider">
 
             <!-- Statute -->
             <p class="sub-title" data-i18n="movement.statute_title">Statute</p>
-            <p style="color:var(--gray-500);font-size:0.95rem;margin-bottom:1.2rem;" data-i18n="movement.statute_desc">The founding statute governs the life of the association, its objectives, activities and governing bodies.</p>
+            <p style="color:var(--gray-500);font-size:0.95rem;margin-bottom:1.2rem;text-wrap:balance;" data-i18n="movement.statute_desc">The founding statute governs the life of the association, its objectives, activities and governing bodies.</p>
             <p style="color:var(--gray-500);font-size:0.9rem;font-style:italic;" data-i18n="movement.statute_soon">The statute document will be available for download shortly.</p>
 
             <hr class="sub-divider">
 
             <!-- Code of Ethics -->
             <p class="sub-title" data-i18n="movement.ethics_title">Code of Ethics</p>
-            <p style="color:var(--gray-500);font-size:0.95rem;margin-bottom:1.2rem;" data-i18n="movement.ethics_desc">The code of ethics defines the values and conduct expected of all members — integrity, respect, accountability and the European spirit.</p>
+            <p style="color:var(--gray-500);font-size:0.95rem;margin-bottom:1.2rem;text-wrap:balance;" data-i18n="movement.ethics_desc">The code of ethics defines the values and conduct expected of all members — integrity, respect, accountability and the European spirit.</p>
             <div class="download-row">
                 <a href="assets/docs/ethics-code.pdf" download class="btn-dl-eu" data-i18n="movement.ethics_download">⬇ Download the Code of Ethics (PDF)</a>
             </div>
