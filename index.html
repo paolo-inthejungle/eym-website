@@ -1433,6 +1433,13 @@
                             <p data-i18n="objectives.o5_text">Grow our communications through social media, a newsletter, articles and media appearances to broaden our reach.</p>
                         </div>
                     </div>
+                    <div class="obj-item">
+                        <div class="obj-num">6</div>
+                        <div>
+                            <strong data-i18n="objectives.o6_title">Forge a Shared European Identity</strong>
+                            <p data-i18n="objectives.o6_text">Europe's strength lies in its diversity. By connecting young Europeans across borders — through dialogue, shared experiences and a common political journey — we cultivate a genuine sense of belonging that makes a united Europe not just an institution, but a living community.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1537,35 +1544,12 @@
             <hr class="sub-divider">
 
             <p class="sub-title" data-i18n="policies_section.papers_title">Position Papers &amp; Articles</p>
-            <div class="papers-list">
-                <div class="paper-item">
-                    <span class="paper-badge position">Position Paper</span>
-                    <div>
-                        <strong>Towards a European Youth Energy Act — a just transition for all</strong>
-                        <span>Energy &amp; Environment · February 2026</span>
-                    </div>
-                </div>
-                <div class="paper-item">
-                    <span class="paper-badge article">Article</span>
-                    <div>
-                        <strong>Strengthening the Rule of Law Mechanism: a youth perspective</strong>
-                        <span>Justice · January 2026</span>
-                    </div>
-                </div>
-                <div class="paper-item">
-                    <span class="paper-badge position">Position Paper</span>
-                    <div>
-                        <strong>European Strategic Autonomy: the case for a youth-led defence debate</strong>
-                        <span>Defence &amp; Security · December 2025</span>
-                    </div>
-                </div>
-                <div class="paper-item">
-                    <span class="paper-badge article">Article</span>
-                    <div>
-                        <strong>A humane EU migration pact: rights-based approaches for the next generation</strong>
-                        <span>Immigration &amp; Human Rights · November 2025</span>
-                    </div>
-                </div>
+            <div style="text-align:center;padding:2.5rem 1.5rem;background:var(--gray-100);border-radius:12px;border:1px dashed var(--gray-300);">
+                <div style="font-size:2rem;margin-bottom:1rem;">📝</div>
+                <h3 style="font-size:1.05rem;font-weight:700;color:var(--gray-900);margin-bottom:0.75rem;" data-i18n="policies_section.papers_placeholder_title">An Open Space for Ideas</h3>
+                <p style="font-size:0.92rem;color:var(--gray-500);line-height:1.65;max-width:560px;margin:0 auto 1.4rem;" data-i18n="policies_section.papers_placeholder_text">EYM opens its platform to every member who wishes to contribute — with position papers, analytical articles or policy briefs. We are working to build a direct channel with European institutions to give visibility to the media and written production emerging from our community.</p>
+                <a href="pages/signup.html" class="btn-dl-eu" style="font-size:0.88rem;" data-i18n="policies_section.papers_placeholder_cta">Want to contribute? Join the Movement →</a>
+                <p style="font-size:0.82rem;color:var(--gray-500);margin-top:0.9rem;" data-i18n="policies_section.papers_remind">Members can submit position papers, articles and policy briefs through their Thematic Group.</p>
             </div>
         </div>
     </section>
@@ -1609,6 +1593,12 @@
                     <h3 data-i18n="movement.nc_title">National Coordinators</h3>
                     <p data-i18n="movement.nc_desc">Representatives based in each EU member state, responsible for member recruitment and local activities.</p>
                     <button class="org-open-btn" onclick="openModal('modal-org-nc')" data-i18n="common.view_members">View Members →</button>
+                </div>
+                <div class="card">
+                    <div class="card-icon">⚖️</div>
+                    <h3 data-i18n="movement.legal_section">Legal Department</h3>
+                    <p data-i18n="movement.ld_desc">Responsible for legal oversight, ethics enforcement, financial auditing and the integrity of the movement's governance.</p>
+                    <button class="org-open-btn" onclick="openModal('modal-org-ld')" data-i18n="common.view_members">View Members →</button>
                 </div>
             </div>
 
@@ -2396,6 +2386,51 @@
                 <div style="margin-top:1.2rem; padding-top:1.2rem; border-top:1px solid var(--gray-200);">
                     <p style="font-size:0.9rem;color:var(--gray-500);margin-bottom:0.8rem;" data-i18n="territory.nc_cta">Interested in coordinating EYM in your country?</p>
                     <a href="pages/apply-coordinator.html" class="btn-dl-eu" style="font-size:0.85rem;padding:0.55rem 1.2rem;" data-i18n="territory.apply_btn">✉ Apply as Coordinator</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Legal Department -->
+    <div class="modal-overlay" id="modal-org-ld">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3 data-i18n="modals.ld_title">⚖️ Legal Department</h3>
+                <button class="modal-close" onclick="closeModal('modal-org-ld')">✕</button>
+            </div>
+            <div class="modal-body">
+                <div data-i18n-html="modals.ld_body">
+                    <p>The Legal Department is responsible for legal oversight, ethics enforcement, financial auditing and ensuring the integrity of the movement's governance structures.</p>
+                </div>
+                <div class="modal-member-grid">
+                    <div class="modal-member-row">
+                        <div class="m-avatar">👤</div>
+                        <div class="m-info">
+                            <h4>Alessandro Tuzza 🇮🇹</h4>
+                            <div class="m-role" data-i18n="movement.roles.legal_chief">Chief of the Legal Team</div>
+                        </div>
+                    </div>
+                    <div class="modal-member-row">
+                        <div class="m-avatar">👤</div>
+                        <div class="m-info">
+                            <h4>Guillermo Aguayo 🇪🇸</h4>
+                            <div class="m-role" data-i18n="movement.roles.ethics_chief">Ethic and Arbitrary Chief</div>
+                        </div>
+                    </div>
+                    <div class="modal-member-row">
+                        <div class="m-avatar">👤</div>
+                        <div class="m-info">
+                            <h4>Gianmario De Rosa 🇮🇹</h4>
+                            <div class="m-role" data-i18n="movement.roles.financial_audit">Financial Audit</div>
+                        </div>
+                    </div>
+                    <div class="modal-member-row">
+                        <div class="m-avatar">👤</div>
+                        <div class="m-info">
+                            <h4>Marcos Castillo 🇪🇸</h4>
+                            <div class="m-role" data-i18n="movement.roles.legal_member">Member of the Legal Team</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
