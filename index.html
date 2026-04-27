@@ -457,7 +457,7 @@
         /* ── POLICIES — working groups ── */
         .wg-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 1.5rem;
         }
 
@@ -765,7 +765,7 @@
         /* ── NEWS ── */
         .news-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 1.5rem;
         }
 
@@ -1285,6 +1285,18 @@
             .lang-switcher { display: none; }
         }
 
+        /* ── 2-COLUMN ORG GRID (TC and similar 7-item grids) ── */
+        .org-grid-2col {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .org-grid-2col > :last-child:nth-child(odd),
+        .wg-grid > :last-child:nth-child(odd) {
+            grid-column: 1 / -1;
+            max-width: calc(50% - 0.75rem);
+            margin: 0 auto;
+        }
+
         /* ── 3-COLUMN ORG GRID (for sections with 9 members) ── */
         .org-grid-3col {
             grid-template-columns: repeat(3, 1fr);
@@ -1302,6 +1314,11 @@
 
         @media (max-width: 600px) {
             .org-grid-3col { grid-template-columns: 1fr; }
+            .org-grid-2col { grid-template-columns: 1fr; }
+            .wg-grid { grid-template-columns: 1fr; }
+            .news-grid { grid-template-columns: 1fr; }
+            .org-grid-2col > :last-child:nth-child(odd),
+            .wg-grid > :last-child:nth-child(odd) { max-width: 100%; }
         }
     </style>
 </head>
@@ -1701,7 +1718,7 @@
 
             <!-- Thematic Coordinators -->
             <p class="sub-title" data-i18n="movement.tc_section">Thematic Coordinators</p>
-            <div class="org-grid">
+            <div class="org-grid org-grid-2col">
                 <div class="member-card">
                     <div class="member-avatar">🌍</div>
                     <h4 data-i18n="common.tba">— To be announced —</h4>
@@ -1866,24 +1883,24 @@
                     <div class="news-card-img">📰</div>
                     <div class="news-card-body">
                         <div class="news-tag" data-i18n="news.tag_press">Press</div>
-                        <h3 data-i18n="news.n1_title">European Youth Movement launches with pan-European ambitions</h3>
-                        <p data-i18n="news.n1_text">A new youth association aims to bridge the gap between young Europeans and EU institutions...</p>
+                        <h3 data-i18n="news.n1_title">A Space for Press & Media Coverage</h3>
+                        <p data-i18n="news.n1_text">EYM is building a dedicated press area to collect external articles, mentions and statements about the movement — a transparent window on how European media covers our work.</p>
                     </div>
                 </div>
                 <div class="news-card">
                     <div class="news-card-img">🎙️</div>
                     <div class="news-card-body">
                         <div class="news-tag" data-i18n="news.tag_interview">Interview</div>
-                        <h3 data-i18n="news.n2_title">What do young Europeans want from the EU? EYM speaks out</h3>
-                        <p data-i18n="news.n2_text">In a recent interview, EYM representatives outlined the movement's vision for a more democratic Europe...</p>
+                        <h3 data-i18n="news.n2_title">Interviews & Public Appearances</h3>
+                        <p data-i18n="news.n2_text">Here we will publish interviews with EYM representatives — in print, podcast and video — where members and leadership share the movement's ideas with a wider audience.</p>
                     </div>
                 </div>
                 <div class="news-card">
                     <div class="news-card-img">▶️</div>
                     <div class="news-card-body">
                         <div class="news-tag" data-i18n="news.tag_youtube">YouTube</div>
-                        <h3 data-i18n="news.n3_title">EYM at the European Parliament Youth Conference</h3>
-                        <p data-i18n="news.n3_text">Watch our delegates present EYM's position papers at the latest EP youth event...</p>
+                        <h3 data-i18n="news.n3_title">EYM on YouTube</h3>
+                        <p data-i18n="news.n3_text">Our YouTube channel will host recordings of events, working group sessions and debates — making EYM's contribution to European public discourse accessible to all.</p>
                     </div>
                 </div>
                 <div class="news-card" style="border-top: 4px solid #E1306C;">
