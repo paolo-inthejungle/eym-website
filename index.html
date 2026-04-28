@@ -130,24 +130,43 @@
             color: var(--white);
         }
 
-        /* ── EU STARS ANIMATION ── */
+        /* ── EU STARS ANIMATION (pure CSS, no JS) ── */
         .eu-stars {
             position: absolute;
-            inset: 0;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
             pointer-events: none;
             z-index: 0;
-            overflow: hidden;
         }
 
         .eu-star {
             position: absolute;
-            top: 50%;
-            left: 50%;
             color: var(--gold-eu);
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             line-height: 1;
             user-select: none;
-            will-change: transform, opacity;
+            opacity: 0;
+            transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(0);
+            animation: euStarIn .55s cubic-bezier(.34,1.56,.64,1) forwards;
+            animation-delay: var(--d, .2s);
+        }
+
+        @keyframes euStarIn {
+            from {
+                opacity: 0;
+                transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(0);
+            }
+            to {
+                opacity: .72;
+                transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .eu-star { animation: none; opacity: .72;
+                transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1); }
         }
 
         /* ── HERO ── */
@@ -1431,18 +1450,18 @@ footer h4 {
         <!-- HERO -->
         <div class="hero">
             <div class="eu-stars" aria-hidden="true">
-                <span class="eu-star">★</span>
-                <span class="eu-star">★</span>
-                <span class="eu-star">★</span>
-                <span class="eu-star">★</span>
-                <span class="eu-star">★</span>
-                <span class="eu-star">★</span>
-                <span class="eu-star">★</span>
-                <span class="eu-star">★</span>
-                <span class="eu-star">★</span>
-                <span class="eu-star">★</span>
-                <span class="eu-star">★</span>
-                <span class="eu-star">★</span>
+                <span class="eu-star" style="--x:0px;--y:-130px;--d:.15s">★</span>
+                <span class="eu-star" style="--x:65px;--y:-113px;--d:.20s">★</span>
+                <span class="eu-star" style="--x:113px;--y:-65px;--d:.25s">★</span>
+                <span class="eu-star" style="--x:130px;--y:0px;--d:.30s">★</span>
+                <span class="eu-star" style="--x:113px;--y:65px;--d:.35s">★</span>
+                <span class="eu-star" style="--x:65px;--y:113px;--d:.40s">★</span>
+                <span class="eu-star" style="--x:0px;--y:130px;--d:.45s">★</span>
+                <span class="eu-star" style="--x:-65px;--y:113px;--d:.50s">★</span>
+                <span class="eu-star" style="--x:-113px;--y:65px;--d:.55s">★</span>
+                <span class="eu-star" style="--x:-130px;--y:0px;--d:.60s">★</span>
+                <span class="eu-star" style="--x:-113px;--y:-65px;--d:.65s">★</span>
+                <span class="eu-star" style="--x:-65px;--y:-113px;--d:.70s">★</span>
             </div>
             <div class="hero-inner">
                 <span class="hero-eyebrow" data-i18n="hero.eyebrow">Be part of the change!</span>
@@ -2677,70 +2696,6 @@ footer h4 {
             btn.disabled = false;
             btn.textContent = EYM.t('newsletter.submit');
         });
-
-        // ── EU STARS ANIMATION ──
-        (function () {
-            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-            const hero  = document.querySelector('.hero');
-            const h1    = hero.querySelector('h1');
-            const stars = [...hero.querySelectorAll('.eu-star')];
-            const R = 72; // circle radius px
-
-            // Place all stars in EU circle formation, hidden
-            stars.forEach((s, i) => {
-                const a = (i * 30 - 90) * Math.PI / 180;
-                s._cx = Math.cos(a) * R;
-                s._cy = Math.sin(a) * R;
-                s.style.opacity   = '0';
-                s.style.transform = `translate(calc(-50% + ${s._cx}px), calc(-50% + ${s._cy}px)) scale(0.4)`;
-            });
-
-            // Phase 1 — appear in circle (staggered)
-            requestAnimationFrame(() => requestAnimationFrame(() => {
-                stars.forEach((s, i) => {
-                    s.style.transition = `transform .5s cubic-bezier(.34,1.56,.64,1) ${i * .04}s, opacity .3s ease ${i * .04}s`;
-                    s.style.transform  = `translate(calc(-50% + ${s._cx}px), calc(-50% + ${s._cy}px)) scale(1)`;
-                    s.style.opacity    = '1';
-                });
-            }));
-
-            // Phase 2 — fly to positions around h1
-            setTimeout(function () {
-                const hr  = hero.getBoundingClientRect();
-                const h1r = h1.getBoundingClientRect();
-                const hcx = hr.width  / 2;
-                const hcy = hr.height / 2;
-                const l   = h1r.left   - hr.left - hcx;
-                const r   = h1r.right  - hr.left - hcx;
-                const t   = h1r.top    - hr.top  - hcy;
-                const b   = h1r.bottom - hr.top  - hcy;
-                const w   = r - l;
-                const p   = 28;
-
-                const pos = [
-                    { x: l,           y: t - p * 1.8 },   // top-left corner
-                    { x: l + w * .25, y: t - p * 2.5 },   // top left-centre
-                    { x: 0,           y: t - p * 3.0 },   // top centre
-                    { x: r - w * .25, y: t - p * 2.5 },   // top right-centre
-                    { x: r,           y: t - p * 1.8 },   // top-right corner
-                    { x: r + p * 1.8, y: (t + b) / 2 },  // right side
-                    { x: r,           y: b + p * 1.8 },   // bottom-right corner
-                    { x: r - w * .25, y: b + p * 2.5 },   // bottom right-centre
-                    { x: 0,           y: b + p * 3.0 },   // bottom centre
-                    { x: l + w * .25, y: b + p * 2.5 },   // bottom left-centre
-                    { x: l,           y: b + p * 1.8 },   // bottom-left corner
-                    { x: l - p * 1.8, y: (t + b) / 2 },  // left side
-                ];
-
-                stars.forEach((s, i) => {
-                    const { x, y } = pos[i];
-                    s.style.transition = `transform .9s cubic-bezier(.34,1.56,.64,1) ${i * .055}s, opacity .4s ease`;
-                    s.style.transform  = `translate(calc(-50% + ${Math.round(x)}px), calc(-50% + ${Math.round(y)}px))`;
-                    s.style.opacity    = '0.6';
-                });
-            }, 800);
-        }());
 
         // ── LANGUAGE SWITCHER DROPDOWN ──
         (function () {
