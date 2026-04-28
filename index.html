@@ -147,12 +147,12 @@
         .eu-star {
             position: absolute;
             color: var(--gold-eu);
-            font-size: 1.2rem;
+            font-size: 1.55rem;
             line-height: 1;
             user-select: none;
             opacity: 0;
             transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(0);
-            animation: euStarIn .55s cubic-bezier(.34,1.56,.64,1) forwards;
+            animation: euStarIn 1s cubic-bezier(.34,1.56,.64,1) forwards;
             animation-delay: var(--d, .2s);
         }
 
@@ -167,9 +167,16 @@
             }
         }
 
+        @keyframes euStarFade {
+            from { opacity: 0; }
+            to   { opacity: .72; }
+        }
+
         @media (prefers-reduced-motion: reduce) {
-            .eu-star { animation: none; opacity: .72;
-                transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1); }
+            .eu-star {
+                transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1);
+                animation: euStarFade .8s ease forwards;
+            }
         }
 
         /* ── HERO ── */
@@ -1454,18 +1461,18 @@ footer h4 {
         <!-- HERO -->
         <div class="hero">
             <div class="eu-stars" aria-hidden="true">
-                <span class="eu-star" style="--x:0px;--y:-130px;--d:.15s">★</span>
-                <span class="eu-star" style="--x:65px;--y:-113px;--d:.20s">★</span>
-                <span class="eu-star" style="--x:113px;--y:-65px;--d:.25s">★</span>
-                <span class="eu-star" style="--x:130px;--y:0px;--d:.30s">★</span>
-                <span class="eu-star" style="--x:113px;--y:65px;--d:.35s">★</span>
-                <span class="eu-star" style="--x:65px;--y:113px;--d:.40s">★</span>
-                <span class="eu-star" style="--x:0px;--y:130px;--d:.45s">★</span>
-                <span class="eu-star" style="--x:-65px;--y:113px;--d:.50s">★</span>
-                <span class="eu-star" style="--x:-113px;--y:65px;--d:.55s">★</span>
-                <span class="eu-star" style="--x:-130px;--y:0px;--d:.60s">★</span>
-                <span class="eu-star" style="--x:-113px;--y:-65px;--d:.65s">★</span>
-                <span class="eu-star" style="--x:-65px;--y:-113px;--d:.70s">★</span>
+                <span class="eu-star" style="--x:0px;--y:-130px;--d:.20s">★</span>
+                <span class="eu-star" style="--x:65px;--y:-113px;--d:.28s">★</span>
+                <span class="eu-star" style="--x:113px;--y:-65px;--d:.36s">★</span>
+                <span class="eu-star" style="--x:130px;--y:0px;--d:.44s">★</span>
+                <span class="eu-star" style="--x:113px;--y:65px;--d:.52s">★</span>
+                <span class="eu-star" style="--x:65px;--y:113px;--d:.60s">★</span>
+                <span class="eu-star" style="--x:0px;--y:130px;--d:.68s">★</span>
+                <span class="eu-star" style="--x:-65px;--y:113px;--d:.76s">★</span>
+                <span class="eu-star" style="--x:-113px;--y:65px;--d:.84s">★</span>
+                <span class="eu-star" style="--x:-130px;--y:0px;--d:.92s">★</span>
+                <span class="eu-star" style="--x:-113px;--y:-65px;--d:1s">★</span>
+                <span class="eu-star" style="--x:-65px;--y:-113px;--d:1.08s">★</span>
             </div>
             <div class="hero-inner">
                 <span class="hero-eyebrow" data-i18n="hero.eyebrow">Be part of the change!</span>
