@@ -2,7 +2,7 @@ const { Router } = require('express');
 const router = Router();
 
 router.post('/', async (req, res) => {
-  const { firstName, lastName, email, country, workingGroup } = req.body;
+  const { firstName, lastName, email, country, workingGroup, bio, phone } = req.body;
 
   if (!firstName || !lastName || !email || !email.includes('@') || !country) {
     return res.status(400).json({ error: 'All required fields must be filled in.' });
@@ -16,6 +16,8 @@ router.post('/', async (req, res) => {
         LASTNAME: lastName.trim(),
         COUNTRY: country,
         ...(workingGroup && { WORKING_GROUP: workingGroup }),
+        ...(bio   && { BIO:   bio }),
+        ...(phone && { PHONE: phone }),
       },
       listIds: [Number(process.env.BREVO_MEMBERS_LIST_ID) || 9],
       updateEnabled: true,
