@@ -28,12 +28,15 @@
         }
 
         html { scroll-behavior: smooth; }
+        html.i18n-ready body { opacity: 1; }
 
         body {
             font-family: var(--font);
             color: var(--gray-700);
             background: var(--white);
             line-height: 1.6;
+            opacity: 0;
+            transition: opacity .18s ease;
         }
 
         /* ── HEADER ── */
@@ -221,8 +224,9 @@
         .hero p {
             font-size: clamp(1rem, 2.2vw, 1.18rem);
             color: rgba(255,255,255,0.82);
-            max-width: 600px;
+            max-width: 660px;
             margin: 0 auto 2.5rem;
+            text-wrap: pretty;
         }
 
         .hero-buttons {
@@ -1466,7 +1470,7 @@ footer h4 {
             <div class="hero-inner">
                 <span class="hero-eyebrow" data-i18n="hero.eyebrow">Be part of the change!</span>
                 <h1 data-i18n-html="hero.title_html">Building together<br><span>tomorrow's Europe</span></h1>
-                <p data-i18n="hero.lead">European Youth Movement gives voice to new generations in shaping a fairer, more democratic and united Europe — one policy at a time.</p>
+                <p data-i18n="hero.lead">The European Youth Movement gives a voice to young people who believe in a truly united Europe, built on pragmatism, fairness, and responsibility.</p>
                 <div class="hero-buttons">
                     <a href="pages/signup.html" class="btn-primary" data-i18n="hero.join">Join the Movement →</a>
                     <a href="#policies" class="btn-outline" data-i18n="hero.explore">Explore our Policies</a>
@@ -2740,6 +2744,7 @@ footer h4 {
         })();
     </script>
     <script src="/assets/js/i18n.js"></script>
+    <script>setTimeout(function(){document.documentElement.classList.add('i18n-ready');},1500);</script>
 
 </body>
 </html>

@@ -33,6 +33,7 @@
     document.querySelectorAll('[data-lang]').forEach(btn => {
       btn.classList.toggle('lang-active', btn.dataset.lang === current);
     });
+    document.documentElement.classList.add('i18n-ready');
   }
 
   async function setLang(lang) {
