@@ -10,7 +10,7 @@ exports.handler = async (event) => {
     return { statusCode: 400, body: JSON.stringify({ error: 'Invalid request' }) };
   }
 
-  const { firstName, lastName, email, country, workingGroup } = body;
+  const { firstName, lastName, email, country, workingGroup, bio, phone } = body;
 
   if (!firstName || !lastName || !email || !email.includes('@') || !country) {
     return { statusCode: 400, body: JSON.stringify({ error: 'All required fields must be filled in.' }) };
@@ -23,6 +23,8 @@ exports.handler = async (event) => {
       LASTNAME: lastName.trim(),
       COUNTRY: country,
       ...(workingGroup && { WORKING_GROUP: workingGroup }),
+      ...(bio   && { BIO:   bio }),
+      ...(phone && { PHONE: phone }),
     },
     listIds: [Number(process.env.BREVO_MEMBERS_LIST_ID) || 9],
     updateEnabled: true,

@@ -855,7 +855,7 @@
             margin-top: 0.5rem;
         }
 
-        footer h4 {
+footer h4 {
             font-size: 0.78rem;
             font-weight: 700;
             letter-spacing: 0.1em;
@@ -1259,30 +1259,76 @@
 
         /* ── LANGUAGE SWITCHER ── */
         .lang-switcher {
-            display: flex;
-            gap: 0.2rem;
+            position: relative;
             flex-shrink: 0;
         }
-        .lang-switcher button {
+        .lang-trigger {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
             background: transparent;
             border: 1px solid rgba(255,255,255,0.3);
             color: rgba(255,255,255,0.7);
             font-size: 0.72rem;
             font-weight: 600;
             letter-spacing: 0.04em;
-            padding: 0.22rem 0.5rem;
+            padding: 0.22rem 0.6rem;
             border-radius: 4px;
             cursor: pointer;
             transition: all 0.15s;
+            white-space: nowrap;
         }
-        .lang-switcher button:hover,
-        .lang-switcher button.lang-active {
+        .lang-trigger:hover,
+        .lang-switcher.open .lang-trigger {
             background: rgba(255,255,255,0.15);
             border-color: rgba(255,255,255,0.7);
             color: var(--white);
         }
-        @media (max-width: 700px) {
-            .lang-switcher { display: none; }
+        .lang-trigger svg {
+            width: 9px;
+            height: 9px;
+            transition: transform 0.15s;
+            flex-shrink: 0;
+        }
+        .lang-switcher.open .lang-trigger svg {
+            transform: rotate(180deg);
+        }
+        .lang-dropdown {
+            display: none;
+            position: absolute;
+            top: calc(100% + 6px);
+            right: 0;
+            background: var(--blue-eu-dark);
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: 6px;
+            padding: 0.3rem;
+            z-index: 2000;
+            min-width: 64px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+            flex-direction: column;
+            gap: 0.1rem;
+        }
+        .lang-switcher.open .lang-dropdown {
+            display: flex;
+        }
+        .lang-dropdown button {
+            background: transparent;
+            border: none;
+            color: rgba(255,255,255,0.65);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            padding: 0.4rem 0.7rem;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+            width: 100%;
+            transition: all 0.15s;
+        }
+        .lang-dropdown button:hover,
+        .lang-dropdown button.lang-active {
+            background: rgba(255,255,255,0.15);
+            color: var(--white);
         }
 
         /* ── 2-COLUMN ORG GRID (TC and similar 7-item grids) ── */
@@ -1346,12 +1392,18 @@
                     <li><a href="#news" data-i18n="nav.news">News</a></li>
                 </ul>
             </nav>
-            <div class="lang-switcher">
-                <button data-lang="en" onclick="EYM.setLang('en')">EN</button>
-                <button data-lang="it" onclick="EYM.setLang('it')">IT</button>
-                <button data-lang="fr" onclick="EYM.setLang('fr')">FR</button>
-                <button data-lang="es" onclick="EYM.setLang('es')">ES</button>
-                <button data-lang="de" onclick="EYM.setLang('de')">DE</button>
+            <div class="lang-switcher" id="lang-switcher">
+                <button class="lang-trigger" id="lang-trigger" aria-haspopup="true" aria-expanded="false">
+                    <span id="lang-current">EN</span>
+                    <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,1 5,5 9,1"/></svg>
+                </button>
+                <div class="lang-dropdown" id="lang-dropdown">
+                    <button data-lang="en" onclick="EYM.setLang('en')">EN</button>
+                    <button data-lang="it" onclick="EYM.setLang('it')">IT</button>
+                    <button data-lang="fr" onclick="EYM.setLang('fr')">FR</button>
+                    <button data-lang="es" onclick="EYM.setLang('es')">ES</button>
+                    <button data-lang="de" onclick="EYM.setLang('de')">DE</button>
+                </div>
             </div>
             <a href="https://www.instagram.com/europeanyouthmovement/" target="_blank" rel="noopener" class="ig-btn" aria-label="Follow us on Instagram">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1926,7 +1978,7 @@
                     <img src="assets/logos/v3 monogramma/EYM v3 monogramma per immagini profilo.png" alt="EYM monogram">
                 </div>
                 <strong style="color:#fff; font-size:1rem;">European Youth Movement</strong>
-                <p data-i18n="footer.brand_desc">A pan-European youth association committed to building a more democratic, inclusive and solidary Europe.</p>
+                <p data-i18n="footer.brand_desc">A pan-European movement expanding its network across Europe, publishing policy proposals, fostering political education and building direct dialogue with EU institutions — to forge a shared European identity together.</p>
             </div>
             <div>
                 <h4 data-i18n="footer.nav_title">Navigation</h4>
@@ -2458,7 +2510,7 @@
 
         // Countries with EYM members (ISO 3166-1 alpha-2, lowercase)
         const MEMBER_COUNTRIES = new Set([
-            'it', 'de', 'es', 'fr', 'be', 'fi', 'se', 'gr', 'ro'
+            'it', 'de', 'es', 'fr', 'be', 'fi', 'se', 'gr', 'ro', 'pl', 'ua'
         ]);
 
         // Clean up SVG title text
@@ -2603,6 +2655,48 @@
             btn.disabled = false;
             btn.textContent = EYM.t('newsletter.submit');
         });
+
+        // ── LANGUAGE SWITCHER DROPDOWN ──
+        (function () {
+            const switcher = document.getElementById('lang-switcher');
+            const trigger  = document.getElementById('lang-trigger');
+            const label    = document.getElementById('lang-current');
+            const dropdown = document.getElementById('lang-dropdown');
+
+            function close() {
+                switcher.classList.remove('open');
+                trigger.setAttribute('aria-expanded', 'false');
+            }
+            function open() {
+                switcher.classList.add('open');
+                trigger.setAttribute('aria-expanded', 'true');
+            }
+
+            trigger.addEventListener('click', function (e) {
+                e.stopPropagation();
+                switcher.classList.contains('open') ? close() : open();
+            });
+
+            // Close on outside tap/click
+            document.addEventListener('click', close);
+
+            // Prevent clicks inside dropdown from closing it immediately
+            dropdown.addEventListener('click', function (e) {
+                e.stopPropagation();
+                close();
+            });
+
+            // Sync trigger label whenever lang-active is toggled on a dropdown button
+            new MutationObserver(function () {
+                const active = dropdown.querySelector('button.lang-active');
+                if (active) label.textContent = active.dataset.lang.toUpperCase();
+            }).observe(dropdown, { subtree: true, attributeFilter: ['class'], attributes: true });
+
+            // Close on Escape
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') close();
+            });
+        })();
     </script>
     <script src="/assets/js/i18n.js"></script>
 

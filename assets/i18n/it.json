@@ -147,7 +147,7 @@
     "lead": "Il Movimento Giovanile Europeo è in crescita in tutta Europa. La mappa mostrerà i membri registrati per paese man mano che la nostra rete si espande.",
     "map_title": "Membri in tutta Europa",
     "map_desc": "Passa il cursore su un paese per vedere il suo nome. I paesi evidenziati in blu hanno membri EYM registrati.",
-    "legend_none": "Nessun membro EYM ancora",
+    "legend_none": "Ancora nessun membro EYM",
     "legend_active": "Paesi con membri EYM",
     "nc_title": "Coordinatori Nazionali",
     "nc_cta": "Stiamo cercando coordinatori nazionali in ogni Stato membro dell'UE. Sei interessato a rappresentare EYM nel tuo paese?",
@@ -178,7 +178,7 @@
     "ig_text": "Aggiornamenti, eventi e contenuti dal backstage della comunità del Movimento Giovanile Europeo."
   },
   "footer": {
-    "brand_desc": "Un'associazione giovanile pan-europea impegnata a costruire un'Europa più democratica, inclusiva e solidale.",
+    "brand_desc": "Un movimento pan-europeo che espande la propria rete in tutta Europa, pubblica proposte politiche, promuove l'educazione civica e costruisce un dialogo diretto con le istituzioni UE — per forgiare insieme un'identità europea condivisa.",
     "nav_title": "Navigazione",
     "movement_title": "Movimento",
     "contact_title": "Contatti",
@@ -280,7 +280,7 @@
     "filter_position": "Position Paper",
     "filter_article": "Articoli",
     "filter_brief": "Policy Brief",
-    "empty_title": "Nessuna pubblicazione ancora",
+    "empty_title": "Ancora nessuna pubblicazione",
     "empty_instagram": "Seguici su Instagram",
     "empty_newsletter": "Iscriviti alla newsletter",
     "empty_desc": "EYM apre questo spazio a ogni membro che vuole contribuire — con position paper, articoli di analisi o policy brief. Stiamo lavorando per costruire un canale diretto con le istituzioni europee per dare visibilità alla produzione mediatica e scritta che emerge dalla nostra comunità.",
