@@ -142,13 +142,19 @@
         if (user) {
             const name = user.user_metadata?.first_name || user.email.split('@')[0];
             const label = btn.querySelector('.auth-btn-label');
-            if (label) label.textContent = name;
+            if (label) {
+                label.removeAttribute('data-i18n');
+                label.textContent = name;
+            }
             btn.dataset.state = 'in';
             const emailEl = dropdown?.querySelector('[data-auth-email]');
             if (emailEl) emailEl.textContent = user.email;
         } else {
             const label = btn.querySelector('.auth-btn-label');
-            if (label) label.textContent = 'Login';
+            if (label) {
+                label.setAttribute('data-i18n', 'nav.login');
+                label.textContent = window.EYM?.t('nav.login') || 'Login';
+            }
             btn.dataset.state = 'out';
         }
     }

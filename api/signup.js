@@ -1,5 +1,13 @@
 const { Router } = require('express');
+const { createClient } = require('@supabase/supabase-js');
 const router = Router();
+
+function getSupabaseAdmin() {
+    const url = process.env.SUPABASE_URL;
+    const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    if (!url || !key) return null;
+    return createClient(url, key, { auth: { autoRefreshToken: false, persistSession: false } });
+}
 
 router.post('/', async (req, res) => {
   const { firstName, lastName, email, country, workingGroup, bio, phone } = req.body;
@@ -34,6 +42,30 @@ router.post('/', async (req, res) => {
     });
 
     if (response.ok || response.status === 204) {
+      // Fire-and-forget: invite user to create a Supabase account
+      const admin = getSupabaseAdmin();
+      if (admin) {
+        admin.auth.admin.inviteUserByEmail(email, {
+          data: {
+            first_name: firstName.trim(),
+            last_name:  lastName.trim(),
+          },
+        }).then(({ data: inv, error: invErr }) => {
+          if (!invErr && inv?.user) {
+            // Pre-fill profile with all form data
+            admin.from('profiles').upsert({
+              id:            inv.user.id,
+              email,
+              first_name:    firstName.trim(),
+              last_name:     lastName.trim(),
+              country:       country       || '',
+              working_group: workingGroup  || '',
+              bio:           bio           || '',
+              phone:         phone         || '',
+            }, { onConflict: 'id' }).catch(() => {});
+          }
+        }).catch(() => {}); // never block the Brevo response
+      }
       return res.json({ success: true });
     }
 

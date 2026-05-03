@@ -18,7 +18,8 @@
     "territory": "Territorio",
     "events": "Eventos",
     "news": "Noticias",
-    "instagram": "Instagram"
+    "instagram": "Instagram",
+    "login": "Iniciar sesión"
   },
   "hero": {
     "eyebrow": "¡Sé parte del cambio!",
@@ -304,5 +305,28 @@
     "ds_subgroup_ukraine": "Guerra en Ucrania",
     "ds_subgroup_defence": "Defensa Europea",
     "ds_subgroup_open": "Abierto a todos los miembros"
+  },
+  "auth": {
+    "tab_login": "Iniciar sesión",
+    "tab_signup": "Registrarse",
+    "label_email": "Correo electrónico",
+    "label_password": "Contraseña",
+    "label_first_name": "Nombre",
+    "label_last_name": "Apellidos",
+    "label_confirm": "Confirmar contraseña",
+    "placeholder_email": "tu@ejemplo.es",
+    "placeholder_password": "mín. 8 caracteres",
+    "btn_login": "Iniciar sesión",
+    "btn_signup": "Crear cuenta",
+    "btn_forgot": "Enviar enlace",
+    "link_forgot": "¿Olvidaste tu contraseña?",
+    "link_signup": "Registrarse →",
+    "link_login": "¿Ya tienes cuenta? Iniciar sesión →",
+    "link_back": "← Volver al inicio de sesión",
+    "forgot_desc": "Introduce tu correo y te enviaremos un enlace para restablecer tu contraseña.",
+    "success_signup": "✓ Revisa tu correo para confirmar tu cuenta.",
+    "success_reset": "✓ Enlace enviado. Revisa tu correo.",
+    "err_password_match": "Las contraseñas no coinciden.",
+    "err_password_length": "La contraseña debe tener al menos 8 caracteres."
   }
 }

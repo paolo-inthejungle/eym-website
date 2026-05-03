@@ -1634,7 +1634,7 @@ footer h4 {
             <div class="auth-wrap" id="auth-wrap">
                 <button class="auth-btn" id="auth-btn" data-state="out" onclick="handleAuthBtnClick(event)">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                    <span class="auth-btn-label">Login</span>
+                    <span class="auth-btn-label" data-i18n="nav.login">Login</span>
                 </button>
                 <div class="auth-user-dropdown" id="auth-dropdown">
                     <div class="auth-dropdown-email" data-auth-email></div>
@@ -2945,8 +2945,8 @@ footer h4 {
         <div class="modal-box" style="max-width:420px;">
             <div class="modal-header">
                 <div class="auth-tabs">
-                    <button class="auth-tab active" data-tab="login" onclick="EYMAuth.switchAuthTab('login')">Login</button>
-                    <button class="auth-tab" data-tab="signup" onclick="EYMAuth.switchAuthTab('signup')">Sign Up</button>
+                    <button class="auth-tab active" data-tab="login" onclick="EYMAuth.switchAuthTab('login')" data-i18n="auth.tab_login">Login</button>
+                    <button class="auth-tab" data-tab="signup" onclick="EYMAuth.switchAuthTab('signup')" data-i18n="auth.tab_signup">Sign Up</button>
                 </div>
                 <button class="modal-close" onclick="EYMAuth.closeAuthModal()">✕</button>
             </div>
@@ -2958,18 +2958,18 @@ footer h4 {
                 <div class="auth-panel active" data-panel="login">
                     <form id="form-login" onsubmit="handleLogin(event)">
                         <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" name="email" required autocomplete="email" placeholder="you@example.com">
+                            <label data-i18n="auth.label_email">Email</label>
+                            <input type="email" name="email" required autocomplete="email" placeholder="you@example.com" data-i18n-placeholder="auth.placeholder_email">
                         </div>
                         <div class="form-group">
-                            <label>Password</label>
+                            <label data-i18n="auth.label_password">Password</label>
                             <input type="password" name="password" required autocomplete="current-password" placeholder="••••••••">
                         </div>
-                        <button type="submit" class="auth-submit-btn" id="login-btn">Log In</button>
+                        <button type="submit" class="auth-submit-btn" id="login-btn" data-i18n="auth.btn_login">Log In</button>
                         <p class="auth-link">
-                            <a href="#" onclick="EYMAuth.switchAuthTab('forgot');return false">Forgot password?</a>
+                            <a href="#" onclick="EYMAuth.switchAuthTab('forgot');return false" data-i18n="auth.link_forgot">Forgot password?</a>
                             &nbsp;·&nbsp;
-                            <a href="#" onclick="EYMAuth.switchAuthTab('signup');return false">Sign up →</a>
+                            <a href="#" onclick="EYMAuth.switchAuthTab('signup');return false" data-i18n="auth.link_signup">Sign up →</a>
                         </p>
                     </form>
                 </div>
@@ -2977,14 +2977,14 @@ footer h4 {
                 <!-- Forgot password -->
                 <div class="auth-panel" data-panel="forgot">
                     <form id="form-forgot" onsubmit="handleForgot(event)">
-                        <p style="font-size:0.88rem;color:var(--gray-500);margin-bottom:1rem;">Enter your email and we'll send you a reset link.</p>
+                        <p style="font-size:0.88rem;color:var(--gray-500);margin-bottom:1rem;" data-i18n="auth.forgot_desc">Enter your email and we'll send you a reset link.</p>
                         <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" name="email" required autocomplete="email" placeholder="you@example.com">
+                            <label data-i18n="auth.label_email">Email</label>
+                            <input type="email" name="email" required autocomplete="email" placeholder="you@example.com" data-i18n-placeholder="auth.placeholder_email">
                         </div>
-                        <button type="submit" class="auth-submit-btn" id="forgot-btn">Send Reset Link</button>
+                        <button type="submit" class="auth-submit-btn" id="forgot-btn" data-i18n="auth.btn_forgot">Send Reset Link</button>
                         <p class="auth-link">
-                            <a href="#" onclick="EYMAuth.switchAuthTab('login');return false">← Back to login</a>
+                            <a href="#" onclick="EYMAuth.switchAuthTab('login');return false" data-i18n="auth.link_back">← Back to login</a>
                         </p>
                     </form>
                 </div>
@@ -2994,29 +2994,29 @@ footer h4 {
                     <form id="form-signup" onsubmit="handleSignup(event)">
                         <div class="form-row">
                             <div class="form-group">
-                                <label>First Name</label>
+                                <label data-i18n="auth.label_first_name">First Name</label>
                                 <input type="text" name="firstName" required autocomplete="given-name">
                             </div>
                             <div class="form-group">
-                                <label>Last Name</label>
+                                <label data-i18n="auth.label_last_name">Last Name</label>
                                 <input type="text" name="lastName" required autocomplete="family-name">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" name="email" required autocomplete="email" placeholder="you@example.com">
+                            <label data-i18n="auth.label_email">Email</label>
+                            <input type="email" name="email" required autocomplete="email" placeholder="you@example.com" data-i18n-placeholder="auth.placeholder_email">
                         </div>
                         <div class="form-group">
-                            <label>Password</label>
-                            <input type="password" name="password" required autocomplete="new-password" placeholder="min. 8 characters">
+                            <label data-i18n="auth.label_password">Password</label>
+                            <input type="password" name="password" required autocomplete="new-password" placeholder="min. 8 characters" data-i18n-placeholder="auth.placeholder_password">
                         </div>
                         <div class="form-group">
-                            <label>Confirm Password</label>
+                            <label data-i18n="auth.label_confirm">Confirm Password</label>
                             <input type="password" name="confirm" required autocomplete="new-password">
                         </div>
-                        <button type="submit" class="auth-submit-btn" id="signup-btn">Create Account</button>
+                        <button type="submit" class="auth-submit-btn" id="signup-btn" data-i18n="auth.btn_signup">Create Account</button>
                         <p class="auth-link">
-                            <a href="#" onclick="EYMAuth.switchAuthTab('login');return false">Already have an account? Log in →</a>
+                            <a href="#" onclick="EYMAuth.switchAuthTab('login');return false" data-i18n="auth.link_login">Already have an account? Log in →</a>
                         </p>
                     </form>
                 </div>
@@ -3072,11 +3072,11 @@ footer h4 {
             sucEl.textContent = '';
 
             if (form.password.value !== form.confirm.value) {
-                errEl.textContent = 'Passwords do not match.';
+                errEl.textContent = window.EYM?.t('auth.err_password_match') || 'Passwords do not match.';
                 return;
             }
             if (form.password.value.length < 8) {
-                errEl.textContent = 'Password must be at least 8 characters.';
+                errEl.textContent = window.EYM?.t('auth.err_password_length') || 'Password must be at least 8 characters.';
                 return;
             }
 
@@ -3092,7 +3092,7 @@ footer h4 {
             btn.disabled = false;
             btn.textContent = 'Create Account';
             if (error) { errEl.textContent = error.message; return; }
-            sucEl.textContent = '✓ Check your email to confirm your account.';
+            sucEl.textContent = window.EYM?.t('auth.success_signup') || '✓ Check your email to confirm your account.';
             form.reset();
         }
 
@@ -3112,7 +3112,7 @@ footer h4 {
             btn.disabled = false;
             btn.textContent = 'Send Reset Link';
             if (error) { errEl.textContent = error.message; return; }
-            sucEl.textContent = '✓ Reset link sent. Check your email.';
+            sucEl.textContent = window.EYM?.t('auth.success_reset') || '✓ Reset link sent. Check your email.';
             form.reset();
         }
 

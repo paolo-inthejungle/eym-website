@@ -18,7 +18,8 @@
     "territory": "Territorio",
     "events": "Eventi",
     "news": "News",
-    "instagram": "Instagram"
+    "instagram": "Instagram",
+    "login": "Accedi"
   },
   "hero": {
     "eyebrow": "Fai parte del cambiamento!",
@@ -304,5 +305,28 @@
     "ds_subgroup_ukraine": "Guerra in Ucraina",
     "ds_subgroup_defence": "Difesa Europea",
     "ds_subgroup_open": "Aperto a tutti i membri"
+  },
+  "auth": {
+    "tab_login": "Accedi",
+    "tab_signup": "Registrati",
+    "label_email": "Email",
+    "label_password": "Password",
+    "label_first_name": "Nome",
+    "label_last_name": "Cognome",
+    "label_confirm": "Conferma Password",
+    "placeholder_email": "tu@esempio.it",
+    "placeholder_password": "min. 8 caratteri",
+    "btn_login": "Accedi",
+    "btn_signup": "Crea Account",
+    "btn_forgot": "Invia Link di Reset",
+    "link_forgot": "Password dimenticata?",
+    "link_signup": "Registrati →",
+    "link_login": "Hai già un account? Accedi →",
+    "link_back": "← Torna al login",
+    "forgot_desc": "Inserisci la tua email e ti invieremo un link per reimpostare la password.",
+    "success_signup": "✓ Controlla la tua email per confermare l'account.",
+    "success_reset": "✓ Link inviato. Controlla la tua email.",
+    "err_password_match": "Le password non coincidono.",
+    "err_password_length": "La password deve essere di almeno 8 caratteri."
   }
 }

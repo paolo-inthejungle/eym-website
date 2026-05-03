@@ -18,7 +18,8 @@
     "territory": "Territoire",
     "events": "Événements",
     "news": "Actualités",
-    "instagram": "Instagram"
+    "instagram": "Instagram",
+    "login": "Connexion"
   },
   "hero": {
     "eyebrow": "Faites partie du changement !",
@@ -304,5 +305,28 @@
     "ds_subgroup_ukraine": "Guerre en Ukraine",
     "ds_subgroup_defence": "Défense Européenne",
     "ds_subgroup_open": "Ouvert à tous les membres"
+  },
+  "auth": {
+    "tab_login": "Connexion",
+    "tab_signup": "S'inscrire",
+    "label_email": "E-mail",
+    "label_password": "Mot de passe",
+    "label_first_name": "Prénom",
+    "label_last_name": "Nom",
+    "label_confirm": "Confirmer le mot de passe",
+    "placeholder_email": "vous@exemple.fr",
+    "placeholder_password": "min. 8 caractères",
+    "btn_login": "Se connecter",
+    "btn_signup": "Créer un compte",
+    "btn_forgot": "Envoyer le lien",
+    "link_forgot": "Mot de passe oublié ?",
+    "link_signup": "S'inscrire →",
+    "link_login": "Déjà un compte ? Se connecter →",
+    "link_back": "← Retour à la connexion",
+    "forgot_desc": "Entrez votre e-mail et nous vous enverrons un lien de réinitialisation.",
+    "success_signup": "✓ Vérifiez votre e-mail pour confirmer votre compte.",
+    "success_reset": "✓ Lien envoyé. Vérifiez votre e-mail.",
+    "err_password_match": "Les mots de passe ne correspondent pas.",
+    "err_password_length": "Le mot de passe doit contenir au moins 8 caractères."
   }
 }
