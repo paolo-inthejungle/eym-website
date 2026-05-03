@@ -31,13 +31,16 @@ CREATE TABLE IF NOT EXISTS public.wg_access (
 ALTER TABLE public.wg_access ENABLE ROW LEVEL SECURITY;
 
 -- Users can only read their own access rows (admins manage via service_role)
+DROP POLICY IF EXISTS "wg_access_select_own" ON public.wg_access;
 CREATE POLICY "wg_access_select_own" ON public.wg_access
     FOR SELECT USING (auth.uid() = user_id);
 
 
 -- ── UPDATE RLS ON documents ───────────────────────────────────────
-DROP POLICY IF EXISTS "documents_select_auth"       ON public.documents;
+DROP POLICY IF EXISTS "documents_select_auth"        ON public.documents;
 DROP POLICY IF EXISTS "documents_insert_whitelisted" ON public.documents;
+DROP POLICY IF EXISTS "documents_select_wg"          ON public.documents;
+DROP POLICY IF EXISTS "documents_insert_wg"          ON public.documents;
 
 -- Read: user must have a wg_access row for this document's working_group
 CREATE POLICY "documents_select_wg" ON public.documents
