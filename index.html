@@ -1501,6 +1501,7 @@ footer h4 {
             font-family: var(--font);
             cursor: pointer;
             color: var(--gray-500);
+            white-space: nowrap;
             transition: background 0.14s, color 0.14s;
         }
 
@@ -1509,6 +1510,9 @@ footer h4 {
             color: var(--blue-eu);
             box-shadow: 0 1px 4px rgba(0,0,0,0.08);
         }
+
+        /* Auth modal: no scrollbar (form fits viewport on all reasonable screens) */
+        #auth-modal .modal-box { overflow-y: hidden; max-height: none; }
 
         .auth-panel { display: none; }
         .auth-panel.active { display: block; }
