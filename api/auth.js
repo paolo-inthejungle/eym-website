@@ -9,6 +9,11 @@ const supabase = createClient(
     { auth: { autoRefreshToken: false, persistSession: false } }
 );
 
+const VALID_WGS = new Set([
+    'foreign-policy', 'defence-security', 'energy-environment',
+    'justice', 'education', 'healthcare', 'immigration-human-rights',
+]);
+
 async function requireAuth(req, res, next) {
     const token = (req.headers.authorization || '').replace('Bearer ', '').trim();
     if (!token) return res.status(401).json({ error: 'Unauthorized' });
@@ -18,60 +23,66 @@ async function requireAuth(req, res, next) {
     next();
 }
 
-async function isWhitelisted(userId) {
-    const { data } = await supabase
-        .from('whitelist')
-        .select('user_id')
+async function hasWgAccess(userId, workingGroup, requireUpload = false) {
+    const query = supabase
+        .from('wg_access')
+        .select('can_upload')
         .eq('user_id', userId)
-        .maybeSingle();
+        .eq('working_group', workingGroup);
+    if (requireUpload) query.eq('can_upload', true);
+    const { data } = await query.maybeSingle();
     return !!data;
 }
 
 // POST /api/auth/upload-url
-// Verifies JWT, checks whitelist, returns a signed upload URL for Supabase Storage
+// Body: { filename, contentType, working_group }
 router.post('/upload-url', requireAuth, async (req, res) => {
-    if (!(await isWhitelisted(req.user.id))) {
-        return res.status(403).json({ error: 'Not authorized to upload documents' });
+    const { filename, contentType, working_group } = req.body;
+    if (!filename || !contentType || !working_group) {
+        return res.status(400).json({ error: 'filename, contentType and working_group are required' });
     }
-
-    const { filename, contentType } = req.body;
-    if (!filename || !contentType) {
-        return res.status(400).json({ error: 'filename and contentType are required' });
+    if (!VALID_WGS.has(working_group)) {
+        return res.status(400).json({ error: 'Invalid working_group' });
+    }
+    if (!(await hasWgAccess(req.user.id, working_group, true))) {
+        return res.status(403).json({ error: 'Not authorized to upload to this working group' });
     }
 
     const safeName = filename.replace(/[^a-zA-Z0-9._-]/g, '_');
-    const storagePath = `${req.user.id}/${Date.now()}_${safeName}`;
+    const storagePath = `${working_group}/${req.user.id}/${Date.now()}_${safeName}`;
 
     const { data, error } = await supabase.storage
         .from('documents')
         .createSignedUploadUrl(storagePath);
 
     if (error) return res.status(500).json({ error: error.message });
-
     res.json({ signedUrl: data.signedUrl, storagePath });
 });
 
 // POST /api/auth/documents
-// Saves document metadata after a successful upload
+// Body: { title, description, storage_path, file_size, mime_type, working_group }
 router.post('/documents', requireAuth, async (req, res) => {
-    if (!(await isWhitelisted(req.user.id))) {
-        return res.status(403).json({ error: 'Not authorized' });
+    const { title, description, storage_path, file_size, mime_type, working_group } = req.body;
+    if (!title || !storage_path || !working_group) {
+        return res.status(400).json({ error: 'title, storage_path and working_group are required' });
     }
-
-    const { title, description, storage_path, file_size, mime_type } = req.body;
-    if (!title || !storage_path) {
-        return res.status(400).json({ error: 'title and storage_path are required' });
+    if (!VALID_WGS.has(working_group)) {
+        return res.status(400).json({ error: 'Invalid working_group' });
+    }
+    if (!(await hasWgAccess(req.user.id, working_group, true))) {
+        return res.status(403).json({ error: 'Not authorized to upload to this working group' });
     }
 
     const { data, error } = await supabase
         .from('documents')
         .insert({
-            uploaded_by: req.user.id,
+            uploaded_by:   req.user.id,
             title,
-            description: description || '',
+            description:   description || '',
             storage_path,
-            file_size: file_size || null,
-            mime_type: mime_type || null,
+            file_size:     file_size || null,
+            mime_type:     mime_type || null,
+            working_group,
         })
         .select()
         .single();

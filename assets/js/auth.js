@@ -73,24 +73,31 @@
 
     // ── Documents ──────────────────────────────────────────────
 
-    async function isWhitelisted() {
+    // Returns [{ working_group, can_upload }, ...] for the current user
+    async function getWgAccess() {
         const { data: { user } } = await sb.auth.getUser();
-        if (!user) return false;
-        const { data } = await sb.from('whitelist').select('user_id').eq('user_id', user.id).maybeSingle();
-        return !!data;
+        if (!user) return [];
+        const { data } = await sb.from('wg_access')
+            .select('working_group, can_upload')
+            .eq('user_id', user.id);
+        return data || [];
     }
 
-    async function getDocuments() {
-        const { data, error } = await sb.from('documents').select('*').order('created_at', { ascending: false });
+    // Returns documents for a specific working group (RLS filters automatically)
+    async function getDocumentsByWg(workingGroup) {
+        const { data, error } = await sb.from('documents')
+            .select('*')
+            .eq('working_group', workingGroup)
+            .order('created_at', { ascending: false });
         if (error) throw error;
         return data || [];
     }
 
-    async function uploadDocument(file, title, description) {
-        // 1. Get signed upload URL from backend (backend verifies whitelist)
+    async function uploadDocument(file, title, description, workingGroup) {
+        // 1. Get signed upload URL from backend (backend verifies wg_access)
         const urlRes = await authFetch('/api/auth/upload-url', {
             method: 'POST',
-            body: JSON.stringify({ filename: file.name, contentType: file.type }),
+            body: JSON.stringify({ filename: file.name, contentType: file.type, working_group: workingGroup }),
         });
         if (!urlRes.ok) {
             const err = await urlRes.json().catch(() => ({}));
@@ -111,10 +118,11 @@
             method: 'POST',
             body: JSON.stringify({
                 title,
-                description: description || '',
-                storage_path: storagePath,
-                file_size: file.size,
-                mime_type: file.type,
+                description:   description || '',
+                storage_path:  storagePath,
+                file_size:     file.size,
+                mime_type:     file.type,
+                working_group: workingGroup,
             }),
         });
         if (!metaRes.ok) {
@@ -211,7 +219,7 @@
         init,
         signUp, signIn, signOut, resetPassword,
         getProfile, updateProfile,
-        isWhitelisted, getDocuments, uploadDocument, getDocumentUrl,
+        getWgAccess, getDocumentsByWg, uploadDocument, getDocumentUrl,
         openAuthModal, closeAuthModal, switchAuthTab,
         getUser: () => currentUser,
         client: sb,

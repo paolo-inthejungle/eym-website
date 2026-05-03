@@ -336,6 +336,10 @@
         .upload-zone-label { font-size: 0.88rem; color: var(--gray-500); }
         .upload-zone-label strong { color: var(--blue-eu); cursor: pointer; }
         .upload-filename { font-size: 0.84rem; color: var(--gray-700); margin-top: 0.4rem; font-weight: 600; }
+        .upload-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+        .upload-link { color: var(--blue-eu); cursor: pointer; text-decoration: underline; }
+        .upload-section { margin-bottom: 1.5rem; }
+        .optional { font-size: 0.8rem; color: var(--gray-500); font-weight: 400; }
 
         /* ── WHITELIST BADGE ── */
         .badge {
@@ -498,52 +502,8 @@
             </form>
         </div>
 
-        <!-- DOCUMENTS CARD -->
-        <div class="card">
-            <div class="card-title" style="display:flex;align-items:center;justify-content:space-between;">
-                <span>Shared Documents</span>
-                <span id="whitelist-badge"></span>
-            </div>
-
-            <!-- Upload form (shown only for whitelisted users) -->
-            <div id="upload-section" style="display:none;margin-bottom:1.5rem;">
-                <div id="upload-feedback" class="form-feedback" style="margin-bottom:0.75rem;"></div>
-                <form id="upload-form" onsubmit="handleUpload(event)">
-                    <div class="upload-zone" id="upload-zone" onclick="document.getElementById('file-input').click()"
-                         ondragover="event.preventDefault();this.classList.add('dragover')"
-                         ondragleave="this.classList.remove('dragover')"
-                         ondrop="handleDrop(event)">
-                        <input type="file" id="file-input" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt,.png,.jpg,.jpeg"
-                               onchange="handleFileSelect(this)">
-                        <div class="upload-zone-label">
-                            Drop a file here or <strong>click to browse</strong>
-                        </div>
-                        <div class="upload-filename" id="upload-filename"></div>
-                    </div>
-                    <div class="form-grid" style="margin-bottom:0.85rem;">
-                        <div class="form-group">
-                            <label>Title <span style="color:#dc2626">*</span></label>
-                            <input type="text" name="title" required placeholder="Document title">
-                        </div>
-                        <div class="form-group">
-                            <label>Description</label>
-                            <input type="text" name="description" placeholder="Optional description">
-                        </div>
-                    </div>
-                    <button type="submit" class="btn-primary" id="upload-btn">Upload Document</button>
-                </form>
-            </div>
-
-            <!-- Locked message for non-whitelisted users -->
-            <div id="upload-locked" class="upload-locked" style="display:none;margin-bottom:1.25rem;">
-                🔒 You don't have upload permissions yet. Contact an admin to be added to the whitelist.
-            </div>
-
-            <!-- Document list -->
-            <div class="doc-list" id="doc-list">
-                <div class="empty-state">Loading documents…</div>
-            </div>
-        </div>
+        <!-- WORKING GROUP DOCUMENT AREAS (populated dynamically) -->
+        <div id="wg-docs-section"></div>
 
     </div>
 
@@ -554,7 +514,17 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
     <script src="/assets/js/auth.js"></script>
     <script>
-        let selectedFile = null;
+        const WGS = [
+            { slug: 'foreign-policy',          label: 'Foreign Policy',             icon: '🌍' },
+            { slug: 'defence-security',         label: 'Defence & Security',         icon: '🛡️' },
+            { slug: 'energy-environment',       label: 'Energy & Environment',       icon: '🌱' },
+            { slug: 'justice',                  label: 'Justice',                    icon: '⚖️' },
+            { slug: 'education',                label: 'Education',                  icon: '📚' },
+            { slug: 'healthcare',               label: 'Healthcare',                 icon: '🏥' },
+            { slug: 'immigration-human-rights', label: 'Immigration & Human Rights', icon: '🤝' },
+        ];
+
+        const selectedFiles = {};
 
         function handleAuthBtnClick(e) {
             e.stopPropagation();
@@ -592,12 +562,52 @@
             return new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
         }
 
-        async function loadDocuments() {
-            const listEl = document.getElementById('doc-list');
+        function renderWgSection(wgSlug, canUpload) {
+            const wg = WGS.find(w => w.slug === wgSlug) || { label: wgSlug, icon: '📁' };
+            const uploadHtml = canUpload ? `
+                <div class="upload-section">
+                    <form id="upload-form-${wgSlug}" onsubmit="handleUpload(event, '${wgSlug}')">
+                        <div class="upload-zone" id="upload-zone-${wgSlug}"
+                            ondragover="event.preventDefault(); this.classList.add('dragover')"
+                            ondragleave="this.classList.remove('dragover')"
+                            ondrop="handleDrop(event, '${wgSlug}')">
+                            <div class="upload-icon">📤</div>
+                            <div>Drag &amp; drop a file here or <label class="upload-link" for="file-input-${wgSlug}">browse</label></div>
+                            <input type="file" id="file-input-${wgSlug}" style="display:none" onchange="handleFileSelect(this, '${wgSlug}')">
+                            <div class="upload-filename" id="upload-filename-${wgSlug}"></div>
+                        </div>
+                        <div class="form-group">
+                            <label>Document Title</label>
+                            <input type="text" name="title" required placeholder="e.g. Policy Brief Q1 2026">
+                        </div>
+                        <div class="form-group">
+                            <label>Description <span class="optional">(optional)</span></label>
+                            <textarea name="description" rows="2" placeholder="Short description…"></textarea>
+                        </div>
+                        <div class="form-feedback" id="upload-feedback-${wgSlug}"></div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn-primary" id="upload-btn-${wgSlug}">Upload Document</button>
+                        </div>
+                    </form>
+                </div>` : '';
+            return `
+                <div class="card wg-card" id="wg-card-${wgSlug}">
+                    <div class="card-header">
+                        <h2>${wg.icon} ${wg.label}</h2>
+                    </div>
+                    ${uploadHtml}
+                    <div class="doc-list" id="doc-list-${wgSlug}">
+                        <div class="empty-state">Loading documents…</div>
+                    </div>
+                </div>`;
+        }
+
+        async function loadWgDocuments(wgSlug) {
+            const listEl = document.getElementById(`doc-list-${wgSlug}`);
             try {
-                const docs = await EYMAuth.getDocuments();
+                const docs = await EYMAuth.getDocumentsByWg(wgSlug);
                 if (!docs.length) {
-                    listEl.innerHTML = '<div class="empty-state">No documents uploaded yet.</div>';
+                    listEl.innerHTML = '<div class="empty-state">No documents in this working group yet.</div>';
                     return;
                 }
                 listEl.innerHTML = docs.map(d => `
@@ -632,18 +642,18 @@
             return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
         }
 
-        function handleFileSelect(input) {
-            selectedFile = input.files[0] || null;
-            document.getElementById('upload-filename').textContent = selectedFile ? selectedFile.name : '';
+        function handleFileSelect(input, wgSlug) {
+            selectedFiles[wgSlug] = input.files[0] || null;
+            document.getElementById(`upload-filename-${wgSlug}`).textContent = selectedFiles[wgSlug] ? selectedFiles[wgSlug].name : '';
         }
 
-        function handleDrop(e) {
+        function handleDrop(e, wgSlug) {
             e.preventDefault();
-            document.getElementById('upload-zone').classList.remove('dragover');
+            document.getElementById(`upload-zone-${wgSlug}`).classList.remove('dragover');
             const file = e.dataTransfer.files[0];
             if (file) {
-                selectedFile = file;
-                document.getElementById('upload-filename').textContent = file.name;
+                selectedFiles[wgSlug] = file;
+                document.getElementById(`upload-filename-${wgSlug}`).textContent = file.name;
             }
         }
 
@@ -679,15 +689,15 @@
             btn.textContent = 'Save Changes';
         }
 
-        async function handleUpload(e) {
+        async function handleUpload(e, wgSlug) {
             e.preventDefault();
             const form = e.target;
-            const btn = document.getElementById('upload-btn');
-            const feedback = document.getElementById('upload-feedback');
+            const btn = document.getElementById(`upload-btn-${wgSlug}`);
+            const feedback = document.getElementById(`upload-feedback-${wgSlug}`);
             feedback.className = 'form-feedback';
             feedback.textContent = '';
 
-            if (!selectedFile) {
+            if (!selectedFiles[wgSlug]) {
                 feedback.className = 'form-feedback error';
                 feedback.textContent = 'Please select a file.';
                 return;
@@ -697,13 +707,13 @@
             btn.textContent = 'Uploading…';
 
             try {
-                await EYMAuth.uploadDocument(selectedFile, form.title.value, form.description.value);
+                await EYMAuth.uploadDocument(selectedFiles[wgSlug], form.title.value, form.description.value, wgSlug);
                 feedback.className = 'form-feedback success';
                 feedback.textContent = '✓ Document uploaded successfully.';
                 form.reset();
-                selectedFile = null;
-                document.getElementById('upload-filename').textContent = '';
-                await loadDocuments();
+                selectedFiles[wgSlug] = null;
+                document.getElementById(`upload-filename-${wgSlug}`).textContent = '';
+                await loadWgDocuments(wgSlug);
             } catch (err) {
                 feedback.className = 'form-feedback error';
                 feedback.textContent = err.message || 'Upload failed.';
@@ -721,7 +731,6 @@
                 return;
             }
 
-            // Show page
             document.getElementById('page-wrap').style.display = 'block';
 
             // Load profile
@@ -736,19 +745,17 @@
                 form.phone.value = profile.phone || '';
             }
 
-            // Check whitelist
-            const wl = await EYMAuth.isWhitelisted();
-            const badge = document.getElementById('whitelist-badge');
-            if (wl) {
-                badge.innerHTML = '<span class="badge badge-blue">✓ Upload Access</span>';
-                document.getElementById('upload-section').style.display = 'block';
-            } else {
-                badge.innerHTML = '<span class="badge badge-gray">Viewer</span>';
-                document.getElementById('upload-locked').style.display = 'block';
+            // Render per-WG document sections
+            const wgAccess = await EYMAuth.getWgAccess();
+            const wgSection = document.getElementById('wg-docs-section');
+
+            if (!wgAccess.length) {
+                wgSection.innerHTML = '<div class="card"><p style="color:#666;padding:1rem 0;">You do not have access to any working group documents yet. Contact your administrator.</p></div>';
+                return;
             }
 
-            // Load documents
-            await loadDocuments();
+            wgSection.innerHTML = wgAccess.map(a => renderWgSection(a.working_group, a.can_upload)).join('');
+            await Promise.all(wgAccess.map(a => loadWgDocuments(a.working_group)));
         }
 
         async function handleChangePassword(e) {
