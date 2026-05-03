@@ -373,8 +373,45 @@
         .upload-filename { font-size: 0.84rem; color: var(--gray-700); margin-top: 0.4rem; font-weight: 600; }
         .upload-icon { font-size: 2rem; margin-bottom: 0.5rem; }
         .upload-link { color: var(--blue-eu); cursor: pointer; text-decoration: underline; }
-        .upload-section { margin-bottom: 1.5rem; }
         .optional { font-size: 0.8rem; color: var(--gray-500); font-weight: 400; }
+
+        /* ── UPLOAD ACCORDION ── */
+        .upload-accordion {
+            margin-top: 1.25rem;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .upload-toggle {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--blue-eu);
+            font-family: var(--font);
+        }
+
+        .upload-toggle:hover { color: var(--blue-eu-dark); }
+
+        .upload-chevron {
+            width: 12px; height: 12px;
+            transition: transform 0.2s;
+            flex-shrink: 0;
+        }
+
+        .upload-toggle.open .upload-chevron { transform: rotate(180deg); }
+
+        .upload-body {
+            display: none;
+            padding-bottom: 0.5rem;
+        }
+
+        .upload-body.open { display: block; }
 
         /* ── WHITELIST BADGE ── */
         .badge {
@@ -607,41 +644,54 @@
         function renderWgSection(wgSlug, canUpload) {
             const wg = WGS.find(w => w.slug === wgSlug) || { label: wgSlug, icon: '📁' };
             const uploadHtml = canUpload ? `
-                <div class="upload-section">
-                    <form id="upload-form-${wgSlug}" onsubmit="handleUpload(event, '${wgSlug}')">
-                        <div class="upload-zone" id="upload-zone-${wgSlug}"
-                            ondragover="event.preventDefault(); this.classList.add('dragover')"
-                            ondragleave="this.classList.remove('dragover')"
-                            ondrop="handleDrop(event, '${wgSlug}')">
-                            <div class="upload-icon">📤</div>
-                            <div>Drag &amp; drop a file here or <label class="upload-link" for="file-input-${wgSlug}">browse</label></div>
-                            <input type="file" id="file-input-${wgSlug}" style="display:none" onchange="handleFileSelect(this, '${wgSlug}')">
-                            <div class="upload-filename" id="upload-filename-${wgSlug}"></div>
-                        </div>
-                        <div class="form-group">
-                            <label>Document Title</label>
-                            <input type="text" name="title" required placeholder="e.g. Policy Brief Q1 2026">
-                        </div>
-                        <div class="form-group">
-                            <label>Description <span class="optional">(optional)</span></label>
-                            <textarea name="description" rows="2" placeholder="Short description…"></textarea>
-                        </div>
-                        <div class="form-feedback" id="upload-feedback-${wgSlug}"></div>
-                        <div class="form-actions">
-                            <button type="submit" class="btn-primary" id="upload-btn-${wgSlug}">Upload Document</button>
-                        </div>
-                    </form>
+                <div class="upload-accordion">
+                    <button class="upload-toggle" onclick="toggleUpload('${wgSlug}')">
+                        <span>📤 Upload a document</span>
+                        <svg class="upload-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,1 5,5 9,1"/></svg>
+                    </button>
+                    <div class="upload-body" id="upload-body-${wgSlug}">
+                        <form id="upload-form-${wgSlug}" onsubmit="handleUpload(event, '${wgSlug}')">
+                            <div class="upload-zone" id="upload-zone-${wgSlug}"
+                                ondragover="event.preventDefault(); this.classList.add('dragover')"
+                                ondragleave="this.classList.remove('dragover')"
+                                ondrop="handleDrop(event, '${wgSlug}')">
+                                <div class="upload-icon">📤</div>
+                                <div>Drag &amp; drop a file here or <label class="upload-link" for="file-input-${wgSlug}">browse</label></div>
+                                <input type="file" id="file-input-${wgSlug}" style="display:none" onchange="handleFileSelect(this, '${wgSlug}')">
+                                <div class="upload-filename" id="upload-filename-${wgSlug}"></div>
+                            </div>
+                            <div class="form-group">
+                                <label>Document Title</label>
+                                <input type="text" name="title" required placeholder="e.g. Policy Brief Q1 2026">
+                            </div>
+                            <div class="form-group">
+                                <label>Description <span class="optional">(optional)</span></label>
+                                <textarea name="description" rows="2" placeholder="Short description…"></textarea>
+                            </div>
+                            <div class="form-feedback" id="upload-feedback-${wgSlug}"></div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn-primary" id="upload-btn-${wgSlug}">Upload Document</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>` : '';
             return `
                 <div class="card wg-card" id="wg-card-${wgSlug}">
                     <div class="card-header">
                         <h2>${wg.icon} ${wg.label}</h2>
                     </div>
-                    ${uploadHtml}
                     <div class="doc-list" id="doc-list-${wgSlug}">
                         <div class="empty-state">Loading documents…</div>
                     </div>
+                    ${uploadHtml}
                 </div>`;
+        }
+
+        function toggleUpload(wgSlug) {
+            const body = document.getElementById(`upload-body-${wgSlug}`);
+            const btn = body?.previousElementSibling;
+            body.classList.toggle('open');
+            btn?.classList.toggle('open');
         }
 
         async function loadWgDocuments(wgSlug, canUpload = false) {
