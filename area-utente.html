@@ -169,7 +169,25 @@
             margin-bottom: 1.25rem;
             padding-bottom: 0.75rem;
             border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
+
+        .card-title .edit-link {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--blue-eu);
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            display: none;
+        }
+
+        .card.collapsed .edit-link { display: inline; }
+        .card.collapsed #profile-form-body { display: none; }
+        .card.collapsed .card-title { margin-bottom: 0; border-bottom: none; }
 
         /* ── FORMS ── */
         .form-grid {
@@ -409,7 +427,6 @@
                     <span class="auth-btn-label">…</span>
                 </button>
                 <div class="auth-user-dropdown" id="auth-dropdown">
-                    <div class="auth-dropdown-email" data-auth-email></div>
                     <a href="/" class="auth-dropdown-item">← Home</a>
                     <button class="auth-dropdown-item" onclick="EYMAuth.signOut()">↩ Logout</button>
                 </div>
@@ -423,8 +440,12 @@
         <p class="page-subtitle">Manage your profile and access shared documents.</p>
 
         <!-- PROFILE CARD -->
-        <div class="card">
-            <div class="card-title">Your Profile</div>
+        <div class="card" id="profile-card">
+            <div class="card-title">
+                Your Profile
+                <button class="edit-link" onclick="document.getElementById('profile-card').classList.remove('collapsed')">Edit</button>
+            </div>
+            <div id="profile-form-body">
             <div id="profile-feedback" class="form-feedback"></div>
             <form id="profile-form" onsubmit="handleProfileSave(event)">
                 <div class="form-grid">
@@ -479,6 +500,7 @@
                     <span id="profile-saved-msg" style="font-size:0.84rem;color:#15803d;display:none">✓ Saved</span>
                 </div>
             </form>
+            </div>
         </div>
 
         <!-- CHANGE PASSWORD CARD (shown only after password reset link) -->
@@ -679,7 +701,10 @@
                     phone: form.phone.value,
                 });
                 saved.style.display = 'inline';
-                setTimeout(() => { saved.style.display = 'none'; }, 3000);
+                setTimeout(() => {
+                    saved.style.display = 'none';
+                    document.getElementById('profile-card').classList.add('collapsed');
+                }, 1500);
             } catch (err) {
                 feedback.className = 'form-feedback error';
                 feedback.textContent = err.message || 'Failed to save profile.';
