@@ -1641,7 +1641,6 @@ footer h4 {
                     <span class="auth-btn-label" data-i18n="nav.login">Login</span>
                 </button>
                 <div class="auth-user-dropdown" id="auth-dropdown">
-                    <div class="auth-dropdown-email" data-auth-email></div>
                     <a href="/area-utente.html" class="auth-dropdown-item">👤 Area Utente</a>
                     <button class="auth-dropdown-item" onclick="EYMAuth.signOut()">↩ Logout</button>
                 </div>
@@ -2947,6 +2946,9 @@ footer h4 {
     <!-- AUTH MODAL -->
     <div class="modal-overlay" id="auth-modal" onclick="if(event.target===this)EYMAuth.closeAuthModal()">
         <div class="modal-box" style="max-width:420px;">
+            <div style="text-align:center;padding:1.25rem 1.5rem 0;">
+                <img src="/assets/logos/v2 orizzontale/EYM logo v2 orizzontale.png" alt="EYM" style="height:36px;width:auto;">
+            </div>
             <div class="modal-header">
                 <div class="auth-tabs">
                     <button class="auth-tab active" data-tab="login" onclick="EYMAuth.switchAuthTab('login')" data-i18n="auth.tab_login">Login</button>
