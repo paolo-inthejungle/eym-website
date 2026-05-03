@@ -3,6 +3,10 @@
 -- Run in: Supabase Dashboard → SQL Editor → New query
 -- ══════════════════════════════════════════════════════════════════
 
+-- ── FIX profiles RLS: allow users to update their own row ────────
+CREATE POLICY IF NOT EXISTS "profiles_update_own" ON public.profiles
+    FOR UPDATE USING (auth.uid() = id);
+
 -- ── DROP OLD WHITELIST ────────────────────────────────────────────
 DROP TABLE IF EXISTS public.whitelist CASCADE;
 
