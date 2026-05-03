@@ -327,6 +327,23 @@
 
         .doc-download:hover { opacity: 0.85; }
 
+        .doc-actions { display: flex; gap: 0.4rem; flex-shrink: 0; align-items: center; }
+
+        .doc-delete {
+            padding: 0.35rem 0.75rem;
+            background: none;
+            color: #dc2626;
+            border: 1px solid #dc2626;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: background 0.14s, color 0.14s;
+        }
+
+        .doc-delete:hover { background: #dc2626; color: #fff; }
+
         .empty-state {
             text-align: center;
             padding: 2rem;
@@ -627,7 +644,7 @@
                 </div>`;
         }
 
-        async function loadWgDocuments(wgSlug) {
+        async function loadWgDocuments(wgSlug, canUpload = false) {
             const listEl = document.getElementById(`doc-list-${wgSlug}`);
             try {
                 const docs = await EYMAuth.getDocumentsByWg(wgSlug);
@@ -636,17 +653,44 @@
                     return;
                 }
                 listEl.innerHTML = docs.map(d => `
-                    <div class="doc-item">
+                    <div class="doc-item" id="doc-item-${d.id}">
                         <div class="doc-icon">${fileIcon(d.mime_type)}</div>
                         <div class="doc-info">
                             <div class="doc-title">${escHtml(d.title)}</div>
                             <div class="doc-meta">${d.description ? escHtml(d.description) + ' · ' : ''}${formatDate(d.created_at)}${d.file_size ? ' · ' + formatBytes(d.file_size) : ''}</div>
                         </div>
-                        <button class="doc-download" onclick="downloadDoc('${escHtml(d.storage_path)}', '${escHtml(d.title)}')">Download</button>
+                        <div class="doc-actions">
+                            <button class="doc-download" onclick="downloadDoc('${escHtml(d.storage_path)}', '${escHtml(d.title)}')">Download</button>
+                            ${canUpload ? `<button class="doc-delete" onclick="deleteDoc('${d.id}', '${wgSlug}')">Delete</button>` : ''}
+                        </div>
                     </div>
                 `).join('');
             } catch {
                 listEl.innerHTML = '<div class="empty-state">Could not load documents.</div>';
+            }
+        }
+
+        async function deleteDoc(docId, wgSlug) {
+            if (!confirm('Delete this document? This cannot be undone.')) return;
+            try {
+                const token = await EYMAuth.client.auth.getSession()
+                    .then(r => r.data.session?.access_token);
+                const res = await fetch(`/api/auth/documents/${docId}`, {
+                    method: 'DELETE',
+                    headers: { Authorization: `Bearer ${token}` },
+                });
+                if (!res.ok) {
+                    const err = await res.json().catch(() => ({}));
+                    alert(err.error || 'Failed to delete document.');
+                    return;
+                }
+                document.getElementById(`doc-item-${docId}`)?.remove();
+                const listEl = document.getElementById(`doc-list-${wgSlug}`);
+                if (listEl && !listEl.querySelector('.doc-item')) {
+                    listEl.innerHTML = '<div class="empty-state">No documents in this working group yet.</div>';
+                }
+            } catch {
+                alert('Failed to delete document.');
             }
         }
 
@@ -783,7 +827,7 @@
             }
 
             wgSection.innerHTML = wgAccess.map(a => renderWgSection(a.working_group, a.can_upload)).join('');
-            await Promise.all(wgAccess.map(a => loadWgDocuments(a.working_group)));
+            await Promise.all(wgAccess.map(a => loadWgDocuments(a.working_group, a.can_upload)));
         }
 
         async function handleChangePassword(e) {

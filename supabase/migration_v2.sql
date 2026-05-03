@@ -63,3 +63,20 @@ CREATE POLICY "documents_insert_wg" ON public.documents
             AND   can_upload   = TRUE
         )
     );
+GRANT SELECT, INSERT, UPDATE ON public.profiles TO authenticated;
+GRANT SELECT ON public.wg_access TO authenticated;
+GRANT SELECT, INSERT ON public.documents TO authenticated;
+GRANT ALL ON public.wg_access TO service_role;
+GRANT ALL ON public.documents TO service_role;
+
+-- Delete: user must have can_upload = true for this document's working_group
+DROP POLICY IF EXISTS "documents_delete_wg" ON public.documents;
+CREATE POLICY "documents_delete_wg" ON public.documents
+    FOR DELETE USING (
+        EXISTS (
+            SELECT 1 FROM public.wg_access
+            WHERE user_id      = auth.uid()
+            AND   working_group = documents.working_group
+            AND   can_upload   = TRUE
+        )
+    );

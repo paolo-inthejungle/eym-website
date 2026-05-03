@@ -93,4 +93,32 @@ router.post('/documents', requireAuth, async (req, res) => {
     res.json({ document: data });
 });
 
+// DELETE /api/auth/documents/:id
+router.delete('/documents/:id', requireAuth, async (req, res) => {
+    const { id } = req.params;
+
+    // Fetch document to get its WG and storage path
+    const { data: doc, error: fetchErr } = await supabase
+        .from('documents')
+        .select('working_group, storage_path')
+        .eq('id', id)
+        .single();
+
+    if (fetchErr || !doc) return res.status(404).json({ error: 'Document not found' });
+
+    // Require upload access for the document's WG
+    if (!(await hasWgAccess(req.user.id, doc.working_group, true))) {
+        return res.status(403).json({ error: 'Not authorized to delete documents in this working group' });
+    }
+
+    // Remove file from storage (non-fatal if it fails)
+    await supabase.storage.from('documents').remove([doc.storage_path]);
+
+    // Delete metadata row
+    const { error } = await supabase.from('documents').delete().eq('id', id);
+    if (error) return res.status(500).json({ error: error.message });
+
+    res.json({ success: true });
+});
+
 module.exports = router;
