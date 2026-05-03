@@ -24,14 +24,15 @@ async function requireAuth(req, res, next) {
 }
 
 async function hasWgAccess(userId, workingGroup, requireUpload = false) {
-    const query = supabase
+    const { data } = await supabase
         .from('wg_access')
         .select('can_upload')
         .eq('user_id', userId)
-        .eq('working_group', workingGroup);
-    if (requireUpload) query.eq('can_upload', true);
-    const { data } = await query.maybeSingle();
-    return !!data;
+        .eq('working_group', workingGroup)
+        .maybeSingle();
+    if (!data) return false;
+    if (requireUpload) return data.can_upload === true;
+    return true;
 }
 
 // POST /api/auth/upload-url
