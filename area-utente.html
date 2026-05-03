@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/logos/v3 monogramma/EYM v3 monogramma per immagini profilo.png" type="image/png">
+    <title>Member Area — EYM</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --blue-eu: #003399;
+            --blue-eu-light: #1a4db3;
+            --blue-eu-dark: #001f66;
+            --gold-eu: #FFCC00;
+            --white: #ffffff;
+            --gray-100: #f5f6f8;
+            --gray-200: #e8eaee;
+            --gray-300: #d1d5db;
+            --gray-500: #6b7280;
+            --gray-700: #374151;
+            --gray-900: #111827;
+            --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            font-family: var(--font);
+            color: var(--gray-700);
+            background: var(--gray-100);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* ── HEADER ── */
+        header {
+            background: var(--blue-eu);
+            color: var(--white);
+            padding: 0 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            height: 64px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--white);
+            flex-shrink: 0;
+        }
+
+        .brand img { width: 36px; height: 36px; object-fit: contain; border-radius: 4px; }
+
+        .brand-name {
+            font-size: 0.92rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .header-spacer { flex: 1; }
+
+        .auth-wrap { position: relative; flex-shrink: 0; }
+
+        .auth-btn {
+            background: none;
+            border: 1px solid rgba(255,255,255,0.35);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.38rem 0.85rem;
+            border-radius: 6px;
+            color: rgba(255,255,255,0.88);
+            font-size: 0.82rem;
+            font-weight: 600;
+            font-family: var(--font);
+            transition: background 0.18s, border-color 0.18s;
+            white-space: nowrap;
+        }
+
+        .auth-btn:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.7); color: var(--white); }
+        .auth-btn svg { width: 15px; height: 15px; }
+
+        .auth-user-dropdown {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            min-width: 190px;
+            z-index: 500;
+            overflow: hidden;
+        }
+
+        .auth-user-dropdown.open { display: block; }
+
+        .auth-dropdown-email {
+            padding: 0.6rem 1rem 0.45rem;
+            font-size: 0.76rem;
+            color: var(--gray-500);
+            border-bottom: 1px solid var(--gray-200);
+            word-break: break-all;
+        }
+
+        .auth-dropdown-item {
+            display: block;
+            width: 100%;
+            padding: 0.6rem 1rem;
+            font-size: 0.87rem;
+            color: var(--gray-700);
+            text-decoration: none;
+            background: none;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+            font-family: var(--font);
+            transition: background 0.14s;
+        }
+
+        .auth-dropdown-item:hover { background: var(--gray-100); }
+
+        /* ── PAGE LAYOUT ── */
+        .page-wrap {
+            max-width: 860px;
+            margin: 2.5rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .page-title {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--blue-eu);
+            margin-bottom: 0.3rem;
+        }
+
+        .page-subtitle {
+            font-size: 0.95rem;
+            color: var(--gray-500);
+            margin-bottom: 2rem;
+        }
+
+        /* ── CARDS ── */
+        .card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1.75rem 2rem;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+            margin-bottom: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--gray-900);
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        /* ── FORMS ── */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group { margin-bottom: 0; }
+
+        .form-group.full { grid-column: 1 / -1; }
+
+        .form-group label {
+            display: block;
+            font-size: 0.81rem;
+            font-weight: 600;
+            color: var(--gray-700);
+            margin-bottom: 0.3rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid var(--gray-300);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-family: var(--font);
+            color: var(--gray-900);
+            background: var(--white);
+            outline: none;
+            transition: border-color 0.14s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus { border-color: var(--blue-eu); }
+
+        .form-group textarea { resize: vertical; min-height: 80px; }
+
+        .form-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1.25rem;
+        }
+
+        .btn-primary {
+            padding: 0.55rem 1.4rem;
+            background: var(--blue-eu);
+            color: var(--white);
+            border: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            font-family: var(--font);
+            cursor: pointer;
+            transition: opacity 0.14s;
+        }
+
+        .btn-primary:hover { opacity: 0.88; }
+        .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        .btn-secondary {
+            padding: 0.55rem 1.2rem;
+            background: none;
+            color: var(--gray-700);
+            border: 1px solid var(--gray-300);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            font-family: var(--font);
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.14s;
+        }
+
+        .btn-secondary:hover { background: var(--gray-100); }
+
+        .form-feedback {
+            font-size: 0.84rem;
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            display: none;
+        }
+
+        .form-feedback.error { background: #fef2f2; color: #dc2626; display: block; }
+        .form-feedback.success { background: #f0fdf4; color: #15803d; display: block; }
+
+        /* ── DOCUMENTS ── */
+        .doc-list { display: flex; flex-direction: column; gap: 0.75rem; }
+
+        .doc-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.85rem 1rem;
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            background: var(--gray-100);
+        }
+
+        .doc-icon {
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .doc-info { flex: 1; min-width: 0; }
+
+        .doc-title {
+            font-weight: 700;
+            font-size: 0.92rem;
+            color: var(--gray-900);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .doc-meta { font-size: 0.78rem; color: var(--gray-500); margin-top: 0.1rem; }
+
+        .doc-download {
+            padding: 0.35rem 0.85rem;
+            background: var(--blue-eu);
+            color: var(--white);
+            border: none;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            font-family: var(--font);
+            cursor: pointer;
+            flex-shrink: 0;
+            text-decoration: none;
+            transition: opacity 0.14s;
+        }
+
+        .doc-download:hover { opacity: 0.85; }
+
+        .empty-state {
+            text-align: center;
+            padding: 2rem;
+            color: var(--gray-500);
+            font-size: 0.9rem;
+        }
+
+        /* ── UPLOAD ── */
+        .upload-zone {
+            border: 2px dashed var(--gray-300);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.14s, background 0.14s;
+            margin-bottom: 1rem;
+        }
+
+        .upload-zone:hover, .upload-zone.dragover {
+            border-color: var(--blue-eu);
+            background: rgba(0,51,153,0.03);
+        }
+
+        .upload-zone input[type=file] { display: none; }
+        .upload-zone-label { font-size: 0.88rem; color: var(--gray-500); }
+        .upload-zone-label strong { color: var(--blue-eu); cursor: pointer; }
+        .upload-filename { font-size: 0.84rem; color: var(--gray-700); margin-top: 0.4rem; font-weight: 600; }
+
+        /* ── WHITELIST BADGE ── */
+        .badge {
+            display: inline-block;
+            padding: 0.15rem 0.65rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .badge-blue { background: rgba(0,51,153,0.1); color: var(--blue-eu); }
+        .badge-gray { background: var(--gray-200); color: var(--gray-500); }
+
+        .upload-locked {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--gray-100);
+            border-radius: 8px;
+            font-size: 0.88rem;
+            color: var(--gray-500);
+        }
+
+        /* ── LOADING SKELETON ── */
+        .skeleton {
+            background: linear-gradient(90deg, var(--gray-200) 25%, var(--gray-100) 50%, var(--gray-200) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.4s infinite;
+            border-radius: 6px;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--blue-eu-dark);
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            padding: 1.5rem 2rem;
+            font-size: 0.82rem;
+            margin-top: 3rem;
+        }
+
+        footer a { color: rgba(255,255,255,0.75); text-decoration: none; }
+        footer a:hover { color: var(--white); }
+
+        @media (max-width: 640px) {
+            .form-grid { grid-template-columns: 1fr; }
+            .card { padding: 1.25rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-inner">
+            <a href="/" class="brand">
+                <img src="assets/logos/v3 monogramma/EYM v3 monogramma per immagini profilo.png" alt="EYM">
+                <span class="brand-name">EYM</span>
+            </a>
+            <div class="header-spacer"></div>
+            <div class="auth-wrap" id="auth-wrap">
+                <button class="auth-btn" id="auth-btn" data-state="out" onclick="handleAuthBtnClick(event)">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    <span class="auth-btn-label">…</span>
+                </button>
+                <div class="auth-user-dropdown" id="auth-dropdown">
+                    <div class="auth-dropdown-email" data-auth-email></div>
+                    <a href="/" class="auth-dropdown-item">← Home</a>
+                    <button class="auth-dropdown-item" onclick="EYMAuth.signOut()">↩ Logout</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="page-wrap" id="page-wrap" style="display:none">
+
+        <h1 class="page-title">Member Area</h1>
+        <p class="page-subtitle">Manage your profile and access shared documents.</p>
+
+        <!-- PROFILE CARD -->
+        <div class="card">
+            <div class="card-title">Your Profile</div>
+            <div id="profile-feedback" class="form-feedback"></div>
+            <form id="profile-form" onsubmit="handleProfileSave(event)">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" name="first_name" required autocomplete="given-name">
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" name="last_name" required autocomplete="family-name">
+                    </div>
+                    <div class="form-group">
+                        <label>Country</label>
+                        <select name="country">
+                            <option value="">— Select —</option>
+                            <option>Austria</option><option>Belgium</option><option>Bulgaria</option>
+                            <option>Croatia</option><option>Cyprus</option><option>Czech Republic</option>
+                            <option>Denmark</option><option>Estonia</option><option>Finland</option>
+                            <option>France</option><option>Germany</option><option>Greece</option>
+                            <option>Hungary</option><option>Ireland</option><option>Italy</option>
+                            <option>Latvia</option><option>Lithuania</option><option>Luxembourg</option>
+                            <option>Malta</option><option>Netherlands</option><option>Poland</option>
+                            <option>Portugal</option><option>Romania</option><option>Slovakia</option>
+                            <option>Slovenia</option><option>Spain</option><option>Sweden</option>
+                            <option>Ukraine</option><option>Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Working Group</label>
+                        <select name="working_group">
+                            <option value="">— Select —</option>
+                            <option value="Foreign Policy">Foreign Policy</option>
+                            <option value="Defence &amp; Security">Defence &amp; Security</option>
+                            <option value="Energy &amp; Environment">Energy &amp; Environment</option>
+                            <option value="Justice">Justice</option>
+                            <option value="Education">Education</option>
+                            <option value="Healthcare">Healthcare</option>
+                            <option value="Immigration &amp; Human Rights">Immigration &amp; Human Rights</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="tel" name="phone" autocomplete="tel" placeholder="+39 ...">
+                    </div>
+                    <div class="form-group full">
+                        <label>Bio</label>
+                        <textarea name="bio" placeholder="A few words about yourself…"></textarea>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary" id="profile-save-btn">Save Changes</button>
+                    <span id="profile-saved-msg" style="font-size:0.84rem;color:#15803d;display:none">✓ Saved</span>
+                </div>
+            </form>
+        </div>
+
+        <!-- DOCUMENTS CARD -->
+        <div class="card">
+            <div class="card-title" style="display:flex;align-items:center;justify-content:space-between;">
+                <span>Shared Documents</span>
+                <span id="whitelist-badge"></span>
+            </div>
+
+            <!-- Upload form (shown only for whitelisted users) -->
+            <div id="upload-section" style="display:none;margin-bottom:1.5rem;">
+                <div id="upload-feedback" class="form-feedback" style="margin-bottom:0.75rem;"></div>
+                <form id="upload-form" onsubmit="handleUpload(event)">
+                    <div class="upload-zone" id="upload-zone" onclick="document.getElementById('file-input').click()"
+                         ondragover="event.preventDefault();this.classList.add('dragover')"
+                         ondragleave="this.classList.remove('dragover')"
+                         ondrop="handleDrop(event)">
+                        <input type="file" id="file-input" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt,.png,.jpg,.jpeg"
+                               onchange="handleFileSelect(this)">
+                        <div class="upload-zone-label">
+                            Drop a file here or <strong>click to browse</strong>
+                        </div>
+                        <div class="upload-filename" id="upload-filename"></div>
+                    </div>
+                    <div class="form-grid" style="margin-bottom:0.85rem;">
+                        <div class="form-group">
+                            <label>Title <span style="color:#dc2626">*</span></label>
+                            <input type="text" name="title" required placeholder="Document title">
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <input type="text" name="description" placeholder="Optional description">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-primary" id="upload-btn">Upload Document</button>
+                </form>
+            </div>
+
+            <!-- Locked message for non-whitelisted users -->
+            <div id="upload-locked" class="upload-locked" style="display:none;margin-bottom:1.25rem;">
+                🔒 You don't have upload permissions yet. Contact an admin to be added to the whitelist.
+            </div>
+
+            <!-- Document list -->
+            <div class="doc-list" id="doc-list">
+                <div class="empty-state">Loading documents…</div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <a href="/">← Back to EYM</a> &nbsp;·&nbsp; © 2026 European Youth Movement
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+    <script src="/assets/js/auth.js"></script>
+    <script>
+        let selectedFile = null;
+
+        function handleAuthBtnClick(e) {
+            e.stopPropagation();
+            const btn = document.getElementById('auth-btn');
+            const dropdown = document.getElementById('auth-dropdown');
+            if (btn.dataset.state === 'in') {
+                dropdown.classList.toggle('open');
+            } else {
+                window.location.href = '/?auth=login';
+            }
+        }
+
+        document.addEventListener('click', function () {
+            document.getElementById('auth-dropdown')?.classList.remove('open');
+        });
+
+        function fileIcon(mime) {
+            if (!mime) return '📄';
+            if (mime.includes('pdf')) return '📕';
+            if (mime.includes('word') || mime.includes('document')) return '📘';
+            if (mime.includes('sheet') || mime.includes('excel')) return '📗';
+            if (mime.includes('image')) return '🖼️';
+            if (mime.includes('presentation')) return '📙';
+            return '📄';
+        }
+
+        function formatBytes(bytes) {
+            if (!bytes) return '';
+            if (bytes < 1024) return bytes + ' B';
+            if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+            return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+        }
+
+        function formatDate(iso) {
+            return new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+        }
+
+        async function loadDocuments() {
+            const listEl = document.getElementById('doc-list');
+            try {
+                const docs = await EYMAuth.getDocuments();
+                if (!docs.length) {
+                    listEl.innerHTML = '<div class="empty-state">No documents uploaded yet.</div>';
+                    return;
+                }
+                listEl.innerHTML = docs.map(d => `
+                    <div class="doc-item">
+                        <div class="doc-icon">${fileIcon(d.mime_type)}</div>
+                        <div class="doc-info">
+                            <div class="doc-title">${escHtml(d.title)}</div>
+                            <div class="doc-meta">${d.description ? escHtml(d.description) + ' · ' : ''}${formatDate(d.created_at)}${d.file_size ? ' · ' + formatBytes(d.file_size) : ''}</div>
+                        </div>
+                        <button class="doc-download" onclick="downloadDoc('${escHtml(d.storage_path)}', '${escHtml(d.title)}')">Download</button>
+                    </div>
+                `).join('');
+            } catch {
+                listEl.innerHTML = '<div class="empty-state">Could not load documents.</div>';
+            }
+        }
+
+        async function downloadDoc(storagePath, title) {
+            try {
+                const url = await EYMAuth.getDocumentUrl(storagePath);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = title;
+                a.target = '_blank';
+                a.click();
+            } catch {
+                alert('Could not generate download link. Please try again.');
+            }
+        }
+
+        function escHtml(str) {
+            return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+        }
+
+        function handleFileSelect(input) {
+            selectedFile = input.files[0] || null;
+            document.getElementById('upload-filename').textContent = selectedFile ? selectedFile.name : '';
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            document.getElementById('upload-zone').classList.remove('dragover');
+            const file = e.dataTransfer.files[0];
+            if (file) {
+                selectedFile = file;
+                document.getElementById('upload-filename').textContent = file.name;
+            }
+        }
+
+        async function handleProfileSave(e) {
+            e.preventDefault();
+            const form = e.target;
+            const btn = document.getElementById('profile-save-btn');
+            const feedback = document.getElementById('profile-feedback');
+            const saved = document.getElementById('profile-saved-msg');
+            feedback.className = 'form-feedback';
+            feedback.textContent = '';
+            saved.style.display = 'none';
+            btn.disabled = true;
+            btn.textContent = '…';
+
+            try {
+                await EYMAuth.updateProfile({
+                    first_name: form.first_name.value,
+                    last_name: form.last_name.value,
+                    country: form.country.value,
+                    working_group: form.working_group.value,
+                    bio: form.bio.value,
+                    phone: form.phone.value,
+                });
+                saved.style.display = 'inline';
+                setTimeout(() => { saved.style.display = 'none'; }, 3000);
+            } catch (err) {
+                feedback.className = 'form-feedback error';
+                feedback.textContent = err.message || 'Failed to save profile.';
+            }
+
+            btn.disabled = false;
+            btn.textContent = 'Save Changes';
+        }
+
+        async function handleUpload(e) {
+            e.preventDefault();
+            const form = e.target;
+            const btn = document.getElementById('upload-btn');
+            const feedback = document.getElementById('upload-feedback');
+            feedback.className = 'form-feedback';
+            feedback.textContent = '';
+
+            if (!selectedFile) {
+                feedback.className = 'form-feedback error';
+                feedback.textContent = 'Please select a file.';
+                return;
+            }
+
+            btn.disabled = true;
+            btn.textContent = 'Uploading…';
+
+            try {
+                await EYMAuth.uploadDocument(selectedFile, form.title.value, form.description.value);
+                feedback.className = 'form-feedback success';
+                feedback.textContent = '✓ Document uploaded successfully.';
+                form.reset();
+                selectedFile = null;
+                document.getElementById('upload-filename').textContent = '';
+                await loadDocuments();
+            } catch (err) {
+                feedback.className = 'form-feedback error';
+                feedback.textContent = err.message || 'Upload failed.';
+            }
+
+            btn.disabled = false;
+            btn.textContent = 'Upload Document';
+        }
+
+        async function initPage() {
+            const { data: { session } } = await EYMAuth.client.auth.getSession();
+
+            if (!session) {
+                window.location.href = '/?auth=login';
+                return;
+            }
+
+            // Show page
+            document.getElementById('page-wrap').style.display = 'block';
+
+            // Load profile
+            const profile = await EYMAuth.getProfile();
+            if (profile) {
+                const form = document.getElementById('profile-form');
+                form.first_name.value = profile.first_name || '';
+                form.last_name.value = profile.last_name || '';
+                form.country.value = profile.country || '';
+                form.working_group.value = profile.working_group || '';
+                form.bio.value = profile.bio || '';
+                form.phone.value = profile.phone || '';
+            }
+
+            // Check whitelist
+            const wl = await EYMAuth.isWhitelisted();
+            const badge = document.getElementById('whitelist-badge');
+            if (wl) {
+                badge.innerHTML = '<span class="badge badge-blue">✓ Upload Access</span>';
+                document.getElementById('upload-section').style.display = 'block';
+            } else {
+                badge.innerHTML = '<span class="badge badge-gray">Viewer</span>';
+                document.getElementById('upload-locked').style.display = 'block';
+            }
+
+            // Load documents
+            await loadDocuments();
+        }
+
+        EYMAuth.init().then(initPage);
+    </script>
+
+</body>
+</html>
