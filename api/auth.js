@@ -24,12 +24,13 @@ async function requireAuth(req, res, next) {
 }
 
 async function hasWgAccess(userId, workingGroup, requireUpload = false) {
-    const { data } = await supabase
+    const { data, error } = await supabase
         .from('wg_access')
         .select('can_upload')
         .eq('user_id', userId)
         .eq('working_group', workingGroup)
         .maybeSingle();
+    console.log('[hasWgAccess]', { userId, workingGroup, requireUpload, data, error: error?.message });
     if (!data) return false;
     if (requireUpload) return data.can_upload === true;
     return true;
