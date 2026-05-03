@@ -49,35 +49,11 @@ header {
 .brand {
     display: flex;
     align-items: center;
-    gap: 0.8rem;
     text-decoration: none;
-    color: var(--white);
-}
-
-.logo-wrap {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    overflow: hidden;
-    background: var(--white);
-    border: 2px solid var(--gold-eu);
     flex-shrink: 0;
 }
 
-.logo-wrap img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-}
-
-
-.brand-name {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--white);
-}
+.brand-logo { height: 40px; width: auto; display: block; }
 
 .back-link {
     color: rgba(255,255,255,0.8);
@@ -452,5 +428,4 @@ footer a:hover { color: var(--white); }
     .paper-card { flex-direction: column; }
     .paper-download { align-self: flex-start; }
     .header-inner { gap: 0.5rem; }
-    .brand-name { display: none; }
 }

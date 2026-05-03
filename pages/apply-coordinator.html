@@ -54,34 +54,11 @@
         .brand {
             display: flex;
             align-items: center;
-            gap: 0.85rem;
             text-decoration: none;
-            color: var(--white);
-        }
-
-        .logo-wrap {
-            width: 46px;
-            height: 46px;
-            border-radius: 50%;
-            overflow: hidden;
-            background: var(--white);
-            border: 2px solid var(--gold-eu);
             flex-shrink: 0;
         }
 
-        .logo-wrap img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center top;
-            display: block;
-        }
-
-        .brand-name {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--white);
-        }
+        .brand-logo { height: 40px; width: auto; display: block; }
 
         .back-link {
             color: rgba(255,255,255,0.8);
@@ -365,7 +342,6 @@
             .field-row { grid-template-columns: 1fr; }
             .form-card { padding: 1.8rem 1.4rem 1.4rem; }
             .page-hero { padding: 2.5rem 1.2rem 2rem; }
-            .brand-name { display: none; }
         }
     </style>
 </head>
@@ -374,10 +350,7 @@
 <header>
     <div class="header-inner">
         <a href="../index.html" class="brand">
-            <div class="logo-wrap">
-                <img src="../assets/logos/v3 monogramma/EYM v3 monogramma per immagini profilo.png" alt="EYM logo">
-            </div>
-            <span class="brand-name">European Youth Movement</span>
+            <img src="../assets/logos/v2%20orizzontale/EYM%20logo%20v2%20orizzontale%20svg.svg" alt="European Youth Movement" class="brand-logo">
         </a>
         <a href="../index.html" class="back-link" data-i18n="apply.back">← Back to site</a>
     </div>
