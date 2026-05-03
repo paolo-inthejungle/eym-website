@@ -956,6 +956,15 @@ footer h4 {
 
         .ig-btn svg { width: 15px; height: 15px; flex-shrink: 0; }
 
+        /* ── HEADER ACTION BUTTONS — equal size ── */
+        .header-action-btn {
+            width: 130px;
+            box-sizing: border-box;
+            justify-content: center;
+        }
+        .lang-switcher.header-action-btn { display: flex; align-items: stretch; }
+        .lang-switcher.header-action-btn .lang-trigger { width: 100%; justify-content: center; }
+
         /* ── RESPONSIVE ── */
         @media (max-width: 900px) {
             .footer-inner { grid-template-columns: 1fr 1fr; }
@@ -998,6 +1007,9 @@ footer h4 {
 
             /* Compact auth button */
             .auth-btn { padding: 0.3rem 0.6rem; font-size: 0.78rem; }
+
+            /* Auto-size buttons on mobile */
+            .header-action-btn { width: auto; }
 
             .footer-inner { grid-template-columns: 1fr; }
 
@@ -1642,7 +1654,13 @@ footer h4 {
                     <li><a href="#news" data-i18n="nav.news">News</a></li>
                 </ul>
             </nav>
-            <div class="lang-switcher" id="lang-switcher">
+            <a href="https://www.instagram.com/europeanyouthmovement/" target="_blank" rel="noopener" class="ig-btn header-action-btn" aria-label="Follow us on Instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                </svg>
+                <span data-i18n="nav.instagram">Instagram</span>
+            </a>
+            <div class="lang-switcher header-action-btn" id="lang-switcher">
                 <button class="lang-trigger" id="lang-trigger" aria-haspopup="true" aria-expanded="false">
                     <span style="font-style:normal;">🌐</span>
                     <span id="lang-current">EN</span>
@@ -1656,14 +1674,8 @@ footer h4 {
                     <button data-lang="de" onclick="EYM.setLang('de')">DE</button>
                 </div>
             </div>
-            <a href="https://www.instagram.com/europeanyouthmovement/" target="_blank" rel="noopener" class="ig-btn" aria-label="Follow us on Instagram">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                </svg>
-                <span data-i18n="nav.instagram">Instagram</span>
-            </a>
             <div class="auth-wrap" id="auth-wrap">
-                <button class="auth-btn" id="auth-btn" data-state="out" onclick="handleAuthBtnClick(event)">
+                <button class="auth-btn header-action-btn" id="auth-btn" data-state="out" onclick="handleAuthBtnClick(event)">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                     <span class="auth-btn-label" data-i18n="nav.login">Login</span>
                 </button>
