@@ -2967,7 +2967,24 @@ footer h4 {
                         </div>
                         <button type="submit" class="auth-submit-btn" id="login-btn">Log In</button>
                         <p class="auth-link">
-                            <a href="#" onclick="EYMAuth.switchAuthTab('signup');return false">No account yet? Sign up →</a>
+                            <a href="#" onclick="EYMAuth.switchAuthTab('forgot');return false">Forgot password?</a>
+                            &nbsp;·&nbsp;
+                            <a href="#" onclick="EYMAuth.switchAuthTab('signup');return false">Sign up →</a>
+                        </p>
+                    </form>
+                </div>
+
+                <!-- Forgot password -->
+                <div class="auth-panel" data-panel="forgot">
+                    <form id="form-forgot" onsubmit="handleForgot(event)">
+                        <p style="font-size:0.88rem;color:var(--gray-500);margin-bottom:1rem;">Enter your email and we'll send you a reset link.</p>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" name="email" required autocomplete="email" placeholder="you@example.com">
+                        </div>
+                        <button type="submit" class="auth-submit-btn" id="forgot-btn">Send Reset Link</button>
+                        <p class="auth-link">
+                            <a href="#" onclick="EYMAuth.switchAuthTab('login');return false">← Back to login</a>
                         </p>
                     </form>
                 </div>
@@ -3076,6 +3093,26 @@ footer h4 {
             btn.textContent = 'Create Account';
             if (error) { errEl.textContent = error.message; return; }
             sucEl.textContent = '✓ Check your email to confirm your account.';
+            form.reset();
+        }
+
+        async function handleForgot(e) {
+            e.preventDefault();
+            const form = e.target;
+            const btn = document.getElementById('forgot-btn');
+            const errEl = document.getElementById('auth-error');
+            const sucEl = document.getElementById('auth-success');
+            errEl.textContent = '';
+            sucEl.textContent = '';
+            btn.disabled = true;
+            btn.textContent = '…';
+
+            const { error } = await EYMAuth.resetPassword(form.email.value);
+
+            btn.disabled = false;
+            btn.textContent = 'Send Reset Link';
+            if (error) { errEl.textContent = error.message; return; }
+            sucEl.textContent = '✓ Reset link sent. Check your email.';
             form.reset();
         }
 

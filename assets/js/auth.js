@@ -158,7 +158,7 @@
     function openAuthModal(tab) {
         const modal = document.getElementById('auth-modal');
         if (!modal) return;
-        modal.classList.add('active');
+        modal.classList.add('open');
         if (tab) switchAuthTab(tab);
         document.body.style.overflow = 'hidden';
     }
@@ -166,7 +166,7 @@
     function closeAuthModal() {
         const modal = document.getElementById('auth-modal');
         if (!modal) return;
-        modal.classList.remove('active');
+        modal.classList.remove('open');
         document.body.style.overflow = '';
         const errEl = document.getElementById('auth-error');
         const sucEl = document.getElementById('auth-success');
