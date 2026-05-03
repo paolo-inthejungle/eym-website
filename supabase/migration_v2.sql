@@ -4,7 +4,8 @@
 -- ══════════════════════════════════════════════════════════════════
 
 -- ── FIX profiles RLS: allow users to update their own row ────────
-CREATE POLICY IF NOT EXISTS "profiles_update_own" ON public.profiles
+DROP POLICY IF EXISTS "profiles_update_own" ON public.profiles;
+CREATE POLICY "profiles_update_own" ON public.profiles
     FOR UPDATE USING (auth.uid() = id);
 
 -- ── DROP OLD WHITELIST ────────────────────────────────────────────
