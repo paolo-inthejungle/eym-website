@@ -476,9 +476,9 @@
                     </div>
 
                     <div class="field">
-                        <label><span data-i18n="signup.phone_label">Phone number</span> <span style="color:var(--gray-300);font-weight:400;" data-i18n="signup.wg_optional">(optional)</span></label>
+                        <label><span data-i18n="signup.phone_label">Phone number</span> <span class="req">*</span></label>
                         <div style="display:flex;gap:0.5rem;">
-                            <select id="phonePrefix" name="phonePrefix" style="width:118px;flex-shrink:0;">
+                            <select id="phonePrefix" name="phonePrefix" style="width:118px;flex-shrink:0;" required>
                                 <option value="">+—</option>
                                 <optgroup label="EU Member States">
                                     <option value="+43">AT +43</option>
@@ -544,7 +544,7 @@
                                     <option value="+216">TN +216</option>
                                 </optgroup>
                             </select>
-                            <input type="tel" id="phoneNumber" name="phoneNumber" data-i18n-placeholder="signup.phone_placeholder" placeholder="e.g. 333 123 4567">
+                            <input type="tel" id="phoneNumber" name="phoneNumber" data-i18n-placeholder="signup.phone_placeholder" placeholder="e.g. 333 123 4567" required>
                         </div>
                     </div>
 
@@ -614,10 +614,21 @@
                     el.classList.remove('error');
                 }
             });
+            const prefix = document.getElementById('phonePrefix');
+            const number = document.getElementById('phoneNumber');
+            if (!prefix.value || !number.value.trim()) {
+                prefix.classList.add('error');
+                number.classList.add('error');
+                ok = false;
+            } else {
+                prefix.classList.remove('error');
+                number.classList.remove('error');
+            }
             if (!document.getElementById('accept-terms').checked) {
                 showMsg('You must accept the Code of Ethics and Founding Manifesto to join.', 'error');
                 ok = false;
             }
+            if (!ok) showMsg('Please fill in all required fields.', 'error');
             return ok;
         }
 
@@ -645,9 +656,7 @@
                 country:      document.getElementById('country').value,
                 workingGroup: document.getElementById('workingGroup').value || null,
                 bio:          document.getElementById('bio').value.trim() || null,
-                phone:        (document.getElementById('phonePrefix').value && document.getElementById('phoneNumber').value.trim())
-                                  ? document.getElementById('phonePrefix').value + ' ' + document.getElementById('phoneNumber').value.trim()
-                                  : null,
+                phone:        document.getElementById('phonePrefix').value + ' ' + document.getElementById('phoneNumber').value.trim(),
             };
 
             try {

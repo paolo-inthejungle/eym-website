@@ -445,6 +445,11 @@
                 </div>
 
                 <div class="field">
+                    <label for="phone"><span data-i18n="apply.phone">Phone number</span> <span class="req">*</span></label>
+                    <input type="tel" id="phone" name="phone" placeholder="+39 333 123 4567" autocomplete="tel" required>
+                </div>
+
+                <div class="field">
                     <label for="message"><span data-i18n="apply.motivation_label">Motivation</span> <span class="req">*</span></label>
                     <textarea id="message" name="message" data-i18n-placeholder="apply.motivation_placeholder" placeholder="Tell us why you want to become a national coordinator and what you would bring to the role..." required></textarea>
                 </div>
@@ -491,7 +496,7 @@
 
     function validate() {
         let ok = true;
-        ['name', 'email', 'country', 'message'].forEach(id => {
+        ['name', 'email', 'country', 'phone', 'message'].forEach(id => {
             const el = document.getElementById(id);
             if (!el.value.trim()) {
                 el.classList.add('error');
@@ -509,7 +514,7 @@
         return ok;
     }
 
-    ['name', 'email', 'country', 'message'].forEach(id => {
+    ['name', 'email', 'country', 'phone', 'message'].forEach(id => {
         document.getElementById(id).addEventListener('input', function() {
             this.classList.remove('error');
             msg.style.display = 'none';
@@ -529,6 +534,7 @@
             name:    document.getElementById('name').value.trim(),
             email:   document.getElementById('email').value.trim(),
             country: document.getElementById('country').value,
+            phone:   document.getElementById('phone').value.trim(),
             message: document.getElementById('message').value.trim(),
         };
 
