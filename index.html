@@ -168,6 +168,17 @@
             overflow: hidden;
         }
 
+        @keyframes hero-logo-slide {
+            from {
+                transform: translateX(-120px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 0.18;
+            }
+        }
+
         .hero::after {
             content: '';
             position: absolute;
@@ -181,6 +192,7 @@
             background-position: center;
             opacity: 0.18;
             pointer-events: none;
+            animation: hero-logo-slide 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
         }
 
         .hero::before {
