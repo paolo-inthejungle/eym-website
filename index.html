@@ -131,9 +131,12 @@
             user-select: none;
             opacity: 0;
             transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(0);
-            animation: euStarIn 1s cubic-bezier(.34,1.56,.64,1) forwards;
-            animation-delay: var(--d, .2s);
+            animation: euStarIn 2.4s cubic-bezier(.34,1.56,.64,1) forwards;
+            animation-delay: var(--d, .4s);
+            animation-play-state: paused;
         }
+
+        body.anim-ready .eu-star { animation-play-state: running; }
 
         @keyframes euStarIn {
             from {
@@ -170,7 +173,7 @@
 
         @keyframes hero-logo-slide {
             from {
-                transform: translateX(-120px);
+                transform: translateX(-160px);
                 opacity: 0;
             }
             to {
@@ -190,10 +193,13 @@
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
-            opacity: 0.18;
+            opacity: 0;
             pointer-events: none;
-            animation: hero-logo-slide 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+            animation: hero-logo-slide 3.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+            animation-play-state: paused;
         }
+
+        body.anim-ready .hero::after { animation-play-state: running; }
 
         .hero::before {
             content: '';
@@ -1711,18 +1717,18 @@ footer h4 {
         <!-- HERO -->
         <div class="hero">
             <div class="eu-stars" aria-hidden="true">
-                <span class="eu-star" style="--x:0px;--y:-130px;--d:.20s">★</span>
-                <span class="eu-star" style="--x:65px;--y:-113px;--d:.28s">★</span>
-                <span class="eu-star" style="--x:113px;--y:-65px;--d:.36s">★</span>
-                <span class="eu-star" style="--x:130px;--y:0px;--d:.44s">★</span>
-                <span class="eu-star" style="--x:113px;--y:65px;--d:.52s">★</span>
-                <span class="eu-star" style="--x:65px;--y:113px;--d:.60s">★</span>
-                <span class="eu-star" style="--x:0px;--y:130px;--d:.68s">★</span>
-                <span class="eu-star" style="--x:-65px;--y:113px;--d:.76s">★</span>
-                <span class="eu-star" style="--x:-113px;--y:65px;--d:.84s">★</span>
-                <span class="eu-star" style="--x:-130px;--y:0px;--d:.92s">★</span>
-                <span class="eu-star" style="--x:-113px;--y:-65px;--d:1s">★</span>
-                <span class="eu-star" style="--x:-65px;--y:-113px;--d:1.08s">★</span>
+                <span class="eu-star" style="--x:0px;--y:-130px;--d:.4s">★</span>
+                <span class="eu-star" style="--x:65px;--y:-113px;--d:.6s">★</span>
+                <span class="eu-star" style="--x:113px;--y:-65px;--d:.8s">★</span>
+                <span class="eu-star" style="--x:130px;--y:0px;--d:1s">★</span>
+                <span class="eu-star" style="--x:113px;--y:65px;--d:1.2s">★</span>
+                <span class="eu-star" style="--x:65px;--y:113px;--d:1.4s">★</span>
+                <span class="eu-star" style="--x:0px;--y:130px;--d:1.6s">★</span>
+                <span class="eu-star" style="--x:-65px;--y:113px;--d:1.8s">★</span>
+                <span class="eu-star" style="--x:-113px;--y:65px;--d:2s">★</span>
+                <span class="eu-star" style="--x:-130px;--y:0px;--d:2.2s">★</span>
+                <span class="eu-star" style="--x:-113px;--y:-65px;--d:2.4s">★</span>
+                <span class="eu-star" style="--x:-65px;--y:-113px;--d:2.6s">★</span>
             </div>
             <div class="hero-inner">
                 <span class="hero-eyebrow" data-i18n="hero.eyebrow">Be part of the change!</span>
@@ -3215,6 +3221,7 @@ footer h4 {
     </script>
     <script src="/assets/js/i18n.js"></script>
     <script>setTimeout(function(){document.documentElement.classList.add('i18n-ready');},1500);</script>
+    <script>window.addEventListener('load', function(){ document.body.classList.add('anim-ready'); });</script>
 
 </body>
 </html>
