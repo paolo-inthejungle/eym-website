@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="assets/logos/v3 monogramma/EYM v3 monogramma per immagini profilo.png" type="image/png">
     <title>European Youth Movement</title>
+    <meta name="description" content="The European Youth Movement gives a voice to young people who believe in a truly united Europe, built on pragmatism, fairness, and responsibility.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://eym-europe.eu/">
+    <meta property="og:title" content="European Youth Movement — Out of the Blue">
+    <meta property="og:description" content="A pan-European movement publishing policy proposals, fostering political education and building direct dialogue with EU institutions.">
+    <meta property="og:image" content="https://eym-europe.eu/assets/logos/v2%20orizzontale/EYM%20logo%20v2%20orizzontale.png">
+    <meta property="og:image:width" content="1200">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="European Youth Movement — Out of the Blue">
+    <meta name="twitter:description" content="A pan-European movement publishing policy proposals, fostering political education and building direct dialogue with EU institutions.">
+    <meta name="twitter:image" content="https://eym-europe.eu/assets/logos/v2%20orizzontale/EYM%20logo%20v2%20orizzontale.png">
     <style>
         *, *::before, *::after {
             box-sizing: border-box;
@@ -158,6 +169,21 @@
             overflow: hidden;
         }
 
+        .hero::after {
+            content: '';
+            position: absolute;
+            right: -60px;
+            bottom: -60px;
+            width: 380px;
+            height: 380px;
+            background-image: url('assets/logos/v3 monogramma/EYM v3 monogramma per immagini profilo.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.06;
+            pointer-events: none;
+        }
+
         .hero::before {
             content: '';
             position: absolute;
@@ -260,6 +286,31 @@
         }
 
         .section-alt { background: var(--gray-100); }
+
+        /* ── SECTION DIVIDER: line — monogram — line ── */
+        .section-divider {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-divider::before,
+        .section-divider::after {
+            content: '';
+            flex: 1;
+            border-top: 1px dashed var(--gray-300);
+        }
+
+        .section-divider img {
+            width: 28px;
+            height: 28px;
+            opacity: 0.3;
+            flex-shrink: 0;
+            display: block;
+        }
 
         .section-inner {
             max-width: 1100px;
@@ -480,6 +531,23 @@
             display: flex;
             flex-direction: column;
             gap: 0.8rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wg-card::after {
+            content: '';
+            position: absolute;
+            bottom: -14px;
+            right: -14px;
+            width: 90px;
+            height: 90px;
+            background-image: url('assets/logos/v3 monogramma/EYM v3 monogramma per immagini profilo.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.07;
+            pointer-events: none;
         }
 
         .wg-card h3 {
@@ -1764,6 +1832,10 @@ footer h4 {
 
     </section>
 
+    <div class="section-divider" aria-hidden="true">
+        <img src="assets/logos/v3 monogramma/EYM v3 monogramma per immagini profilo.png" alt="">
+    </div>
+
     <!-- ═══════════════════════════ POLICIES ═══════════════════════════ -->
     <section class="section section-alt" id="policies">
         <div class="section-inner">
@@ -1856,6 +1928,10 @@ footer h4 {
             </div>
         </div>
     </section>
+
+    <div class="section-divider" aria-hidden="true">
+        <img src="assets/logos/v3 monogramma/EYM v3 monogramma per immagini profilo.png" alt="">
+    </div>
 
     <!-- ═══════════════════════════ MOVEMENT ═══════════════════════════ -->
     <section class="section" id="movement">
@@ -2061,6 +2137,10 @@ footer h4 {
         </div>
     </section>
 
+    <div class="section-divider" aria-hidden="true">
+        <img src="assets/logos/v3 monogramma/EYM v3 monogramma per immagini profilo.png" alt="">
+    </div>
+
     <!-- ═══════════════════════════ TERRITORY ═══════════════════════════ -->
     <section class="section section-alt" id="territory">
         <div class="section-inner">
@@ -2144,6 +2224,10 @@ footer h4 {
         </div>
     </section>
 
+    <div class="section-divider" aria-hidden="true">
+        <img src="assets/logos/v3 monogramma/EYM v3 monogramma per immagini profilo.png" alt="">
+    </div>
+
     <!-- ═══════════════════════════ EVENTS ═══════════════════════════ -->
     <section class="section" id="events">
         <div class="section-inner">
@@ -2157,6 +2241,10 @@ footer h4 {
             </div>
         </div>
     </section>
+
+    <div class="section-divider" aria-hidden="true">
+        <img src="assets/logos/v3 monogramma/EYM v3 monogramma per immagini profilo.png" alt="">
+    </div>
 
     <!-- ═══════════════════════════ NEWS ═══════════════════════════ -->
     <section class="section section-alt" id="news">
