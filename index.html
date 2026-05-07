@@ -1581,8 +1581,7 @@ footer h4 {
             box-shadow: 0 1px 4px rgba(0,0,0,0.08);
         }
 
-        /* Auth modal: no scrollbar (form fits viewport on all reasonable screens) */
-        #auth-modal .modal-box { overflow-y: hidden; max-height: none; }
+        #auth-modal .modal-box { overflow: visible; }
 
         .auth-panel { display: none; }
         .auth-panel.active { display: block; }
@@ -3026,9 +3025,9 @@ footer h4 {
     </script>
     <!-- AUTH MODAL -->
     <div class="modal-overlay" id="auth-modal" onclick="if(event.target===this)EYMAuth.closeAuthModal()">
-        <div class="modal-box" style="max-width:420px;">
-            <div style="text-align:center;padding:1.25rem 1.5rem 0;">
-                <img src="/assets/logos/v2%20orizzontale%20per%20sfondo%20bianco%20o%20chiaro/EYM%20v2%20orizzontale%20per%20sfondo%20bianco%20o%20chiaro%20svg.svg" alt="EYM" style="height:56px;width:auto;display:block;margin:0 auto;">
+        <div class="modal-box" style="max-width:480px;">
+            <div style="text-align:center;padding:0.5rem 1.5rem 0;">
+                <img src="/assets/logos/v2%20orizzontale%20per%20sfondo%20bianco%20o%20chiaro/EYM%20v2%20orizzontale%20per%20sfondo%20bianco%20o%20chiaro%20svg.svg" alt="EYM" style="height:40px;width:auto;display:block;margin:0 auto;">
             </div>
             <div class="modal-header">
                 <div class="auth-tabs">
@@ -3101,6 +3100,38 @@ footer h4 {
                             <label data-i18n="auth.label_confirm">Confirm Password</label>
                             <input type="password" name="confirm" required autocomplete="new-password">
                         </div>
+                        <div class="form-group">
+                            <label data-i18n="auth.label_country">Country <span style="color:#e53e3e;">*</span></label>
+                            <select name="country" required>
+                                <option value="" disabled selected>— Select your country —</option>
+                                <optgroup label="EU Member States">
+                                    <option>Austria</option><option>Belgium</option><option>Bulgaria</option>
+                                    <option>Croatia</option><option>Cyprus</option><option>Czech Republic</option>
+                                    <option>Denmark</option><option>Estonia</option><option>Finland</option>
+                                    <option>France</option><option>Germany</option><option>Greece</option>
+                                    <option>Hungary</option><option>Ireland</option><option>Italy</option>
+                                    <option>Latvia</option><option>Lithuania</option><option>Luxembourg</option>
+                                    <option>Malta</option><option>Netherlands</option><option>Poland</option>
+                                    <option>Portugal</option><option>Romania</option><option>Slovakia</option>
+                                    <option>Slovenia</option><option>Spain</option><option>Sweden</option>
+                                </optgroup>
+                                <optgroup label="Other European">
+                                    <option>Albania</option><option>Bosnia and Herzegovina</option>
+                                    <option>Georgia</option><option>Iceland</option><option>Kosovo</option>
+                                    <option>Liechtenstein</option><option>Moldova</option><option>Montenegro</option>
+                                    <option>North Macedonia</option><option>Norway</option><option>Serbia</option>
+                                    <option>Switzerland</option><option>Turkey</option><option>Ukraine</option>
+                                    <option>United Kingdom</option>
+                                </optgroup>
+                                <optgroup label="Other">
+                                    <option>Other</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label data-i18n="auth.label_phone">Phone <span style="color:#e53e3e;">*</span></label>
+                            <input type="tel" name="phone" required autocomplete="tel" placeholder="+39 333 123 4567">
+                        </div>
                         <button type="submit" class="auth-submit-btn" id="signup-btn" data-i18n="auth.btn_signup">Create Account</button>
                         <p class="auth-link">
                             <a href="#" onclick="EYMAuth.switchAuthTab('login');return false" data-i18n="auth.link_login">Already have an account? Log in →</a>
@@ -3166,6 +3197,16 @@ footer h4 {
                 errEl.textContent = window.EYM?.t('auth.err_password_length') || 'Password must be at least 8 characters.';
                 return;
             }
+            if (!form.country.value) {
+                errEl.textContent = 'Please select your country.';
+                form.country.focus();
+                return;
+            }
+            if (!form.phone.value.trim()) {
+                errEl.textContent = 'Phone number is required.';
+                form.phone.focus();
+                return;
+            }
 
             btn.disabled = true;
             btn.textContent = '…';
@@ -3173,7 +3214,12 @@ footer h4 {
             const { error } = await EYMAuth.signUp(
                 form.email.value,
                 form.password.value,
-                { first_name: form.firstName.value, last_name: form.lastName.value }
+                {
+                    first_name: form.firstName.value,
+                    last_name:  form.lastName.value,
+                    country:    form.country.value,
+                    phone:      form.phone.value.trim(),
+                }
             );
 
             btn.disabled = false;
