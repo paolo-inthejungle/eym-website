@@ -773,17 +773,37 @@
             feedback.className = 'form-feedback';
             feedback.textContent = '';
             saved.style.display = 'none';
+
+            // Explicit validation for required fields
+            if (!form.first_name.value.trim() || !form.last_name.value.trim()) {
+                feedback.className = 'form-feedback error';
+                feedback.textContent = 'First name and last name are required.';
+                return;
+            }
+            if (!form.country.value) {
+                feedback.className = 'form-feedback error';
+                feedback.textContent = 'Please select your country.';
+                form.country.focus();
+                return;
+            }
+            if (!form.phone.value.trim()) {
+                feedback.className = 'form-feedback error';
+                feedback.textContent = 'Phone number is required.';
+                form.phone.focus();
+                return;
+            }
+
             btn.disabled = true;
             btn.textContent = '…';
 
             try {
                 await EYMAuth.updateProfile({
-                    first_name: form.first_name.value,
-                    last_name: form.last_name.value,
+                    first_name: form.first_name.value.trim(),
+                    last_name: form.last_name.value.trim(),
                     country: form.country.value,
                     working_group: form.working_group.value,
                     bio: form.bio.value,
-                    phone: form.phone.value,
+                    phone: form.phone.value.trim(),
                 });
                 saved.style.display = 'inline';
                 setTimeout(() => {
