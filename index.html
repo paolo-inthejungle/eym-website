@@ -1581,15 +1581,49 @@ footer h4 {
             box-shadow: 0 1px 4px rgba(0,0,0,0.08);
         }
 
-        #auth-modal .modal-box { overflow: visible; }
+        #auth-modal .modal-box {
+            overflow: hidden;
+            max-height: none;
+        }
+
+        #auth-modal .modal-header {
+            padding: 0.75rem 1.5rem 0.65rem;
+        }
+
+        #auth-modal .modal-body {
+            padding: 0.9rem 1.5rem 1.2rem;
+        }
+
+        #auth-modal .form-group {
+            margin-bottom: 0.6rem;
+        }
+
+        #auth-modal .form-group label {
+            margin-bottom: 0.2rem;
+        }
+
+        #auth-modal .form-group input,
+        #auth-modal .form-group select {
+            padding: 0.4rem 0.65rem;
+            font-size: 0.875rem;
+        }
+
+        #auth-modal .auth-submit-btn {
+            padding: 0.55rem;
+            margin-top: 0.2rem;
+        }
+
+        #auth-modal .auth-link {
+            margin-top: 0.6rem;
+        }
 
         .auth-panel { display: none; }
         .auth-panel.active { display: block; }
 
         .auth-feedback {
             font-size: 0.84rem;
-            min-height: 1.3em;
-            margin-bottom: 0.6rem;
+            min-height: 1.1em;
+            margin-bottom: 0.5rem;
         }
 
         .auth-feedback.error { color: #dc2626; }
@@ -3026,8 +3060,8 @@ footer h4 {
     <!-- AUTH MODAL -->
     <div class="modal-overlay" id="auth-modal" onclick="if(event.target===this)EYMAuth.closeAuthModal()">
         <div class="modal-box" style="max-width:480px;">
-            <div style="text-align:center;padding:0.5rem 1.5rem 0;">
-                <img src="/assets/logos/v2%20orizzontale%20per%20sfondo%20bianco%20o%20chiaro/EYM%20v2%20orizzontale%20per%20sfondo%20bianco%20o%20chiaro%20svg.svg" alt="EYM" style="height:40px;width:auto;display:block;margin:0 auto;">
+            <div style="text-align:center;padding:0.6rem 1.5rem 0;">
+                <img src="/assets/logos/v2%20orizzontale%20per%20sfondo%20bianco%20o%20chiaro/EYM%20v2%20orizzontale%20per%20sfondo%20bianco%20o%20chiaro%20svg.svg" alt="EYM" style="height:36px;width:auto;display:block;margin:0 auto;">
             </div>
             <div class="modal-header">
                 <div class="auth-tabs">
