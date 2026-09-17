@@ -26,7 +26,8 @@
     "title_html": "Construisons ensemble<br><span>l'Europe de demain</span>",
     "lead": "Le Mouvement Européen de la Jeunesse donne voix aux jeunes qui croient en une Europe véritablement unie, fondée sur le pragmatisme, l'équité et la responsabilité.",
     "join": "Rejoignez le Mouvement →",
-    "explore": "Explorer nos Politiques"
+    "explore": "Explorer nos Politiques",
+    "voices_link": "Lire les derniers articles →"
   },
   "why": {
     "label": "Pourquoi nous rejoindre",
@@ -76,6 +77,8 @@
     "papers_placeholder_text": "EYM ouvre sa plateforme à tout membre souhaitant contribuer — avec des prises de position, des articles d'analyse ou des notes d'orientation. Nous travaillons à construire un canal direct avec les institutions européennes pour donner de la visibilité aux productions médiatiques et écrites qui émergent de notre communauté.",
     "papers_placeholder_cta": "Tu veux contribuer ? Rejoins le Mouvement →",
     "papers_remind": "Les membres peuvent soumettre des prises de position, des articles et des notes d'orientation via leur Groupe Thématique.",
+    "voices_text": "Voices from Europe est un espace ouvert où les membres partagent des réflexions et analyses personnelles — en leur nom propre, pas au nom du Mouvement.",
+    "voices_cta": "Lire les articles →",
     "wg": {
       "fp_title": "Politique Étrangère",
       "fp_desc": "Politique étrangère de l'UE, autonomie stratégique, prévention des conflits mondiaux, relations transatlantiques, voisinage oriental et élargissement de l'UE.",

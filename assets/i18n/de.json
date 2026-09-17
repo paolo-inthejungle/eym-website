@@ -26,7 +26,8 @@
     "title_html": "Gemeinsam bauen wir<br><span>das Europa von morgen</span>",
     "lead": "Die Europäische Jugendbewegung gibt jungen Menschen eine Stimme, die an ein wirklich vereintes Europa glauben, das auf Pragmatismus, Fairness und Verantwortung aufgebaut ist.",
     "join": "Der Bewegung beitreten →",
-    "explore": "Unsere Politik erkunden"
+    "explore": "Unsere Politik erkunden",
+    "voices_link": "Die neuesten Artikel lesen →"
   },
   "why": {
     "label": "Warum beitreten",
@@ -76,6 +77,8 @@
     "papers_placeholder_text": "EYM öffnet seine Plattform für jedes Mitglied, das einen Beitrag leisten möchte — mit Positionspapieren, Analyseartikeln oder Politikbriefings. Wir arbeiten daran, einen direkten Kanal zu den europäischen Institutionen aufzubauen, um der Medien- und Schriftproduktion aus unserer Gemeinschaft Sichtbarkeit zu geben.",
     "papers_placeholder_cta": "Möchtest du beitragen? Der Bewegung beitreten →",
     "papers_remind": "Mitglieder können Positionspapiere, Artikel und Politikbriefings über ihre Thematische Gruppe einreichen.",
+    "voices_text": "Voices from Europe ist ein offener Raum, in dem Mitglieder persönliche Überlegungen und Analysen teilen — im eigenen Namen, nicht im Namen der Bewegung.",
+    "voices_cta": "Artikel lesen →",
     "wg": {
       "fp_title": "Außenpolitik",
       "fp_desc": "EU-Außenpolitik, strategische Autonomie, globale Konfliktprävention, transatlantische Beziehungen, östliche Nachbarschaft und EU-Erweiterung.",

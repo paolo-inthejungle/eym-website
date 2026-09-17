@@ -257,6 +257,21 @@
             flex-wrap: wrap;
         }
 
+        .hero-voices-link {
+            display: block;
+            margin-top: 1.5rem;
+            color: rgba(255,255,255,0.75);
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.18s;
+        }
+
+        .hero-voices-link:hover {
+            color: var(--gold-eu);
+            text-decoration: underline;
+        }
+
         .btn-primary {
             display: inline-flex;
             align-items: center;
@@ -1779,6 +1794,7 @@ footer h4 {
                     <a href="pages/signup.html" class="btn-primary" data-i18n="hero.join">Join the Movement →</a>
                     <a href="#policies" class="btn-outline" data-i18n="hero.explore">Explore our Policies</a>
                 </div>
+                <a href="voices/index.html" id="hero-voices-link" class="hero-voices-link" style="display:none;" data-i18n="hero.voices_link">Read the latest articles →</a>
             </div>
         </div>
 
@@ -1972,6 +1988,15 @@ footer h4 {
                 <p style="font-size:0.92rem;color:var(--gray-500);line-height:1.65;max-width:560px;margin:0 auto 1.4rem;" data-i18n="policies_section.papers_placeholder_text">EYM opens its platform to every member who wishes to contribute — with position papers, analytical articles or policy briefs. We are working to build a direct channel with European institutions to give visibility to the media and written production emerging from our community.</p>
                 <a href="pages/signup.html" class="btn-dl-eu" style="font-size:0.88rem;" data-i18n="policies_section.papers_placeholder_cta">Want to contribute? Join the Movement →</a>
                 <p style="font-size:0.82rem;color:var(--gray-500);margin-top:0.9rem;" data-i18n="policies_section.papers_remind">Members can submit position papers, articles and policy briefs through their Thematic Group.</p>
+            </div>
+
+            <hr class="sub-divider">
+
+            <div id="voices-cta-policies" style="display:none;text-align:center;padding:3rem 2rem;background:var(--white);border-radius:14px;border-top:4px solid var(--blue-eu);box-shadow:0 4px 20px rgba(0,51,153,0.08);">
+                <div style="font-size:2.2rem;margin-bottom:1rem;">🗣️</div>
+                <h3 style="font-size:1.25rem;font-weight:800;color:var(--gray-900);margin-bottom:0.75rem;">Voices from Europe</h3>
+                <p style="font-size:0.95rem;color:var(--gray-500);line-height:1.65;max-width:600px;margin:0 auto 1.6rem;" data-i18n="policies_section.voices_text">Voices from Europe is an open space where members share personal reflections and analysis — in their own name, not on behalf of the Movement.</p>
+                <a href="voices/index.html" class="btn-dl-eu" data-i18n="policies_section.voices_cta">Read the articles →</a>
             </div>
         </div>
     </section>
@@ -2866,6 +2891,18 @@ footer h4 {
     </div>
 
     <script>
+        // ── VOICES FROM EUROPE — single switch for the two home entry points ──
+        // Set to true to reveal both the #policies block and the hero link below.
+        // Does NOT affect the thematic-group pages or voices/index.html itself.
+        const VOICES_PUBLIC = false;
+
+        if (VOICES_PUBLIC) {
+            const policiesCta = document.getElementById('voices-cta-policies');
+            const heroLink = document.getElementById('hero-voices-link');
+            if (policiesCta) policiesCta.style.display = '';
+            if (heroLink) heroLink.style.display = '';
+        }
+
         // ── EUROPE MAP — fetch, inject inline, add interactivity ──
 
         // Countries with EYM members (ISO 3166-1 alpha-2, lowercase)

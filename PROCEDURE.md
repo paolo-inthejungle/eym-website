@@ -77,6 +77,28 @@ usati dai due flussi di iscrizione descritti in @ARCHITETTURA.md
 impostato su `/area-utente.html`). Non è un'operazione che si può fare
 da questo repo: va fatta a mano nel dashboard.
 
+## 6. Accendere i collegamenti a Voices from Europe nella home
+
+Finché non ci sono articoli pubblicati, i due collegamenti a "Voices from
+Europe" nella home (il blocco nella sezione Politiche e il link leggero
+sotto i due bottoni della copertina) restano nascosti. Sono già pronti e
+completi, solo spenti.
+
+Per accenderli entrambi insieme: apri **`index.html`**, cerca la
+costante **`VOICES_PUBLIC`** (oggi intorno alla **riga 2897**, dentro
+l'ultimo `<script>` prima della chiusura di `</body>`) e cambia
+```
+const VOICES_PUBLIC = false;
+```
+in
+```
+const VOICES_PUBLIC = true;
+```
+Salva, fai commit e push. Non serve toccare nient'altro: è l'unico
+interruttore. Nota: riguarda solo la home — le sezioni "Voices from
+Europe" nelle pagine dei gruppi tematici e la pagina
+`voices/index.html` restano raggiungibili anche a interruttore spento.
+
 ## Come ridimensionare una foto autore a 400×400 (Voices from Europe)
 
 Il progetto ha `sharp` tra le `devDependencies`. Da terminale, nella

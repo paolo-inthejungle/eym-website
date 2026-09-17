@@ -26,7 +26,8 @@
     "title_html": "Costruiamo insieme<br><span>l'Europa di domani</span>",
     "lead": "Il Movimento Giovanile Europeo dà voce ai giovani che credono in un'Europa davvero unita, fondata sul pragmatismo, l'equità e la responsabilità.",
     "join": "Unisciti al Movimento →",
-    "explore": "Esplora le nostre Politiche"
+    "explore": "Esplora le nostre Politiche",
+    "voices_link": "Leggi gli ultimi articoli →"
   },
   "why": {
     "label": "Perché unirsi",
@@ -76,6 +77,8 @@
     "papers_placeholder_text": "EYM apre la sua piattaforma a ogni membro che vuole contribuire — con position paper, articoli di analisi o policy brief. Stiamo lavorando per costruire un canale diretto con le istituzioni europee per dare visibilità alla produzione mediatica e scritta che emerge dalla nostra comunità.",
     "papers_placeholder_cta": "Vuoi contribuire? Unisciti al Movimento →",
     "papers_remind": "I membri possono inviare position paper, articoli e policy brief tramite il proprio Gruppo Tematico.",
+    "voices_text": "Voices from Europe è uno spazio aperto in cui gli iscritti condividono riflessioni e analisi personali — a titolo individuale, non a nome del Movimento.",
+    "voices_cta": "Leggi gli articoli →",
     "wg": {
       "fp_title": "Politica Estera",
       "fp_desc": "Politica estera dell'UE, autonomia strategica, prevenzione dei conflitti globali, relazioni transatlantiche, vicinato orientale e allargamento dell'UE.",

@@ -26,7 +26,8 @@
     "title_html": "Construyamos juntos<br><span>la Europa del mañana</span>",
     "lead": "El Movimiento Europeo de la Juventud da voz a los jóvenes que creen en una Europa verdaderamente unida, fundada en el pragmatismo, la equidad y la responsabilidad.",
     "join": "Únete al Movimiento →",
-    "explore": "Explorar nuestras Políticas"
+    "explore": "Explorar nuestras Políticas",
+    "voices_link": "Lee los últimos artículos →"
   },
   "why": {
     "label": "Por qué unirse",
@@ -76,6 +77,8 @@
     "papers_placeholder_text": "EYM abre su plataforma a cualquier miembro que desee contribuir — con documentos de posición, artículos de análisis o notas de política. Trabajamos para construir un canal directo con las instituciones europeas para dar visibilidad a la producción mediática y escrita que surge de nuestra comunidad.",
     "papers_placeholder_cta": "¿Quieres contribuir? Únete al Movimiento →",
     "papers_remind": "Los miembros pueden enviar documentos de posición, artículos y notas de política a través de su Grupo Temático.",
+    "voices_text": "Voices from Europe es un espacio abierto donde los miembros comparten reflexiones y análisis personales — a título individual, no en nombre del Movimiento.",
+    "voices_cta": "Leer los artículos →",
     "wg": {
       "fp_title": "Política Exterior",
       "fp_desc": "Política exterior de la UE, autonomía estratégica, prevención de conflictos globales, relaciones transatlánticas, vecindad oriental y ampliación de la UE.",
