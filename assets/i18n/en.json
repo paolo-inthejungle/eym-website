@@ -332,5 +332,22 @@
     "success_reset": "✓ Reset link sent. Check your email.",
     "err_password_match": "Passwords do not match.",
     "err_password_length": "Password must be at least 8 characters."
+  },
+  "voices": {
+    "tagline": "Personal reflections and analysis from EYM members — in their own words, on their own responsibility.",
+    "back": "← Home",
+    "clear_filter": "✕ Show all articles",
+    "filter_author_label": "Author:",
+    "filter_theme_label": "Thematic Group:",
+    "empty_all_title": "No articles published yet",
+    "empty_all_text": "Voices from Europe is just getting started. Check back soon for the first contributions from our members.",
+    "empty_filtered_title": "No articles found",
+    "empty_filtered_text": "There are no articles matching this filter yet.",
+    "error_title": "Article list unavailable",
+    "error_text": "We couldn't load the list of articles due to a technical issue. Please try again later.",
+    "theme_general": "General",
+    "by": "By",
+    "template_more_by_author": "More articles by this author →",
+    "template_all_link": "All Voices from Europe articles →"
   }
 }

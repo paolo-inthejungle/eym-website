@@ -332,5 +332,22 @@
     "success_reset": "✓ Enlace enviado. Revisa tu correo.",
     "err_password_match": "Las contraseñas no coinciden.",
     "err_password_length": "La contraseña debe tener al menos 8 caracteres."
+  },
+  "voices": {
+    "tagline": "Reflexiones y análisis personales de los miembros de EYM — en sus propias palabras, bajo su propia responsabilidad.",
+    "back": "← Inicio",
+    "clear_filter": "✕ Mostrar todos los artículos",
+    "filter_author_label": "Autor:",
+    "filter_theme_label": "Grupo Temático:",
+    "empty_all_title": "Todavía no hay artículos publicados",
+    "empty_all_text": "Voices from Europe acaba de empezar. Vuelve pronto para ver las primeras contribuciones de nuestros miembros.",
+    "empty_filtered_title": "No se han encontrado artículos",
+    "empty_filtered_text": "Todavía no hay artículos que coincidan con este filtro.",
+    "error_title": "Lista de artículos no disponible",
+    "error_text": "No hemos podido cargar la lista de artículos por un problema técnico. Inténtalo de nuevo más tarde.",
+    "theme_general": "General",
+    "by": "Por",
+    "template_more_by_author": "Más artículos de este autor →",
+    "template_all_link": "Todos los artículos de Voices from Europe →"
   }
 }

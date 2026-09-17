@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!--
+  TEMPLATE — Voices from Europe article.
+  Questo file NON va toccato direttamente: duplicalo con un nuovo nome
+  (lo slug dell'articolo, es. "il-mio-titolo.html") nella cartella voices/,
+  poi modifica solo le parti segnate con un commento "EDIT" qui sotto.
+  Istruzioni complete: vedi PROCEDURE.md nella root del repo.
+  Questo file non compare mai nell'elenco perché non è referenziato da
+  assets/data/voices.json finché non aggiungi la sua riga in "articles".
+-->
+<html lang="en"> <!-- EDIT: lingua dell'articolo (en/it/fr/es/de), solo per l'attributo lang -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARTICLE TITLE — Voices from Europe</title> <!-- EDIT: titolo -->
+    <link rel="icon" href="../assets/logos/v3 monogramma/EYM v3 monogramma per immagini profilo.png" type="image/png">
+    <link rel="stylesheet" href="voices.css">
+</head>
+<body>
+
+<header>
+    <div class="header-inner">
+        <a href="../index.html" class="brand">
+            <img src="../assets/logos/v2%20orizzontale/EYM%20logo%20v2%20orizzontale%20svg.svg" alt="European Youth Movement" class="brand-logo">
+        </a>
+        <a href="../index.html" class="back-link" data-i18n="voices.back">← Home</a>
+    </div>
+</header>
+
+<main class="article-main">
+
+    <!-- EDIT: href del tema = index.html?theme=<slug>. Slug validi:
+         foreign-policy, defence-security, energy-environment, justice,
+         education, healthcare, immigration-human-rights, general.
+         Il testo del tag si traduce da solo: usa uno di questi data-i18n
+         (uno per slug, nello stesso ordine sopra), oppure
+         data-i18n="voices.theme_general" per "general". -->
+    <a href="index.html?theme=general" class="article-theme-tag" data-i18n="voices.theme_general">General</a>
+
+    <h1 class="article-title">ARTICLE TITLE</h1> <!-- EDIT: titolo (non tradurre) -->
+    <p class="article-date">2026-01-01</p> <!-- EDIT: data AAAA-MM-GG -->
+
+    <!-- EDIT: riquadro autore breve. href = index.html?author=<slug-autore>.
+         Se l'autore non ha una foto, sostituisci l'intero <img ...> con:
+         <div class="author-avatar-sm">👤</div>
+         Se l'autore non ha una bio, elimina il <p class="author-bio-sm">. -->
+    <a href="index.html?author=nome-cognome" class="author-card-sm" style="text-decoration:none;">
+        <img class="author-photo-sm" src="../assets/images/authors/nome-cognome.jpg" alt="Nome Cognome">
+        <span>
+            <span class="author-name-sm" style="display:block;">Nome Cognome 🏳️</span>
+            <span class="author-bio-sm">One line of bio.</span>
+        </span>
+    </a>
+
+    <!-- EDIT: corpo dell'articolo. Solo testo/paragrafi/titoli <h2>/<blockquote>,
+         nella lingua in cui è stato scritto — non tradurre. -->
+    <div class="article-body">
+        <p>Article body goes here.</p>
+    </div>
+
+    <div class="article-footer-links">
+        <!-- EDIT: href = index.html?author=<slug-autore> -->
+        <a href="index.html?author=nome-cognome" data-i18n="voices.template_more_by_author">More articles by this author →</a>
+        <a href="index.html" data-i18n="voices.template_all_link">All Voices from Europe articles →</a>
+    </div>
+
+</main>
+
+<footer>
+    <span data-i18n="footer.copyright">© 2026 European Youth Movement</span>
+    <a href="../index.html">Back to main site →</a>
+</footer>
+
+<script src="/assets/js/i18n.js"></script>
+</body>
+</html>

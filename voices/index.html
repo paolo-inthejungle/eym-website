@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voices from Europe — European Youth Movement</title>
+    <link rel="icon" href="../assets/logos/v3 monogramma/EYM v3 monogramma per immagini profilo.png" type="image/png">
+    <link rel="stylesheet" href="voices.css">
+</head>
+<body>
+
+<header>
+    <div class="header-inner">
+        <a href="../index.html" class="brand">
+            <img src="../assets/logos/v2%20orizzontale/EYM%20logo%20v2%20orizzontale%20svg.svg" alt="European Youth Movement" class="brand-logo">
+        </a>
+        <a href="../index.html" class="back-link" data-i18n="voices.back">← Home</a>
+    </div>
+</header>
+
+<div class="page-hero">
+    <div class="wg-icon">🗣️</div>
+    <h1>Voices from Europe</h1>
+    <p data-i18n="voices.tagline">Personal reflections and analysis from EYM members — in their own words, on their own responsibility.</p>
+</div>
+
+<main class="voices-main">
+
+    <div id="filter-banner" class="filter-banner" hidden>
+        <span>
+            <span class="filter-banner-label" id="filter-banner-label"></span>
+            <span class="filter-banner-value" id="filter-banner-value"></span>
+        </span>
+        <a href="index.html" class="clear-filter" data-i18n="voices.clear_filter">✕ Show all articles</a>
+    </div>
+
+    <div id="author-card" class="author-card-full" hidden></div>
+
+    <div id="articles-list" class="articles-list"></div>
+
+    <div id="empty-all" class="empty-state" hidden>
+        <div class="empty-icon">📝</div>
+        <h3 data-i18n="voices.empty_all_title">No articles published yet</h3>
+        <p data-i18n="voices.empty_all_text">Voices from Europe is just getting started. Check back soon for the first contributions from our members.</p>
+    </div>
+
+    <div id="empty-filtered" class="empty-state" hidden>
+        <div class="empty-icon">🔍</div>
+        <h3 data-i18n="voices.empty_filtered_title">No articles found</h3>
+        <p data-i18n="voices.empty_filtered_text">There are no articles matching this filter yet.</p>
+        <a href="index.html" class="btn-outline-sm" data-i18n="voices.clear_filter">✕ Show all articles</a>
+    </div>
+
+    <div id="load-error" class="empty-state error" hidden>
+        <div class="empty-icon">⚠️</div>
+        <h3 data-i18n="voices.error_title">Article list unavailable</h3>
+        <p data-i18n="voices.error_text">We couldn't load the list of articles due to a technical issue. Please try again later.</p>
+    </div>
+
+</main>
+
+<footer>
+    <span data-i18n="footer.copyright">© 2026 European Youth Movement</span>
+    <a href="../index.html">Back to main site →</a>
+</footer>
+
+<script src="/assets/js/i18n.js"></script>
+<script src="voices.js"></script>
+</body>
+</html>
