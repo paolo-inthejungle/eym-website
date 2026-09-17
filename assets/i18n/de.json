@@ -102,6 +102,8 @@
     "ga_desc": "Das souveräne Organ der Bewegung. Alle Mitglieder nehmen an strategischen Entscheidungen, Satzungen und Wahlen teil.",
     "eb_title": "Vorstand",
     "eb_desc": "Das Leitungsorgan, das für die tägliche Führung, Koordination und externe Vertretung verantwortlich ist.",
+    "sec_section": "Sekretariat",
+    "sec_desc": "Verantwortlich für die interne Koordination, die Mitgliederverwaltung und die tägliche Verwaltung der Bewegung.",
     "tc_title": "Thematische Koordinatoren",
     "tc_desc": "Ein Koordinator pro Arbeitsgruppe, verantwortlich für die Politikentwicklung und das Engagement der Mitglieder zu jedem Thema.",
     "cm_title": "Kommunikation & Marketing",
@@ -122,7 +124,7 @@
     "roles": {
       "president": "Präsident",
       "vice_president": "Vizepräsident",
-      "secretary_general": "Generalsekretär",
+      "secretary_general": "Generalsekretärin",
       "treasurer": "Schatzmeister",
       "eb_member": "Vorstandsmitglied",
       "legal_chief": "Leiter des Rechtsteams",
@@ -225,7 +227,9 @@
     "nc_title": "🗺️ Nationale Koordinatoren",
     "nc_body": "<p>Nationale Koordinatoren sind EYMs lokale Vertreter in jedem EU-Mitgliedstaat. Sie gewinnen Mitglieder, organisieren lokale Aktivitäten und koordinieren sich mit dem Vorstand.</p><p>Wenn dein Land noch nicht vertreten ist, <a href=\"pages/apply-coordinator.html\">bewirb dich als Koordinator</a>.</p>",
     "ld_title": "⚖️ Rechtsabteilung",
-    "ld_body": "<p>Die Rechtsabteilung ist für rechtliche Aufsicht, Ethikdurchsetzung, Finanzprüfung und die Wahrung der Integrität der Governance-Strukturen der Bewegung verantwortlich.</p><p>Mitgliederprofile und Details werden hier veröffentlicht.</p>"
+    "ld_body": "<p>Die Rechtsabteilung ist für rechtliche Aufsicht, Ethikdurchsetzung, Finanzprüfung und die Wahrung der Integrität der Governance-Strukturen der Bewegung verantwortlich.</p><p>Mitgliederprofile und Details werden hier veröffentlicht.</p>",
+    "sec_title": "✉️ Sekretariat",
+    "sec_body": "<p>Das Sekretariat kümmert sich um die interne Koordination, die Mitgliederverwaltung und die tägliche Verwaltung der Bewegung.</p>"
   },
   "signup": {
     "page_title": "Der Bewegung beitreten — Europäische Jugendbewegung",

@@ -102,6 +102,8 @@
     "ga_desc": "The sovereign body of the movement. All members participate in strategic decisions, statutes and elections.",
     "eb_title": "Executive Board",
     "eb_desc": "The governing body responsible for day-to-day leadership, coordination and external representation.",
+    "sec_section": "Secretariat",
+    "sec_desc": "Responsible for internal coordination, member records and the day-to-day administration of the movement.",
     "tc_title": "Thematic Coordinators",
     "tc_desc": "One coordinator per working group, responsible for policy development and member engagement on each topic.",
     "cm_title": "Communication & Marketing",
@@ -124,7 +126,7 @@
       "vice_president": "Vice-President",
       "secretary_general": "Secretary General",
       "treasurer": "Treasurer",
-      "eb_member": "Member of the Executive Board",
+      "eb_member": "Board Member",
       "legal_chief": "Chief of the Legal Team",
       "ethics_chief": "Ethic and Arbitrary Chief",
       "financial_audit": "Financial Audit",
@@ -225,7 +227,9 @@
     "nc_title": "🗺️ National Coordinators",
     "nc_body": "<p>National coordinators are EYM's local representatives in each EU member state. They recruit members, organise local activities and liaise with the Executive Board.</p><p>If your country is not yet represented, <a href=\"pages/apply-coordinator.html\">apply to become a coordinator</a>.</p>",
     "ld_title": "⚖️ Legal Department",
-    "ld_body": "<p>The Legal Department is responsible for legal oversight, ethics enforcement, financial auditing and ensuring the integrity of the movement's governance structures.</p><p>Member profiles and details will be published here.</p>"
+    "ld_body": "<p>The Legal Department is responsible for legal oversight, ethics enforcement, financial auditing and ensuring the integrity of the movement's governance structures.</p><p>Member profiles and details will be published here.</p>",
+    "sec_title": "✉️ Secretariat",
+    "sec_body": "<p>The Secretariat handles internal coordination, member records and the day-to-day administration of the movement.</p>"
   },
   "signup": {
     "page_title": "Join the Movement — European Youth Movement",

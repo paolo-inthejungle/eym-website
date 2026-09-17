@@ -2003,6 +2003,12 @@ footer h4 {
                     <button class="org-open-btn" onclick="openModal('modal-org-eb')" data-i18n="common.view_members">View Members →</button>
                 </div>
                 <div class="card">
+                    <div class="card-icon">✉️</div>
+                    <h3 data-i18n="movement.sec_section">Secretariat</h3>
+                    <p data-i18n="movement.sec_desc">Responsible for internal coordination, member records and the day-to-day administration of the movement.</p>
+                    <button class="org-open-btn" onclick="openModal('modal-org-sec')" data-i18n="common.view_members">View Members →</button>
+                </div>
+                <div class="card">
                     <div class="card-icon">⚖️</div>
                     <h3 data-i18n="movement.legal_section">Legal Department</h3>
                     <p data-i18n="movement.ld_desc">Responsible for legal oversight, ethics enforcement, financial auditing and the integrity of the movement's governance.</p>
@@ -2046,7 +2052,7 @@ footer h4 {
 
             <hr class="sub-divider">
 
-            <!-- Executive Board -->
+            <!-- Executive Board (Consiglio Direttivo) -->
             <p class="sub-title" data-i18n="movement.eb_section">Executive Board</p>
             <div class="org-grid org-grid-3col">
                 <div class="member-card">
@@ -2066,33 +2072,25 @@ footer h4 {
                 </div>
                 <div class="member-card">
                     <div class="member-avatar">👤</div>
-                    <h4>Heidi Tauriainen 🇫🇮</h4>
-                    <div class="member-role" data-i18n="movement.roles.secretary_general">Secretary General</div>
-                </div>
-                <div class="member-card">
-                    <div class="member-avatar">👤</div>
-                    <h4 data-i18n="common.pending_charge">— Pending Charge —</h4>
+                    <h4>Gianmario De Rose 🇮🇹</h4>
                     <div class="member-role" data-i18n="movement.roles.treasurer">Treasurer</div>
-                </div>
-                <div class="member-card">
-                    <div class="member-avatar">👤</div>
-                    <h4>Saara Vuoninen 🇫🇮</h4>
-                    <div class="member-role" data-i18n="movement.roles.eb_member">Member of the Executive Board</div>
-                </div>
-                <div class="member-card">
-                    <div class="member-avatar">👤</div>
-                    <h4>Rebeca Munteanu 🇬🇷 🇷🇴</h4>
-                    <div class="member-role" data-i18n="movement.roles.eb_member">Member of the Executive Board</div>
                 </div>
                 <div class="member-card">
                     <div class="member-avatar">👤</div>
                     <h4>Alberto Cannoletta 🇮🇹</h4>
                     <div class="member-role" data-i18n="movement.roles.eb_member">Member of the Executive Board</div>
                 </div>
+            </div>
+
+            <hr class="sub-divider">
+
+            <!-- Secretariat -->
+            <p class="sub-title" data-i18n="movement.sec_section">Secretariat</p>
+            <div class="org-grid">
                 <div class="member-card">
                     <div class="member-avatar">👤</div>
-                    <h4 data-i18n="common.pending_charge">— Pending Charge —</h4>
-                    <div class="member-role" data-i18n="movement.roles.eb_member">Member of the Executive Board</div>
+                    <h4>Heidi Tauriainen 🇫🇮</h4>
+                    <div class="member-role" data-i18n="movement.roles.secretary_general">Secretary General</div>
                 </div>
             </div>
 
@@ -2140,7 +2138,7 @@ footer h4 {
                 </div>
                 <div class="member-card">
                     <div class="member-avatar">⚡</div>
-                    <h4 data-i18n="common.tba">— To be announced —</h4>
+                    <h4>Rebeca Munteanu 🇬🇷 🇷🇴</h4>
                     <div class="member-role" data-i18n="movement.tc_roles.ee">Energy &amp; Environment</div>
                 </div>
                 <div class="member-card">
@@ -2601,29 +2599,8 @@ footer h4 {
                     <div class="modal-member-row">
                         <div class="m-avatar">👤</div>
                         <div class="m-info">
-                            <h4>Heidi Tauriainen 🇫🇮</h4>
-                            <div class="m-role" data-i18n="movement.roles.secretary_general">Secretary General</div>
-                        </div>
-                    </div>
-                    <div class="modal-member-row">
-                        <div class="m-avatar">👤</div>
-                        <div class="m-info">
-                            <h4 data-i18n="common.pending_charge">— Pending Charge —</h4>
+                            <h4>Gianmario De Rose 🇮🇹</h4>
                             <div class="m-role" data-i18n="movement.roles.treasurer">Treasurer</div>
-                        </div>
-                    </div>
-                    <div class="modal-member-row">
-                        <div class="m-avatar">👤</div>
-                        <div class="m-info">
-                            <h4>Sara Vuoninen 🇫🇮</h4>
-                            <div class="m-role" data-i18n="movement.roles.eb_member">Member of the Executive Board</div>
-                        </div>
-                    </div>
-                    <div class="modal-member-row">
-                        <div class="m-avatar">👤</div>
-                        <div class="m-info">
-                            <h4>Rebeca Munteanu 🇬🇷 🇷🇴</h4>
-                            <div class="m-role" data-i18n="movement.roles.eb_member">Member of the Executive Board</div>
                         </div>
                     </div>
                     <div class="modal-member-row">
@@ -2633,11 +2610,28 @@ footer h4 {
                             <div class="m-role" data-i18n="movement.roles.eb_member">Member of the Executive Board</div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Secretariat -->
+    <div class="modal-overlay" id="modal-org-sec">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3 data-i18n="modals.sec_title">✉️ Secretariat</h3>
+                <button class="modal-close" onclick="closeModal('modal-org-sec')">✕</button>
+            </div>
+            <div class="modal-body">
+                <div data-i18n-html="modals.sec_body">
+                    <p>The Secretariat handles internal coordination, member records and the day-to-day administration of the movement.</p>
+                </div>
+                <div class="modal-member-grid">
                     <div class="modal-member-row">
                         <div class="m-avatar">👤</div>
                         <div class="m-info">
-                            <h4 data-i18n="common.pending_charge">— Pending Charge —</h4>
-                            <div class="m-role" data-i18n="movement.roles.eb_member">Member of the Executive Board</div>
+                            <h4>Heidi Tauriainen 🇫🇮</h4>
+                            <div class="m-role" data-i18n="movement.roles.secretary_general">Secretary General</div>
                         </div>
                     </div>
                 </div>
@@ -2674,7 +2668,7 @@ footer h4 {
                     <div class="modal-member-row">
                         <div class="m-avatar">⚡</div>
                         <div class="m-info">
-                            <h4 data-i18n="common.tba">— To be announced —</h4>
+                            <h4>Rebeca Munteanu 🇬🇷 🇷🇴</h4>
                             <div class="m-role" data-i18n="modals.tc_ee">Energy &amp; Environment Coordinator</div>
                         </div>
                     </div>
