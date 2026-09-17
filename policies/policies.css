@@ -226,6 +226,53 @@ header {
 
 .lock-btn:hover { opacity: 0.88; }
 
+/* ── DOC / VOICES SISTER SECTIONS ── */
+.doc-section h2,
+.voices-section h2 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--gray-900);
+    margin-bottom: 0.6rem;
+    letter-spacing: -0.01em;
+}
+
+.section-label {
+    font-size: 0.73rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--blue-eu);
+    margin-bottom: 0.5rem;
+}
+
+.section-sub-lead {
+    font-size: 0.92rem;
+    color: var(--gray-500);
+    line-height: 1.6;
+    margin-bottom: 1.6rem;
+    max-width: 620px;
+}
+
+.voices-section {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 14px;
+    padding: 1.8rem 2rem;
+}
+
+.voices-section p:not(.section-label):not(.section-sub-lead) {
+    font-size: 0.9rem;
+    color: var(--gray-600, #4b5563);
+    line-height: 1.6;
+    margin-bottom: 1.3rem;
+}
+
+.papers-main hr {
+    border: none;
+    border-top: 1px solid var(--gray-200);
+    margin: 3rem 0;
+}
+
 /* ── FILTERS ── */
 .filters {
     display: flex;

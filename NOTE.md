@@ -44,3 +44,16 @@ decisione cambia, aggiungine una nuova che rimanda a quella vecchia.
    casi (avrebbe significato scostarsi dalla convenzione richiesta).
    Questione aperta: va rivista una logica che scelga solo `gb-gbn` e
    `gb-nir`, oppure va accettato come limite noto.
+
+6. **(2026-09-18) Separati "Position Paper" da "Voices from Europe" nelle
+   7 pagine `policies/*.html`.** Prima esisteva un unico riquadro che
+   mescolava documenti ufficiali del gruppo tematico e contributi
+   personali dei singoli membri, disorientando chi voleva scrivere
+   un'opinione personale (sembrava dover produrre un documento
+   ufficiale). Ora sono due sezioni distinte, sorelle nello stile: la
+   prima mantiene il meccanismo esistente di filtro/lista/stato-vuoto per
+   i soli documenti ufficiali (tolto il filtro "Articoli", che non ha più
+   senso qui); la seconda è un testo breve + link a
+   `voices/index.html?theme=<slug>`. Nessun template condiviso tra le 7
+   pagine: la modifica è stata applicata a mano, identica, su tutti e 7 i
+   file.

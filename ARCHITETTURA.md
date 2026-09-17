@@ -18,10 +18,27 @@ policies/
   healthcare.html         )
   immigration-human-rights.html
   policies.css           CSS condiviso dalle 7 pagine sopra
-  policies.js            Filtro (Tutti/Position/Articoli/Brief) sui
-                          .paper-card dentro #papers-list; mostra
-                          #empty-state se non ci sono card
+  policies.js            Filtro (Tutti/Position/Brief) sui .paper-card
+                          dentro #papers-list; mostra #empty-state se
+                          non ci sono card. Riguarda SOLO la sezione
+                          "Position Paper" (documenti ufficiali): la
+                          sezione "Voices from Europe" di ogni pagina è
+                          testo statico + link a
+                          voices/index.html?theme=<slug del gruppo>.
+voices/
+  index.html              Pagina unica "Voices from Europe": tutti gli
+                          articoli, o filtrati con ?author=/?theme=
+                          (vedi sotto)
+  _template.html          Modello da duplicare per ogni nuovo articolo
+                          (non è mai elencato nell'indice)
+  voices.css, voices.js   Stile e logica di rendering/filtro, letti da
+                          assets/data/voices.json
 assets/
+  data/voices.json        Indice di autori e articoli di Voices from
+                          Europe (authors[], articles[]) — vedi
+                          @PROCEDURE.md per come aggiungere un articolo
+  images/authors/         Foto autori Voices, ritagliate a cerchio via
+                          CSS (400×400, vedi @PROCEDURE.md)
   js/i18n.js              Motore i18n custom (vedi sotto)
   js/auth.js              Wrapper Supabase Auth, esposto come window.EYMAuth
   i18n/{en,it,fr,es,de}.json  Le 5 lingue del sito

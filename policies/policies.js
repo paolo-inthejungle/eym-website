@@ -34,7 +34,7 @@ if (papersList.children.length === 0) {
  *
  * Add a <div> inside <div id="papers-list"> with this structure:
  *
- * <div class="paper-card" data-type="position">   ← position | article | brief
+ * <div class="paper-card" data-type="position">   ← position | brief
  *   <div class="paper-meta">
  *     <span class="paper-badge position">Position Paper</span>
  *     <div class="paper-title">Title of the paper</div>

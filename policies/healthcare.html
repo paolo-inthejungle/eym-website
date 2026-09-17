@@ -27,28 +27,38 @@
 
 <main class="papers-main">
 
-    <div class="filters">
-        <button class="filter-btn active" data-filter="all" data-i18n="policies_page.filter_all">All</button>
-        <button class="filter-btn" data-filter="position" data-i18n="policies_page.filter_position">Position Papers</button>
-        <button class="filter-btn" data-filter="article" data-i18n="policies_page.filter_article">Articles</button>
-        <button class="filter-btn" data-filter="brief" data-i18n="policies_page.filter_brief">Policy Briefs</button>
-    </div>
+    <section class="doc-section">
+        <p class="section-label" data-i18n="policies_page.position_label">Official Documents</p>
+        <h2>Position Paper</h2>
+        <p class="section-sub-lead" data-i18n="policies_page.position_lead">The official position papers of this Thematic Group — developed collectively and approved by the group. They represent the Movement's line on this topic.</p>
 
-    <div class="papers-list" id="papers-list">
-        <!-- Papers will be added here -->
-    </div>
-
-    <div class="empty-state" id="empty-state">
-        <div class="empty-icon">📄</div>
-        <h3 data-i18n="policies_page.empty_title">No publications yet</h3>
-        <p data-i18n="policies_page.empty_desc">EYM opens this space to every member who wishes to contribute — with position papers, analytical articles or policy briefs. We are working to build a direct channel with European institutions to give visibility to the media and written production emerging from our community.</p>
-        <div class="empty-actions">
-            <a href="https://www.instagram.com/europeanyouthmovement/" target="_blank" rel="noopener" class="btn-outline-sm" data-i18n="policies_page.empty_instagram">Follow us on Instagram</a>
-            <a href="https://www.linkedin.com/company/european-youth-movement/" target="_blank" rel="noopener" class="btn-outline-sm">LinkedIn</a>
-            <a href="../index.html#home" class="btn-outline-sm" data-i18n="policies_page.empty_newsletter">Subscribe to newsletter</a>
-            <a href="../pages/signup.html" class="btn-outline-sm" data-i18n="policies_page.empty_signup_cta">Join to contribute →</a>
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all" data-i18n="policies_page.filter_all">All</button>
+            <button class="filter-btn" data-filter="position" data-i18n="policies_page.filter_position">Position Papers</button>
+            <button class="filter-btn" data-filter="brief" data-i18n="policies_page.filter_brief">Policy Briefs</button>
         </div>
-    </div>
+
+        <div class="papers-list" id="papers-list">
+            <!-- Papers will be added here -->
+        </div>
+
+        <div class="empty-state" id="empty-state">
+            <div class="empty-icon">📄</div>
+            <h3 data-i18n="policies_page.empty_title">No documents published yet</h3>
+            <p data-i18n="policies_page.empty_desc">This Thematic Group hasn't published any position papers or policy briefs yet. They will appear here once approved by the group.</p>
+        </div>
+    </section>
+
+    <hr>
+
+    <section class="voices-section">
+        <p class="section-label" data-i18n="policies_page.voices_label">Personal Contributions</p>
+        <h2>Voices from Europe</h2>
+        <p class="section-sub-lead" data-i18n="policies_page.voices_lead">An open space where members share personal reflections and analysis.</p>
+        <p data-i18n="policies_page.voices_text">Contributions signed by individual members. They do not represent the official position of the Movement: they represent whoever writes them.</p>
+        <a href="../voices/index.html?theme=healthcare" class="btn-outline-sm" data-i18n="policies_page.voices_cta">Read Voices articles on this topic →</a>
+    </section>
+
 </main>
 
 <footer>
