@@ -106,3 +106,33 @@ decisione cambia, aggiungine una nuova che rimanda a quella vecchia.
     faccia automaticamente: un domani, se le pagine crescono, vale la
     pena valutare un vero template — ma è un cambio di architettura,
     non una correzione, e va deciso esplicitamente.
+
+12. **(2026-09-18) DIFETTO TROVATO E CORRETTO: tre etichette dei moduli
+    erano richiamate nel codice senza esistere nei file i18n.**
+    `auth.label_country` e `auth.label_phone` (modale di login, tab
+    "Sign Up", campi Paese/Telefono) e `apply.phone` (pagina candidatura
+    coordinatore, campo Numero di telefono) restavano in inglese in
+    tutte le lingue, IT compreso. Corretto: le tre chiavi sono state
+    aggiunte in tutti e 5 i file `assets/i18n/*.json`. Causa di fondo:
+    il motore i18n (`assets/js/i18n.js`) non segnala le chiavi mancanti
+    né in console né sulla pagina — lascia semplicemente il testo
+    statico dell'HTML così com'è. Un'etichetta inglese in un modulo
+    tedesco sembra una scelta, non un errore: per questo è rimasto
+    invisibile. Vedi @PROCEDURE.md per il controllo ripetibile.
+
+13. **(2026-09-18) QUESTIONE APERTA: altri testi statici in
+    `pages/apply-coordinator.html` restano in inglese in ogni lingua.**
+    Trovato verificando il LAVORO 1 sopra, non ancora corretto (segnalo
+    senza risolvere, come da istruzioni). Il titolo "Apply as National
+    Coordinator", l'eyebrow "GET INVOLVED" e il testo sotto il campo
+    Paese ("If your country already has a coordinator...") non hanno
+    `data-i18n` nell'HTML: non è un caso di chiave mancante come la
+    voce 12 sopra, sono proprio senza l'attributo. Andrebbero cercati
+    altri casi simili nel resto del sito.
+
+14. **(2026-09-18) I titoli di pagina nel formato "Justice — EYM
+    Policies" sono una convenzione tecnica, non un inciso.** Il
+    trattino lì separa il nome della pagina dal nome del sito (schema
+    comune sul web), non isola una parte di una frase. Non vanno
+    trattati come gli incisi da rimuovere (regola in @CLAUDE.md, "Regole
+    di questo codice") e non vanno "corretti" togliendo il trattino.

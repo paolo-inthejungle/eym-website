@@ -56,3 +56,14 @@ confondere "il codice sembra corretto" con "è stato visto funzionare".
   sito), quindi la verifica "da telefono" di questa sessione si ferma a
   quella larghezza. Andrebbe riprovata su un telefono vero o un emulatore
   che scenda più in basso (es. 360–390px).
+- **(2026-09-18) Il modulo di iscrizione (modale di login, tab "Sign
+  Up") è stato aperto e controllato per davvero in tedesco e in
+  spagnolo**, non solo letto nel codice: screenshot con Chrome headless
+  forzato su `--lang=de-DE` e `--lang=es-ES`, confermando che i campi
+  "Land"/"Telefon" e "País"/"Teléfono" (le tre chiavi aggiunte nel
+  LAVORO 1) compaiono davvero tradotti. Controllata anche la pagina
+  `pages/apply-coordinator.html` nelle stesse due lingue: il campo
+  "Telefonnummer"/"Número de teléfono" funziona; trovato ma NON
+  corretto in questa sessione (vedi @NOTE.md) che il titolo della
+  pagina, l'eyebrow "GET INVOLVED" e il testo sotto il campo Paese
+  restano in inglese in ogni lingua.
