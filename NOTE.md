@@ -161,3 +161,78 @@ decisione cambia, aggiungine una nuova che rimanda a quella vecchia.
     vicinanze), ma non è stato scritto in questa sessione: si decide
     prima cosa tradurre, poi si scrive la procedura su quel lavoro
     davvero fatto.
+
+16. **(2026-09-18) Corrette le fasi 1 e 2 del censimento del 17-18
+    settembre: messaggi d'errore dei moduli pubblici, menu utente, link
+    "Back to main site", titoli e testi introduttivi di signup.html e
+    apply-coordinator.html.** In ordine di frustrazione dell'utente, non
+    di conteggio:
+    - Modale di login/iscrizione in `index.html`: due messaggi di
+      validazione ("Please select your country." / "Phone number is
+      required.") collegati a i18n con le nuove chiavi
+      `auth.err_country` / `auth.err_phone`; i tre bottoni del modale
+      (Log In / Create Account / Send Reset Link) che perdevano la
+      traduzione dopo ogni tentativo, riportati alle chiavi già
+      esistenti `auth.btn_login` / `auth.btn_signup` / `auth.btn_forgot`
+      invece di un testo inglese fisso.
+    - `pages/signup.html` e `pages/apply-coordinator.html`: messaggi di
+      validazione e di stato (campi obbligatori, email duplicata,
+      errore generico, errore di connessione) collegati a nuove chiavi
+      `signup.err_*` / `apply.err_*`. Il messaggio che arriva dal
+      server (`data.error`, da `api/signup.js` e
+      `api/apply-coordinator.js`) resta in inglese: non è stato
+      toccato, per istruzione esplicita.
+    - `index.html`: voce di menu "👤 Area Utente" (era in italiano
+      fisso) e bottone "↩ Logout" collegati a `nav.member_area` /
+      `nav.logout`.
+    - Link "Back to main site →", scollegato in tutti e nove i file che
+      lo usano (le 7 pagine `policies/*.html`, `voices/index.html`,
+      `voices/_template.html`), unificato sotto una sola chiave nuova
+      `footer.back_to_site`. Prima di toccare i due file `voices/`, si è
+      verificato che caricassero già `assets/js/i18n.js`: lo caricavano,
+      nessuna aggiunta di script necessaria.
+    - Sopratitolo, titolo, paragrafo introduttivo, segnaposto dei campi
+      e intestazioni dei gruppi nei menu a tendina di `signup.html` e
+      `apply-coordinator.html`, con nuove chiavi (`signup.eyebrow`,
+      `signup.hero_title`, `apply.eyebrow`, `apply.hero_lead`,
+      `country_groups.*` e altre). Il titolo di `apply-coordinator.html`
+      riusa la chiave già esistente `apply.form_title`, identica nel
+      contenuto: nessuna chiave nuova creata per quel caso. Sui
+      segnaposto con nomi propri e numeri di telefono ("e.g. Anna
+      Müller", "+39 333 123 4567") è stata tradotta solo la parte
+      "e.g."/"z. B."/ecc., non il nome o il numero.
+    - **Aggiunto un piccolo meccanismo nuovo a `assets/js/i18n.js`**:
+      l'attributo `data-i18n-label`, che traduce l'attributo `label` di
+      un elemento (serviva per le intestazioni `<optgroup>` dei menu a
+      tendina, che il motore non sapeva toccare). Stessa logica già
+      esistente per `data-i18n-placeholder`, nessuna libreria nuova.
+    - I NOMI DEI PAESI nei tre elenchi a tendina duplicati **non sono
+      stati toccati**: restano fuori sessione finché i tre elenchi non
+      vengono unificati (vedi voce 13 sopra).
+
+17. **(2026-09-18) LAVORO 4 di questa sessione (traduzione dei tag
+    `<title>`) saltato per una capacità mancante, non per scelta.** Il
+    motore i18n (`assets/js/i18n.js`) non aggiorna mai `document.title`:
+    né al caricamento, né al cambio lingua — verificato leggendo il
+    file (nessuna occorrenza di `document.title` o di `.title =`) e
+    trovando che le chiavi `signup.page_title` e `apply.page_title`,
+    già presenti in tutti e 5 i file JSON da sessioni precedenti, non
+    sono richiamate da nessuna parte del codice. Tradurre il testo
+    statico dentro i tag `<title>` senza questa capacità avrebbe solo
+    sostituito un inglese fisso con un'altra lingua fissa, non reso il
+    titolo multilingua. Per istruzione esplicita non è stato aggiunto
+    da sé questo meccanismo: il lavoro resta da fare, richiede una
+    decisione su come e se estendere il motore i18n.
+
+18. **(2026-09-18) Esito del LAVORO 5 (verifica incrociata reale in
+    tedesco su `signup.html`, `apply-coordinator.html` e
+    `policies/justice.html`): nessun difetto da correggere nelle due
+    pagine dei moduli**, tutto il testo visibile risultava già tradotto
+    o correttamente escluso (nomi propri, email, URL del dominio,
+    numero di telefono d'esempio). **Trovato un buco nuovo del
+    censimento**, non richiesto da questa sessione e quindi non
+    corretto: il titolo `<h2>Position Paper</h2>` sopra il riquadro dei
+    documenti ufficiali, identico e privo di qualunque `data-i18n` in
+    tutte e 7 le pagine `policies/*.html` (non solo in Justice — stesso
+    controllo ripetuto sulle altre sei). Nessun commit per questo
+    lavoro: non c'era nulla da correggere nel suo perimetro.

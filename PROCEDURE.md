@@ -127,6 +127,14 @@ Charge —` (`common.pending_charge`) per una carica assegnabile, o
    Ogni riga stampata è una chiave da aggiungere (con la traduzione
    corretta, non inventata) in tutti e 5 i file, oppure un refuso nel
    nome della chiave nell'HTML/JS da correggere.
+6. **Apri almeno una pagina davvero, in una lingua diversa
+   dall'inglese, e confronta quello che vedi con l'elenco delle
+   modifiche fatte.** I controlli sopra leggono il codice, non lo
+   schermo: il 18 settembre 2026 la sola lettura del codice aveva perso
+   lo stesso link ("Back to main site →") scollegato in otto file su
+   nove, trovato solo aprendo due pagine per davvero. Un `data-i18n`
+   scritto bene ma su un elemento sbagliato, o un testo senza nessun
+   attributo, non emerge da nessuno script.
 
 ## 5. Caricare i template email in Supabase Auth
 

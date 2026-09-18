@@ -132,7 +132,11 @@ rileva la lingua (localStorage → lingua browser → default `en`), fa
   `key.split('.').reduce(...)` nel JSON)
 - `[data-i18n-html="a.b.c"]` → `el.innerHTML` (per testo con markup)
 - `[data-i18n-placeholder="a.b.c"]` → `el.placeholder`
-Il cambio lingua (`EYM.setLang()`) è client-side, senza reload. Ogni
+- `[data-i18n-label="a.b.c"]` → `el.label` (aggiunto il 2026-09-18, serve
+  per le intestazioni `<optgroup>` dei menu a tendina)
+Il cambio lingua (`EYM.setLang()`) è client-side, senza reload. Non
+aggiorna `document.title`: nessun meccanismo lo fa, né al caricamento
+né al cambio lingua (verificato il 2026-09-18 — vedi @NOTE.md). Ogni
 pagina che usa testo i18n include lo script e replica le stesse chiavi:
 non c'è un file centrale di route → pagina, ogni file richiama
 `i18n.js` in autonomia.

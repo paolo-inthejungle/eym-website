@@ -35,6 +35,11 @@ confondere "il codice sembra corretto" con "è stato visto funzionare".
   inglese il senso è stato controllato frase per frase; nelle altre tre
   lingue solo la forma (rimozione del trattino/dell'antitesi), non la
   naturalezza del risultato.
+- **(2026-09-18) Stesso avvertimento per tutte le chiavi nuove aggiunte
+  nella sessione del 18 settembre** (messaggi d'errore dei moduli,
+  menu utente, link "Back to main site", titoli/segnaposto/intestazioni
+  di signup.html e apply-coordinator.html): IT/EN scritti e controllati
+  a mano, FR/ES/DE tradotti senza revisione di un madrelingua.
 
 ## Verificato in locale (non in produzione)
 
@@ -67,3 +72,32 @@ confondere "il codice sembra corretto" con "è stato visto funzionare".
   corretto in questa sessione (vedi @NOTE.md) che il titolo della
   pagina, l'eyebrow "GET INVOLVED" e il testo sotto il campo Paese
   restano in inglese in ogni lingua.
+- **(2026-09-18) Verificato con Chrome headless pilotato via CDP
+  (protocollo nativo di Chrome, nessuna libreria nuova), forzato in
+  tedesco (`--lang=de-DE`), non solo letto nel codice:**
+  - Modale di login in `index.html`: compilato con credenziali
+    sbagliate e inviato per davvero. Il bottone "Anmelden" resta
+    "Anmelden" dopo l'errore (prima di questa sessione tornava
+    "Log In" in inglese). Il messaggio d'errore mostrato
+    ("Invalid login credentials") arriva da Supabase in inglese: non è
+    stato tradotto, per istruzione esplicita.
+  - Voce di menu utente e bottone Logout in `index.html`: mostrano
+    "👤 Mitgliederbereich" e "↩ Logout".
+  - Link di ritorno in fondo pagina: verificato aperto per davvero su
+    `policies/justice.html` e su `voices/index.html`, mostra "Zurück
+    zur Hauptseite →" in entrambi.
+  - `pages/signup.html` e `pages/apply-coordinator.html` aperte per
+    intero (screenshot a piena pagina): sopratitolo, titolo, paragrafo
+    introduttivo, segnaposto dei campi, intestazioni dei menu a
+    tendina e footer tutti in tedesco. Confermato lasciato intenzionalmente
+    in inglese/non tradotto: indirizzo email, dominio
+    "www.eym-europe.eu", numero di telefono d'esempio
+    "+39 333 123 4567".
+  - Stessa verifica ripetuta su `policies/justice.html`: pagina
+    interamente in tedesco tranne il titolo `<h2>Position Paper</h2>`,
+    senza alcun collegamento a i18n — segnalato come buco nuovo del
+    censimento in @NOTE.md, non corretto in questa sessione.
+- **(2026-09-18) Non verificato**: il tag `<title>` del browser non è
+  stato controllato in nessuna lingua, perché il LAVORO 4 di questa
+  sessione è stato saltato (il motore i18n non è in grado di
+  aggiornarlo — vedi @NOTE.md).
