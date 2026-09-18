@@ -134,12 +134,45 @@ rileva la lingua (localStorage → lingua browser → default `en`), fa
 - `[data-i18n-placeholder="a.b.c"]` → `el.placeholder`
 - `[data-i18n-label="a.b.c"]` → `el.label` (aggiunto il 2026-09-18, serve
   per le intestazioni `<optgroup>` dei menu a tendina)
-Il cambio lingua (`EYM.setLang()`) è client-side, senza reload. Non
-aggiorna `document.title`: nessun meccanismo lo fa, né al caricamento
-né al cambio lingua (verificato il 2026-09-18 — vedi @NOTE.md). Ogni
-pagina che usa testo i18n include lo script e replica le stesse chiavi:
-non c'è un file centrale di route → pagina, ogni file richiama
-`i18n.js` in autonomia.
+Il cambio lingua (`EYM.setLang()`) è client-side, senza reload. Il tag
+`<title>` **si aggiorna anche lui**, sia al caricamento che al cambio
+lingua: non serve un meccanismo dedicato, basta mettere `data-i18n="…"`
+direttamente sul tag `<title>` come su un qualsiasi altro elemento —
+`document.querySelectorAll('[data-i18n]')` lo trova lì dentro `<head>`
+come farebbe altrove, e scrivere il suo `textContent` aggiorna anche la
+linguetta del browser (comportamento nativo del DOM, non codice scritto
+apposta). Verificato il 2026-09-18 aprendo una pagina, cambiando lingua
+dal selettore senza ricaricare e controllando che il titolo nella
+linguetta cambiasse davvero (vedi @NOTE.md). Ogni pagina che usa testo
+i18n include lo script e replica le stesse chiavi: non c'è un file
+centrale di route → pagina, ogni file richiama `i18n.js` in autonomia.
+
+## Voices from Europe — modello dati
+
+`assets/data/voices.json` ha due elenchi, `authors[]` e `articles[]`
+(schema completo e passo-passo per pubblicare in @PROCEDURE.md). Qui solo
+la parte che riguarda il codice:
+
+- Ogni autore ha `bio` (breve, obbligatoria se si vuole mostrare
+  qualcosa) e, dal 2026-09-18, `bioLong` (facoltativa): un **array di
+  stringhe**, una per paragrafo, non un unico blocco di testo con `\n\n`.
+  `voices/voices.js` → `renderAuthorCard()` mostra `bioLong` (un `<p>`
+  per elemento dell'array) quando presente, altrimenti ripiega su `bio`;
+  se l'autore non ha né l'una né l'altra non stampa nessun paragrafo
+  vuoto.
+- Le due bio non vivono nello stesso punto della pagina: `bioLong`
+  compare **solo** nel riquadro `#author-card` di `voices/index.html`
+  quando la pagina è filtrata con `?author=<slug>` (generato via JS da
+  `voices.json`). La bio **breve** che compare in cima a ogni pagina
+  articolo (`.author-card-sm`) non è generata da JS: è testo scritto a
+  mano dentro il file dell'articolo stesso, duplicato da `voices.json`
+  al momento di compilare il template (vedi @PROCEDURE.md) — cambiare
+  `bio` in `voices.json` dopo la pubblicazione non aggiorna le pagine
+  articolo già scritte.
+- La colonna di lettura degli articoli è già limitata in
+  `voices.css` (`.article-main { max-width: 720px; }`): su schermi
+  larghi il testo non si allarga a piena pagina. Non serve toccarla per
+  ogni nuovo articolo.
 
 ## Dati scritti a mano nell'HTML (non nel database)
 

@@ -101,3 +101,41 @@ confondere "il codice sembra corretto" con "è stato visto funzionare".
   stato controllato in nessuna lingua, perché il LAVORO 4 di questa
   sessione è stato saltato (il motore i18n non è in grado di
   aggiornarlo — vedi @NOTE.md).
+- **(2026-09-18, sessione "Voices from Europe") Il tag `<title>` è
+  stato controllato per davvero**, non solo letto nel codice: aperta una
+  pagina, cambiata la lingua dal selettore SENZA ricaricare (chiamata
+  diretta a `EYM.setLang()`), controllando che il testo nella linguetta
+  del browser (`document.title`) cambiasse subito. Provato su
+  `index.html`, `pages/signup.html`, `policies/justice.html` e
+  `voices/index.html`, passando da inglese a italiano a tedesco sulla
+  stessa pagina senza mai ricaricare.
+- **(2026-09-18) Pubblicazione del primo articolo di Voices from Europe:
+  il consenso di Esther Miguez Aparicio alla pubblicazione di foto,
+  biografia e bandiera/nazionalità è stato ottenuto e conservato
+  dall'utente prima di questa sessione**, come richiesto da
+  @PROCEDURE.md punto 9. **I contenuti fattuali dell'articolo (date,
+  nomi, accordi, citazioni) non sono stati verificati da chi ha lavorato
+  a questa sessione**: il testo è stato pubblicato così come consegnato,
+  per istruzione esplicita, senza controllo di accuratezza giornalistica
+  o fattuale.
+- **(2026-09-18) L'articolo pubblicato è stato controllato per davvero
+  nel browser** (screenshot, non solo lettura del codice): la scheda
+  nell'indice `voices/index.html` (titolo, tema, lingua, data, estratto,
+  autrice); la pagina filtrata `?author=esther-miguez-aparicio` (bio
+  estesa a tre paragrafi separati, sempre visibile); la pagina filtrata
+  `?theme=foreign-policy`; la pagina dell'articolo per intero (bio breve
+  in alto, i due sottotitoli nel punto giusto, paragrafi separati); il
+  collegamento da `policies/foreign-policy.html` fino all'articolo; la
+  pagina a una larghezza di 1920px (colonna di lettura già limitata a
+  720px, nessuna modifica necessaria) e a 500px (il limite minimo di
+  rendering di Chrome headless su questa macchina, stesso limite già
+  noto — non un vero telefono). I due punti di accesso a Voices in home
+  con `VOICES_PUBLIC` a `true`: verificati sia in italiano sia in
+  tedesco (`--lang=de-DE`), confermando che il link leggero in copertina
+  non rompe il layout dell'header in tedesco (più lungo che in italiano)
+  e che i riquadri "Position Papers" e "Voices from Europe" si
+  distinguono a colpo d'occhio.
+- **(2026-09-18) Foto dell'autrice non pubblicata, non verificabile.**
+  Non essendoci un file immagine raggiungibile (vedi @NOTE.md), non è
+  stato eseguito né il ridimensionamento con `sharp` né una verifica
+  visiva del ritaglio a 400×400.

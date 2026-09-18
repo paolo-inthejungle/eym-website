@@ -172,45 +172,204 @@ Europe" nelle pagine dei gruppi tematici e la pagina
 
 ## 7. Pubblicare un nuovo articolo su Voices from Europe
 
-1. Controlla che l'autore esista già fra gli `"authors"` di
-   `assets/data/voices.json`. Se non c'è, aggiungilo prima (vedi punto 8
-   qui sotto).
-2. Duplica `voices/_template.html` dentro la cartella `voices/`, con un
-   nuovo nome file in minuscolo e trattini (es. `il-mio-titolo.html`).
-   Compila solo le parti segnate da un commento `EDIT` nel file: titolo,
-   data, tema (link + etichetta tradotta), riquadro autore breve, corpo
-   del testo, link in fondo. Il testo dell'articolo resta nella lingua in
-   cui è scritto — non si traduce.
-3. Aggiungi una voce in `"articles"` dentro `assets/data/voices.json`
-   con tutti i campi (`slug`, `title`, `authorSlug`, `themeSlug`, `date`
-   in formato AAAA-MM-GG, `lang`, `excerpt`, `file`). `themeSlug` deve
-   essere uno dei sette slug dei working group, oppure `"general"`.
-   Attenzione alla punteggiatura JSON: una virgola fuori posto rende
-   l'intero elenco illeggibile (il sito mostra un avviso, ma è meglio non
-   arrivarci).
-4. Salva, fai commit e push. Non serve toccare nient'altro:
-   `voices/index.html` legge il file e costruisce la pagina da solo.
+Guida passo-passo con un esempio vero: il primo articolo pubblicato,
+"If you are not at the table, you are on the menu" di Esther Miguez
+Aparicio (2026-09-18, slug `variable-geometry-middle-powers`). Segui gli
+stessi passi con i tuoi dati e sei a posto — non serve altro.
 
-## 8. Aggiungere un nuovo autore a Voices from Europe
+**Promemoria valido per tutto questo punto**: il testo dell'articolo e
+le biografie dell'autore **non si traducono, non si riscrivono, non si
+accorciano e non si "correggono"**. Sono la voce di una persona, firmata
+col suo nome: si pubblicano come sono state scritte, in qualunque lingua
+siano arrivate. Solo l'interfaccia del sito intorno all'articolo (le
+etichette dei bottoni, "Torna al sito" e simili) passa da i18n — mai il
+titolo, il corpo o le bio.
 
-Aggiungi una voce in `"authors"` dentro `assets/data/voices.json`:
-- **Obbligatori**: `slug` (minuscolo, trattini, univoco), `name` (nome e
-  cognome, non tradotto), `flag` (emoji bandiera, stessa tecnica
-  dell'organigramma).
-- **Facoltativi**: `bio` (massimo 300 caratteri) e `photo` (percorso
-  relativo, es. `assets/images/authors/nome-cognome.jpg`). Nessuno dei
-  due è obbligatorio: senza `photo` compare l'icona generica 👤, senza
-  `bio` il riquadro si restringe senza lasciare vuoti. Vedi il punto 9
-  qui sotto per il consenso prima di pubblicarli.
+### 7.1 L'autore esiste già?
+
+Apri `assets/data/voices.json` e cerca lo slug dell'autore fra gli
+`"authors"`. Se non c'è ancora, aggiungilo prima con questi campi:
+
+- **Obbligatori**: `slug` (minuscolo, trattini, univoco — es.
+  `"esther-miguez-aparicio"`), `name` (nome e cognome, mai tradotto — es.
+  `"Esther Miguez Aparicio"`), `flag` (emoji bandiera, stessa tecnica
+  dell'organigramma — es. `"🇪🇸"`).
+- **Facoltativo `bio`**: un paragrafo breve (indicativamente sotto le
+  300 parole). È quello che compare in cima alla pagina di OGNI articolo
+  di quell'autore, dentro il riquadro piccolo sopra il testo.
+- **Facoltativo `bioLong`**: la biografia estesa, quella che compare SOLO
+  nella pagina `voices/index.html?author=<slug>` (quando qualcuno clicca
+  sul nome dell'autore). **Non è una stringa unica: è un elenco JSON di
+  paragrafi**, uno per elemento — non scrivere tutto in un unico blocco
+  con `\n\n` in mezzo, il sito non lo spezzerebbe. Esempio reale (versione
+  accorciata):
+  ```json
+  "bioLong": [
+    "In Brussels, she worked on European Commission programmes at the Official Spanish Chamber of Commerce in Belgium and Luxembourg. […]",
+    "At the Embassy of Paraguay, she drafted notes verbales and official communications […]",
+    "She now applies this breadth of experience to geopolitical analysis and strategic foresight […]"
+  ]
+  ```
+  Se manca `bioLong`, la pagina dell'autore mostra `bio` invece. Se
+  mancano entrambi, non mostra nessun paragrafo (nessuno spazio vuoto,
+  nessuna scritta tipo "undefined").
+- **Facoltativo `photo`**: percorso relativo, es.
+  `"assets/images/authors/esther-miguez-aparicio.jpg"`. Senza foto compare
+  l'icona generica 👤 — non è un difetto, è il comportamento previsto.
+  **Prima di aggiungere foto, bio o bandiera di una persona vera, leggi
+  il punto 9 qui sotto (consenso).**
 
 Per ridimensionare una foto a 400×400 prima di caricarla in
 `assets/images/authors/`: il progetto ha `sharp` tra le
 `devDependencies`. Da terminale, nella root del repo:
 ```
-node -e "require('sharp')('input.jpg').resize(400,400,{fit:'cover'}).toFile('assets/images/authors/nome-cognome.jpg')"
+node -e "require('sharp')('input.jpg').resize(400,400,{fit:'cover'}).toFile('assets/images/authors/esther-miguez-aparicio.jpg')"
 ```
-Sostituisci `input.jpg` con il file originale e `nome-cognome` con lo
-slug dell'autore.
+Sostituisci `input.jpg` con il file originale e il nome del file di
+destinazione con lo slug dell'autore. Se non hai il file della foto a
+disposizione (es. arrivata come immagine incollata in chat, senza un
+percorso sul disco), non puoi eseguire questo comando: pubblica l'autore
+senza `photo` — compare 👤 — e aggiungi la foto in un secondo momento
+quando hai il file vero.
+
+### 7.2 Duplica il template
+
+Copia `voices/_template.html` dentro la cartella `voices/`, con un nuovo
+nome file in minuscolo e trattini: lo slug dell'articolo. Nel nostro
+esempio, `voices/variable-geometry-middle-powers.html`. Poi compila SOLO
+le parti segnate `EDIT` nel template:
+
+- `<html lang="en">`: la lingua in cui è scritto l'articolo (`en`, `it`,
+  `fr`, `es` o `de`) — serve solo per quell'attributo, non traduce nulla.
+- `<title>…</title>`: il titolo dell'articolo, uguale a quello che metti
+  al punto 7.3, seguito da ` — Voices from Europe` ("Voices from Europe"
+  non si traduce mai).
+- Il link del tema in cima: `href="index.html?theme=foreign-policy"` (uno
+  dei sette slug dei working group, o `general`), col `data-i18n` giusto
+  per quel tema — nel nostro esempio
+  `data-i18n="policies_section.wg.fp_title"` per `foreign-policy`. Ogni
+  slug ha la sua chiave; guarda `voices/voices.js` (oggetto
+  `THEME_I18N_KEYS`) se non sei sicuro di quale usare.
+- `<h1 class="article-title">`: il titolo, identico ovunque compaia (non
+  è detto che coincida col titolo del documento originale, se l'autore
+  ne ha scelto uno diverso per la pubblicazione — usa quello che l'autore
+  ti ha dato per la pubblicazione).
+- `<p class="article-date">`: la data in formato AAAA-MM-GG.
+- Il riquadro autore in alto (quello piccolo, sopra il testo): se
+  l'autore ha una `photo`, lascia il tag `<img>` con il percorso giusto;
+  se non ce l'ha, sostituisci l'intero `<img>` con
+  `<div class="author-avatar-sm">👤</div>`. Il testo della bio qui è la
+  versione **breve** (`bio`, non `bioLong`) — copiata a mano da
+  `voices.json`, non collegata via JS: se in futuro cambi `bio`
+  nell'autore, questa pagina non si aggiorna da sola, va modificata a
+  mano.
+- Il corpo dell'articolo (`<div class="article-body">`): vedi il punto
+  7.3 qui sotto.
+- I due link in fondo: lasciali come sono, puntano già al posto giusto
+  (`?author=<slug>` e all'indice) tramite chiavi i18n già esistenti.
+
+### 7.3 Come scrivere il corpo dell'articolo
+
+Dentro `<div class="article-body">`, **solo tre elementi sono ammessi**:
+
+- `<p>…</p>` per ogni paragrafo. Un paragrafo del testo originale = un
+  `<p>`, non spezzarli né unirli.
+- `<h2>…</h2>` per ogni sottotitolo, esattamente dove l'autore lo ha
+  messo (non tutti gli articoli ne hanno; il nostro esempio ne ha due,
+  non uno di più).
+- `<blockquote>…</blockquote>` solo se l'autore ha scritto una citazione
+  isolata da evidenziare (nel nostro esempio non è stato usato: le frasi
+  fra virgolette sono rimaste dentro il loro `<p>`, perché fanno parte
+  del discorso, non sono citazioni isolate).
+
+**Cosa NON si usa mai in questo corpo**: `<strong>`/grassetto, elenchi
+puntati o numerati (`<ul>`/`<ol>`), link dentro il testo (`<a>`). Se il
+testo originale li contiene, non riprodurli: è un limite deliberato del
+formato, pensato per restare semplice.
+
+Il nostro esempio: 3 sezioni — la prima senza sottotitolo (4 paragrafi),
+poi `<h2>Sovereignty through collective resilience.</h2>` (7 paragrafi),
+poi `<h2>The middle-power dilemma and its solution through variable
+geometry.</h2>` (10 paragrafi). Prima di scrivere, conta i sottotitoli e
+i paragrafi nel testo che ti hanno dato: se il conteggio che ti aspetti
+non torna con quello che leggi, fidati di quello che leggi, non di
+quello che ti aspettavi — è già capitato che il conteggio annunciato
+fosse sbagliato.
+
+### 7.4 Aggiungi la riga in "articles"
+
+Dentro `"articles"` di `assets/data/voices.json`, una voce con tutti
+questi campi:
+```json
+{
+  "slug": "variable-geometry-middle-powers",
+  "title": "\"If you are not at the table, you are on the menu\": Europe's variable geometry and the course of middle powers in an increasingly fragmented world.",
+  "authorSlug": "esther-miguez-aparicio",
+  "themeSlug": "foreign-policy",
+  "date": "2026-09-18",
+  "lang": "en",
+  "excerpt": "On 16 September 2026, Ursula von der Leyen proposed Canada as the EU's first associate member, a sign of how middle powers are turning to variable geometry to navigate an increasingly fragmented world.",
+  "file": "voices/variable-geometry-middle-powers.html"
+}
+```
+- `slug`: uguale al nome del file, senza `.html`.
+- `title`: identico a quello scritto nell'`<h1>` del punto 7.2. Le
+  virgolette dentro il titolo vanno scritte `\"` (sono dentro una
+  stringa JSON).
+- `authorSlug`: deve corrispondere esattamente a uno slug già presente
+  in `"authors"` (punto 7.1) — uno sbagliato e l'articolo compare senza
+  nome autore.
+- `themeSlug`: uno dei sette slug dei working group, oppure `"general"`.
+- `date`: formato AAAA-MM-GG, usata per ordinare l'elenco (il più recente
+  in cima).
+- `lang`: la lingua in cui è scritto (mostrata come etichetta, non usata
+  per tradurre né nascondere nulla).
+- `excerpt`: **lo scrivi tu**, non l'autore — due righe al massimo,
+  prendendo parole vere dal testo, senza inventare fatti che l'articolo
+  non dice.
+- `file`: il percorso del file creato al punto 7.2, dalla root del repo
+  (`voices/nome-file.html`).
+
+Attenzione alla punteggiatura JSON: una virgola fuori posto rende
+l'intero elenco illeggibile (il sito mostra un avviso, ma è meglio non
+arrivarci — dopo aver salvato, valida il file, per esempio con
+`node -e "JSON.parse(require('fs').readFileSync('assets/data/voices.json','utf8'))"`,
+che non stampa nulla se il file è valido e si ferma con un errore se
+non lo è).
+
+### 7.5 Fine
+
+Salva, fai commit e push. Non serve toccare nient'altro:
+`voices/index.html` legge `voices.json` e costruisce la pagina da solo,
+comprese le viste filtrate per autore e per tema.
+
+**Prima di considerarlo pubblicato**, apri davvero nel browser (non
+basta leggere il codice):
+1. `voices/index.html` — l'articolo compare con titolo, autore, tema,
+   data, etichetta lingua, estratto.
+2. Il nome dell'autore è cliccabile e porta a `?author=<slug>`; su quella
+   pagina compaiono foto (o 👤), nome, bandiera e la bio ESTESA a
+   paragrafi separati (se hai scritto `bioLong`), sempre visibile, mai
+   dentro un menu a scomparsa.
+3. Il tema è cliccabile e porta a `?theme=<slug>`.
+4. La pagina dell'articolo vera e propria: bio BREVE sopra il testo,
+   sottotitoli al posto giusto, paragrafi separati.
+5. Dalla pagina `policies/<slug-tema>.html`, il link nella sezione
+   "Voices from Europe" porta all'articolo.
+6. La pagina si legge bene anche stringendo la finestra del browser
+   (o da telefono vero).
+
+## 8. Aggiungere un nuovo autore a Voices from Europe (senza un articolo pronto)
+
+Il punto 7.1 sopra spiega tutti i campi passo-passo con un esempio vero
+(compresi `bioLong` a paragrafi e il comando `sharp` per la foto): usa
+quello come riferimento. Questo punto serve solo per il caso in cui vuoi
+registrare un autore in anticipo, prima che abbia un articolo pronto —
+aggiungi comunque la sua voce dentro `"authors"` in
+`assets/data/voices.json` con gli stessi campi (`slug`, `name`, `flag`
+obbligatori; `bio`, `bioLong`, `photo` facoltativi). Un autore senza
+nessun articolo collegato non compare da nessuna parte del sito finché
+non pubblichi almeno un suo articolo (punto 7).
 
 ## 9. Privacy — foto, bio e nazionalità degli autori di Voices
 

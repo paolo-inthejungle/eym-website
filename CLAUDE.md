@@ -24,6 +24,11 @@ si edita l'HTML/CSS/JS direttamente e si fa il deploy così com'è.
   di icone, ecc.) senza autorizzazione esplicita.
 - Ogni modifica allo schema del database va scritta come file SQL in
   `supabase/`, mai eseguita solo a mano nel dashboard Supabase.
+- I commit si separano committando man mano, mentre si lavora. Non si
+  ricostruisce una storia pulita alla fine ricopiando file da backup o
+  copie di lavoro: il rischio è che il registro dei commit racconti un
+  ordine diverso da quello realmente accaduto, e che una copia
+  disallineata faccia sparire del lavoro senza che nessuno se ne accorga.
 
 ## Regole di questo codice
 - **i18n**: ogni testo di interfaccia visibile passa da

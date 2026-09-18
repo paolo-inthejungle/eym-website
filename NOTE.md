@@ -236,3 +236,68 @@ decisione cambia, aggiungine una nuova che rimanda a quella vecchia.
     tutte e 7 le pagine `policies/*.html` (non solo in Justice — stesso
     controllo ripetuto sulle altre sei). Nessun commit per questo
     lavoro: non c'era nulla da correggere nel suo perimetro.
+
+19. **(2026-09-18) "Position Papers" è un termine tecnico invariato in
+    tutte le lingue, come "Voices from Europe".** Prima di questa
+    sessione compariva in modi diversi: al plurale in home, al singolare
+    "Position Paper" nelle 7 pagine `policies/*.html`, e tradotto
+    (Prises de position, Documentos de posición, Positionspapiere) in
+    più chiavi dei file i18n. Corretti 9 chiavi i18n (in tutte le lingue
+    dove serviva), i 7 titoli `<h2>` delle pagine policies, i relativi
+    fallback HTML statici in `index.html` e nelle 7 pagine policies, un
+    commento in `policies/policies.js` e una riga nel modello email
+    `supabase/emails/invite-user.html`. Sui contesti dove il termine
+    compare accanto a un determinativo che in quella lingua vuole il
+    singolare (nessun/aucun/ningún/kein), è rimasto "Position Paper" al
+    singolare invece di forzare il plurale: forzare il plurale avrebbe
+    prodotto frasi agrammaticali ("nessun Position Papers"). Non è
+    un'eccezione al principio del termine invariato — resta comunque
+    inglese e non tradotto — riguarda solo il numero grammaticale.
+
+20. **(2026-09-18) Il tag `<title>` ora si aggiorna davvero, sia al
+    caricamento che al cambio lingua.** Non è servito un meccanismo
+    nuovo: `data-i18n="chiave"` messo direttamente sul tag `<title>`
+    viene già trovato e aggiornato dal motore i18n esistente, perché
+    `querySelectorAll('[data-i18n]')` cerca in tutto il documento,
+    `<head>` compreso, e scrivere il `textContent` di un `<title>` già
+    nel DOM aggiorna la linguetta del browser (comportamento nativo,
+    non codice scritto apposta). Collegati i tag `<title>` di
+    `index.html`, `pages/signup.html`, `pages/apply-coordinator.html`,
+    le 7 pagine `policies/*.html` e `voices/index.html` (non
+    `voices/_template.html`, modello con segnaposto). Riusate le chiavi
+    `signup.page_title` e `apply.page_title`, già presenti ma mai
+    richiamate da una sessione precedente — **con una correzione**: le
+    traduzioni IT/FR/ES/DE esistenti traducevano anche "European Youth
+    Movement" (es. "Movimento Giovanile Europeo"), contro la regola di
+    questa sessione che vuole quel nome invariato in ogni lingua.
+    Corretta la seconda metà di quelle due chiavi in tutte e 4 le
+    lingue, lasciata invariata la prima metà (già tradotta
+    correttamente). Le altre 9 chiavi dei titoli di pagina sono nuove,
+    in un namespace `page_titles` a sé.
+
+21. **(2026-09-18) Pubblicato il primo articolo di Voices from Europe e
+    acceso `VOICES_PUBLIC`.** Autrice Esther Miguez Aparicio, articolo
+    "If you are not at the table, you are on the menu" (tema Foreign
+    Policy). Aggiunto il campo facoltativo `bioLong` (array di paragrafi)
+    al modello dati degli autori — vedi @ARCHITETTURA.md — con relativo
+    supporto in `voices/voices.js` e un piccolo aggiustamento di stile in
+    `voices/voices.css` per ospitarlo. Tre cose segnalate e NON corrette
+    di mia iniziativa, come da istruzione:
+    - Il testo consegnato per `bioLong` conteneva tre paragrafi, non
+      quattro come annunciato nel prompt della sessione. Pubblicati i
+      tre paragrafi così come ricevuti, senza inventarne un quarto né
+      unire gli esistenti per far tornare il conto.
+    - Il testo dell'articolo conteneva due sottotitoli (tre sezioni:
+      una senza titolo più due titolate), non tre come annunciato nel
+      prompt. Pubblicato così come ricevuto. L'utente ha confermato in
+      seguito che il conteggio dichiarato nel prompt era un proprio
+      errore.
+    - **La foto dell'autrice non è stata pubblicata**: l'immagine
+      allegata alla chat non corrisponde a nessun file raggiungibile dal
+      filesystem (cercato in `%TEMP%`, Desktop, Downloads, Pictures e
+      nelle cartelle di lavoro di questa sessione) e non ho un
+      meccanismo per salvare su disco un'immagine incollata in
+      conversazione: senza un file non è possibile eseguire `sharp`.
+      L'autrice è stata pubblicata senza `photo` (compare l'icona 👤).
+      Se in futuro arriva il file vero, va ridimensionato e collegato
+      seguendo @PROCEDURE.md punto 7.1.
