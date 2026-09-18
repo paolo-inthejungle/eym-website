@@ -244,7 +244,7 @@
     "sec_body": "<p>Le Secrétariat s'occupe de la coordination interne, du registre des membres et de l'administration quotidienne du mouvement.</p>"
   },
   "signup": {
-    "page_title": "Rejoignez le Mouvement — Mouvement Européen de la Jeunesse",
+    "page_title": "Rejoignez le Mouvement — European Youth Movement",
     "back": "← Retour au site",
     "form_title": "Rejoignez le Mouvement Européen de la Jeunesse",
     "form_lead": "Remplissez le formulaire ci-dessous pour devenir membre. Nous examinerons votre candidature et nous vous contacterons prochainement.",
@@ -282,7 +282,7 @@
     "err_connection": "Erreur de connexion. Vérifiez votre connexion internet et réessayez."
   },
   "apply": {
-    "page_title": "Postuler comme Coordinateur National — Mouvement Européen de la Jeunesse",
+    "page_title": "Postuler comme Coordinateur National — European Youth Movement",
     "back": "← Retour au site",
     "form_title": "Postuler comme Coordinateur National",
     "form_lead": "Remplissez le formulaire ci-dessous pour postuler comme coordinateur national du Mouvement Européen de la Jeunesse dans votre pays.",
@@ -401,5 +401,16 @@
     "by": "Par",
     "template_more_by_author": "Plus d'articles de cet auteur →",
     "template_all_link": "Tous les articles de Voices from Europe →"
+  },
+  "page_titles": {
+    "home": "European Youth Movement",
+    "voices": "Voices from Europe — European Youth Movement",
+    "fp": "Politique Étrangère — Politiques EYM",
+    "ds": "Défense & Sécurité — Politiques EYM",
+    "ee": "Énergie & Environnement — Politiques EYM",
+    "jus": "Justice — Politiques EYM",
+    "edu": "Éducation — Politiques EYM",
+    "hc": "Santé — Politiques EYM",
+    "ihr": "Immigration & Droits Humains — Politiques EYM"
   }
 }

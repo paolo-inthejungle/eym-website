@@ -244,7 +244,7 @@
     "sec_body": "<p>La Segreteria si occupa del coordinamento interno, dell'anagrafica dei membri e dell'amministrazione quotidiana del movimento.</p>"
   },
   "signup": {
-    "page_title": "Unisciti al Movimento — Movimento Giovanile Europeo",
+    "page_title": "Unisciti al Movimento — European Youth Movement",
     "back": "← Torna al sito",
     "form_title": "Unisciti al Movimento Giovanile Europeo",
     "form_lead": "Compila il modulo sottostante per diventare membro. Esamineremo la tua candidatura e ti contatteremo a breve.",
@@ -282,7 +282,7 @@
     "err_connection": "Errore di connessione. Controlla la tua connessione a internet e riprova."
   },
   "apply": {
-    "page_title": "Candidati come Coordinatore Nazionale — Movimento Giovanile Europeo",
+    "page_title": "Candidati come Coordinatore Nazionale — European Youth Movement",
     "back": "← Torna al sito",
     "form_title": "Candidati come Coordinatore Nazionale",
     "form_lead": "Compila il modulo sottostante per candidarti come coordinatore nazionale del Movimento Giovanile Europeo nel tuo paese.",
@@ -401,5 +401,16 @@
     "by": "Di",
     "template_more_by_author": "Altri articoli di questo autore →",
     "template_all_link": "Tutti gli articoli di Voices from Europe →"
+  },
+  "page_titles": {
+    "home": "European Youth Movement",
+    "voices": "Voices from Europe — European Youth Movement",
+    "fp": "Politica Estera — Politiche EYM",
+    "ds": "Difesa & Sicurezza — Politiche EYM",
+    "ee": "Energia & Ambiente — Politiche EYM",
+    "jus": "Giustizia — Politiche EYM",
+    "edu": "Istruzione — Politiche EYM",
+    "hc": "Sanità — Politiche EYM",
+    "ihr": "Immigrazione & Diritti Umani — Politiche EYM"
   }
 }

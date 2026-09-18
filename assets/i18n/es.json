@@ -244,7 +244,7 @@
     "sec_body": "<p>La Secretaría se encarga de la coordinación interna, el registro de miembros y la administración diaria del movimiento.</p>"
   },
   "signup": {
-    "page_title": "Únete al Movimiento — Movimiento Europeo de la Juventud",
+    "page_title": "Únete al Movimiento — European Youth Movement",
     "back": "← Volver al sitio",
     "form_title": "Únete al Movimiento Europeo de la Juventud",
     "form_lead": "Completa el formulario a continuación para convertirte en miembro. Revisaremos tu solicitud y nos pondremos en contacto contigo pronto.",
@@ -282,7 +282,7 @@
     "err_connection": "Error de conexión. Comprueba tu conexión a internet e inténtalo de nuevo."
   },
   "apply": {
-    "page_title": "Postularse como Coordinador Nacional — Movimiento Europeo de la Juventud",
+    "page_title": "Postularse como Coordinador Nacional — European Youth Movement",
     "back": "← Volver al sitio",
     "form_title": "Postularse como Coordinador Nacional",
     "form_lead": "Rellena el formulario a continuación para postularte como coordinador nacional del Movimiento Europeo de la Juventud en tu país.",
@@ -401,5 +401,16 @@
     "by": "Por",
     "template_more_by_author": "Más artículos de este autor →",
     "template_all_link": "Todos los artículos de Voices from Europe →"
+  },
+  "page_titles": {
+    "home": "European Youth Movement",
+    "voices": "Voices from Europe — European Youth Movement",
+    "fp": "Política Exterior — Políticas EYM",
+    "ds": "Defensa & Seguridad — Políticas EYM",
+    "ee": "Energía & Medio Ambiente — Políticas EYM",
+    "jus": "Justicia — Políticas EYM",
+    "edu": "Educación — Políticas EYM",
+    "hc": "Sanidad — Políticas EYM",
+    "ihr": "Inmigración & Derechos Humanos — Políticas EYM"
   }
 }

@@ -401,5 +401,16 @@
     "by": "By",
     "template_more_by_author": "More articles by this author →",
     "template_all_link": "All Voices from Europe articles →"
+  },
+  "page_titles": {
+    "home": "European Youth Movement",
+    "voices": "Voices from Europe — European Youth Movement",
+    "fp": "Foreign Policy — EYM Policies",
+    "ds": "Defence & Security — EYM Policies",
+    "ee": "Energy & Environment — EYM Policies",
+    "jus": "Justice — EYM Policies",
+    "edu": "Education — EYM Policies",
+    "hc": "Healthcare — EYM Policies",
+    "ihr": "Immigration & Human Rights — EYM Policies"
   }
 }

@@ -244,7 +244,7 @@
     "sec_body": "<p>Das Sekretariat kümmert sich um die interne Koordination, die Mitgliederverwaltung und die tägliche Verwaltung der Bewegung.</p>"
   },
   "signup": {
-    "page_title": "Der Bewegung beitreten — Europäische Jugendbewegung",
+    "page_title": "Der Bewegung beitreten — European Youth Movement",
     "back": "← Zurück zur Website",
     "form_title": "Der Europäischen Jugendbewegung beitreten",
     "form_lead": "Fülle das untenstehende Formular aus, um Mitglied zu werden. Wir prüfen deine Bewerbung und melden uns in Kürze.",
@@ -282,7 +282,7 @@
     "err_connection": "Verbindungsfehler. Bitte überprüfe deine Internetverbindung und versuche es erneut."
   },
   "apply": {
-    "page_title": "Als nationaler Koordinator bewerben — Europäische Jugendbewegung",
+    "page_title": "Als nationaler Koordinator bewerben — European Youth Movement",
     "back": "← Zurück zur Website",
     "form_title": "Als nationaler Koordinator bewerben",
     "form_lead": "Fülle das untenstehende Formular aus, um dich als nationaler Koordinator der Europäischen Jugendbewegung in deinem Land zu bewerben.",
@@ -401,5 +401,16 @@
     "by": "Von",
     "template_more_by_author": "Weitere Artikel dieser Autorin/dieses Autors →",
     "template_all_link": "Alle Artikel von Voices from Europe →"
+  },
+  "page_titles": {
+    "home": "European Youth Movement",
+    "voices": "Voices from Europe — European Youth Movement",
+    "fp": "Außenpolitik — EYM-Politik",
+    "ds": "Verteidigung & Sicherheit — EYM-Politik",
+    "ee": "Energie & Umwelt — EYM-Politik",
+    "jus": "Justiz — EYM-Politik",
+    "edu": "Bildung — EYM-Politik",
+    "hc": "Gesundheit — EYM-Politik",
+    "ihr": "Migration & Menschenrechte — EYM-Politik"
   }
 }
