@@ -136,3 +136,28 @@ decisione cambia, aggiungine una nuova che rimanda a quella vecchia.
     comune sul web), non isola una parte di una frase. Non vanno
     trattati come gli incisi da rimuovere (regola in @CLAUDE.md, "Regole
     di questo codice") e non vanno "corretti" togliendo il trattino.
+
+15. **(2026-09-18) CENSIMENTO: testi visibili senza alcun collegamento
+    al motore i18n (non chiavi mancanti — nessun `data-i18n` proprio).**
+    Censiti 16 file HTML (13 pagine/modelli del sito + 3 modelli email
+    Supabase). Circa 164 testi scollegati sul sito (72 su pagine
+    pubbliche, 53 nella sola pagina `area-utente.html` — che non include
+    affatto `assets/js/i18n.js` ed è quindi 100% scollegata — 7 nel
+    modello `voices/_template.html`, non raggiungibile), più altri ~32
+    testi nei 3 modelli email (struttura diversa: sono renderizzati da
+    Supabase, non dal JS del sito, quindi non possono passare dal motore
+    i18n così com'è) e ~20 messaggi di errore restituiti dal backend
+    (`api/*.js`), sempre in inglese, mai passati dal frontend. Elenco
+    completo consegnato nella chat di questa sessione (censimento del
+    18 settembre 2026), non riportato qui per intero.
+
+    Perché il controllo in @PROCEDURE.md (sezione i18n, punto 5) non
+    trova questi casi: quel controllo cerca `data-i18n="chiave"` nel
+    codice e verifica che la chiave esista in `en.json` — funziona solo
+    se l'ATTRIBUTO è presente ma la CHIAVE manca. Qui il problema è
+    all'origine: l'attributo stesso non è mai stato scritto, quindi non
+    c'è nessun richiamo da trovare. Un controllo diverso servirebbe a
+    intercettarli (es. cercare testo visibile senza `data-i18n` nelle
+    vicinanze), ma non è stato scritto in questa sessione: si decide
+    prima cosa tradurre, poi si scrive la procedura su quel lavoro
+    davvero fatto.
