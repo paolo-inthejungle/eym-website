@@ -3317,7 +3317,7 @@ footer h4 {
             const { error } = await EYMAuth.signIn(form.email.value, form.password.value);
 
             btn.disabled = false;
-            btn.textContent = 'Log In';
+            btn.textContent = window.EYM?.t('auth.btn_login') || 'Log In';
             if (error) { errEl.textContent = error.message; return; }
             EYMAuth.closeAuthModal();
         }
@@ -3340,12 +3340,12 @@ footer h4 {
                 return;
             }
             if (!form.country.value) {
-                errEl.textContent = 'Please select your country.';
+                errEl.textContent = window.EYM?.t('auth.err_country') || 'Please select your country.';
                 form.country.focus();
                 return;
             }
             if (!form.phonePrefix.value || !form.phoneNumber.value.trim()) {
-                errEl.textContent = 'Phone number is required.';
+                errEl.textContent = window.EYM?.t('auth.err_phone') || 'Phone number is required.';
                 form.phonePrefix.focus();
                 return;
             }
@@ -3365,7 +3365,7 @@ footer h4 {
             );
 
             btn.disabled = false;
-            btn.textContent = 'Create Account';
+            btn.textContent = window.EYM?.t('auth.btn_signup') || 'Create Account';
             if (error) { errEl.textContent = error.message; return; }
             sucEl.textContent = window.EYM?.t('auth.success_signup') || '✓ Check your email to confirm your account.';
             form.reset();
@@ -3385,7 +3385,7 @@ footer h4 {
             const { error } = await EYMAuth.resetPassword(form.email.value);
 
             btn.disabled = false;
-            btn.textContent = 'Send Reset Link';
+            btn.textContent = window.EYM?.t('auth.btn_forgot') || 'Send Reset Link';
             if (error) { errEl.textContent = error.message; return; }
             sucEl.textContent = window.EYM?.t('auth.success_reset') || '✓ Reset link sent. Check your email.';
             form.reset();

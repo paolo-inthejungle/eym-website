@@ -259,7 +259,12 @@
     "questions": "¿Preguntas? Escríbenos a",
     "success_title": "¡Bienvenido al Movimiento!",
     "success_text": "Tu solicitud de membresía ha sido recibida. Nos pondremos en contacto contigo pronto con los próximos pasos y el acceso a tu grupo de trabajo.",
-    "back_home": "← Volver al sitio"
+    "back_home": "← Volver al sitio",
+    "err_terms": "Debes aceptar el Código Ético y el Manifiesto Fundacional para unirte.",
+    "err_required": "Completa todos los campos obligatorios.",
+    "err_duplicate": "Este correo ya está registrado. ¡Bienvenido de nuevo!",
+    "err_generic": "Algo salió mal. Inténtalo de nuevo.",
+    "err_connection": "Error de conexión. Comprueba tu conexión a internet e inténtalo de nuevo."
   },
   "apply": {
     "page_title": "Postularse como Coordinador Nacional — Movimiento Europeo de la Juventud",
@@ -280,7 +285,10 @@
     "questions": "¿Preguntas? Escríbenos a",
     "success_title": "¡Solicitud recibida!",
     "success_text": "Gracias por postularte como Coordinador Nacional. Revisaremos tu solicitud y te responderemos pronto.",
-    "back_home": "← Volver al sitio"
+    "back_home": "← Volver al sitio",
+    "err_required": "Completa correctamente todos los campos obligatorios.",
+    "err_generic": "Algo salió mal. Inténtalo de nuevo.",
+    "err_connection": "Error de conexión. Comprueba tu conexión a internet e inténtalo de nuevo."
   },
   "policies_page": {
     "wg_eyebrow": "Grupo de Trabajo",
@@ -353,7 +361,9 @@
     "success_signup": "✓ Revisa tu correo para confirmar tu cuenta.",
     "success_reset": "✓ Enlace enviado. Revisa tu correo.",
     "err_password_match": "Las contraseñas no coinciden.",
-    "err_password_length": "La contraseña debe tener al menos 8 caracteres."
+    "err_password_length": "La contraseña debe tener al menos 8 caracteres.",
+    "err_country": "Selecciona tu país.",
+    "err_phone": "El número de teléfono es obligatorio."
   },
   "voices": {
     "tagline": "Reflexiones y análisis personales de los miembros de EYM, en sus propias palabras y bajo su propia responsabilidad.",

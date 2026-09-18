@@ -259,7 +259,12 @@
     "questions": "Des questions ? Écrivez-nous à",
     "success_title": "Bienvenue dans le Mouvement !",
     "success_text": "Votre demande d'adhésion a été reçue. Nous vous contacterons prochainement avec les prochaines étapes et l'accès à votre groupe de travail.",
-    "back_home": "← Retour au site"
+    "back_home": "← Retour au site",
+    "err_terms": "Vous devez accepter le Code d'éthique et le Manifeste fondateur pour rejoindre le mouvement.",
+    "err_required": "Veuillez remplir tous les champs obligatoires.",
+    "err_duplicate": "Cet email est déjà enregistré. Bon retour parmi nous !",
+    "err_generic": "Une erreur s'est produite. Veuillez réessayer.",
+    "err_connection": "Erreur de connexion. Vérifiez votre connexion internet et réessayez."
   },
   "apply": {
     "page_title": "Postuler comme Coordinateur National — Mouvement Européen de la Jeunesse",
@@ -280,7 +285,10 @@
     "questions": "Des questions ? Écrivez-nous à",
     "success_title": "Candidature reçue !",
     "success_text": "Merci d'avoir postulé comme Coordinateur National. Nous examinerons votre candidature et vous répondrons bientôt.",
-    "back_home": "← Retour au site"
+    "back_home": "← Retour au site",
+    "err_required": "Veuillez remplir correctement tous les champs obligatoires.",
+    "err_generic": "Une erreur s'est produite. Veuillez réessayer.",
+    "err_connection": "Erreur de connexion. Vérifiez votre connexion internet et réessayez."
   },
   "policies_page": {
     "wg_eyebrow": "Groupe de Travail",
@@ -353,7 +361,9 @@
     "success_signup": "✓ Vérifiez votre e-mail pour confirmer votre compte.",
     "success_reset": "✓ Lien envoyé. Vérifiez votre e-mail.",
     "err_password_match": "Les mots de passe ne correspondent pas.",
-    "err_password_length": "Le mot de passe doit contenir au moins 8 caractères."
+    "err_password_length": "Le mot de passe doit contenir au moins 8 caractères.",
+    "err_country": "Veuillez sélectionner votre pays.",
+    "err_phone": "Le numéro de téléphone est obligatoire."
   },
   "voices": {
     "tagline": "Réflexions et analyses personnelles des membres du MEJ, dans leurs propres mots et sous leur propre responsabilité.",

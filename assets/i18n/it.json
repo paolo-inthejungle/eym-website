@@ -259,7 +259,12 @@
     "questions": "Domande? Scrivici a",
     "success_title": "Benvenuto nel Movimento!",
     "success_text": "La tua richiesta di adesione è stata ricevuta. Ti contatteremo a breve con i prossimi passi e l'accesso al tuo gruppo di lavoro.",
-    "back_home": "← Torna al sito"
+    "back_home": "← Torna al sito",
+    "err_terms": "Devi accettare il Codice Etico e il Manifesto Fondativo per iscriverti.",
+    "err_required": "Compila tutti i campi obbligatori.",
+    "err_duplicate": "Questa email è già registrata. Bentornato!",
+    "err_generic": "Qualcosa è andato storto. Riprova.",
+    "err_connection": "Errore di connessione. Controlla la tua connessione a internet e riprova."
   },
   "apply": {
     "page_title": "Candidati come Coordinatore Nazionale — Movimento Giovanile Europeo",
@@ -280,7 +285,10 @@
     "questions": "Domande? Scrivici a",
     "success_title": "Candidatura ricevuta!",
     "success_text": "Grazie per esserti candidato come Coordinatore Nazionale. Esamineremo la tua candidatura e ti risponderemo a breve.",
-    "back_home": "← Torna al sito"
+    "back_home": "← Torna al sito",
+    "err_required": "Compila correttamente tutti i campi obbligatori.",
+    "err_generic": "Qualcosa è andato storto. Riprova.",
+    "err_connection": "Errore di connessione. Controlla la tua connessione a internet e riprova."
   },
   "policies_page": {
     "wg_eyebrow": "Gruppo di Lavoro",
@@ -353,7 +361,9 @@
     "success_signup": "✓ Controlla la tua email per confermare l'account.",
     "success_reset": "✓ Link inviato. Controlla la tua email.",
     "err_password_match": "Le password non coincidono.",
-    "err_password_length": "La password deve essere di almeno 8 caratteri."
+    "err_password_length": "La password deve essere di almeno 8 caratteri.",
+    "err_country": "Seleziona il tuo paese.",
+    "err_phone": "Il numero di telefono è obbligatorio."
   },
   "voices": {
     "tagline": "Riflessioni e analisi personali dei membri EYM, nelle loro parole e sotto la loro responsabilità.",

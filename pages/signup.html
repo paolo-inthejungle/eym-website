@@ -625,10 +625,10 @@
                 number.classList.remove('error');
             }
             if (!document.getElementById('accept-terms').checked) {
-                showMsg('You must accept the Code of Ethics and Founding Manifesto to join.', 'error');
+                showMsg(window.EYM?.t('signup.err_terms') || 'You must accept the Code of Ethics and Founding Manifesto to join.', 'error');
                 ok = false;
             }
-            if (!ok) showMsg('Please fill in all required fields.', 'error');
+            if (!ok) showMsg(window.EYM?.t('signup.err_required') || 'Please fill in all required fields.', 'error');
             return ok;
         }
 
@@ -679,12 +679,12 @@
                     document.getElementById('form-section').style.display = 'none';
                     document.getElementById('success-panel').style.display = 'block';
                 } else if (data.duplicate) {
-                    showMsg('This email is already registered. Welcome back!', 'success');
+                    showMsg(window.EYM?.t('signup.err_duplicate') || 'This email is already registered. Welcome back!', 'success');
                 } else {
-                    showMsg(data.error || 'Something went wrong. Please try again.', 'error');
+                    showMsg(data.error || window.EYM?.t('signup.err_generic') || 'Something went wrong. Please try again.', 'error');
                 }
             } catch {
-                showMsg('Connection error. Please check your internet and try again.', 'error');
+                showMsg(window.EYM?.t('signup.err_connection') || 'Connection error. Please check your internet and try again.', 'error');
             }
 
             btn.disabled = false;

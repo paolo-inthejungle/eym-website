@@ -510,7 +510,7 @@
             emailEl.classList.add('error');
             ok = false;
         }
-        if (!ok) showMsg('Please fill in all required fields correctly.', 'error');
+        if (!ok) showMsg(window.EYM?.t('apply.err_required') || 'Please fill in all required fields correctly.', 'error');
         return ok;
     }
 
@@ -551,9 +551,9 @@
                 document.getElementById('success-panel').style.display = 'block';
                 return;
             }
-            showMsg(data.error || 'Something went wrong. Please try again.', 'error');
+            showMsg(data.error || window.EYM?.t('apply.err_generic') || 'Something went wrong. Please try again.', 'error');
         } catch {
-            showMsg('Connection error. Please check your internet and try again.', 'error');
+            showMsg(window.EYM?.t('apply.err_connection') || 'Connection error. Please check your internet and try again.', 'error');
         }
 
         btn.disabled    = false;

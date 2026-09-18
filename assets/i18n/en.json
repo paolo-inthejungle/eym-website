@@ -259,7 +259,12 @@
     "questions": "Questions? Write to us at",
     "success_title": "Welcome to the Movement!",
     "success_text": "Your membership request has been received. You will hear from us shortly with next steps and access to your working group.",
-    "back_home": "← Back to the site"
+    "back_home": "← Back to the site",
+    "err_terms": "You must accept the Code of Ethics and Founding Manifesto to join.",
+    "err_required": "Please fill in all required fields.",
+    "err_duplicate": "This email is already registered. Welcome back!",
+    "err_generic": "Something went wrong. Please try again.",
+    "err_connection": "Connection error. Please check your internet and try again."
   },
   "apply": {
     "page_title": "Apply as National Coordinator — European Youth Movement",
@@ -280,7 +285,10 @@
     "questions": "Questions? Write to us at",
     "success_title": "Application received!",
     "success_text": "Thank you for applying as a National Coordinator. We'll review your application and get back to you soon.",
-    "back_home": "← Back to the site"
+    "back_home": "← Back to the site",
+    "err_required": "Please fill in all required fields correctly.",
+    "err_generic": "Something went wrong. Please try again.",
+    "err_connection": "Connection error. Please check your internet and try again."
   },
   "policies_page": {
     "wg_eyebrow": "Working Group",
@@ -353,7 +361,9 @@
     "success_signup": "✓ Check your email to confirm your account.",
     "success_reset": "✓ Reset link sent. Check your email.",
     "err_password_match": "Passwords do not match.",
-    "err_password_length": "Password must be at least 8 characters."
+    "err_password_length": "Password must be at least 8 characters.",
+    "err_country": "Please select your country.",
+    "err_phone": "Phone number is required."
   },
   "voices": {
     "tagline": "Personal reflections and analysis from EYM members, in their own words and on their own responsibility.",
