@@ -28,7 +28,10 @@ si edita l'HTML/CSS/JS direttamente e si fa il deploy così com'è.
 ## Regole di questo codice
 - **i18n**: ogni testo di interfaccia visibile passa da
   `assets/js/i18n.js` + `assets/i18n/{en,it,fr,es,de}.json`. Una chiave
-  aggiunta in un solo file è un bug — va aggiunta in tutti e 5.
+  aggiunta in un solo file è un bug — va aggiunta in tutti e 5. Una
+  chiave mancante non lascia il campo vuoto, lascia il testo inglese:
+  i testi non tradotti sono invisibili a occhio, vanno cercati (vedi
+  @PROCEDURE.md).
 - **Slug dei working group** (usati in URL, DB, JSON — non inventarne
   altri): `foreign-policy`, `defence-security`, `energy-environment`,
   `justice`, `education`, `healthcare`, `immigration-human-rights`.
