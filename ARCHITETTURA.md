@@ -69,6 +69,17 @@ tramite anchor: `#home`, `#policies`, `#movement`, `#territory`,
 `#events`, `#news`. In coda al file: i modali (`.modal-overlay`), lo
 script della mappa e il modale di login/signup (`#auth-modal`).
 
+Dentro `#policies`, dopo le 7 card dei gruppi tematici, ci sono **due
+blocchi distinti e non vanno più rifusi in uno solo** (successe una
+volta, corretto il 2026-09-18 — vedi @NOTE.md):
+- **"Position Papers"** (`policies_section.papers_*`): sempre visibile,
+  parla solo di documenti ufficiali dei Gruppi Tematici. Stato vuoto
+  sobrio, nessun invito a contribuire.
+- **"Voices from Europe"** (`#voices-cta-policies`,
+  `policies_section.voices_*`): nascosto di default, si accende con
+  l'interruttore `VOICES_PUBLIC` (vedi @PROCEDURE.md). Parla di
+  contributi personali dei singoli membri e porta a `voices/index.html`.
+
 Attenzione alla **duplicazione dei membri dell'organigramma**: ogni
 sezione dell'organigramma (Consiglio Direttivo, Segreteria, Dipartimento
 Legale, Coordinatori Tematici, Comunicazione) compare **due volte** nel

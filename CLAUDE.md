@@ -37,6 +37,10 @@ si edita l'HTML/CSS/JS direttamente e si fa il deploy così com'è.
   @NOTE.md per il limite noto su Windows).
 - Segreti reali (chiavi API, service role key) non vanno mai in file
   versionati: solo placeholder, con nota di cosa serve.
+- Nei testi pubblici del sito non si usano incisi fra trattini lunghi
+  né la costruzione "non è X, è Y". Fanno sembrare il testo generato da
+  una macchina. Eccezione: i testi della pagina Energy & Environment,
+  dove gli incisi sono voluti.
 
 ## Mappa del progetto
 Per la struttura del codice, le sezioni di `index.html`, i due flussi di

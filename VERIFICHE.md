@@ -22,12 +22,19 @@ confondere "il codice sembra corretto" con "è stato visto funzionare".
   5 articoli inventati, rimossi prima del commit — vedi @NOTE.md e il
   messaggio di chiusura di questa sessione). Non è mai stato pubblicato o
   visto un articolo vero attraverso questo sistema.
-- **Le traduzioni FR/ES/DE di tutti i testi nuovi di questa sessione**
-  (organigramma, Voices from Europe, pagina Energia & Ambiente, mappa)
-  **sono generate automaticamente, non riviste da madrelingua.** L'italiano
-  è stato scritto con cura perché è la lingua che l'utente legge
-  direttamente; francese, spagnolo e tedesco andrebbero fatti rileggere
-  prima di considerarli definitivi.
+- **(2026-09-17) Le traduzioni FR/ES/DE di tutti i testi nuovi della
+  sessione del 17 settembre** (organigramma, Voices from Europe, pagina
+  Energia & Ambiente, mappa) **sono generate automaticamente, non
+  riviste da madrelingua.** L'italiano è stato scritto con cura perché
+  è la lingua che l'utente legge direttamente; francese, spagnolo e
+  tedesco andrebbero fatti rileggere prima di considerarli definitivi.
+- **(2026-09-18) Stesso avvertimento per i testi riscritti nel LAVORO 2
+  di questa sessione** (rimozione di incisi fra trattini e costruzioni
+  "non è X, è Y" in tutti e 5 i file i18n): le riscritture FR/ES/DE
+  sono anch'esse automatiche, non riviste da madrelingua. In italiano e
+  inglese il senso è stato controllato frase per frase; nelle altre tre
+  lingue solo la forma (rimozione del trattino/dell'antitesi), non la
+  naturalezza del risultato.
 
 ## Verificato in locale (non in produzione)
 

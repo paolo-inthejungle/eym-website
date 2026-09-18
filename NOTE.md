@@ -75,3 +75,34 @@ decisione cambia, aggiungine una nuova che rimanda a quella vecchia.
    automaticamente snaturerebbe la voce dell'autore, tradurli a mano non
    è sostenibile con volumi crescenti. Solo l'interfaccia del sito
    (etichette, pulsanti, messaggi) passa da i18n.
+
+9. **(2026-09-18) DECISIONE: il riquadro "Position Papers" nella home
+   parla solo di documenti ufficiali.** L'invito a contribuire ("Vuoi
+   contribuire? Unisciti al Movimento") è stato tolto da questo blocco:
+   quel ruolo appartiene a "Voices from Europe" (vedi voce 6 sopra),
+   che è lo spazio pensato per i contributi personali. Il blocco
+   "Position Papers" ora è uno stato informativo/vuoto, senza inviti.
+
+10. **(2026-09-18) QUESTIONE CHIUSA: corrispondenza paesi/mappa
+    verificata visivamente, funziona** — con un avvertimento per il
+    futuro. Il codice in `index.html` ricava l'id-paese con
+    `el.id.split('-')[0]`, cioè confronta solo l'INIZIO del codice del
+    tracciato, non il codice esatto (vedi voce 5 sopra per il caso già
+    trovato del Regno Unito). Oggi, in
+    `assets/images/european-union-map.svg`, Francia, Portogallo, Paesi
+    Bassi e Danimarca non hanno tracciati separati per i territori
+    d'oltremare (nessun id tipo `fr-xxx`): sono un unico tracciato
+    `fr`, `pt`, `nl`, `dk`. Ma se in futuro questo SVG viene sostituito
+    con una versione che li include, o se qualcuno aggiunge quei
+    tracciati, chi lo fa deve controllare A MANO quali id compaiono e
+    cosa si accende aggiungendo il codice base a `MEMBER_COUNTRIES` —
+    non è garantito che corrisponda solo al paese voluto.
+
+11. **(2026-09-18) QUESTIONE APERTA: le 7 pagine `policies/*.html` sono
+    file indipendenti, senza template condiviso.** Ogni modifica che
+    riguarda tutte e 7 (come la separazione Position Paper/Voices della
+    sessione precedente, o la riscrittura del 2026-09-18) va ripetuta a
+    mano, identica, su ciascun file. Non esiste un meccanismo che lo
+    faccia automaticamente: un domani, se le pagine crescono, vale la
+    pena valutare un vero template — ma è un cambio di architettura,
+    non una correzione, e va deciso esplicitamente.
