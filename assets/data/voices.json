@@ -1,4 +1,27 @@
 {
-  "authors": [],
-  "articles": []
+  "authors": [
+    {
+      "slug": "esther-miguez-aparicio",
+      "name": "Esther Miguez Aparicio",
+      "flag": "🇪🇸",
+      "bio": "Esther Miguez Aparicio is a Law and International Relations graduate whose international outlook has been cultivated through academic and professional experience across Canada, Belgium, Spain and France. Her engagement with geopolitics, international security and European affairs has developed in settings where political analysis is closely attuned to the workings and sensitivities of international institutions.",
+      "bioLong": [
+        "In Brussels, she worked on European Commission programmes at the Official Spanish Chamber of Commerce in Belgium and Luxembourg. At the International Relations Department of Instituto Cervantes headquarters, she contributed to European cooperation through EUNIC (European Union National Institutes for Culture), gaining close insight into the institutional dynamics of cultural diplomacy.",
+        "At the Embassy of Paraguay, she drafted notes verbales and official communications while preparing political and economic reports for the mission, alongside direct engagement with Spain's Ministry of Foreign Affairs. Her work at Newinds Consulting and other cultural institutions has lent further breadth to her international experience.",
+        "She now applies this breadth of experience to geopolitical analysis and strategic foresight, seeking to discern emerging geopolitical shifts and situate them within a longer-term strategic projection."
+      ]
+    }
+  ],
+  "articles": [
+    {
+      "slug": "variable-geometry-middle-powers",
+      "title": "\"If you are not at the table, you are on the menu\": Europe's variable geometry and the course of middle powers in an increasingly fragmented world.",
+      "authorSlug": "esther-miguez-aparicio",
+      "themeSlug": "foreign-policy",
+      "date": "2026-09-18",
+      "lang": "en",
+      "excerpt": "On 16 September 2026, Ursula von der Leyen proposed Canada as the EU's first associate member, a sign of how middle powers are turning to variable geometry to navigate an increasingly fragmented world.",
+      "file": "voices/variable-geometry-middle-powers.html"
+    }
+  ]
 }
