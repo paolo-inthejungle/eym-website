@@ -64,6 +64,69 @@ Charge —` (`common.pending_charge`) per una carica assegnabile, o
    `data-i18n-html="chiave"` se il testo contiene markup (link, `<br>`,
    `<strong>`), `data-i18n-placeholder="chiave"` per il placeholder di
    un campo.
+4. **Come verificare che le 5 lingue abbiano davvero le stesse
+   chiavi** (non basta contare, un file può avere una chiave in meno e
+   una in più e il totale torna uguale per caso — successo il
+   2026-09-18): confronta gli ELENCHI, non i numeri. Da terminale, nella
+   root del repo:
+   ```
+   node -e "
+   const fs = require('fs');
+   function flat(o,p,out){ for (const k in o){ const kp=p?p+'.'+k:k; if (o[k]&&typeof o[k]==='object'&&!Array.isArray(o[k])) flat(o[k],kp,out); else out[kp]=true; } return out; }
+   const langs = ['en','it','fr','es','de'];
+   const data = {};
+   for (const l of langs) data[l] = flat(JSON.parse(fs.readFileSync('assets/i18n/'+l+'.json','utf8')), '', {});
+   const ref = new Set(Object.keys(data.en));
+   for (const l of langs) {
+     if (l==='en') continue;
+     const other = new Set(Object.keys(data[l]));
+     const missing = [...ref].filter(k => !other.has(k));
+     const extra = [...other].filter(k => !ref.has(k));
+     console.log(l, 'missing:', missing, 'extra:', extra);
+   }
+   "
+   ```
+   Se una lingua ha `missing` o `extra`, è un bug: aggiungi la chiave
+   mancante ovunque manchi, ma NON cancellare una chiave "extra" senza
+   prima controllare se è ancora usata nel codice.
+5. **Come trovare chiavi richiamate nel codice ma assenti da
+   `en.json`.** Non producono un elemento vuoto: il motore i18n lascia
+   il testo statico inglese com'è quando la chiave non risolve, quindi
+   quel testo resta in inglese anche nelle altre lingue senza errori
+   visibili. Da terminale, nella root del repo:
+   ```
+   node -e "
+   const fs = require('fs');
+   const path = require('path');
+   function flat(o,p,out){ for (const k in o){ const kp=p?p+'.'+k:k; if (o[k]&&typeof o[k]==='object'&&!Array.isArray(o[k])) flat(o[k],kp,out); else out[kp]=true; } return out; }
+   const enKeys = new Set(Object.keys(flat(JSON.parse(fs.readFileSync('assets/i18n/en.json','utf8')), '', {})));
+   function walk(dir, exts, out) {
+     for (const entry of fs.readdirSync(dir, {withFileTypes:true})) {
+       if (entry.name === 'node_modules' || entry.name === '.git') continue;
+       const p = path.join(dir, entry.name);
+       if (entry.isDirectory()) walk(p, exts, out);
+       else if (exts.some(e => entry.name.endsWith(e))) out.push(p);
+     }
+     return out;
+   }
+   const files = [...walk('.', ['.html'], []), ...walk('.', ['.js'], []).filter(f => !f.includes('node_modules'))];
+   const referenced = new Map();
+   for (const f of files) {
+     const content = fs.readFileSync(f, 'utf8');
+     for (const re of [/data-i18n(?:-html|-placeholder)?=\"([^\"]+)\"/g, /EYM\??\.t\(['\"]([^'\"]+)['\"]\)/g]) {
+       let m;
+       while ((m = re.exec(content))) {
+         if (!referenced.has(m[1])) referenced.set(m[1], new Set());
+         referenced.get(m[1]).add(f);
+       }
+     }
+   }
+   for (const [key, files] of referenced) if (!enKeys.has(key)) console.log(key, '->', [...files].join(', '));
+   "
+   ```
+   Ogni riga stampata è una chiave da aggiungere (con la traduzione
+   corretta, non inventata) in tutti e 5 i file, oppure un refuso nel
+   nome della chiave nell'HTML/JS da correggere.
 
 ## 5. Caricare i template email in Supabase Auth
 
