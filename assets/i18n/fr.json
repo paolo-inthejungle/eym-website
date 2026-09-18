@@ -196,7 +196,13 @@
     "nc": "Coordinateurs Nationaux",
     "copyright": "© 2026 Mouvement Européen de la Jeunesse. Tous droits réservés.",
     "motto": "★ Pour une Europe unie et démocratique ★",
-    "back_to_site": "Retour au site principal"
+    "back_to_site": "Retour au site principal",
+    "copyright_short": "© 2026 Mouvement Européen de la Jeunesse"
+  },
+  "country_groups": {
+    "eu": "États membres de l'UE",
+    "other_europe": "Autres pays européens",
+    "other": "Autre"
   },
   "modals": {
     "fp_title": "🌍 Politique Étrangère",
@@ -263,6 +269,12 @@
     "success_title": "Bienvenue dans le Mouvement !",
     "success_text": "Votre demande d'adhésion a été reçue. Nous vous contacterons prochainement avec les prochaines étapes et l'accès à votre groupe de travail.",
     "back_home": "← Retour au site",
+    "eyebrow": "Adhésion",
+    "hero_title": "Rejoins le <span>Mouvement</span>",
+    "hero_lead": "Rejoins un réseau grandissant de jeunes Européens engagés à construire l'avenir de notre continent.",
+    "placeholder_firstname": "ex. Anna",
+    "placeholder_lastname": "ex. Müller",
+    "placeholder_email": "vous@exemple.fr",
     "err_terms": "Vous devez accepter le Code d'éthique et le Manifeste fondateur pour rejoindre le mouvement.",
     "err_required": "Veuillez remplir tous les champs obligatoires.",
     "err_duplicate": "Cet email est déjà enregistré. Bon retour parmi nous !",
@@ -283,6 +295,11 @@
     "phone": "Numéro de téléphone",
     "motivation_label": "Motivation",
     "motivation_placeholder": "Dites-nous pourquoi vous souhaitez devenir coordinateur national et ce que vous apporteriez au rôle...",
+    "eyebrow": "Implique-toi",
+    "hero_lead": "Représente le Mouvement Européen de la Jeunesse dans ton pays et aide à construire la prochaine génération de leaders européens.",
+    "placeholder_name": "ex. Anna Müller",
+    "placeholder_email": "vous@exemple.fr",
+    "field_hint": "Si ton pays a déjà un coordinateur, nous pourrions t'inviter à l'assister.",
     "submit": "Soumettre la candidature →",
     "submitting": "Envoi en cours...",
     "questions": "Des questions ? Écrivez-nous à",

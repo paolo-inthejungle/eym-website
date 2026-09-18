@@ -29,6 +29,10 @@
       const val = get(t, el.dataset.i18nPlaceholder);
       if (val !== null) el.placeholder = val;
     });
+    document.querySelectorAll('[data-i18n-label]').forEach(el => {
+      const val = get(t, el.dataset.i18nLabel);
+      if (val !== null) el.label = val;
+    });
     document.documentElement.lang = current;
     document.querySelectorAll('[data-lang]').forEach(btn => {
       btn.classList.toggle('lang-active', btn.dataset.lang === current);

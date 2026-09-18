@@ -357,9 +357,9 @@
 </header>
 
 <div class="page-hero">
-    <div class="eyebrow">Get Involved</div>
-    <h1>Apply as National Coordinator</h1>
-    <p>Represent the European Youth Movement in your country and help build the next generation of European leaders.</p>
+    <div class="eyebrow" data-i18n="apply.eyebrow">Get Involved</div>
+    <h1 data-i18n="apply.form_title">Apply as National Coordinator</h1>
+    <p data-i18n="apply.hero_lead">Represent the European Youth Movement in your country and help build the next generation of European leaders.</p>
 </div>
 
 <div class="form-wrap">
@@ -379,11 +379,11 @@
                 <div class="field-row">
                     <div class="field">
                         <label for="name"><span data-i18n="apply.fullname">Full Name</span> <span class="req">*</span></label>
-                        <input type="text" id="name" name="name" placeholder="e.g. Anna Müller" autocomplete="name" required>
+                        <input type="text" id="name" name="name" placeholder="e.g. Anna Müller" data-i18n-placeholder="apply.placeholder_name" autocomplete="name" required>
                     </div>
                     <div class="field">
                         <label for="email"><span data-i18n="apply.email">Email Address</span> <span class="req">*</span></label>
-                        <input type="email" id="email" name="email" placeholder="your@email.com" autocomplete="email" required>
+                        <input type="email" id="email" name="email" placeholder="your@email.com" data-i18n-placeholder="apply.placeholder_email" autocomplete="email" required>
                     </div>
                 </div>
 
@@ -391,7 +391,7 @@
                     <label for="country"><span data-i18n="apply.country">Country</span> <span class="req">*</span></label>
                     <select id="country" name="country" required>
                         <option value="" disabled selected data-i18n="apply.country_placeholder">Select your country</option>
-                        <optgroup label="EU Member States">
+                        <optgroup label="EU Member States" data-i18n-label="country_groups.eu">
                             <option value="Austria">Austria</option>
                             <option value="Belgium">Belgium</option>
                             <option value="Bulgaria">Bulgaria</option>
@@ -420,7 +420,7 @@
                             <option value="Spain">Spain</option>
                             <option value="Sweden">Sweden</option>
                         </optgroup>
-                        <optgroup label="Other European countries">
+                        <optgroup label="Other European countries" data-i18n-label="country_groups.other_europe">
                             <option value="Albania">Albania</option>
                             <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
                             <option value="Georgia">Georgia</option>
@@ -437,11 +437,11 @@
                             <option value="Ukraine">Ukraine</option>
                             <option value="United Kingdom">United Kingdom</option>
                         </optgroup>
-                        <optgroup label="Other">
+                        <optgroup label="Other" data-i18n-label="country_groups.other">
                             <option value="Other">Other</option>
                         </optgroup>
                     </select>
-                    <span class="field-hint">If your country already has a coordinator, we may invite you to assist them.</span>
+                    <span class="field-hint" data-i18n="apply.field_hint">If your country already has a coordinator, we may invite you to assist them.</span>
                 </div>
 
                 <div class="field">
@@ -480,7 +480,7 @@
 </div>
 
 <footer>
-    © 2026 European Youth Movement · <a href="../index.html">www.eym-europe.eu</a>
+    <span data-i18n="footer.copyright_short">© 2026 European Youth Movement</span> · <a href="../index.html">www.eym-europe.eu</a>
 </footer>
 
 <script>

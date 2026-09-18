@@ -367,9 +367,9 @@
     </header>
 
     <div class="page-hero">
-        <div class="eyebrow">Membership</div>
-        <h1>Join the <span>Movement</span></h1>
-        <p>Become part of a growing network of young Europeans committed to shaping the future of our continent.</p>
+        <div class="eyebrow" data-i18n="signup.eyebrow">Membership</div>
+        <h1 data-i18n-html="signup.hero_title">Join the <span>Movement</span></h1>
+        <p data-i18n="signup.hero_lead">Become part of a growing network of young Europeans committed to shaping the future of our continent.</p>
     </div>
 
     <div class="form-wrap">
@@ -385,24 +385,24 @@
                     <div class="field-row">
                         <div class="field">
                             <label for="firstName"><span data-i18n="signup.firstname">First Name</span> <span class="req">*</span></label>
-                            <input type="text" id="firstName" name="firstName" placeholder="e.g. Anna" autocomplete="given-name" required>
+                            <input type="text" id="firstName" name="firstName" placeholder="e.g. Anna" data-i18n-placeholder="signup.placeholder_firstname" autocomplete="given-name" required>
                         </div>
                         <div class="field">
                             <label for="lastName"><span data-i18n="signup.lastname">Last Name</span> <span class="req">*</span></label>
-                            <input type="text" id="lastName" name="lastName" placeholder="e.g. Müller" autocomplete="family-name" required>
+                            <input type="text" id="lastName" name="lastName" placeholder="e.g. Müller" data-i18n-placeholder="signup.placeholder_lastname" autocomplete="family-name" required>
                         </div>
                     </div>
 
                     <div class="field">
                         <label for="email"><span data-i18n="signup.email">Email Address</span> <span class="req">*</span></label>
-                        <input type="email" id="email" name="email" placeholder="your@email.com" autocomplete="email" required>
+                        <input type="email" id="email" name="email" placeholder="your@email.com" data-i18n-placeholder="signup.placeholder_email" autocomplete="email" required>
                     </div>
 
                     <div class="field">
                         <label for="country"><span data-i18n="signup.country">Country</span> <span class="req">*</span></label>
                         <select id="country" name="country" required>
                             <option value="" disabled selected data-i18n="signup.country_placeholder">Select your country</option>
-                            <optgroup label="EU Member States">
+                            <optgroup label="EU Member States" data-i18n-label="country_groups.eu">
                                 <option value="Austria">Austria</option>
                                 <option value="Belgium">Belgium</option>
                                 <option value="Bulgaria">Bulgaria</option>
@@ -431,7 +431,7 @@
                                 <option value="Spain">Spain</option>
                                 <option value="Sweden">Sweden</option>
                             </optgroup>
-                            <optgroup label="Other European countries">
+                            <optgroup label="Other European countries" data-i18n-label="country_groups.other_europe">
                                 <option value="Albania">Albania</option>
                                 <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
                                 <option value="Georgia">Georgia</option>
@@ -449,7 +449,7 @@
                                 <option value="Ukraine">Ukraine</option>
                                 <option value="United Kingdom">United Kingdom</option>
                             </optgroup>
-                            <optgroup label="Other">
+                            <optgroup label="Other" data-i18n-label="country_groups.other">
                                 <option value="Other">Other</option>
                             </optgroup>
                         </select>
@@ -480,7 +480,7 @@
                         <div style="display:flex;gap:0.5rem;">
                             <select id="phonePrefix" name="phonePrefix" style="width:118px;flex-shrink:0;" required>
                                 <option value="">+—</option>
-                                <optgroup label="EU Member States">
+                                <optgroup label="EU Member States" data-i18n-label="country_groups.eu">
                                     <option value="+43">AT +43</option>
                                     <option value="+32">BE +32</option>
                                     <option value="+359">BG +359</option>
@@ -589,7 +589,7 @@
     </div>
 
     <footer>
-        © 2026 European Youth Movement · <a href="../index.html" style="color:rgba(255,255,255,0.6);text-decoration:none;">www.eym-europe.eu</a>
+        <span data-i18n="footer.copyright_short">© 2026 European Youth Movement</span> · <a href="../index.html" style="color:rgba(255,255,255,0.6);text-decoration:none;">www.eym-europe.eu</a>
     </footer>
 
     <script>

@@ -196,7 +196,13 @@
     "nc": "Coordinadores Nacionales",
     "copyright": "© 2026 Movimiento Europeo de la Juventud. Todos los derechos reservados.",
     "motto": "★ Por una Europa unida y democrática ★",
-    "back_to_site": "Volver al sitio principal"
+    "back_to_site": "Volver al sitio principal",
+    "copyright_short": "© 2026 Movimiento Europeo de la Juventud"
+  },
+  "country_groups": {
+    "eu": "Estados miembros de la UE",
+    "other_europe": "Otros países europeos",
+    "other": "Otro"
   },
   "modals": {
     "fp_title": "🌍 Política Exterior",
@@ -263,6 +269,12 @@
     "success_title": "¡Bienvenido al Movimiento!",
     "success_text": "Tu solicitud de membresía ha sido recibida. Nos pondremos en contacto contigo pronto con los próximos pasos y el acceso a tu grupo de trabajo.",
     "back_home": "← Volver al sitio",
+    "eyebrow": "Afiliación",
+    "hero_title": "Únete al <span>Movimiento</span>",
+    "hero_lead": "Forma parte de una red creciente de jóvenes europeos comprometidos con construir el futuro de nuestro continente.",
+    "placeholder_firstname": "ej. Anna",
+    "placeholder_lastname": "ej. Müller",
+    "placeholder_email": "tu@ejemplo.es",
     "err_terms": "Debes aceptar el Código Ético y el Manifiesto Fundacional para unirte.",
     "err_required": "Completa todos los campos obligatorios.",
     "err_duplicate": "Este correo ya está registrado. ¡Bienvenido de nuevo!",
@@ -283,6 +295,11 @@
     "phone": "Número de teléfono",
     "motivation_label": "Motivación",
     "motivation_placeholder": "Cuéntanos por qué quieres ser coordinador nacional y qué aportarías al rol...",
+    "eyebrow": "Participa",
+    "hero_lead": "Representa al Movimiento Europeo de la Juventud en tu país y ayuda a construir la próxima generación de líderes europeos.",
+    "placeholder_name": "ej. Anna Müller",
+    "placeholder_email": "tu@ejemplo.es",
+    "field_hint": "Si tu país ya tiene un coordinador, podríamos invitarte a asistirlo.",
     "submit": "Enviar solicitud →",
     "submitting": "Enviando...",
     "questions": "¿Preguntas? Escríbenos a",

@@ -196,7 +196,13 @@
     "nc": "Nationale Koordinatoren",
     "copyright": "© 2026 Europäische Jugendbewegung. Alle Rechte vorbehalten.",
     "motto": "★ Für ein geeintes und demokratisches Europa ★",
-    "back_to_site": "Zurück zur Hauptseite"
+    "back_to_site": "Zurück zur Hauptseite",
+    "copyright_short": "© 2026 Europäische Jugendbewegung"
+  },
+  "country_groups": {
+    "eu": "EU-Mitgliedstaaten",
+    "other_europe": "Andere europäische Länder",
+    "other": "Andere"
   },
   "modals": {
     "fp_title": "🌍 Außenpolitik",
@@ -263,6 +269,12 @@
     "success_title": "Willkommen in der Bewegung!",
     "success_text": "Deine Mitgliedschaftsanfrage wurde empfangen. Wir werden uns in Kürze mit nächsten Schritten und Zugang zu deiner Arbeitsgruppe melden.",
     "back_home": "← Zurück zur Website",
+    "eyebrow": "Mitgliedschaft",
+    "hero_title": "Tritt der <span>Bewegung</span> bei",
+    "hero_lead": "Werde Teil eines wachsenden Netzwerks junger Europäer, die die Zukunft unseres Kontinents mitgestalten.",
+    "placeholder_firstname": "z. B. Anna",
+    "placeholder_lastname": "z. B. Müller",
+    "placeholder_email": "du@beispiel.de",
     "err_terms": "Du musst den Ethikkodex und die Gründungsmanifest akzeptieren, um beizutreten.",
     "err_required": "Bitte fülle alle Pflichtfelder aus.",
     "err_duplicate": "Diese E-Mail ist bereits registriert. Willkommen zurück!",
@@ -283,6 +295,11 @@
     "phone": "Telefonnummer",
     "motivation_label": "Motivation",
     "motivation_placeholder": "Erzähl uns, warum du nationaler Koordinator werden möchtest und was du in die Rolle einbringen würdest...",
+    "eyebrow": "Mach mit",
+    "hero_lead": "Vertritt die Europäische Jugendbewegung in deinem Land und hilf, die nächste Generation europäischer Führungspersönlichkeiten aufzubauen.",
+    "placeholder_name": "z. B. Anna Müller",
+    "placeholder_email": "du@beispiel.de",
+    "field_hint": "Falls dein Land bereits einen Koordinator hat, laden wir dich vielleicht ein, ihm zu helfen.",
     "submit": "Bewerbung einreichen →",
     "submitting": "Wird gesendet...",
     "questions": "Fragen? Schreib uns an",

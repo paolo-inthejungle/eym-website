@@ -196,7 +196,13 @@
     "nc": "Coordinatori Nazionali",
     "copyright": "© 2026 Movimento Giovanile Europeo. Tutti i diritti riservati.",
     "motto": "★ Per un'Europa unita e democratica ★",
-    "back_to_site": "Torna al sito principale"
+    "back_to_site": "Torna al sito principale",
+    "copyright_short": "© 2026 Movimento Giovanile Europeo"
+  },
+  "country_groups": {
+    "eu": "Stati membri UE",
+    "other_europe": "Altri paesi europei",
+    "other": "Altro"
   },
   "modals": {
     "fp_title": "🌍 Politica Estera",
@@ -263,6 +269,12 @@
     "success_title": "Benvenuto nel Movimento!",
     "success_text": "La tua richiesta di adesione è stata ricevuta. Ti contatteremo a breve con i prossimi passi e l'accesso al tuo gruppo di lavoro.",
     "back_home": "← Torna al sito",
+    "eyebrow": "Iscrizione",
+    "hero_title": "Unisciti al <span>Movimento</span>",
+    "hero_lead": "Entra a far parte di una rete in crescita di giovani europei impegnati a costruire il futuro del nostro continente.",
+    "placeholder_firstname": "es. Anna",
+    "placeholder_lastname": "es. Müller",
+    "placeholder_email": "tu@esempio.it",
     "err_terms": "Devi accettare il Codice Etico e il Manifesto Fondativo per iscriverti.",
     "err_required": "Compila tutti i campi obbligatori.",
     "err_duplicate": "Questa email è già registrata. Bentornato!",
@@ -283,6 +295,11 @@
     "phone": "Numero di telefono",
     "motivation_label": "Motivazione",
     "motivation_placeholder": "Dicci perché vuoi diventare coordinatore nazionale e cosa porteresti al ruolo...",
+    "eyebrow": "Partecipa",
+    "hero_lead": "Rappresenta il Movimento Giovanile Europeo nel tuo paese e aiuta a costruire la prossima generazione di leader europei.",
+    "placeholder_name": "es. Anna Müller",
+    "placeholder_email": "tu@esempio.it",
+    "field_hint": "Se il tuo paese ha già un coordinatore, potremmo invitarti ad assisterlo.",
     "submit": "Invia Candidatura →",
     "submitting": "Invio in corso...",
     "questions": "Domande? Scrivici a",

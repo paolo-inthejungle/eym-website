@@ -196,7 +196,13 @@
     "nc": "National Coordinators",
     "copyright": "© 2026 European Youth Movement. All rights reserved.",
     "motto": "★ For a united and democratic Europe ★",
-    "back_to_site": "Back to main site"
+    "back_to_site": "Back to main site",
+    "copyright_short": "© 2026 European Youth Movement"
+  },
+  "country_groups": {
+    "eu": "EU Member States",
+    "other_europe": "Other European countries",
+    "other": "Other"
   },
   "modals": {
     "fp_title": "🌍 Foreign Policy",
@@ -263,6 +269,12 @@
     "success_title": "Welcome to the Movement!",
     "success_text": "Your membership request has been received. You will hear from us shortly with next steps and access to your working group.",
     "back_home": "← Back to the site",
+    "eyebrow": "Membership",
+    "hero_title": "Join the <span>Movement</span>",
+    "hero_lead": "Become part of a growing network of young Europeans committed to shaping the future of our continent.",
+    "placeholder_firstname": "e.g. Anna",
+    "placeholder_lastname": "e.g. Müller",
+    "placeholder_email": "your@email.com",
     "err_terms": "You must accept the Code of Ethics and Founding Manifesto to join.",
     "err_required": "Please fill in all required fields.",
     "err_duplicate": "This email is already registered. Welcome back!",
@@ -283,6 +295,11 @@
     "phone": "Phone number",
     "motivation_label": "Motivation",
     "motivation_placeholder": "Tell us why you want to become a national coordinator and what you would bring to the role...",
+    "eyebrow": "Get Involved",
+    "hero_lead": "Represent the European Youth Movement in your country and help build the next generation of European leaders.",
+    "placeholder_name": "e.g. Anna Müller",
+    "placeholder_email": "your@email.com",
+    "field_hint": "If your country already has a coordinator, we may invite you to assist them.",
     "submit": "Submit Application →",
     "submitting": "Sending...",
     "questions": "Questions? Write to us at",
