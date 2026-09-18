@@ -226,6 +226,86 @@ header {
 
 .lock-btn:hover { opacity: 0.88; }
 
+/* ── THEMATIC GROUP INTRO (energy-environment.html) ── */
+.wg-intro h2 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--gray-900);
+    margin: 2rem 0 0.8rem;
+    letter-spacing: -0.01em;
+}
+
+.wg-intro h2:first-child { margin-top: 0; }
+
+.wg-intro p {
+    font-size: 0.95rem;
+    color: var(--gray-700);
+    line-height: 1.75;
+    margin-bottom: 1.1rem;
+}
+
+.focus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.focus-card {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: var(--gray-100);
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    padding: 1.1rem 1.3rem;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--gray-900);
+}
+
+.focus-icon { font-size: 1.4rem; flex-shrink: 0; }
+
+.wg-intro-cta {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin-top: 0.4rem;
+}
+
+.btn-gold {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--gold-eu);
+    color: var(--blue-eu-dark);
+    padding: 0.7rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 4px 14px rgba(255,204,0,0.3);
+}
+
+.btn-gold:hover { transform: translateY(-2px); }
+
+.btn-telegram-lg {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #2AABEE;
+    color: #fff;
+    padding: 0.7rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: opacity 0.15s;
+}
+
+.btn-telegram-lg:hover { opacity: 0.88; }
+
 /* ── DOC / VOICES SISTER SECTIONS ── */
 .doc-section h2,
 .voices-section h2 {

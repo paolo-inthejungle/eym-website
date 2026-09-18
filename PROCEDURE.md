@@ -85,7 +85,7 @@ sotto i due bottoni della copertina) restano nascosti. Sono già pronti e
 completi, solo spenti.
 
 Per accenderli entrambi insieme: apri **`index.html`**, cerca la
-costante **`VOICES_PUBLIC`** (oggi intorno alla **riga 2897**, dentro
+costante **`VOICES_PUBLIC`** (oggi intorno alla **riga 2899**, dentro
 l'ultimo `<script>` prima della chiusura di `</body>`) e cambia
 ```
 const VOICES_PUBLIC = false;

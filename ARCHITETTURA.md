@@ -10,13 +10,17 @@ pages/
   signup.html            Form "Join the Movement" (iscrizione pubblica)
   apply-coordinator.html Candidatura a Coordinatore Nazionale
 policies/
-  foreign-policy.html    ) Sette pagine identiche nella struttura, una per
-  defence-security.html  ) working group. Ognuna è un file HTML a sé stante
-  energy-environment.html) (nessun template condiviso): stesso <head>,
-  justice.html            ) stesso <main>, cambiano solo testo, colore
-  education.html          ) accent, icona ed i18n-key prefix.
+  foreign-policy.html    ) Sette pagine per working group, ognuna un file
+  defence-security.html  ) HTML a sé stante (nessun template condiviso):
+  justice.html            ) stesso <head>, stesso <main>, cambiano testo,
+  education.html          ) colore accent, icona ed i18n-key prefix.
   healthcare.html         )
   immigration-human-rights.html
+  energy-environment.html  Come le altre sei, MA con in più — in cima al
+                          <main>, sezione .wg-intro — la presentazione del
+                          gruppo (chi siamo, visione, sei ambiti, CTA):
+                          è il modello da riusare per gli altri gruppi
+                          quando avranno una pagina (vedi @PROCEDURE.md).
   policies.css           CSS condiviso dalle 7 pagine sopra
   policies.js            Filtro (Tutti/Position/Brief) sui .paper-card
                           dentro #papers-list; mostra #empty-state se
