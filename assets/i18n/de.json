@@ -19,7 +19,9 @@
     "events": "Veranstaltungen",
     "news": "Nachrichten",
     "instagram": "Instagram",
-    "login": "Anmelden"
+    "login": "Anmelden",
+    "member_area": "Mitgliederbereich",
+    "logout": "Logout"
   },
   "hero": {
     "eyebrow": "Sei Teil des Wandels!",
@@ -193,7 +195,8 @@
     "board": "Vorstand",
     "nc": "Nationale Koordinatoren",
     "copyright": "© 2026 Europäische Jugendbewegung. Alle Rechte vorbehalten.",
-    "motto": "★ Für ein geeintes und demokratisches Europa ★"
+    "motto": "★ Für ein geeintes und demokratisches Europa ★",
+    "back_to_site": "Zurück zur Hauptseite"
   },
   "modals": {
     "fp_title": "🌍 Außenpolitik",

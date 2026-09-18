@@ -19,7 +19,9 @@
     "events": "Événements",
     "news": "Actualités",
     "instagram": "Instagram",
-    "login": "Connexion"
+    "login": "Connexion",
+    "member_area": "Espace Membre",
+    "logout": "Logout"
   },
   "hero": {
     "eyebrow": "Faites partie du changement !",
@@ -193,7 +195,8 @@
     "board": "Conseil d'Administration",
     "nc": "Coordinateurs Nationaux",
     "copyright": "© 2026 Mouvement Européen de la Jeunesse. Tous droits réservés.",
-    "motto": "★ Pour une Europe unie et démocratique ★"
+    "motto": "★ Pour une Europe unie et démocratique ★",
+    "back_to_site": "Retour au site principal"
   },
   "modals": {
     "fp_title": "🌍 Politique Étrangère",

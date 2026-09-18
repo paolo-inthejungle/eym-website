@@ -19,7 +19,9 @@
     "events": "Eventi",
     "news": "News",
     "instagram": "Instagram",
-    "login": "Accedi"
+    "login": "Accedi",
+    "member_area": "Area Utente",
+    "logout": "Esci"
   },
   "hero": {
     "eyebrow": "Fai parte del cambiamento!",
@@ -193,7 +195,8 @@
     "board": "Consiglio Direttivo",
     "nc": "Coordinatori Nazionali",
     "copyright": "© 2026 Movimento Giovanile Europeo. Tutti i diritti riservati.",
-    "motto": "★ Per un'Europa unita e democratica ★"
+    "motto": "★ Per un'Europa unita e democratica ★",
+    "back_to_site": "Torna al sito principale"
   },
   "modals": {
     "fp_title": "🌍 Politica Estera",

@@ -19,7 +19,9 @@
     "events": "Eventos",
     "news": "Noticias",
     "instagram": "Instagram",
-    "login": "Iniciar sesión"
+    "login": "Iniciar sesión",
+    "member_area": "Área de Miembros",
+    "logout": "Cerrar sesión"
   },
   "hero": {
     "eyebrow": "¡Sé parte del cambio!",
@@ -193,7 +195,8 @@
     "board": "Junta Directiva",
     "nc": "Coordinadores Nacionales",
     "copyright": "© 2026 Movimiento Europeo de la Juventud. Todos los derechos reservados.",
-    "motto": "★ Por una Europa unida y democrática ★"
+    "motto": "★ Por una Europa unida y democrática ★",
+    "back_to_site": "Volver al sitio principal"
   },
   "modals": {
     "fp_title": "🌍 Política Exterior",

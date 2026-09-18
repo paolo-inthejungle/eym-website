@@ -19,7 +19,9 @@
     "events": "Events",
     "news": "News",
     "instagram": "Instagram",
-    "login": "Login"
+    "login": "Login",
+    "member_area": "Member Area",
+    "logout": "Logout"
   },
   "hero": {
     "eyebrow": "Be part of the change!",
@@ -193,7 +195,8 @@
     "board": "Executive Board",
     "nc": "National Coordinators",
     "copyright": "© 2026 European Youth Movement. All rights reserved.",
-    "motto": "★ For a united and democratic Europe ★"
+    "motto": "★ For a united and democratic Europe ★",
+    "back_to_site": "Back to main site"
   },
   "modals": {
     "fp_title": "🌍 Foreign Policy",
