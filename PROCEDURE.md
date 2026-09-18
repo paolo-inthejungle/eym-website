@@ -99,14 +99,81 @@ interruttore. Nota: riguarda solo la home — le sezioni "Voices from
 Europe" nelle pagine dei gruppi tematici e la pagina
 `voices/index.html` restano raggiungibili anche a interruttore spento.
 
-## Come ridimensionare una foto autore a 400×400 (Voices from Europe)
+## 7. Pubblicare un nuovo articolo su Voices from Europe
 
-Il progetto ha `sharp` tra le `devDependencies`. Da terminale, nella
-root del repo:
+1. Controlla che l'autore esista già fra gli `"authors"` di
+   `assets/data/voices.json`. Se non c'è, aggiungilo prima (vedi punto 8
+   qui sotto).
+2. Duplica `voices/_template.html` dentro la cartella `voices/`, con un
+   nuovo nome file in minuscolo e trattini (es. `il-mio-titolo.html`).
+   Compila solo le parti segnate da un commento `EDIT` nel file: titolo,
+   data, tema (link + etichetta tradotta), riquadro autore breve, corpo
+   del testo, link in fondo. Il testo dell'articolo resta nella lingua in
+   cui è scritto — non si traduce.
+3. Aggiungi una voce in `"articles"` dentro `assets/data/voices.json`
+   con tutti i campi (`slug`, `title`, `authorSlug`, `themeSlug`, `date`
+   in formato AAAA-MM-GG, `lang`, `excerpt`, `file`). `themeSlug` deve
+   essere uno dei sette slug dei working group, oppure `"general"`.
+   Attenzione alla punteggiatura JSON: una virgola fuori posto rende
+   l'intero elenco illeggibile (il sito mostra un avviso, ma è meglio non
+   arrivarci).
+4. Salva, fai commit e push. Non serve toccare nient'altro:
+   `voices/index.html` legge il file e costruisce la pagina da solo.
 
+## 8. Aggiungere un nuovo autore a Voices from Europe
+
+Aggiungi una voce in `"authors"` dentro `assets/data/voices.json`:
+- **Obbligatori**: `slug` (minuscolo, trattini, univoco), `name` (nome e
+  cognome, non tradotto), `flag` (emoji bandiera, stessa tecnica
+  dell'organigramma).
+- **Facoltativi**: `bio` (massimo 300 caratteri) e `photo` (percorso
+  relativo, es. `assets/images/authors/nome-cognome.jpg`). Nessuno dei
+  due è obbligatorio: senza `photo` compare l'icona generica 👤, senza
+  `bio` il riquadro si restringe senza lasciare vuoti. Vedi il punto 9
+  qui sotto per il consenso prima di pubblicarli.
+
+Per ridimensionare una foto a 400×400 prima di caricarla in
+`assets/images/authors/`: il progetto ha `sharp` tra le
+`devDependencies`. Da terminale, nella root del repo:
 ```
 node -e "require('sharp')('input.jpg').resize(400,400,{fit:'cover'}).toFile('assets/images/authors/nome-cognome.jpg')"
 ```
-
 Sostituisci `input.jpg` con il file originale e `nome-cognome` con lo
-slug dell'autore in `assets/data/voices.json`.
+slug dell'autore.
+
+## 9. Privacy — foto, bio e nazionalità degli autori di Voices
+
+Foto, biografia e bandiera/nazionalità di una persona si pubblicano
+**solo con il suo consenso esplicito**, ottenuto prima e conservato (non
+basta un "va bene" a voce non registrato da qualche parte).
+
+Se un autore chiede di essere rimosso, va fatto **senza discutere e in
+tempi brevi**:
+1. Togli la sua voce da `"authors"` in `assets/data/voices.json`.
+2. Togli tutte le voci in `"articles"` con quel `authorSlug`.
+3. Cancella i file dei suoi articoli in `voices/`.
+4. Cancella la sua foto da `assets/images/authors/`.
+5. Commit e push.
+
+## 10. Dare a un altro gruppo tematico la stessa pagina di Energia & Ambiente
+
+`policies/energy-environment.html` è il modello (vedi @ARCHITETTURA.md).
+Per un altro gruppo (es. Justice):
+1. Nella pagina `policies/<slug>.html` di quel gruppo, copia la sezione
+   `<section class="wg-intro">...</section>` da
+   `policies/energy-environment.html` (è in cima al `<main>`, prima della
+   sezione "Position Paper") e incollala nello stesso punto.
+2. Sostituisci i testi con quelli del nuovo gruppo e le chiavi i18n con un
+   prefisso nuovo (es. `policies_page.jus_page_who_title` invece di
+   `ee_page_who_title`), aggiunto in tutti e 5 i file
+   `assets/i18n/*.json`.
+3. Aggiorna i link della sezione "Get involved": iscrizione al Movimento
+   (`../pages/signup.html`, invariato) e il link Telegram del gruppo
+   (prendilo dalla card corrispondente in `index.html`, sezione
+   `#policies` — ogni gruppo ha il proprio link `https://t.me/c/...`).
+4. In `index.html`, nella card del gruppo dentro `#policies`: rimuovi (se
+   presente) il link testuale "pubblicati nella sezione Politiche" dal
+   testo del modale, e aggiungi lo stesso bottone grande
+   (`class="btn-primary"`, stile come quello del modale Energia &
+   Ambiente) verso `policies/<slug>.html`, con la chiave i18n
+   `policies_section.wg.<slug>_page_cta` in tutti e 5 i file JSON.

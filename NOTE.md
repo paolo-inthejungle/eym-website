@@ -57,3 +57,21 @@ decisione cambia, aggiungine una nuova che rimanda a quella vecchia.
    `voices/index.html?theme=<slug>`. Nessun template condiviso tra le 7
    pagine: la modifica è stata applicata a mano, identica, su tutti e 7 i
    file.
+
+7. **(2026-09-18) Voices from Europe legge da un file JSON
+   (`assets/data/voices.json`), non dal database Supabase.** Pubblicare
+   da database avrebbe richiesto una schermata di amministrazione che
+   oggi non esiste — lo stesso limite per cui gli accessi `wg_access` si
+   gestiscono con query SQL a mano (vedi @PROCEDURE.md) invece che da
+   un'interfaccia. Finché non nasce un pannello admin, il JSON versionato
+   nel repo resta la scelta più semplice: chi pubblica un articolo edita
+   due file e fa commit, senza bisogno di credenziali Supabase.
+
+8. **(2026-09-18) I testi degli articoli di Voices from Europe non si
+   traducono.** Ogni articolo resta nella lingua in cui l'autore lo ha
+   scritto (indicata dal campo `"lang"`, mostrato come etichetta — non
+   usato per filtrare o nascondere nulla). Motivo: sono contributi
+   personali firmati, nelle parole di chi li scrive; tradurli
+   automaticamente snaturerebbe la voce dell'autore, tradurli a mano non
+   è sostenibile con volumi crescenti. Solo l'interfaccia del sito
+   (etichette, pulsanti, messaggi) passa da i18n.
