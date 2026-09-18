@@ -36,7 +36,7 @@ if (papersList.children.length === 0) {
  *
  * <div class="paper-card" data-type="position">   ← position | brief
  *   <div class="paper-meta">
- *     <span class="paper-badge position">Position Paper</span>
+ *     <span class="paper-badge position">Position Papers</span>
  *     <div class="paper-title">Title of the paper</div>
  *     <div class="paper-info">Author · Month Year</div>
  *     <div class="paper-desc">Short description of the paper.</div>
