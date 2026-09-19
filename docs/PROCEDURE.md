@@ -261,6 +261,29 @@ le parti segnate `EDIT` nel template:
 - `<title>…</title>`: il titolo dell'articolo, uguale a quello che metti
   al punto 7.3, seguito da ` — Voices from Europe` ("Voices from Europe"
   non si traduce mai).
+- **I nove campi dell'anteprima social** (subito sotto il `<title>`, i
+  tag `og:*` e `twitter:*`): sono quello che WhatsApp, Telegram e
+  LinkedIn mostrano quando qualcuno condivide il link, non quello che si
+  vede aprendo la pagina nel browser — se li lasci com'erano nel
+  template, l'anteprima resta quella segnaposto. Compilali così:
+  - `og:title` e `twitter:title`: uguale al titolo dell'articolo.
+  - `og:description` e `twitter:description`: l'`excerpt` che scrivi al
+    punto 7.4 per lo stesso articolo — copialo, non riscriverlo.
+  - `og:image` e `twitter:image`: lascia il valore del template
+    (`assets/logos/og-default.png`, il logo di riserva) — non serve
+    un'immagine diversa per ogni articolo.
+  - `og:url`: **l'indirizzo completo e pubblico della pagina**, non un
+    percorso relativo — i social non risolvono i percorsi relativi, e se
+    lo lasci relativo l'anteprima non si genera affatto. Forma:
+    `https://www.eym-europe.eu/voices/NOME-FILE.html`.
+  - `og:site_name`: lascia `European Youth Movement`.
+
+  **Prima di diffondere il link**, controlla davvero come appare
+  l'anteprima (vedi il controllo ripetibile più sotto in questo punto):
+  WhatsApp, Telegram e LinkedIn tengono l'anteprima in cache per giorni.
+  Se il link viene condiviso con l'anteprima sbagliata e la si corregge
+  solo dopo, chi l'ha già ricevuto continua a vedere quella vecchia a
+  lungo — non c'è modo di forzare l'aggiornamento dal lato del sito.
 - Il link del tema in cima: `href="index.html?theme=foreign-policy"` (uno
   dei sette slug dei working group, o `general`), col `data-i18n` giusto
   per quel tema — nel nostro esempio
@@ -391,6 +414,22 @@ basta leggere il codice):
    "Voices from Europe" porta all'articolo.
 6. La pagina si legge bene anche stringendo la finestra del browser
    (o da telefono vero).
+7. **L'anteprima social è compilata**, non lasciata come nel template:
+   apri il codice sorgente della pagina pubblicata (non serve altro) e
+   controlla che `og:title`, `og:description` e `og:url` non siano più
+   `ARTICLE TITLE` / `ARTICLE EXCERPT` / `NOME-FILE.html`, ma i valori
+   veri di questo articolo.
+
+**Come controllare l'anteprima social prima di diffondere il link**
+(WhatsApp, Telegram e LinkedIn la tengono in cache per giorni: vedi
+sopra): incolla l'indirizzo pubblico della pagina in uno strumento di
+verifica prima di condividerlo per davvero. Il Facebook Sharing
+Debugger (`https://developers.facebook.com/tools/debug/`) e il Twitter
+Card Validator mostrano l'anteprima esatta e forzano un nuovo
+scaricamento, utile anche se hai corretto un'anteprima sbagliata già
+condivisa in passato. In alternativa, mandati il link in una chat privata
+(a te stesso o a un collega) su WhatsApp o Telegram e guarda cosa
+compare prima di mandarlo a chiunque altro.
 
 ## 8. Aggiungere un nuovo autore a Voices from Europe (senza un articolo pronto)
 
