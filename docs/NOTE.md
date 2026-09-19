@@ -301,3 +301,41 @@ decisione cambia, aggiungine una nuova che rimanda a quella vecchia.
       L'autrice è stata pubblicata senza `photo` (compare l'icona 👤).
       Se in futuro arriva il file vero, va ridimensionato e collegato
       seguendo @docs/PROCEDURE.md punto 7.1.
+
+22. **(2026-09-19) I cinque file di documentazione sono stati riordinati:
+    quattro dentro `docs/`, uno resta in root.** Censiti tutti i file
+    `.md` del repository (esclusi `node_modules`): risultano essere
+    esattamente questi cinque, nessun altro — nessun file `.md` vecchio
+    o abbandonato da sessioni precedenti, nessun file appartenente a una
+    libreria o a uno strumento, nessun `README.md` preesistente. Di
+    conseguenza **non è stato creato `docs/archivio/`**: non c'era nulla
+    da mettere in quarantena, perché non è stato trovato niente da
+    classificare come superato. Se in futuro un file di documentazione
+    smette di essere aggiornato, va spostato lì (non cancellato) e
+    segnalato in questa pagina.
+
+    Spostati con `git mv` (storia preservata) dentro `docs/`:
+    `ARCHITETTURA.md`, `PROCEDURE.md`, `NOTE.md`, `VERIFICHE.md`.
+
+    **`CLAUDE.md` resta nella root e non va mai spostato**: è l'unico
+    file che Claude Code legge automaticamente all'avvio di una
+    sessione, e lo fa solo se lo trova lì. Spostarlo in `docs/`
+    significherebbe che tutte le regole che contiene smettono di essere
+    applicate — senza nessun errore visibile: nessun avviso, nessuna
+    pagina rotta, solo un assistente che non conosce più le regole del
+    progetto finché qualcuno non se ne accorge.
+
+    Aggiornati tutti i riferimenti ai quattro file spostati, ovunque nel
+    repository: dentro gli altri file di documentazione (si citano
+    spesso fra loro), dentro `CLAUDE.md` (i richiami `@…md`, che
+    determinano cosa viene caricato automaticamente a inizio sessione)
+    e un commento in `voices/_template.html`. Verificato con una ricerca
+    nell'intero repository: dopo la correzione, non resta nessuna
+    menzione dei quattro nomi di file priva del prefisso `docs/`, a
+    parte le intestazioni `# ARCHITETTURA.md`, `# PROCEDURE.md` ecc. in
+    cima a ciascun file — quelle non sono riferimenti ad altrove, sono
+    il titolo del file stesso: restano corrette così, il file si chiama
+    ancora esattamente così, solo in una cartella diversa.
+
+    Creato anche un `README.md` nella root (non esisteva prima), con
+    una descrizione breve del progetto e i collegamenti a `docs/`.
