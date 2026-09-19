@@ -1072,16 +1072,15 @@ footer h4 {
             .footer-inner { grid-template-columns: 1fr 1fr; }
         }
 
-        @media (max-width: 768px) {
+        /* Header: brand + controls on row 1, nav on row 2. Threshold is 1024px,
+           not 768px, because below 1024px the single-row desktop layout has no
+           room left to shrink and overflows horizontally (measured in German,
+           the longest-word language of the 5 — see docs/VERIFICHE.md). */
+        @media (max-width: 1024px) {
             .header-inner {
                 flex-direction: row;
                 gap: 0.5rem;
                 padding: 0.55rem 0;
-                flex-wrap: nowrap;
-            }
-
-            /* Mobile: brand + controls on row 1, nav on row 2 */
-            .header-inner {
                 flex-wrap: wrap;
             }
 
@@ -1099,19 +1098,21 @@ footer h4 {
                 justify-content: center;
             }
 
-            /* Brand logo scales down on mobile */
+            /* Brand logo scales down below desktop width */
             .brand-logo { height: 32px; }
 
-            /* Hide Instagram label, keep only icon */
+            /* Hide Instagram/LinkedIn label, keep only icon */
             .ig-btn span { display: none; }
             .ig-btn { padding: 0.3rem; }
 
             /* Compact auth button */
             .auth-btn { padding: 0.3rem 0.6rem; font-size: 0.78rem; }
 
-            /* Auto-size buttons on mobile */
+            /* Auto-size buttons below desktop width */
             .header-action-btn { width: auto; }
+        }
 
+        @media (max-width: 768px) {
             .footer-inner { grid-template-columns: 1fr; }
 
             .footer-bottom {
