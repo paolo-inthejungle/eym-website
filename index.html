@@ -602,6 +602,23 @@
 
         .wg-card a.telegram-btn:hover { opacity: 0.85; }
 
+        .wg-card a.whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: #25D366;
+            color: #fff;
+            padding: 0.5rem 1.1rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            align-self: flex-start;
+            transition: opacity 0.18s;
+        }
+
+        .wg-card a.whatsapp-btn:hover { opacity: 0.85; }
+
         /* ── PAPERS ── */
         .papers-list {
             display: grid;
@@ -1992,7 +2009,8 @@ footer h4 {
                     <h3 data-i18n="policies_section.wg.fp_title">Foreign Policy</h3>
                     <p data-i18n="policies_section.wg.fp_desc">EU foreign policy, strategic autonomy, transatlantic relations, Eastern neighbourhood and EU enlargement.</p>
                     <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
-                        <a href="https://t.me/c/3666610956/3" class="telegram-btn" target="_blank" rel="noopener" data-i18n="common.telegram">📩 Telegram</a>
+                        <a href="https://t.me/c/3666610956/3" class="telegram-btn js-telegram-link" target="_blank" rel="noopener" data-i18n="common.telegram">📩 Telegram</a>
+                        <a href="https://chat.whatsapp.com/PLACEHOLDER-foreign-policy" class="whatsapp-btn js-whatsapp-group" target="_blank" rel="noopener" data-i18n="common.whatsapp">💬 WhatsApp</a>
                         <button class="solutions-btn" onclick="openModal('modal-fp')" data-i18n="common.explore_solutions">Explore Solutions →</button>
                         <a href="policies/foreign-policy.html" class="solutions-btn" style="text-decoration:none;" data-i18n="common.position_papers">📄 Position Papers</a>
                     </div>
@@ -2002,7 +2020,8 @@ footer h4 {
                     <h3 data-i18n="policies_section.wg.ds_title">Defence &amp; Security</h3>
                     <p data-i18n="policies_section.wg.ds_desc">European strategic autonomy, defence cooperation, NATO relations and joint military capabilities for a sovereign Europe.</p>
                     <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
-                        <a href="https://t.me/c/3666610956/4" class="telegram-btn" target="_blank" rel="noopener" data-i18n="common.telegram">📩 Telegram</a>
+                        <a href="https://t.me/c/3666610956/4" class="telegram-btn js-telegram-link" target="_blank" rel="noopener" data-i18n="common.telegram">📩 Telegram</a>
+                        <a href="https://chat.whatsapp.com/PLACEHOLDER-defence-security" class="whatsapp-btn js-whatsapp-group" target="_blank" rel="noopener" data-i18n="common.whatsapp">💬 WhatsApp</a>
                         <button class="solutions-btn" onclick="openModal('modal-ds')" data-i18n="common.explore_solutions">Explore Solutions →</button>
                         <a href="policies/defence-security.html" class="solutions-btn" style="text-decoration:none;" data-i18n="common.position_papers">📄 Position Papers</a>
                     </div>
@@ -2012,7 +2031,8 @@ footer h4 {
                     <h3 data-i18n="policies_section.wg.ee_title">Energy &amp; Environment</h3>
                     <p data-i18n="policies_section.wg.ee_desc">Green Deal, energy transition, climate justice, biodiversity and sustainable development across Europe.</p>
                     <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
-                        <a href="https://t.me/c/3666610956/8" class="telegram-btn" target="_blank" rel="noopener" data-i18n="common.telegram">📩 Telegram</a>
+                        <a href="https://t.me/c/3666610956/8" class="telegram-btn js-telegram-link" target="_blank" rel="noopener" data-i18n="common.telegram">📩 Telegram</a>
+                        <a href="https://chat.whatsapp.com/PLACEHOLDER-energy-environment" class="whatsapp-btn js-whatsapp-group" target="_blank" rel="noopener" data-i18n="common.whatsapp">💬 WhatsApp</a>
                         <button class="solutions-btn" onclick="openModal('modal-ee')" data-i18n="common.explore_solutions">Explore Solutions →</button>
                         <a href="policies/energy-environment.html" class="solutions-btn" style="text-decoration:none;" data-i18n="common.position_papers">📄 Position Papers</a>
                     </div>
@@ -2022,7 +2042,8 @@ footer h4 {
                     <h3 data-i18n="policies_section.wg.jus_title">Justice</h3>
                     <p data-i18n="policies_section.wg.jus_desc">Rule of law, judicial independence, fundamental rights, anti-corruption and democratic institutions.</p>
                     <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
-                        <a href="https://t.me/c/3666610956/9" class="telegram-btn" target="_blank" rel="noopener" data-i18n="common.telegram">📩 Telegram</a>
+                        <a href="https://t.me/c/3666610956/9" class="telegram-btn js-telegram-link" target="_blank" rel="noopener" data-i18n="common.telegram">📩 Telegram</a>
+                        <a href="https://chat.whatsapp.com/PLACEHOLDER-justice" class="whatsapp-btn js-whatsapp-group" target="_blank" rel="noopener" data-i18n="common.whatsapp">💬 WhatsApp</a>
                         <button class="solutions-btn" onclick="openModal('modal-jus')" data-i18n="common.explore_solutions">Explore Solutions →</button>
                         <a href="policies/justice.html" class="solutions-btn" style="text-decoration:none;" data-i18n="common.position_papers">📄 Position Papers</a>
                     </div>
@@ -2032,7 +2053,8 @@ footer h4 {
                     <h3 data-i18n="policies_section.wg.edu_title">Education</h3>
                     <p data-i18n="policies_section.wg.edu_desc">European education policy, youth mobility, Erasmus+, skills development and lifelong learning frameworks.</p>
                     <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
-                        <a href="https://t.me/c/3666610956/11" class="telegram-btn" target="_blank" rel="noopener" data-i18n="common.telegram">📩 Telegram</a>
+                        <a href="https://t.me/c/3666610956/11" class="telegram-btn js-telegram-link" target="_blank" rel="noopener" data-i18n="common.telegram">📩 Telegram</a>
+                        <a href="https://chat.whatsapp.com/PLACEHOLDER-education" class="whatsapp-btn js-whatsapp-group" target="_blank" rel="noopener" data-i18n="common.whatsapp">💬 WhatsApp</a>
                         <button class="solutions-btn" onclick="openModal('modal-edu')" data-i18n="common.explore_solutions">Explore Solutions →</button>
                         <a href="policies/education.html" class="solutions-btn" style="text-decoration:none;" data-i18n="common.position_papers">📄 Position Papers</a>
                     </div>
@@ -2042,7 +2064,8 @@ footer h4 {
                     <h3 data-i18n="policies_section.wg.hc_title">Healthcare</h3>
                     <p data-i18n="policies_section.wg.hc_desc">European Health Union, mental health, cross-border healthcare access and pharmaceutical policy.</p>
                     <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
-                        <a href="https://t.me/c/3666610956/12" class="telegram-btn" target="_blank" rel="noopener" data-i18n="common.telegram">📩 Telegram</a>
+                        <a href="https://t.me/c/3666610956/12" class="telegram-btn js-telegram-link" target="_blank" rel="noopener" data-i18n="common.telegram">📩 Telegram</a>
+                        <a href="https://chat.whatsapp.com/PLACEHOLDER-healthcare" class="whatsapp-btn js-whatsapp-group" target="_blank" rel="noopener" data-i18n="common.whatsapp">💬 WhatsApp</a>
                         <button class="solutions-btn" onclick="openModal('modal-hc')" data-i18n="common.explore_solutions">Explore Solutions →</button>
                         <a href="policies/healthcare.html" class="solutions-btn" style="text-decoration:none;" data-i18n="common.position_papers">📄 Position Papers</a>
                     </div>
@@ -2052,7 +2075,8 @@ footer h4 {
                     <h3 data-i18n="policies_section.wg.ihr_title">Immigration &amp; Human Rights</h3>
                     <p data-i18n="policies_section.wg.ihr_desc">Migration policy, refugee rights, integration, social cohesion and the protection of fundamental freedoms.</p>
                     <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
-                        <a href="https://t.me/c/3666610956/10" class="telegram-btn" target="_blank" rel="noopener" data-i18n="common.telegram">📩 Telegram</a>
+                        <a href="https://t.me/c/3666610956/10" class="telegram-btn js-telegram-link" target="_blank" rel="noopener" data-i18n="common.telegram">📩 Telegram</a>
+                        <a href="https://chat.whatsapp.com/PLACEHOLDER-immigration-human-rights" class="whatsapp-btn js-whatsapp-group" target="_blank" rel="noopener" data-i18n="common.whatsapp">💬 WhatsApp</a>
                         <button class="solutions-btn" onclick="openModal('modal-ihr')" data-i18n="common.explore_solutions">Explore Solutions →</button>
                         <a href="policies/immigration-human-rights.html" class="solutions-btn" style="text-decoration:none;" data-i18n="common.position_papers">📄 Position Papers</a>
                     </div>
@@ -2986,6 +3010,35 @@ footer h4 {
             if (heroLink) heroLink.style.display = '';
             loadVoicesPreviews();
         }
+
+        // ── SOCIAL LINKS — three independent switches ──
+        // Same pattern as VOICES_PUBLIC above: flipping a switch never
+        // deletes code, it only hides elements (display:none), so turning
+        // one back on needs no other change.
+        //
+        // TELEGRAM_ENABLED: hides every Telegram link on the site — the
+        // 7 working-group buttons below, AND a local copy of this same
+        // switch in policies/energy-environment.html (a separate file,
+        // with no script shared with this page — see docs/PROCEDURE.md).
+        const TELEGRAM_ENABLED = false;
+        // WHATSAPP_GENERAL_ENABLED: shows the link to EYM's one general
+        // WhatsApp community (header, footer, News section).
+        const WHATSAPP_GENERAL_ENABLED = true;
+        // WHATSAPP_GROUPS_ENABLED: shows the seven per-working-group
+        // WhatsApp links below. Their addresses are placeholders today —
+        // replace each with the real invite link when that group's
+        // community exists (see docs/PROCEDURE.md), THEN switch this on.
+        const WHATSAPP_GROUPS_ENABLED = false;
+
+        document.querySelectorAll('.js-telegram-link').forEach(el => {
+            if (!TELEGRAM_ENABLED) el.style.display = 'none';
+        });
+        document.querySelectorAll('.js-whatsapp-general').forEach(el => {
+            if (!WHATSAPP_GENERAL_ENABLED) el.style.display = 'none';
+        });
+        document.querySelectorAll('.js-whatsapp-group').forEach(el => {
+            if (!WHATSAPP_GROUPS_ENABLED) el.style.display = 'none';
+        });
 
         // ── VOICES FROM EUROPE — home previews (latest 3 articles) ──
         // Reads the same index used by voices/index.html. Fails silently:

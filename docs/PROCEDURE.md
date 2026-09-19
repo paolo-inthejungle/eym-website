@@ -492,3 +492,45 @@ Per un altro gruppo (es. Justice):
    (`class="btn-primary"`, stile come quello del modale Energia &
    Ambiente) verso `policies/<slug>.html`, con la chiave i18n
    `policies_section.wg.<slug>_page_cta` in tutti e 5 i file JSON.
+
+## 11. Gli interruttori dei social (Telegram/WhatsApp)
+
+Tre interruttori indipendenti, stesso principio di `VOICES_PUBLIC`
+(punto 6 sopra): una costante `true`/`false` in cima a uno `<script>`,
+che uno o più blocchi di codice leggono per mostrare o nascondere
+elementi già scritti nella pagina — nessun contenuto viene mai
+cancellato quando un interruttore è spento.
+
+**Dove sono, tutti e tre nello stesso posto**: `index.html`, dentro il
+`<script>` che contiene anche `VOICES_PUBLIC`, righe 3023/3026/3031 (le
+righe si spostano se il file cambia sopra — cercare `TELEGRAM_ENABLED`
+per ritrovarle).
+
+- **`TELEGRAM_ENABLED`** (oggi `false`): accende o spegne OGNI link
+  Telegram del sito. Gli elementi da spegnere hanno tutti la classe
+  `js-telegram-link` — per aggiungerne uno nuovo in futuro, basta
+  scrivere quella classe sull'elemento, non serve toccare lo script.
+  **Attenzione**: `policies/energy-environment.html` ha il proprio link
+  Telegram (sezione "Get involved") ma è un file HTML a sé, senza script
+  in comune con `index.html` — quella pagina ha una SECONDA copia dello
+  stesso interruttore, scritta a mano, in fondo al file, prima del tag
+  `<script src="/assets/js/i18n.js">`. **Se si riaccende
+  `TELEGRAM_ENABLED` in `index.html`, va riacceso anche lì**, altrimenti
+  i due file raccontano cose diverse.
+- **`WHATSAPP_GENERAL_ENABLED`** (oggi `true`): accende il link alla
+  community WhatsApp generale (barra in alto, piè di pagina, sezione
+  News — aggiunti nei lavori successivi a questo). Gli elementi da
+  accendere/spegnere hanno la classe `js-whatsapp-general`.
+- **`WHATSAPP_GROUPS_ENABLED`** (oggi `false`): accende i sette bottoni
+  WhatsApp nelle card dei gruppi tematici (sezione `#policies`), oggi
+  con indirizzi segnaposto (`https://chat.whatsapp.com/PLACEHOLDER-<slug
+  del gruppo>`). Gli elementi hanno la classe `js-whatsapp-group`.
+  **Prima di accenderlo**, sostituisci ogni indirizzo segnaposto con
+  l'invito reale di quella community (cercare `PLACEHOLDER-` in
+  `index.html` per trovarli tutti e sette), altrimenti l'interruttore
+  accende sette link che non portano da nessuna parte.
+
+Il meccanismo che legge le tre costanti (tre righe di
+`document.querySelectorAll(...).forEach(...)`) sta subito sotto le tre
+costanti, nello stesso `<script>`: non serve toccarlo per aggiungere o
+togliere un link, basta la classe giusta sull'elemento.

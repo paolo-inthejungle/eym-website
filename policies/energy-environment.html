@@ -53,7 +53,7 @@
         <p data-i18n="policies_page.ee_page_involved_text">This is a long-term project. It starts small — one topic, one conversation, one contributor at a time — and it's going to grow. If you want to help build it, get in touch.</p>
         <div class="wg-intro-cta">
             <a href="../pages/signup.html" class="btn-gold" data-i18n="hero.join">Join the Movement →</a>
-            <a href="https://t.me/c/3666610956/8" target="_blank" rel="noopener" class="btn-telegram-lg" data-i18n="common.telegram">📩 Telegram</a>
+            <a href="https://t.me/c/3666610956/8" target="_blank" rel="noopener" class="btn-telegram-lg js-telegram-link" data-i18n="common.telegram">📩 Telegram</a>
         </div>
     </section>
 
@@ -99,6 +99,16 @@
 </footer>
 
 <script src="policies.js"></script>
+<script>
+    // Local copy of the TELEGRAM_ENABLED switch declared in index.html —
+    // this file has no script shared with the home page, so the same
+    // value has to be set here by hand too when it changes there.
+    // See docs/PROCEDURE.md.
+    const TELEGRAM_ENABLED = false;
+    if (!TELEGRAM_ENABLED) {
+        document.querySelectorAll('.js-telegram-link').forEach(el => { el.style.display = 'none'; });
+    }
+</script>
 <script src="/assets/js/i18n.js"></script>
 </body>
 </html>
