@@ -217,3 +217,25 @@ confondere "il codice sembra corretto" con "è stato visto funzionare".
   WhatsApp e su un telefono vero serve chi ha accesso a entrambi:
   incollare l'indirizzo pubblico in una chat privata e aprirlo da un
   dispositivo fisico.
+- **(2026-09-19) Le verifiche mancanti sopra SONO state fatte, da una
+  persona — non da Claude Code, che non ha accesso a WhatsApp né a un
+  telefono fisico.** D'ora in avanti ogni voce di questo file distingue
+  esplicitamente chi ha verificato cosa: una voce "verificato" senza dire
+  da chi e come vale poco.
+  - **Verificato da Paolo su WhatsApp reale**: le anteprime dell'articolo
+    e della pagina autrice si vedono correttamente. **Attenzione**: la
+    prova è stata fatta quando gli indirizzi usavano ancora
+    `www.eym-europe.eu` (prima della correzione allo stesso indirizzo
+    senza `www.`, commit `6831ccf`) — da riprovare con l'indirizzo
+    attuale, perché WhatsApp tiene in cache le anteprime per indirizzo, e
+    quello con `www.` non è più l'indirizzo che il sito dichiara di sé
+    stesso nei tag.
+  - **Verificato da Paolo su telefono reale**: l'articolo si legge bene,
+    nessuna rottura di impaginazione. Segnalata la biografia centrata
+    nella pagina autrice invece che allineata a sinistra — difetto reale,
+    non un falso allarme: corretto nella sessione del 2026-09-19 (LAVORO
+    3, commit `b126701`).
+  - **Verificato da Paolo nel browser**: il sito reindirizza ogni
+    richiesta verso `eym-europe.eu` senza `www.` — è l'osservazione che
+    ha fatto partire la correzione dell'indirizzo in questa sessione
+    (vedi @docs/NOTE.md).
