@@ -20,6 +20,10 @@ app.use(express.json());
 const VOICES_INDEX_PATH = path.join(__dirname, 'voices', 'index.html');
 const VOICES_DATA_PATH = path.join(__dirname, 'assets', 'data', 'voices.json');
 const OG_BLOCK_RE = /<!-- OG_START -->[\s\S]*?<!-- OG_END -->/;
+// Official site address (no "www.": see docs/NOTE.md). Built from here
+// only — everything else below reads SITE_URL instead of writing the
+// domain out again.
+const SITE_URL = 'https://eym-europe.eu';
 
 function escapeHtml(str) {
     return String(str)
@@ -59,9 +63,9 @@ app.get('/voices/index.html', async (req, res, next) => {
         const description = escapeHtml(truncate(author.bio, 200)) ||
             'Personal reflections and analysis from EYM members, in their own words and on their own responsibility.';
         const image = author.photo
-            ? escapeHtml('https://www.eym-europe.eu/' + author.photo)
-            : 'https://www.eym-europe.eu/assets/logos/og-default.png';
-        const url = escapeHtml('https://www.eym-europe.eu/voices/index.html?author=' + encodeURIComponent(authorSlug));
+            ? escapeHtml(SITE_URL + '/' + author.photo)
+            : SITE_URL + '/assets/logos/og-default.png';
+        const url = escapeHtml(SITE_URL + '/voices/index.html?author=' + encodeURIComponent(authorSlug));
 
         const block = `<!-- OG_START -->
     <meta property="og:title" content="${title}">

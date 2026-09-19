@@ -281,7 +281,7 @@ le parti segnate `EDIT` nel template:
   - `og:url`: **l'indirizzo completo e pubblico della pagina**, non un
     percorso relativo — i social non risolvono i percorsi relativi, e se
     lo lasci relativo l'anteprima non si genera affatto. Forma:
-    `https://www.eym-europe.eu/voices/NOME-FILE.html`.
+    `https://eym-europe.eu/voices/NOME-FILE.html`.
   - `og:site_name`: lascia `European Youth Movement`.
 
   **Prima di diffondere il link**, controlla davvero come appare
