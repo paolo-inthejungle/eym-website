@@ -1708,6 +1708,86 @@ footer h4 {
         @media (max-width: 480px) {
             .form-row { grid-template-columns: 1fr; }
         }
+
+        /* ── VOICES FROM EUROPE — home previews ── */
+        .voices-preview-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.4rem;
+            margin-top: 1.8rem;
+        }
+
+        .voices-preview-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 1.3rem 1.5rem;
+            width: 300px;
+            max-width: 100%;
+            text-align: left;
+            text-decoration: none;
+            transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+        }
+
+        .voices-preview-card:hover {
+            box-shadow: 0 6px 24px rgba(0,51,153,0.11);
+            transform: translateY(-2px);
+            border-color: var(--gray-300);
+        }
+
+        .voices-preview-meta {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--blue-eu);
+            margin-bottom: 0.5rem;
+        }
+
+        .voices-preview-title {
+            font-size: 0.98rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            line-height: 1.4;
+            margin-bottom: 0.9rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .voices-preview-author {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .voices-preview-author-photo,
+        .voices-preview-author-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: var(--gray-200);
+            flex-shrink: 0;
+        }
+
+        .voices-preview-author-avatar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+        }
+
+        .voices-preview-author-name {
+            font-size: 0.82rem;
+            color: var(--gray-700);
+        }
+
+        @media (max-width: 480px) {
+            .voices-preview-card { width: 100%; }
+        }
     </style>
 </head>
 <body>
@@ -1997,6 +2077,7 @@ footer h4 {
                 <p style="font-size:0.95rem;color:var(--gray-500);line-height:1.65;max-width:600px;margin:0 auto 1.6rem;" data-i18n="policies_section.voices_text">Voices from Europe is an open space where members share personal reflections and analysis, in their own name and not on behalf of the Movement.</p>
                 <a href="voices/index.html" class="btn-dl-eu" data-i18n="policies_section.voices_cta">Read the articles →</a>
             </div>
+            <div id="voices-preview-grid" class="voices-preview-grid" style="display:none;"></div>
         </div>
     </section>
 
@@ -2903,6 +2984,108 @@ footer h4 {
             const heroLink = document.getElementById('hero-voices-link');
             if (policiesCta) policiesCta.style.display = '';
             if (heroLink) heroLink.style.display = '';
+            loadVoicesPreviews();
+        }
+
+        // ── VOICES FROM EUROPE — home previews (latest 3 articles) ──
+        // Reads the same index used by voices/index.html. Fails silently:
+        // if the fetch or the JSON is bad, the previews just don't show.
+        function waitForI18nReady() {
+            return new Promise(resolve => {
+                if (document.documentElement.classList.contains('i18n-ready')) return resolve();
+                const obs = new MutationObserver(() => {
+                    if (document.documentElement.classList.contains('i18n-ready')) {
+                        obs.disconnect();
+                        resolve();
+                    }
+                });
+                obs.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+                setTimeout(resolve, 2000);
+            });
+        }
+
+        async function loadVoicesPreviews() {
+            const grid = document.getElementById('voices-preview-grid');
+            if (!grid) return;
+            try {
+                const res = await fetch('assets/data/voices.json');
+                if (!res.ok) return;
+                const data = await res.json();
+                if (!data || !Array.isArray(data.authors) || !Array.isArray(data.articles) || data.articles.length === 0) return;
+
+                const authorsBySlug = {};
+                data.authors.forEach(a => { authorsBySlug[a.slug] = a; });
+
+                const latest = data.articles.slice()
+                    .sort((a, b) => (b.date || '').localeCompare(a.date || ''))
+                    .slice(0, 3);
+
+                await waitForI18nReady();
+
+                const THEME_I18N_KEYS = {
+                    'foreign-policy': 'policies_section.wg.fp_title',
+                    'defence-security': 'policies_section.wg.ds_title',
+                    'energy-environment': 'policies_section.wg.ee_title',
+                    'justice': 'policies_section.wg.jus_title',
+                    'education': 'policies_section.wg.edu_title',
+                    'healthcare': 'policies_section.wg.hc_title',
+                    'immigration-human-rights': 'policies_section.wg.ihr_title',
+                    'general': 'voices.theme_general',
+                };
+                const t = key => (window.EYM && window.EYM.t(key)) || key;
+                const themeName = slug => THEME_I18N_KEYS[slug] ? t(THEME_I18N_KEYS[slug]) : slug;
+
+                latest.forEach(article => {
+                    const author = authorsBySlug[article.authorSlug];
+
+                    const card = document.createElement('a');
+                    card.className = 'voices-preview-card';
+                    card.href = 'voices/' + article.file;
+
+                    const meta = document.createElement('div');
+                    meta.className = 'voices-preview-meta';
+                    meta.textContent = themeName(article.themeSlug) + ' · ' + (article.date || '');
+                    card.appendChild(meta);
+
+                    const title = document.createElement('div');
+                    title.className = 'voices-preview-title';
+                    title.textContent = article.title;
+                    card.appendChild(title);
+
+                    const authorRow = document.createElement('div');
+                    authorRow.className = 'voices-preview-author';
+                    if (author && author.photo) {
+                        const img = document.createElement('img');
+                        img.className = 'voices-preview-author-photo';
+                        img.src = author.photo;
+                        img.alt = author.name;
+                        img.onerror = function () {
+                            const fallback = document.createElement('div');
+                            fallback.className = 'voices-preview-author-avatar';
+                            fallback.textContent = '👤';
+                            img.replaceWith(fallback);
+                        };
+                        authorRow.appendChild(img);
+                    } else {
+                        const fallback = document.createElement('div');
+                        fallback.className = 'voices-preview-author-avatar';
+                        fallback.textContent = '👤';
+                        authorRow.appendChild(fallback);
+                    }
+                    const nameEl = document.createElement('span');
+                    nameEl.className = 'voices-preview-author-name';
+                    const authorLabel = author ? author.name + (author.flag ? ' ' + author.flag : '') : article.authorSlug;
+                    nameEl.textContent = t('voices.by') + ' ' + authorLabel;
+                    authorRow.appendChild(nameEl);
+                    card.appendChild(authorRow);
+
+                    grid.appendChild(card);
+                });
+
+                grid.style.display = '';
+            } catch (e) {
+                // Previews stay hidden; the rest of the page is unaffected.
+            }
         }
 
         // ── EUROPE MAP — fetch, inject inline, add interactivity ──
