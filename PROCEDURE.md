@@ -226,11 +226,16 @@ Per ridimensionare una foto a 400×400 prima di caricarla in
 node -e "require('sharp')('input.jpg').resize(400,400,{fit:'cover'}).toFile('assets/images/authors/esther-miguez-aparicio.jpg')"
 ```
 Sostituisci `input.jpg` con il file originale e il nome del file di
-destinazione con lo slug dell'autore. Se non hai il file della foto a
-disposizione (es. arrivata come immagine incollata in chat, senza un
-percorso sul disco), non puoi eseguire questo comando: pubblica l'autore
-senza `photo` — compare 👤 — e aggiungi la foto in un secondo momento
-quando hai il file vero.
+destinazione con lo slug dell'autore.
+
+**La foto va sempre salvata su disco e data a Claude Code come percorso
+di file** (es. `C:\Users\...\Desktop\foto.jpeg`), non incollata
+direttamente nella chat. Un'immagine incollata in chat non è raggiungibile
+sul filesystem: non esiste un file a cui puntare `sharp`, quindi non è
+possibile elaborarla né salvarla in `assets/images/authors/`. Se il file
+non è ancora disponibile, pubblica l'autore senza `photo` — compare 👤 —
+e aggiungi la foto in un secondo momento quando arriva il percorso del
+file vero.
 
 ### 7.2 Duplica il template
 
