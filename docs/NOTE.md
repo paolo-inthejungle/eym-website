@@ -559,3 +559,91 @@ decisione cambia, aggiungine una nuova che rimanda a quella vecchia.
     conversazione, un contributo alla volta" — è una metafora sul
     crescere del progetto, non un invito a scrivere da qualche parte).
     Nessuna di queste è stata toccata.
+
+31. **(2026-09-19) CENSIMENTO: quattro elenchi di paesi, non tre — e non
+    coincidono fra loro. Sessione di sola lettura, nessuna scelta fatta,
+    nessun file toccato all'infuori di questa voce.** Oltre ai tre punti
+    già noti (`pages/signup.html`, `pages/apply-coordinator.html`,
+    `area-utente.html`), il menu a tendina del Paese nel modale di
+    login/iscrizione di `index.html` (tab "Sign Up") è un QUARTO elenco
+    indipendente, non ancora censito prima d'ora.
+
+    Conteggio esatto (script che estrae gli `<option>` reali, non una
+    stima a occhio):
+    - `signup.html`: 44 voci — 27 Stati UE + 16 "Other European
+      countries" (Albania, Bosnia ed Erzegovina, Georgia, Islanda,
+      Kosovo, Liechtenstein, Moldova, **Monaco**, Montenegro, Macedonia
+      del Nord, Norvegia, Serbia, Svizzera, Turchia, Ucraina, Regno
+      Unito) + 1 "Other" generico. Intestazioni di gruppo presenti e
+      collegate a i18n (`data-i18n-label`).
+    - `apply-coordinator.html`: 43 voci — stessi 27 Stati UE + 15 "Other
+      European countries" (uguale all'elenco sopra MA SENZA Monaco) + 1
+      "Other". Intestazioni presenti e collegate a i18n.
+    - modale di `index.html`: 43 voci — stessi 27 Stati UE + gli stessi
+      15 "Other European" di `apply-coordinator.html` (anche qui SENZA
+      Monaco) + 1 "Other". Intestazioni di gruppo presenti ma SCRITTE A
+      MANO, senza `data-i18n-label`: unico dei quattro elenchi dove le
+      intestazioni non sono collegate a i18n (buco non richiesto da
+      questa sessione, solo segnalato).
+    - `area-utente.html`: 29 voci — i soli 27 Stati UE, senza nessun
+      raggruppamento (lista piatta, nessun `<optgroup>`), più un solo
+      paese non-UE (**Ucraina**, unica) più "Other". Non corrisponde a
+      "27 Stati UE più due paesi": corrisponde a "27 Stati UE più
+      *un* paese vero (Ucraina) più il generico Other" — la differenza
+      con l'ipotesi dei "due in più" è che uno dei due non è un paese,
+      è la stessa voce catch-all presente anche negli altri tre elenchi.
+
+    **Unico paese fuori posto fra i due elenchi lunghi**: Monaco è in
+    `signup.html` fin dal primissimo commit che ha creato quel file
+    (`5898e73`, 2026-04-24) ma non è mai stato in `apply-coordinator.html`
+    (creato nello stesso commit, stesso giorno) né nel modale di
+    `index.html` (aggiunto tredici giorni dopo, commit `9afb1e4`,
+    2026-05-07). Non è quindi una voce persa in seguito: i due file sono
+    stati scritti così fin dall'inizio, in modo indipendente l'uno
+    dall'altro nonostante il contenuto quasi identico.
+
+    **Gli elenchi dei prefissi telefonici (`signup.html` e il modale di
+    `index.html`, unici due punti che ne hanno uno — `area-utente.html`
+    e `apply-coordinator.html` usano un campo di testo libero) sono
+    identici fra loro byte per byte, 57 voci, e includono Monaco
+    (`+377 MC`) in entrambi.** Questo crea un'incoerenza interna proprio
+    nel modale di `index.html`: il menu del prefisso telefonico offre
+    Monaco, il menu del nome del paese nello stesso modulo no — chi
+    seleziona il prefisso `+377` non può poi scrivere "Monaco" come
+    nome del paese nello stesso form.
+
+    **Nessuna differenza di grafia trovata** fra i quattro elenchi dove
+    uno stesso paese compare in più di uno (stessa dicitura "Czech
+    Republic", non "Czechia"; "United Kingdom", non "UK"; "North
+    Macedonia" ovunque compaia).
+
+    **Nessuna traduzione di nomi di paese esiste oggi da nessuna
+    parte del sito**, riusabile o no: nei quattro elenchi i singoli
+    `<option>` dei paesi non hanno mai `data-i18n` (solo il testo del
+    segnaposto e, in due elenchi su quattro, le intestazioni di gruppo
+    ce l'hanno). Il nome del paese nel tooltip della mappa (vedi voce 4
+    sopra) non passa da i18n neppure lui, ed è comunque una fonte
+    diversa (letto dal tag `<title>` dentro l'SVG, non da un elenco di
+    `<option>`).
+
+    **Nessuna spiegazione trovata, in nessuna forma, del perché
+    l'elenco di `area-utente.html` sia più corto degli altri, o del
+    perché Monaco manchi in due elenchi su quattro**: cercato nella
+    cronologia git (messaggi di commit, diff), nel codice (commenti
+    vicino ai quattro `<select>`) e nella documentazione esistente —
+    nessun commento, nessuna nota, nessuna riga di commit ne parla.
+    `area-utente.html` è stato creato il 2026-05-03 (commit `7de5358`)
+    già con l'elenco corto, nove giorni dopo `signup.html` e
+    `apply-coordinator.html` (2026-04-24): l'elenco corto non è quindi
+    una versione più vecchia rimasta indietro, è nato già corto, dopo
+    che l'elenco lungo esisteva già altrove nel sito.
+
+    **QUESTIONE APERTA, IN ATTESA DI UNA DECISIONE DI PAOLO**: quale sia
+    l'elenco unico da adottare — se il più completo (44 voci, quello di
+    `signup.html`, con Monaco), una via di mezzo, o se l'elenco corto di
+    `area-utente.html` sia in realtà una scelta voluta (per esempio: un
+    elenco più corto per un modulo pensato principalmente per chi è già
+    socio, dove i tre quarti degli iscritti attesi vengono da Stati UE
+    più Ucraina) da estendere ad hoc invece che tagliare. Non è stata
+    presa nessuna decisione in questa sessione: è stata solo misurata
+    la situazione attuale.
