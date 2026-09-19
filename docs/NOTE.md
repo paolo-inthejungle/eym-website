@@ -647,3 +647,97 @@ decisione cambia, aggiungine una nuova che rimanda a quella vecchia.
     più Ucraina) da estendere ad hoc invece che tagliare. Non è stata
     presa nessuna decisione in questa sessione: è stata solo misurata
     la situazione attuale.
+
+32. **(2026-09-19) CORRETTO: la barra in alto andava a capo su due righe
+    a piena larghezza, in TUTTE le lingue, non solo in tedesco.** Causa
+    reale, misurata prima di toccare nulla: non il testo del menu, ma
+    `gap: 1.5rem` (24px) applicato dallo stesso `.header-inner` fra
+    TUTTI e sette gli elementi della barra (logo, menu, WhatsApp,
+    Instagram, LinkedIn, lingua, accesso) — sei spazi da 24px, 144px
+    solo di distanza fra i riquadri — più i quattro pulsanti a destra
+    forzati a una larghezza fissa comune di 100px anche quando il loro
+    contenuto non lo richiedeva (LinkedIn) o lo superava già (WhatsApp,
+    Instagram — bleed nascosto solo dal margine dei 24px, mai visibile
+    prima d'ora). A 1200px di larghezza disponibile (il tetto massimo di
+    `.header-inner`, invariato da sessioni precedenti — vedi voce 30),
+    lo spazio richiesto da logo + menu + i cinque riquadri superava
+    quello disponibile in TUTTE le lingue: 28px in inglese (il meno
+    peggio), fino a 169px in tedesco (il più verboso). Corretto
+    riducendo il gap fra i riquadri (`.header-inner` da 1.5rem a
+    0.35rem) e lo spazio interno di WhatsApp/Instagram/LinkedIn/lingua/
+    accesso (da 0.85rem a 0.35rem in orizzontale, gap icona-testo da
+    0.4rem a 0.25rem), e lasciando che ciascun riquadro assuma la
+    propria larghezza naturale invece di una larghezza fissa comune
+    (`.header-action-btn` da `width:100px` a `width:auto`) — non si
+    tocca l'icona né il testo di nessun pulsante, cambia solo lo spazio
+    intorno. Risultato misurato con Chrome headless (vedi
+    @docs/VERIFICHE.md per la tabella): la barra sta su una riga sola, in
+    tutte e 5 le lingue, da 1200px in su — **in tedesco con un margine
+    di soli 2-3px secondo la misura in Chrome headless**: è il caso più
+    stretto, non è stato forzato oltre comprimendo ulteriormente lo
+    spazio (avrebbe reso i pulsanti illeggibili), ma quel margine è
+    abbastanza sottile da meritare una controllata anche in un browser
+    vero, non solo headless, prima di considerarlo chiuso per sempre.
+    Il tetto di 1200px di `.header-inner` NON è stato toccato: si è
+    scelto di risolvere solo con lo spazio fra i riquadri e al loro
+    interno, come richiesto, non allargando il contenitore.
+
+33. **(2026-09-19) PRECISATO: la community WhatsApp del Movimento non è
+    un "gruppo generale".** Il codice e i testi confondevano i due
+    termini: `WHATSAPP_GENERAL_ENABLED`/`WHATSAPP_GROUPS_ENABLED` (e le
+    classi `js-whatsapp-general`/`js-whatsapp-group`) non rendevano
+    evidente che il primo riguarda l'UNICA community del Movimento e il
+    secondo i gruppi tematici che vivranno DENTRO quella community — non
+    community separate una per gruppo, come la vecchia frase "quando
+    esiste la community di un gruppo" in @docs/PROCEDURE.md lasciava
+    intendere. Rinominati in `WHATSAPP_COMMUNITY_ENABLED` /
+    `WHATSAPP_COMMUNITY_GROUPS_ENABLED` e
+    `js-whatsapp-community`/`js-whatsapp-community-group`, ovunque
+    usati: `index.html` (costanti, commenti, classi HTML),
+    @docs/PROCEDURE.md, @docs/ARCHITETTURA.md. Corretta anche la frase
+    visibile (chiave i18n `news.wa_text`) che diceva testualmente "our
+    general WhatsApp group" (e l'equivalente nelle altre 4 lingue,
+    tutte con lo stesso errore): ora dice solo "on WhatsApp", senza
+    nominare né "gruppo" né ripetere due volte "community" nella stessa
+    frase. Non toccate le voci di NOTE.md e VERIFICHE.md scritte prima
+    di oggi che usano ancora i nomi vecchi (voce 27, voce 28 e la
+    verifica del 2026-09-19 in @docs/VERIFICHE.md): sono cronaca di quello
+    che è stato scritto e provato in quel momento, si lasciano come
+    sono — è per questo che esiste questa voce nuova, non una riscritta.
+
+34. **(2026-09-19) CHIUSA, NON CONFERMATA: la legenda della mappa SVG
+    non causa (e a quanto pare non ha mai causato) scorrimento
+    orizzontale.** La voce 28 sopra riportava che
+    `div#eu-map-container > svg > g#legend` "sfora orizzontalmente fino
+    a 36px" fra 770 e 830px circa. Rimisurato in questa sessione con lo
+    stesso metodo di allora (Chrome headless, `getBoundingClientRect()`)
+    più un controllo che allora mancava: `document.documentElement
+    .scrollWidth` confrontato con `window.innerWidth`, cioè se la pagina
+    scorre DAVVERO, non solo se un singolo elemento ha un riquadro più
+    largo del previsto. Risultato: il riquadro di `g#legend` sfora
+    davvero, per davvero, il proprio `<svg>` (misurato: a 900px il bordo
+    destro della legenda arriva 127px oltre il bordo destro dell'SVG che
+    la contiene — non è un arrotondamento) — ma l'elemento `<svg>` ha
+    `overflow: hidden` per default del browser (comportamento standard,
+    nessuna regola scritta in questo sito lo imposta né lo toglie): tutto
+    ciò che eccede il `viewBox` dell'SVG viene ritagliato PRIMA di
+    poter influenzare la larghezza scrollabile della pagina. Confermato
+    con una scansione completa 320-2560px (passo 8px, IT e DE, con la
+    mappa caricata e verificata presente a ogni misura):
+    **`document.documentElement.scrollWidth` non supera mai
+    `window.innerWidth`, a nessuna larghezza**. Confermato anche a
+    schermo (screenshot della sezione Territorio): la legenda visibile
+    agli utenti è tutt'altra cosa — un blocchetto HTML sotto la mappa
+    ("Not yet EYM members" / "Countries with EYM members" e simili
+    tradotti) — mentre `g#legend` dentro l'SVG è un residuo invisibile,
+    con etichette in inglese che non c'entrano con questo sito ("Never
+    competed" / "Withdrew", linguaggio da mappa di gare sportive o
+    concorsi, non da adesioni EYM): probabilmente una legenda rimasta
+    dentro il file SVG originale da cui è stata adattata la mappa
+    dell'UE, mai cancellata perché mai visibile. **Nessuna correzione
+    applicata**: non c'era un difetto di scorrimento da correggere, e
+    intervenire sul contenuto dell'SVG per ripulire questo residuo
+    invisibile non è stato chiesto — resta lì, innocuo. Se in futuro
+    qualcuno tocca `assets/images/european-union-map.svg` per altri
+    motivi, può cancellare il gruppo `id="legend"` senza che cambi nulla
+    di visibile.

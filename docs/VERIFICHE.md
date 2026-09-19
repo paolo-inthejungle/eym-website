@@ -359,3 +359,81 @@ confondere "il codice sembra corretto" con "è stato visto funzionare".
   **Non verificato**: nessun browser reale, solo Chrome headless (motore
   identico a Chrome desktop, ma non testato su Firefox/Safari); nessun
   telefono fisico (stesso limite di sempre — vedi sopra).
+
+- **(2026-09-19, sessione "la barra va a capo in tutte le lingue")
+  Diagnosi PRIMA di toccare nulla**: quanto manca perché la barra stia
+  su una riga sola a 1200px di larghezza disponibile (il tetto di
+  `.header-inner`, raggiunto a 1280/1440/1920px di finestra — misura
+  identica alle tre larghezze, essendo il contenitore già al suo
+  massimo), lingua per lingua, Chrome headless via CDP:
+
+  | lingua | spazio richiesto | spazio disponibile | quanto manca |
+  |--------|-------------------|---------------------|----------------|
+  | EN     | 1228px            | 1200px              | 28px           |
+  | IT     | 1243px            | 1200px              | 43px           |
+  | FR     | 1330px            | 1200px              | 130px          |
+  | ES     | 1270px            | 1200px              | 70px           |
+  | DE     | 1369px            | 1200px              | 169px          |
+
+  In nessuna lingua ci stava, nemmeno in inglese: confermato che la
+  causa non era il testo del menu (varia poco fra lingue: da 468px in
+  inglese a 608px in tedesco) ma i 144px fissi di spazio VUOTO fra i
+  sette elementi della barra (sei spazi da 24px), identici in ogni
+  lingua, più il bleed nascosto di WhatsApp/Instagram (già più larghi
+  del riquadro fisso di 100px che li conteneva, prima di questa
+  sessione — non visibile perché i 24px di margine lo copriva).
+
+  **Dopo la correzione** (@docs/NOTE.md, voce 32): stessa misura, stessi
+  tre punti (1280/1440/1920, identici perché il contenitore è sempre
+  al tetto di 1200px), tutte e 5 le lingue — il menu sta su una riga
+  sola ovunque:
+
+  | lingua | navLines a 1280/1440/1920 | overflow pagina |
+  |--------|----------------------------|-------------------|
+  | EN     | 1/1/1                      | nessuno            |
+  | IT     | 1/1/1                      | nessuno            |
+  | FR     | 1/1/1                      | nessuno            |
+  | ES     | 1/1/1                      | nessuno            |
+  | DE     | 1/1/1                      | nessuno            |
+
+  Il tedesco (il caso più stretto) sta sulla riga con un margine
+  residuo di soli 2-3px secondo questa misura — vedi @docs/NOTE.md, voce
+  32, per l'avvertimento a riverificarlo in un browser vero.
+
+  **Tabella delle otto larghezze richieste, IT e DE, dopo la
+  correzione** (stesso formato della sessione precedente, per essere
+  confrontabile — vedi sopra):
+
+  | larghezza | IT scrollWidth | IT overflow | DE scrollWidth | DE overflow |
+  |-----------|-----------------|-------------|-----------------|-------------|
+  | 320       | 312             | -8          | 312             | -8          |
+  | 500       | 485             | -15         | 485             | -15         |
+  | 768       | 753             | -15         | 753             | -15         |
+  | 800       | 785             | -15         | 785             | -15         |
+  | 928       | 913             | -15         | 913             | -15         |
+  | 1024      | 1009            | -15         | 1009            | -15         |
+  | 1280      | 1265            | -15         | 1265            | -15         |
+  | 1920      | 1905            | -15         | 1905            | -15         |
+
+  Nessuna delle otto larghezze sfora, in nessuna delle due lingue.
+  Ripetuta anche una scansione fine (passo 8px) da 320 a 2560px in
+  tedesco: nessun overflow trovato in nessun punto — identico al
+  risultato di prima della correzione, la correzione non ha introdotto
+  nessun nuovo scorrimento.
+
+- **(2026-09-19) La legenda della mappa NON causa scorrimento
+  orizzontale — verificato con lo stesso metodo scrollWidth/innerWidth
+  usato per l'header, non solo con la larghezza del singolo elemento.**
+  Scansione 320-2560px (passo 8px), IT e DE, con conferma esplicita a
+  ogni misura che la mappa e la sua legenda SVG fossero davvero
+  caricate nella pagina (non solo assunto): **zero larghezze con
+  `scrollWidth > innerWidth`**. Il riquadro `g#legend` dentro l'SVG
+  sfora davvero il proprio `<svg>` (misurato: 127px oltre il bordo
+  destro a 900px di larghezza pagina) ma l'elemento `<svg>` lo ritaglia
+  (`overflow: hidden`, default del browser) prima che possa contare
+  sulla larghezza scrollabile della pagina — dettaglio completo in
+  @docs/NOTE.md, voce 34. **Corretta la voce 28 di questa stessa pagina**
+  (sessione precedente, che riportava fino a 36px di sforo reale): quel
+  numero misurava il riquadro del solo elemento SVG, non se la pagina
+  scorresse per davvero — un controllo diverso, non ripetuto allora,
+  che questa sessione ha aggiunto.
