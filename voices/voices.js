@@ -76,10 +76,9 @@
         const info = el('div');
         const h2 = el('h2', null, author.name + (author.flag ? ' ' + author.flag : ''));
         info.appendChild(h2);
+        if (author.bio) info.appendChild(el('p', null, author.bio));
         if (Array.isArray(author.bioLong) && author.bioLong.length) {
             author.bioLong.forEach(paragraph => info.appendChild(el('p', null, paragraph)));
-        } else if (author.bio) {
-            info.appendChild(el('p', null, author.bio));
         }
         box.appendChild(info);
     }

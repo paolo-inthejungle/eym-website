@@ -194,25 +194,37 @@ Apri `assets/data/voices.json` e cerca lo slug dell'autore fra gli
   `"esther-miguez-aparicio"`), `name` (nome e cognome, mai tradotto — es.
   `"Esther Miguez Aparicio"`), `flag` (emoji bandiera, stessa tecnica
   dell'organigramma — es. `"🇪🇸"`).
-- **Facoltativo `bio`**: un paragrafo breve (indicativamente sotto le
-  300 parole). È quello che compare in cima alla pagina di OGNI articolo
-  di quell'autore, dentro il riquadro piccolo sopra il testo.
-- **Facoltativo `bioLong`**: la biografia estesa, quella che compare SOLO
-  nella pagina `voices/index.html?author=<slug>` (quando qualcuno clicca
-  sul nome dell'autore). **Non è una stringa unica: è un elenco JSON di
+- **Facoltativo `bio`**: il PRIMO paragrafo della biografia, breve
+  (indicativamente sotto le 300 parole). È l'unico che compare in cima
+  alla pagina di OGNI articolo di quell'autore, dentro il riquadro
+  piccolo sopra il testo — lì `bioLong` non compare mai, nemmeno se
+  esiste.
+- **Facoltativo `bioLong`**: il SEGUITO della biografia, non una sua
+  alternativa. Compare SOLO nella pagina
+  `voices/index.html?author=<slug>` (quando qualcuno clicca sul nome
+  dell'autore), e lì compare DOPO `bio`, come un'unica biografia
+  continua — `bio` è il primo paragrafo, `bioLong` sono quelli
+  successivi. **Non è una stringa unica: è un elenco JSON di
   paragrafi**, uno per elemento — non scrivere tutto in un unico blocco
-  con `\n\n` in mezzo, il sito non lo spezzerebbe. Esempio reale (versione
-  accorciata):
+  con `\n\n` in mezzo, il sito non lo spezzerebbe. Non ha senso avere
+  `bioLong` senza `bio`: scriveresti una biografia che salta il primo
+  paragrafo. Esempio reale (versione accorciata):
   ```json
+  "bio": "Esther Miguez Aparicio is a Law and International Relations graduate […]",
   "bioLong": [
     "In Brussels, she worked on European Commission programmes at the Official Spanish Chamber of Commerce in Belgium and Luxembourg. […]",
     "At the Embassy of Paraguay, she drafted notes verbales and official communications […]",
     "She now applies this breadth of experience to geopolitical analysis and strategic foresight […]"
   ]
   ```
-  Se manca `bioLong`, la pagina dell'autore mostra `bio` invece. Se
-  mancano entrambi, non mostra nessun paragrafo (nessuno spazio vuoto,
-  nessuna scritta tipo "undefined").
+  Sulla pagina dell'autore, questo esempio mostra quattro paragrafi in
+  fila: `bio`, poi i tre elementi di `bioLong`, nell'ordine in cui sono
+  scritti nell'array.
+
+  Se manca `bioLong`, la pagina dell'autore mostra solo `bio`. Se manca
+  anche `bio`, non mostra nessun paragrafo (nessuno spazio vuoto,
+  nessuna scritta tipo "undefined") — resta comunque il riquadro con
+  foto, nome e bandiera.
 - **Facoltativo `photo`**: percorso relativo, es.
   `"assets/images/authors/esther-miguez-aparicio.jpg"`. Senza foto compare
   l'icona generica 👤 — non è un difetto, è il comportamento previsto.
@@ -368,12 +380,13 @@ basta leggere il codice):
 1. `voices/index.html` — l'articolo compare con titolo, autore, tema,
    data, etichetta lingua, estratto.
 2. Il nome dell'autore è cliccabile e porta a `?author=<slug>`; su quella
-   pagina compaiono foto (o 👤), nome, bandiera e la bio ESTESA a
-   paragrafi separati (se hai scritto `bioLong`), sempre visibile, mai
-   dentro un menu a scomparsa.
+   pagina compaiono foto (o 👤), nome, bandiera e la biografia COMPLETA
+   a paragrafi separati — `bio` seguita da `bioLong` se presente, non
+   una delle due al posto dell'altra — sempre visibile, mai dentro un
+   menu a scomparsa.
 3. Il tema è cliccabile e porta a `?theme=<slug>`.
-4. La pagina dell'articolo vera e propria: bio BREVE sopra il testo,
-   sottotitoli al posto giusto, paragrafi separati.
+4. La pagina dell'articolo vera e propria: SOLO `bio` (mai `bioLong`)
+   sopra il testo, sottotitoli al posto giusto, paragrafi separati.
 5. Dalla pagina `policies/<slug-tema>.html`, il link nella sezione
    "Voices from Europe" porta all'articolo.
 6. La pagina si legge bene anche stringendo la finestra del browser
