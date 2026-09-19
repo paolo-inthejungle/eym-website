@@ -139,3 +139,32 @@ confondere "il codice sembra corretto" con "è stato visto funzionare".
   Non essendoci un file immagine raggiungibile (vedi @docs/NOTE.md), non è
   stato eseguito né il ridimensionamento con `sharp` né una verifica
   visiva del ritaglio a 400×400.
+- **(2026-09-19) Il link all'articolo, dopo la correzione del percorso
+  doppio, è stato aperto per davvero da tre punti di partenza diversi**
+  (letto l'indirizzo risolto nella barra, non solo il codice sorgente):
+  dal link leggero in copertina della home (`hero-voices-link` →
+  `voices/index.html`), dall'elenco completo degli articoli
+  (`voices/index.html`), e dal riquadro "Voices from Europe" di
+  `policies/foreign-policy.html` (→ `voices/index.html?theme=foreign-policy`).
+  In tutti e tre i casi il link all'articolo risolve a
+  `.../voices/variable-geometry-middle-powers.html` (una sola cartella
+  `voices/`), e la pagina si apre con il titolo giusto.
+- **(2026-09-19) La correzione bio/bioLong (pagina dell'autore) è stata
+  verificata con due autori finti temporanei**: uno con solo `bio`, uno
+  senza nessuno dei due campi. Entrambe le pagine si sono viste per
+  davvero (screenshot), pulite e senza scritte tipo "undefined"; i due
+  autori sono stati rimossi da `assets/data/voices.json` prima del
+  commit e la loro assenza è stata confermata con una ricerca testuale
+  nel file.
+- **(2026-09-19) Le anteprime in home sono state verificate per davvero
+  in tre stati**: con l'indice reale (un articolo, scheda singola
+  centrata, non sembra un layout rotto), con `assets/data/voices.json`
+  temporaneamente svuotato (`{"authors":[],"articles":[]}`: il blocco
+  resta `display:none`, nessuno spazio bianco, nessun errore in
+  console — poi il file è stato ripristinato e verificato di nuovo
+  identico all'originale), e a una larghezza di 500px (il limite minimo
+  di Chrome headless su questa macchina). **Non è stato provato un
+  telefono vero su nessuna pagina di Voices from Europe** (indice,
+  pagina autore, pagina articolo, anteprime in home): tutte le verifiche
+  "da telefono" fatte finora, in questa sessione e nelle precedenti, si
+  fermano al limite di 500px dello strumento.

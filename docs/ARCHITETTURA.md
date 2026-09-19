@@ -150,25 +150,65 @@ centrale di route → pagina, ogni file richiama `i18n.js` in autonomia.
 ## Voices from Europe — modello dati
 
 `assets/data/voices.json` ha due elenchi, `authors[]` e `articles[]`
-(schema completo e passo-passo per pubblicare in @docs/PROCEDURE.md). Qui solo
-la parte che riguarda il codice:
+(schema completo e passo-passo per pubblicare in @docs/PROCEDURE.md). È
+letto da **due punti del sito**, non uno solo: `voices/voices.js` (la
+pagina `voices/index.html`, elenco completo e viste filtrate) e, dal
+2026-09-19, un piccolo script inline in `index.html` (le anteprime degli
+ultimi 3 articoli nella sezione Politiche/home). Qui solo la parte che
+riguarda il codice:
 
-- Ogni autore ha `bio` (breve, obbligatoria se si vuole mostrare
-  qualcosa) e, dal 2026-09-18, `bioLong` (facoltativa): un **array di
-  stringhe**, una per paragrafo, non un unico blocco di testo con `\n\n`.
-  `voices/voices.js` → `renderAuthorCard()` mostra `bioLong` (un `<p>`
-  per elemento dell'array) quando presente, altrimenti ripiega su `bio`;
-  se l'autore non ha né l'una né l'altra non stampa nessun paragrafo
-  vuoto.
-- Le due bio non vivono nello stesso punto della pagina: `bioLong`
-  compare **solo** nel riquadro `#author-card` di `voices/index.html`
-  quando la pagina è filtrata con `?author=<slug>` (generato via JS da
-  `voices.json`). La bio **breve** che compare in cima a ogni pagina
-  articolo (`.author-card-sm`) non è generata da JS: è testo scritto a
-  mano dentro il file dell'articolo stesso, duplicato da `voices.json`
-  al momento di compilare il template (vedi @docs/PROCEDURE.md) — cambiare
-  `bio` in `voices.json` dopo la pubblicazione non aggiorna le pagine
-  articolo già scritte.
+- **`article.file` è SOLO il nome del file, mai un percorso.** Es.
+  `"variable-geometry-middle-powers.html"`, non
+  `"voices/variable-geometry-middle-powers.html"`. Il motivo è che i due
+  punti che lo leggono stanno a due livelli diversi del sito e ciascuno
+  ci antepone la propria posizione per conto proprio:
+  - `voices/voices.js` sta già dentro `voices/`: usa `article.file`
+    così com'è come `href` (nessun prefisso aggiunto nel codice).
+  - Lo script in `index.html` sta nella root: costruisce il link come
+    `'voices/' + article.file`.
+
+  Se `file` contenesse già `voices/` davanti, il primo caso
+  funzionerebbe per caso ma il secondo produrrebbe
+  `voices/voices/nome-file.html` (percorso raddoppiato, pagina
+  introvabile) — è esattamente il difetto trovato e corretto il
+  2026-09-19 in produzione. Stesso discorso per `author.photo`: è un
+  percorso dalla root del sito (es.
+  `"assets/images/authors/nome.jpg"`), e ciascun punto che lo consuma
+  antepone da solo quello che gli serve per arrivarci dalla propria
+  posizione (`voices/voices.js` mette `'../'` davanti, lo script in
+  `index.html` lo usa così com'è).
+- Ogni autore ha `bio` (il primo paragrafo, breve) e, dal 2026-09-18,
+  `bioLong` (facoltativa): un **array di stringhe**, una per paragrafo,
+  non un unico blocco di testo con `\n\n`. **Le due bio non sono
+  alternative, sono in sequenza**: `bio` è sempre il primo paragrafo,
+  `bioLong` — se presente — continua da lì. `voices/voices.js` →
+  `renderAuthorCard()` stampa prima `bio` (se c'è), poi ogni elemento di
+  `bioLong` (se c'è); se l'autore non ha né l'una né l'altra non stampa
+  nessun paragrafo, ma il riquadro con foto/nome/bandiera resta (corretto
+  il 2026-09-19: prima la presenza di `bioLong` faceva sparire `bio`,
+  come se fossero due opzioni invece che due parti della stessa
+  biografia).
+- Le due bio non vivono nello stesso punto della pagina: la biografia
+  COMPLETA (`bio` + `bioLong`) compare **solo** nel riquadro
+  `#author-card` di `voices/index.html` quando la pagina è filtrata con
+  `?author=<slug>`. La pagina di ogni singolo articolo mostra **solo**
+  `bio`, mai `bioLong` — e quel testo in cima alla pagina articolo
+  (`.author-card-sm`) non è generato da JS: è scritto a mano dentro il
+  file dell'articolo stesso, duplicato da `voices.json` al momento di
+  compilare il template (vedi @docs/PROCEDURE.md) — cambiare `bio` in
+  `voices.json` dopo la pubblicazione non aggiorna le pagine articolo
+  già scritte.
+- Le anteprime in home (`index.html`, dentro `#voices-preview-grid`,
+  sotto il riquadro `#voices-cta-policies`) leggono lo stesso
+  `voices.json`, ordinano gli articoli per `date` decrescente e ne
+  mostrano al massimo 3. Se il file non c'è, non risponde, o il JSON non
+  è leggibile, la funzione (`loadVoicesPreviews()`) esce in silenzio: il
+  blocco resta `display:none` (il suo stato di partenza nell'HTML) e il
+  resto della home non risente di nulla — nessun errore in console.
+  Stesso comportamento se l'elenco è vuoto. Il blocco è collegato allo
+  stesso interruttore `VOICES_PUBLIC` del resto della sezione Voices
+  (vedi @docs/PROCEDURE.md): se è `false`, le anteprime non vengono
+  nemmeno richieste.
 - La colonna di lettura degli articoli è già limitata in
   `voices.css` (`.article-main { max-width: 720px; }`): su schermi
   larghi il testo non si allarga a piena pagina. Non serve toccarla per

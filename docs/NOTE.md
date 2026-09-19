@@ -339,3 +339,49 @@ decisione cambia, aggiungine una nuova che rimanda a quella vecchia.
 
     Creato anche un `README.md` nella root (non esisteva prima), con
     una descrizione breve del progetto e i collegamenti a `docs/`.
+
+23. **(2026-09-19) Tre difetti trovati aprendo il sito dopo la
+    pubblicazione del primo articolo di Voices from Europe, tutti e tre
+    corretti nella stessa sessione.**
+
+    - **L'articolo non si apriva.** `assets/data/voices.json` aveva
+      `"file": "voices/variable-geometry-middle-powers.html"` (percorso
+      completo). `voices/index.html`, che sta già dentro `voices/`, usa
+      quel valore così com'è per costruire il link: il risultato era
+      `voices/voices/variable-geometry-middle-powers.html`, una pagina
+      che non esiste. Corretto togliendo `voices/` dal valore nel JSON
+      (ora è solo il nome del file) invece di modificare il codice che
+      lo legge: rende il campo `file` inequivocabile — è sempre "il nome
+      del file dentro voices/", mai un percorso — e mette la
+      responsabilità di anteporre `voices/` o `../` su chi consuma il
+      dato dalla propria posizione, non su chi lo scrive. Vedi
+      @docs/ARCHITETTURA.md per il dettaglio tecnico e @docs/PROCEDURE.md
+      per l'esempio giusto/sbagliato da seguire per il prossimo
+      articolo.
+    - **La pagina dell'autrice mostrava solo metà della biografia.**
+      `bio` e `bioLong` erano trattati come alternativi (se c'era
+      `bioLong` il paragrafo di `bio` spariva), ma non lo sono: `bio` è
+      il primo paragrafo, `bioLong` il seguito. Corretto in
+      `voices/voices.js`: ora la pagina dell'autore mostra sempre `bio`
+      per prima, poi `bioLong` se presente. La pagina del singolo
+      articolo non è stata toccata: mostrava e mostra solo `bio`, mai
+      `bioLong`, per scelta di design (bio breve in cima all'articolo,
+      biografia completa solo nella pagina dedicata all'autore).
+    - **Il riquadro "Voices from Europe" in home non mostrava
+      contenuti.** Aggiunte le anteprime degli ultimi 3 articoli sotto
+      il riquadro esistente, lette dallo stesso `voices.json` (nessun
+      dato duplicato nell'HTML). Comportamento verificato per davvero,
+      non solo letto nel codice: con l'indice vuoto il blocco resta
+      esattamente com'era prima (nessuno spazio bianco, nessun
+      segnaposto); con un solo articolo (il caso reale di oggi) la
+      singola scheda resta centrata e non sembra un errore di layout.
+
+24. **(2026-09-19) DECISIONE: `bio` e `bioLong` non sono alternativi, ma
+    una biografia continua.** `bio` è sempre il primo paragrafo,
+    mostrato ovunque compaia il nome dell'autore con del testo
+    biografico (oggi: in cima a ogni pagina articolo). `bioLong` è il
+    seguito, mostrato SOLO nella pagina dedicata all'autore
+    (`voices/index.html?author=<slug>`), sempre dopo `bio`, mai al posto
+    suo. Un autore può avere solo `bio` (biografia breve ovunque), non
+    ha senso avere solo `bioLong` senza `bio` (biografia che salterebbe
+    il primo paragrafo proprio dove serve di più, in cima all'articolo).
