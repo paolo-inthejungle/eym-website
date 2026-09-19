@@ -314,7 +314,7 @@ questi campi:
   "date": "2026-09-18",
   "lang": "en",
   "excerpt": "On 16 September 2026, Ursula von der Leyen proposed Canada as the EU's first associate member, a sign of how middle powers are turning to variable geometry to navigate an increasingly fragmented world.",
-  "file": "voices/variable-geometry-middle-powers.html"
+  "file": "variable-geometry-middle-powers.html"
 }
 ```
 - `slug`: uguale al nome del file, senza `.html`.
@@ -332,8 +332,23 @@ questi campi:
 - `excerpt`: **lo scrivi tu**, non l'autore — due righe al massimo,
   prendendo parole vere dal testo, senza inventare fatti che l'articolo
   non dice.
-- `file`: il percorso del file creato al punto 7.2, dalla root del repo
-  (`voices/nome-file.html`).
+- `file`: **solo il nome del file creato al punto 7.2, SENZA la cartella
+  `voices/` davanti.**
+  - Giusto: `"variable-geometry-middle-powers.html"`
+  - Sbagliato: `"voices/variable-geometry-middle-powers.html"`
+
+  Il motivo non è stilistico: la pagina che mostra gli articoli
+  (`voices/index.html`) sta già dentro `voices/`, e usa questo valore
+  così com'è per costruire il link. Se scrivi `voices/nome-file.html`,
+  il browser lo cerca partendo dalla cartella in cui si trova già —
+  `voices/` — e ottiene `voices/voices/nome-file.html`, che non esiste:
+  l'articolo diventa impossibile da aprire, senza nessun avviso al
+  salvataggio (è esattamente l'errore corretto il 2026-09-19, vedi
+  @docs/NOTE.md). La home page, che sta invece nella root del sito e
+  costruisce i propri link aggiungendo lei stessa `voices/` davanti,
+  usa lo stesso valore di `file` in un modo diverso — un motivo in più
+  per lasciarlo come nome nudo e non decidere da soli di anteporgli
+  qualcosa.
 
 Attenzione alla punteggiatura JSON: una virgola fuori posto rende
 l'intero elenco illeggibile (il sito mostra un avviso, ma è meglio non
