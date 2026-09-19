@@ -485,6 +485,6 @@ footer a:hover { color: var(--white); }
 /* ── RESPONSIVE ── */
 @media (max-width: 600px) {
     .header-inner { gap: 0.5rem; }
-    .author-card-full { flex-direction: column; text-align: center; }
+    .author-card-full { flex-direction: column; }
     .filter-banner { flex-direction: column; align-items: flex-start; }
 }
