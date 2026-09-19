@@ -4,6 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="page_titles.voices">Voices from Europe — European Youth Movement</title>
+
+    <!-- Default social preview. If the request is /voices/index.html?author=<slug>
+         for a real author, server.js replaces everything between the markers
+         below with that author's own preview before sending the page — see
+         docs/ARCHITETTURA.md. Any other request (no author, unknown author,
+         voices.json unreadable) gets this default untouched. -->
+    <!-- OG_START -->
+    <meta property="og:title" content="Voices from Europe">
+    <meta property="og:description" content="Personal reflections and analysis from EYM members, in their own words and on their own responsibility.">
+    <meta property="og:image" content="https://www.eym-europe.eu/assets/logos/og-default.png">
+    <meta property="og:url" content="https://www.eym-europe.eu/voices/index.html">
+    <meta property="og:site_name" content="European Youth Movement">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Voices from Europe">
+    <meta name="twitter:description" content="Personal reflections and analysis from EYM members, in their own words and on their own responsibility.">
+    <meta name="twitter:image" content="https://www.eym-europe.eu/assets/logos/og-default.png">
+    <!-- OG_END -->
+
     <link rel="icon" href="../assets/logos/v3 monogramma/EYM v3 monogramma per immagini profilo.png" type="image/png">
     <link rel="stylesheet" href="voices.css">
 </head>
