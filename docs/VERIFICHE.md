@@ -239,3 +239,57 @@ confondere "il codice sembra corretto" con "è stato visto funzionare".
     richiesta verso `eym-europe.eu` senza `www.` — è l'osservazione che
     ha fatto partire la correzione dell'indirizzo in questa sessione
     (vedi @docs/NOTE.md).
+- **(2026-09-19, sessione Telegram→WhatsApp) Verificato da Claude Code
+  con Chrome headless pilotato via CDP** (misure precise di
+  `getBoundingClientRect()`/`scrollWidth`, non solo screenshot), a più
+  larghezze e in più lingue:
+  - **Barra di navigazione in alto, in tedesco**: misurata a 1280, 1024,
+    900, 850, 800 e 769px, sia con sia senza il terzo bottone WhatsApp
+    (nascosto via CDP per il confronto diretto). Trovato: a ≥1024px e a
+    ≤768px (dove scatta la modalità solo-icone) nessuno scorrimento
+    orizzontale con 2 o 3 bottoni; fra circa 800 e 928px la pagina
+    scorre orizzontalmente, e il terzo bottone sposta la soglia da
+    ~800px a ~928px. Per istruzione esplicita ("se non ci sta, non
+    forzarlo"), il bottone è stato tolto dall'header — vedi @docs/NOTE.md
+    voce 28 per il dettaglio completo e @docs/ARCHITETTURA.md per dove
+    vive oggi WhatsApp invece.
+  - **Home page intera, in italiano e in tedesco, a 1280px e a 500px**
+    (il limite minimo di Chrome headless su questa macchina — non un
+    telefono vero): header, sezione News (nuovo ordine
+    YouTube/WhatsApp/Instagram/LinkedIn + riquadro a scomparsa
+    Press/Interviste) e piè di pagina (colonna Contatti: email, WhatsApp,
+    Instagram, LinkedIn) aperti e guardati per davvero (screenshot),
+    `document.documentElement.scrollWidth` controllato contro
+    `window.innerWidth` in ogni scatto: mai uno scorrimento orizzontale
+    imprevisto.
+  - **Il riquadro a scomparsa "Rassegna stampa e interviste"** è stato
+    aperto per davvero via `element.setAttribute('open','')` (equivalente
+    al click sull'utente) e fotografato: le due card Stampa/Interviste
+    compaiono col contenuto originale invariato, l'icona ruota, l'etichetta
+    "INTERVISTE" è plurale (prima era "INTERVISTA").
+  - **`WHATSAPP_GENERAL_ENABLED` spento e riacceso**: con `false`, la
+    card WhatsApp scompare dalla sezione News (restano YouTube, Instagram,
+    LinkedIn — 3 card su griglia 2 colonne, l'ultima riga con un solo
+    elemento e nessun bordo/riquadro vuoto al suo fianco, solo lo sfondo
+    della pagina) e la voce WhatsApp scompare dal piè di pagina (lista
+    CSS grid, nessuno spazio vuoto lasciato). Rimesso `true` e verificato
+    che entrambe le postazioni tornassero come nello stato pubblicato.
+  - **`WHATSAPP_GROUPS_ENABLED` acceso e rispento**: con `true`, tutti e
+    sette i bottoni WhatsApp compaiono sulle rispettive card in
+    `#policies`, ciascuno con l'indirizzo segnaposto corretto per il
+    proprio gruppo (`PLACEHOLDER-foreign-policy` ecc.), Telegram resta
+    nascosto. Rimesso `false` e confermato che tutti e sette tornassero
+    nascosti come nello stato pubblicato.
+  - **Nessun link Telegram visibile**: controllato via DOM
+    (`el.style.display === 'none'` su tutti gli elementi con classe
+    `js-telegram-link`) sulle 7 card di `#policies`, con
+    `TELEGRAM_ENABLED = false` (lo stato pubblicato) — tutti e sette
+    nascosti. `policies/energy-environment.html` non ricontrollata di
+    persona in questa sessione (la sua copia locale dell'interruttore non
+    è stata toccata, solo letta nel codice — vedi @docs/PROCEDURE.md).
+  - **Non verificato**: nessun telefono reale (stesso limite di sempre,
+    500px è il minimo di questo strumento); nessuna verifica su un
+    dominio pubblico raggiungibile da WhatsApp/Telegram/LinkedIn per
+    come appare la nuova card WhatsApp della sezione News se condivisa
+    (non applicabile: quella card è un link in uscita verso WhatsApp,
+    non una pagina con anteprima social propria).

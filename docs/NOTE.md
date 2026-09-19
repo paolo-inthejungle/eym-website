@@ -439,3 +439,63 @@ decisione cambia, aggiungine una nuova che rimanda a quella vecchia.
     avanti, usa sempre `https://eym-europe.eu/…`, mai `www.`.** In
     `server.js`, l'indirizzo è ora costruito da un'unica costante
     (`SITE_URL`) invece di essere scritto a mano in tre punti diversi.
+
+27. **(2026-09-19) DECISIONE: il Movimento passa da Telegram a
+    WhatsApp.** Una sola community generale esiste ed è attiva oggi
+    (`https://chat.whatsapp.com/FAyQhmk7g9P3eAD9KSWB3m`); le sette
+    community per gruppo tematico non esistono ancora. Telegram non
+    viene cancellato dal codice — viene spento con l'interruttore
+    `TELEGRAM_ENABLED` (vedi @docs/PROCEDURE.md punto 11), così può
+    essere riacceso in futuro senza riscrivere nulla se dovesse
+    ricomparire un uso reale. Stesso principio per i sette bottoni
+    WhatsApp di gruppo: scritti fin da ora con indirizzi segnaposto
+    (`PLACEHOLDER-<slug>`) e tenuti spenti (`WHATSAPP_GROUPS_ENABLED =
+    false`) finché non esistono davvero, invece di aggiungerli in un
+    secondo momento quando serviranno.
+
+28. **(2026-09-19) QUESTIONE CHIUSA: il bottone WhatsApp nella barra di
+    navigazione in alto è stato provato e tolto, non dimenticato.**
+    Richiesto per completare la serie Instagram/LinkedIn nell'header,
+    è stato scritto, poi verificato con Chrome headless pilotato via
+    CDP a più larghezze di finestra, in tedesco (le parole più lunghe
+    fra le 5 lingue del sito) per istruzione esplicita di chi ha dato
+    il lavoro: "se non ci sta, non forzarlo, fermati e dimmi cosa hai
+    trovato". Risultato della prova: a piena larghezza desktop
+    (≥1024px) e a larghezza telefono (≤768px, dove la barra passa già
+    in modalità solo-icone) il terzo bottone sta comodamente. Nella
+    fascia intermedia (circa 800-928px — una finestra affiancata a
+    metà schermo su un monitor normale, non uno scenario raro) la
+    pagina comincia a scorrere orizzontalmente: un difetto già
+    presente in tedesco anche solo con i due bottoni esistenti (i
+    link della barra vanno già a capo su due righe sotto quella
+    larghezza, comportamento voluto — `nav ul` ha sempre avuto
+    `flex-wrap:wrap`), ma il terzo bottone lo aggrava, spostando la
+    soglia di rottura da circa 800px a circa 928px. Per istruzione
+    esplicita non è stato forzato: il bottone è stato tolto
+    dall'header (restano solo Instagram e LinkedIn, come prima), e
+    WhatsApp è stato aggiunto invece nel piè di pagina e nella sezione
+    News, dove questo problema non esiste (sono elenchi verticali, non
+    una riga che deve stare tutta su una larghezza fissa). Nessun
+    ridisegno della barra di navigazione è stato tentato: sarebbe un
+    cambio di architettura (es. abbassare la soglia della modalità
+    solo-icone, o permettere il wrap anche all'header-inner), non una
+    correzione, e va deciso esplicitamente. Screenshot e misure exact
+    nel messaggio di chiusura di questa sessione.
+
+29. **(2026-09-19) TROVATO MA NON CORRETTO: il testo introduttivo della
+    sezione Politiche invita ancora a "unirsi alla conversazione su
+    Telegram", con `TELEGRAM_ENABLED` spento.** Chiave
+    `policies_section.lead`, tutte e 5 le lingue (in italiano: "Unisciti
+    alla conversazione su Telegram e leggi le posizioni sviluppate dai
+    nostri membri."). Con Telegram spento e WhatsApp di gruppo ancora
+    spento (nessuna community di gruppo esiste ancora — voce 27 sopra),
+    questa frase oggi non descrive nessun bottone realmente visibile
+    sulle sette card. Trovato mentre si verificava che nessun link
+    Telegram fosse visibile (lavoro di verifica di questa sessione),
+    non mentre si lavorava su quel testo: per istruzione permanente
+    (un problema trovato mentre se ne risolve un altro si segnala, non
+    si corregge di propria iniziativa) non è stato toccato. Andrà
+    aggiornato quando si deciderà cosa dire lì — probabilmente qualcosa
+    di più neutro finché nessuna delle due piattaforme ha un bottone
+    visibile su tutti i gruppi, o un riferimento a WhatsApp quando le
+    community di gruppo esisteranno.

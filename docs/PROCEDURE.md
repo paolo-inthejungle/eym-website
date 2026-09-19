@@ -502,7 +502,7 @@ elementi già scritti nella pagina — nessun contenuto viene mai
 cancellato quando un interruttore è spento.
 
 **Dove sono, tutti e tre nello stesso posto**: `index.html`, dentro il
-`<script>` che contiene anche `VOICES_PUBLIC`, righe 3023/3026/3031 (le
+`<script>` che contiene anche `VOICES_PUBLIC`, righe 3093/3096/3101 (le
 righe si spostano se il file cambia sopra — cercare `TELEGRAM_ENABLED`
 per ritrovarle).
 
@@ -510,25 +510,40 @@ per ritrovarle).
   Telegram del sito. Gli elementi da spegnere hanno tutti la classe
   `js-telegram-link` — per aggiungerne uno nuovo in futuro, basta
   scrivere quella classe sull'elemento, non serve toccare lo script.
-  **Attenzione**: `policies/energy-environment.html` ha il proprio link
-  Telegram (sezione "Get involved") ma è un file HTML a sé, senza script
-  in comune con `index.html` — quella pagina ha una SECONDA copia dello
+  **Per riaccenderlo** (quando torna a esistere una community Telegram
+  attiva): basta rimettere `true` qui. **Attenzione**:
+  `policies/energy-environment.html` ha il proprio link Telegram
+  (sezione "Get involved") ma è un file HTML a sé, senza script in
+  comune con `index.html` — quella pagina ha una SECONDA copia dello
   stesso interruttore, scritta a mano, in fondo al file, prima del tag
   `<script src="/assets/js/i18n.js">`. **Se si riaccende
   `TELEGRAM_ENABLED` in `index.html`, va riacceso anche lì**, altrimenti
   i due file raccontano cose diverse.
 - **`WHATSAPP_GENERAL_ENABLED`** (oggi `true`): accende il link alla
-  community WhatsApp generale (barra in alto, piè di pagina, sezione
-  News — aggiunti nei lavori successivi a questo). Gli elementi da
-  accendere/spegnere hanno la classe `js-whatsapp-general`.
+  community WhatsApp generale — oggi in due punti: piè di pagina
+  (colonna "Contatti") e sezione News (card dedicata). Gli elementi da
+  accendere/spegnere hanno la classe `js-whatsapp-general`. **Non è nella
+  barra di navigazione in alto**: è stato provato (sessione del
+  2026-09-19) e tolto — vedi @docs/NOTE.md per il motivo (in tedesco, a
+  certe larghezze di finestra, un terzo bottone in quella barra causava
+  scorrimento orizzontale).
 - **`WHATSAPP_GROUPS_ENABLED`** (oggi `false`): accende i sette bottoni
   WhatsApp nelle card dei gruppi tematici (sezione `#policies`), oggi
   con indirizzi segnaposto (`https://chat.whatsapp.com/PLACEHOLDER-<slug
   del gruppo>`). Gli elementi hanno la classe `js-whatsapp-group`.
-  **Prima di accenderlo**, sostituisci ogni indirizzo segnaposto con
-  l'invito reale di quella community (cercare `PLACEHOLDER-` in
-  `index.html` per trovarli tutti e sette), altrimenti l'interruttore
-  accende sette link che non portano da nessuna parte.
+  **Per attivare la community di un gruppo quando esiste davvero**:
+  1. Cerca `PLACEHOLDER-<slug del gruppo>` in `index.html` (uno dei
+     sette: `foreign-policy`, `defence-security`, `energy-environment`,
+     `justice`, `education`, `healthcare`,
+     `immigration-human-rights`) e sostituiscilo con l'indirizzo
+     `https://chat.whatsapp.com/...` reale di quella community.
+  2. Ripeti per ogni gruppo che ha già una community attiva — non serve
+     aspettare che ce l'abbiano tutti e sette: un indirizzo reale e sei
+     segnaposto ancora scritti `PLACEHOLDER-` restano innocui finché
+     l'interruttore è spento.
+  3. Solo quando ALMENO un indirizzo è stato sostituito, rimetti `true`
+     qui. Se lo accendi lasciando dei `PLACEHOLDER-` non sostituiti,
+     quei bottoni compaiono ma portano a un indirizzo che non esiste.
 
 Il meccanismo che legge le tre costanti (tre righe di
 `document.querySelectorAll(...).forEach(...)`) sta subito sotto le tre
