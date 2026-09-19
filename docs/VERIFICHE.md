@@ -293,3 +293,69 @@ confondere "il codice sembra corretto" con "è stato visto funzionare".
     come appare la nuova card WhatsApp della sezione News se condivisa
     (non applicabile: quella card è un link in uscita verso WhatsApp,
     non una pagina con anteprima social propria).
+
+- **(2026-09-19, sessione "barra di navigazione") Prima verifica di
+  impaginazione MISURATA (non solo screenshot) di questo progetto: la
+  larghezza reale del contenuto contro la larghezza della finestra, con
+  numeri, non impressioni visive.** Fatta da Claude Code con Chrome
+  headless pilotato via CDP (protocollo nativo di Chrome, nessuna
+  libreria nuova installata — Node 24 ha `WebSocket` nativo, usato per
+  parlare con Chrome senza Puppeteer/Playwright).
+
+  **Come rifarla, passo per passo** (chiunque, non solo Claude Code):
+  1. Avviare il sito in locale: `node server.js` (porta 3000).
+  2. Avviare Chrome headless con il debug remoto attivo:
+     `chrome.exe --headless=new --remote-debugging-port=9333`.
+  3. Aprire una scheda nuova via CDP (`PUT /json/new`), connettersi al suo
+     `webSocketDebuggerUrl` con un `WebSocket` e navigare a
+     `http://localhost:3000/`.
+  4. Forzare la lingua SENZA riavviare la pagina, con
+     `Runtime.evaluate` sull'espressione `EYM.setLang('de')` (o `'it'`,
+     ecc.) — stessa tecnica già in uso nelle sessioni precedenti per
+     verificare il cambio lingua (vedi sopra, LAVORO sul tag `<title>`).
+  5. Per ogni larghezza da misurare, impostare la finestra con
+     `Emulation.setDeviceMetricsOverride` (`width`, `height: 900`,
+     `deviceScaleFactor: 1`, `mobile: false`).
+  6. Leggere, sempre via `Runtime.evaluate`,
+     `document.documentElement.scrollWidth` (quanto è largo davvero il
+     contenuto della pagina) e `window.innerWidth` (quanto è larga la
+     finestra). Se il primo supera il secondo, la pagina scorre
+     lateralmente: è un difetto, non un'opinione.
+
+  **Tabella delle otto larghezze richieste, stato pubblicato di oggi
+  (tre pulsanti nell'header: WhatsApp, Instagram, LinkedIn), IT e DE.**
+  `overflow` = `scrollWidth − innerWidth`: un valore positivo è un
+  difetto, negativo o zero va bene (i valori negativi qui sono lo
+  spazio occupato dalla barra di scorrimento verticale, normale, non un
+  errore).
+
+  | larghezza | IT scrollWidth | IT overflow | DE scrollWidth | DE overflow |
+  |-----------|-----------------|-------------|-----------------|-------------|
+  | 320       | 312             | -8          | 312             | -8          |
+  | 500       | 485             | -15         | 485             | -15         |
+  | 768       | 753             | -15         | 753             | -15         |
+  | 800       | 785             | -15         | 785             | -15         |
+  | 928       | 913             | -15         | 913             | -15         |
+  | 1024      | 1009            | -15         | 1009            | -15         |
+  | 1280      | 1265            | -15         | 1265            | -15         |
+  | 1920      | 1905            | -15         | 1905            | -15         |
+
+  Nessuna delle otto larghezze sfora, in nessuna delle due lingue.
+  Ripetuta anche una scansione fine (passo di 8px) da 320 a 2560px in
+  tedesco: nessun overflow trovato in nessun punto.
+
+  **Prima della correzione** (con i soli due pulsanti Instagram/LinkedIn,
+  cioè lo stato pubblicato prima di questa sessione), la stessa
+  scansione fine aveva trovato overflow reale fra 769 e 804px in
+  tedesco (fino a +34px a 770px) e fra 769 e 896px in italiano — la
+  causa e la correzione sono descritte in @docs/NOTE.md, voce 30.
+  Aggiungendo via JavaScript, senza toccare alcun file, un terzo e un
+  quarto pulsante finti identici a Instagram, la stessa soglia si è
+  spostata rispettivamente a 928px e 1052px: ogni pulsante fisso da
+  100px aggiunto sposta la soglia di 124px, misurato prima di scegliere
+  dove fissare il nuovo breakpoint (1024px, per il dettaglio vedi
+  @docs/NOTE.md).
+
+  **Non verificato**: nessun browser reale, solo Chrome headless (motore
+  identico a Chrome desktop, ma non testato su Firefox/Safari); nessun
+  telefono fisico (stesso limite di sempre — vedi sopra).

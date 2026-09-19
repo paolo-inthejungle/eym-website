@@ -499,3 +499,63 @@ decisione cambia, aggiungine una nuova che rimanda a quella vecchia.
     di più neutro finché nessuna delle due piattaforme ha un bottone
     visibile su tutti i gruppi, o un riferimento a WhatsApp quando le
     community di gruppo esisteranno.
+
+30. **(2026-09-19) CORRETTO: la barra di navigazione in alto scorreva
+    orizzontalmente fra 769 e 1024px, un difetto che esisteva PRIMA
+    dell'aggiunta del terzo pulsante (voce 28 sopra), non causato da
+    essa.** Misurando con Chrome headless via CDP (vedi @docs/VERIFICHE.md
+    per la tabella completa), con i soli due pulsanti Instagram/LinkedIn
+    già presenti, la barra sforava la larghezza della finestra fra 769 e
+    804px in tedesco (fra 769 e 896px in italiano) perché `.header-inner`
+    non aveva `flex-wrap` fuori dal breakpoint mobile a 768px: sopra
+    quella soglia il layout desktop (una sola riga) non aveva più spazio
+    per restringersi e la pagina scorreva lateralmente, invece di andare
+    a capo. La soglia che fa passare la barra alla modalità "controlli
+    sopra, menu sotto" (già esistente, pensata per i telefoni) è stata
+    spostata da 768px a 1024px: sotto 1024px la barra usa sempre quella
+    modalità, sopra resta identica a prima (verificato confrontando
+    screenshot prima/dopo a 1280 e 1920px). Le regole del piè di pagina
+    che condividevano lo stesso blocco `@media (max-width: 768px)` sono
+    state separate in un blocco a sé, rimasto a 768px: il piè di pagina
+    non è stato toccato.
+
+    **Perché 1024px e non un valore più stretto**: ogni pulsante fisso da
+    100px aggiunto alla barra (con il suo spazio, `gap: 1.5rem`) sposta in
+    avanti di 124px la larghezza minima sotto la quale la barra desktop
+    sfora — misurato aggiungendo pulsanti finti via JavaScript, senza
+    toccare il file, prima di decidere la soglia: 804px con 2 pulsanti,
+    928px con 3 (il caso di oggi, dopo aver aggiunto WhatsApp), 1052px
+    con 4, 1176px con 5. 1024px copre il caso a 3 pulsanti con un margine
+    di 96px, restando un valore riconoscibile (uguale al breakpoint
+    "tablet" usato da molti framework) invece di un numero scelto solo
+    per far tornare i conti di oggi. Non è una soglia che si adatta da
+    sola: se in futuro si aggiunge un QUARTO pulsante fisso alla barra
+    (oltre a Instagram, LinkedIn, WhatsApp), va rifatta questa stessa
+    misurazione in tedesco e la soglia va eventualmente spostata più in
+    alto, con lo stesso metodo.
+
+    **DECISIONE: le sette schede dei gruppi tematici in `#policies`
+    restano senza nessun collegamento a chat o community finché le sette
+    community WhatsApp non esisteranno davvero.** Non è stato aggiunto il
+    link della community generale al loro posto: il bottone WhatsApp
+    generale vive solo nell'header, nel piè di pagina e nella sezione
+    News (vedi @docs/ARCHITETTURA.md). Il codice dei sette bottoni Telegram
+    per gruppo resta esattamente dov'era, spento da `TELEGRAM_ENABLED`
+    (@docs/PROCEDURE.md, punto 11): nessuna riga cancellata, solo
+    verificato che restasse invisibile.
+
+    **CORRETTO: la frase sopra le sette schede invitava a "unirsi alla
+    conversazione su Telegram" (voce 29 sopra) con Telegram spento.**
+    Tolta solo la frase sulla conversazione, in tutte e 5 le lingue
+    (chiave `policies_section.lead`): resta la frase che descrive cosa il
+    gruppo di lavoro fa e l'invito a leggere le posizioni dei membri, che
+    è vero oggi indipendentemente dagli interruttori social. Cercato nel
+    resto del sito (home, le 7 pagine `policies/*.html`, i 7 modali dei
+    gruppi tematici, `pages/signup.html`, `pages/apply-coordinator.html`)
+    altre frasi che invitassero a un canale o una community: trovate solo
+    menzioni generiche della parola "conversazione"/"community" che non
+    promettono un canale specifico (es. `policies_page.ee_page_involved_text`
+    in Energia & Ambiente — "si parte in piccolo, un tema, una
+    conversazione, un contributo alla volta" — è una metafora sul
+    crescere del progetto, non un invito a scrivere da qualche parte).
+    Nessuna di queste è stata toccata.
