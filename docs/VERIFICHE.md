@@ -203,3 +203,17 @@ confondere "il codice sembra corretto" con "è stato visto funzionare".
     formato dei tag è stato controllato contro le specifiche Open
     Graph/Twitter Card, non contro il rendering reale di una singola
     piattaforma.
+- **(2026-09-19) Ancora non verificato, stessa ragione di sopra: come
+  appare l'anteprima per davvero su WhatsApp, e come si legge l'articolo
+  da un telefono vero.** Non ho accesso a WhatsApp né a un dispositivo
+  fisico da questa sessione: solo al repository locale e a un server
+  avviato in locale (`http://localhost:3000`), non raggiungibile da
+  servizi esterni. Quello che è stato verificato per davvero in questa
+  sessione, sul server locale: il formato e il contenuto reale dei tag
+  `og:*`/`twitter:*` per home, articolo e pagina autrice (vedi sopra), e
+  l'aspetto della pagina autrice a una larghezza di 500px in Chrome
+  headless (il limite minimo di rendering di questa macchina — non un
+  telefono vero, stesso limite già noto). Per la verifica reale su
+  WhatsApp e su un telefono vero serve chi ha accesso a entrambi:
+  incollare l'indirizzo pubblico in una chat privata e aprirlo da un
+  dispositivo fisico.

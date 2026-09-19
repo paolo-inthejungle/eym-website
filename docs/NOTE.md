@@ -422,3 +422,20 @@ decisione cambia, aggiungine una nuova che rimanda a quella vecchia.
     se non fosse successo nulla (vedi @docs/ARCHITETTURA.md per il
     dettaglio, @docs/VERIFICHE.md per i casi provati davvero prima del
     push).
+
+26. **(2026-09-19) L'indirizzo ufficiale del sito è `eym-europe.eu`,
+    SENZA `www.` davanti.** Il sito reindirizza comunque chi digita
+    `www.eym-europe.eu`, quindi finora nessuno se n'era accorto: i due
+    indirizzi FUNZIONANO entrambi nel browser, ma non sono la stessa
+    cosa per chi non è un browser. I social (WhatsApp, Telegram,
+    LinkedIn) mettono in cache l'anteprima separatamente per ciascun
+    indirizzo, e Google tratta le due forme come pagine diverse ai fini
+    del posizionamento, dividendo fra loro l'autorità che altrimenti
+    andrebbe a una sola. Le anteprime social scritte per gli articoli di
+    Voices from Europe nella sessione precedente usavano per errore la
+    forma con `www.`: corrette in tutto il repository (9 file, 15
+    occorrenze — dettaglio nel messaggio di chiusura di questa sessione).
+    **Chi scrive un indirizzo pubblico completo del sito, da qui in
+    avanti, usa sempre `https://eym-europe.eu/…`, mai `www.`.** In
+    `server.js`, l'indirizzo è ora costruito da un'unica costante
+    (`SITE_URL`) invece di essere scritto a mano in tre punti diversi.
