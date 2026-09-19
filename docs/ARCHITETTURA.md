@@ -20,7 +20,7 @@ policies/
                           <main>, sezione .wg-intro — la presentazione del
                           gruppo (chi siamo, visione, sei ambiti, CTA):
                           è il modello da riusare per gli altri gruppi
-                          quando avranno una pagina (vedi @PROCEDURE.md).
+                          quando avranno una pagina (vedi @docs/PROCEDURE.md).
   policies.css           CSS condiviso dalle 7 pagine sopra
   policies.js            Filtro (Tutti/Position/Brief) sui .paper-card
                           dentro #papers-list; mostra #empty-state se
@@ -40,9 +40,9 @@ voices/
 assets/
   data/voices.json        Indice di autori e articoli di Voices from
                           Europe (authors[], articles[]) — vedi
-                          @PROCEDURE.md per come aggiungere un articolo
+                          @docs/PROCEDURE.md per come aggiungere un articolo
   images/authors/         Foto autori Voices, ritagliate a cerchio via
-                          CSS (400×400, vedi @PROCEDURE.md)
+                          CSS (400×400, vedi @docs/PROCEDURE.md)
   js/i18n.js              Motore i18n custom (vedi sotto)
   js/auth.js              Wrapper Supabase Auth, esposto come window.EYMAuth
   i18n/{en,it,fr,es,de}.json  Le 5 lingue del sito
@@ -71,13 +71,13 @@ script della mappa e il modale di login/signup (`#auth-modal`).
 
 Dentro `#policies`, dopo le 7 card dei gruppi tematici, ci sono **due
 blocchi distinti e non vanno più rifusi in uno solo** (successe una
-volta, corretto il 2026-09-18 — vedi @NOTE.md):
+volta, corretto il 2026-09-18 — vedi @docs/NOTE.md):
 - **"Position Papers"** (`policies_section.papers_*`): sempre visibile,
   parla solo di documenti ufficiali dei Gruppi Tematici. Stato vuoto
   sobrio, nessun invito a contribuire.
 - **"Voices from Europe"** (`#voices-cta-policies`,
   `policies_section.voices_*`): nascosto di default, si accende con
-  l'interruttore `VOICES_PUBLIC` (vedi @PROCEDURE.md). Parla di
+  l'interruttore `VOICES_PUBLIC` (vedi @docs/PROCEDURE.md). Parla di
   contributi personali dei singoli membri e porta a `voices/index.html`.
 
 Attenzione alla **duplicazione dei membri dell'organigramma**: ogni
@@ -121,7 +121,7 @@ accesso; riga con `can_upload=false` → sola lettura; `can_upload=true`
 → lettura e upload. Le policy RLS su `documents` e `wg_access`
 (`supabase/migration_v2.sql`) applicano questa regola anche lato
 database, non solo in `api/auth.js`. Gestione riga per riga: vedi
-@PROCEDURE.md.
+@docs/PROCEDURE.md.
 
 ## Motore i18n
 
@@ -143,14 +143,14 @@ come farebbe altrove, e scrivere il suo `textContent` aggiorna anche la
 linguetta del browser (comportamento nativo del DOM, non codice scritto
 apposta). Verificato il 2026-09-18 aprendo una pagina, cambiando lingua
 dal selettore senza ricaricare e controllando che il titolo nella
-linguetta cambiasse davvero (vedi @NOTE.md). Ogni pagina che usa testo
+linguetta cambiasse davvero (vedi @docs/NOTE.md). Ogni pagina che usa testo
 i18n include lo script e replica le stesse chiavi: non c'è un file
 centrale di route → pagina, ogni file richiama `i18n.js` in autonomia.
 
 ## Voices from Europe — modello dati
 
 `assets/data/voices.json` ha due elenchi, `authors[]` e `articles[]`
-(schema completo e passo-passo per pubblicare in @PROCEDURE.md). Qui solo
+(schema completo e passo-passo per pubblicare in @docs/PROCEDURE.md). Qui solo
 la parte che riguarda il codice:
 
 - Ogni autore ha `bio` (breve, obbligatoria se si vuole mostrare
@@ -166,7 +166,7 @@ la parte che riguarda il codice:
   `voices.json`). La bio **breve** che compare in cima a ogni pagina
   articolo (`.author-card-sm`) non è generata da JS: è testo scritto a
   mano dentro il file dell'articolo stesso, duplicato da `voices.json`
-  al momento di compilare il template (vedi @PROCEDURE.md) — cambiare
+  al momento di compilare il template (vedi @docs/PROCEDURE.md) — cambiare
   `bio` in `voices.json` dopo la pubblicazione non aggiorna le pagine
   articolo già scritte.
 - La colonna di lettura degli articoli è già limitata in

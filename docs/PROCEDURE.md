@@ -22,7 +22,7 @@ in `supabase/admin-queries.sql` (in italiano, con commenti). In sintesi:
 
 L'organigramma è testo scritto a mano in `index.html`, sezione
 `#movement`. **Ogni persona compare in due punti del file** (vedi
-@ARCHITETTURA.md): la lista statica dentro `#movement` e il modale
+@docs/ARCHITETTURA.md): la lista statica dentro `#movement` e il modale
 `#modal-org-*` corrispondente — vanno modificati entrambi, altrimenti il
 bottone "View Members →" mostra dati vecchi.
 
@@ -141,7 +141,7 @@ Charge —` (`common.pending_charge`) per una carica assegnabile, o
 Dashboard Supabase → **Authentication → Email Templates**. Ogni tipo di
 email (Confirm signup, Invite user, Magic Link, Change Email Address,
 Reset Password) ha un template modificabile separatamente — sono quelli
-usati dai due flussi di iscrizione descritti in @ARCHITETTURA.md
+usati dai due flussi di iscrizione descritti in @docs/ARCHITETTURA.md
 ("Confirm signup" per il flusso 1, "Invite user" per il flusso 2 via
 `inviteUserByEmail`) e dal recupero password
 (`EYMAuth.resetPassword()` → "Reset Password", con redirect già
@@ -392,7 +392,7 @@ tempi brevi**:
 
 ## 10. Dare a un altro gruppo tematico la stessa pagina di Energia & Ambiente
 
-`policies/energy-environment.html` è il modello (vedi @ARCHITETTURA.md).
+`policies/energy-environment.html` è il modello (vedi @docs/ARCHITETTURA.md).
 Per un altro gruppo (es. Justice):
 1. Nella pagina `policies/<slug>.html` di quel gruppo, copia la sezione
    `<section class="wg-intro">...</section>` da

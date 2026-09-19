@@ -62,7 +62,7 @@ decisione cambia, aggiungine una nuova che rimanda a quella vecchia.
    (`assets/data/voices.json`), non dal database Supabase.** Pubblicare
    da database avrebbe richiesto una schermata di amministrazione che
    oggi non esiste — lo stesso limite per cui gli accessi `wg_access` si
-   gestiscono con query SQL a mano (vedi @PROCEDURE.md) invece che da
+   gestiscono con query SQL a mano (vedi @docs/PROCEDURE.md) invece che da
    un'interfaccia. Finché non nasce un pannello admin, il JSON versionato
    nel repo resta la scelta più semplice: chi pubblica un articolo edita
    due file e fa commit, senza bisogno di credenziali Supabase.
@@ -118,7 +118,7 @@ decisione cambia, aggiungine una nuova che rimanda a quella vecchia.
     né in console né sulla pagina — lascia semplicemente il testo
     statico dell'HTML così com'è. Un'etichetta inglese in un modulo
     tedesco sembra una scelta, non un errore: per questo è rimasto
-    invisibile. Vedi @PROCEDURE.md per il controllo ripetibile.
+    invisibile. Vedi @docs/PROCEDURE.md per il controllo ripetibile.
 
 13. **(2026-09-18) QUESTIONE APERTA: altri testi statici in
     `pages/apply-coordinator.html` restano in inglese in ogni lingua.**
@@ -151,7 +151,7 @@ decisione cambia, aggiungine una nuova che rimanda a quella vecchia.
     completo consegnato nella chat di questa sessione (censimento del
     18 settembre 2026), non riportato qui per intero.
 
-    Perché il controllo in @PROCEDURE.md (sezione i18n, punto 5) non
+    Perché il controllo in @docs/PROCEDURE.md (sezione i18n, punto 5) non
     trova questi casi: quel controllo cerca `data-i18n="chiave"` nel
     codice e verifica che la chiave esista in `en.json` — funziona solo
     se l'ATTRIBUTO è presente ma la CHIAVE manca. Qui il problema è
@@ -279,7 +279,7 @@ decisione cambia, aggiungine una nuova che rimanda a quella vecchia.
     acceso `VOICES_PUBLIC`.** Autrice Esther Miguez Aparicio, articolo
     "If you are not at the table, you are on the menu" (tema Foreign
     Policy). Aggiunto il campo facoltativo `bioLong` (array di paragrafi)
-    al modello dati degli autori — vedi @ARCHITETTURA.md — con relativo
+    al modello dati degli autori — vedi @docs/ARCHITETTURA.md — con relativo
     supporto in `voices/voices.js` e un piccolo aggiustamento di stile in
     `voices/voices.css` per ospitarlo. Tre cose segnalate e NON corrette
     di mia iniziativa, come da istruzione:
@@ -300,4 +300,4 @@ decisione cambia, aggiungine una nuova che rimanda a quella vecchia.
       conversazione: senza un file non è possibile eseguire `sharp`.
       L'autrice è stata pubblicata senza `photo` (compare l'icona 👤).
       Se in futuro arriva il file vero, va ridimensionato e collegato
-      seguendo @PROCEDURE.md punto 7.1.
+      seguendo @docs/PROCEDURE.md punto 7.1.

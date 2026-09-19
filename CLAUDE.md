@@ -36,13 +36,13 @@ si edita l'HTML/CSS/JS direttamente e si fa il deploy così com'è.
   aggiunta in un solo file è un bug — va aggiunta in tutti e 5. Una
   chiave mancante non lascia il campo vuoto, lascia il testo inglese:
   i testi non tradotti sono invisibili a occhio, vanno cercati (vedi
-  @PROCEDURE.md).
+  @docs/PROCEDURE.md).
 - **Slug dei working group** (usati in URL, DB, JSON — non inventarne
   altri): `foreign-policy`, `defence-security`, `energy-environment`,
   `justice`, `education`, `healthcare`, `immigration-human-rights`.
 - Le sigle paese nell'organigramma e altrove sono **emoji bandiera**
   scritte a mano nell'HTML — non sostituirle con testo o icone (vedi
-  @NOTE.md per il limite noto su Windows).
+  @docs/NOTE.md per il limite noto su Windows).
 - Segreti reali (chiavi API, service role key) non vanno mai in file
   versionati: solo placeholder, con nota di cosa serve.
 - Nei testi pubblici del sito non si usano incisi fra trattini lunghi
@@ -52,11 +52,11 @@ si edita l'HTML/CSS/JS direttamente e si fa il deploy così com'è.
 
 ## Mappa del progetto
 Per la struttura del codice, le sezioni di `index.html`, i due flussi di
-iscrizione, l'area riservata e il motore i18n: @ARCHITETTURA.md
+iscrizione, l'area riservata e il motore i18n: @docs/ARCHITETTURA.md
 
 Per le operazioni manuali (accessi Supabase, organigramma, mappa,
-i18n, template email, pubblicazione articoli Voices): @PROCEDURE.md
+i18n, template email, pubblicazione articoli Voices): @docs/PROCEDURE.md
 
-Per le decisioni prese e le questioni aperte: @NOTE.md
+Per le decisioni prese e le questioni aperte: @docs/NOTE.md
 
-Per cosa è stato verificato davvero (e cosa no) in produzione: @VERIFICHE.md
+Per cosa è stato verificato davvero (e cosa no) in produzione: @docs/VERIFICHE.md

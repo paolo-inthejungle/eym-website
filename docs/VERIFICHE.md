@@ -11,7 +11,7 @@ confondere "il codice sembra corretto" con "è stato visto funzionare".
   scritti per ricostruire lo schema da zero, ma non è mai stato provato
   un ripristino reale su un progetto Supabase vuoto.
 - I due flussi di iscrizione (§ "I due flussi di iscrizione" in
-  @ARCHITETTURA.md) non sono stati testati end-to-end con una vera email
+  @docs/ARCHITETTURA.md) non sono stati testati end-to-end con una vera email
   Brevo/Supabase in questo giro di lavori.
 - Le query di `supabase/admin-queries.sql` non sono state eseguite contro
   il database di produzione durante questa sessione.
@@ -19,7 +19,7 @@ confondere "il codice sembra corretto" con "è stato visto funzionare".
   un utente che ha `can_upload=true` non è stato provato in questa
   sessione.
 - **Voices from Europe è stato provato solo con dati finti** (3 autori e
-  5 articoli inventati, rimossi prima del commit — vedi @NOTE.md e il
+  5 articoli inventati, rimossi prima del commit — vedi @docs/NOTE.md e il
   messaggio di chiusura di questa sessione). Non è mai stato pubblicato o
   visto un articolo vero attraverso questo sistema.
 - **(2026-09-17) Le traduzioni FR/ES/DE di tutti i testi nuovi della
@@ -69,7 +69,7 @@ confondere "il codice sembra corretto" con "è stato visto funzionare".
   LAVORO 1) compaiono davvero tradotti. Controllata anche la pagina
   `pages/apply-coordinator.html` nelle stesse due lingue: il campo
   "Telefonnummer"/"Número de teléfono" funziona; trovato ma NON
-  corretto in questa sessione (vedi @NOTE.md) che il titolo della
+  corretto in questa sessione (vedi @docs/NOTE.md) che il titolo della
   pagina, l'eyebrow "GET INVOLVED" e il testo sotto il campo Paese
   restano in inglese in ogni lingua.
 - **(2026-09-18) Verificato con Chrome headless pilotato via CDP
@@ -96,11 +96,11 @@ confondere "il codice sembra corretto" con "è stato visto funzionare".
   - Stessa verifica ripetuta su `policies/justice.html`: pagina
     interamente in tedesco tranne il titolo `<h2>Position Paper</h2>`,
     senza alcun collegamento a i18n — segnalato come buco nuovo del
-    censimento in @NOTE.md, non corretto in questa sessione.
+    censimento in @docs/NOTE.md, non corretto in questa sessione.
 - **(2026-09-18) Non verificato**: il tag `<title>` del browser non è
   stato controllato in nessuna lingua, perché il LAVORO 4 di questa
   sessione è stato saltato (il motore i18n non è in grado di
-  aggiornarlo — vedi @NOTE.md).
+  aggiornarlo — vedi @docs/NOTE.md).
 - **(2026-09-18, sessione "Voices from Europe") Il tag `<title>` è
   stato controllato per davvero**, non solo letto nel codice: aperta una
   pagina, cambiata la lingua dal selettore SENZA ricaricare (chiamata
@@ -113,7 +113,7 @@ confondere "il codice sembra corretto" con "è stato visto funzionare".
   il consenso di Esther Miguez Aparicio alla pubblicazione di foto,
   biografia e bandiera/nazionalità è stato ottenuto e conservato
   dall'utente prima di questa sessione**, come richiesto da
-  @PROCEDURE.md punto 9. **I contenuti fattuali dell'articolo (date,
+  @docs/PROCEDURE.md punto 9. **I contenuti fattuali dell'articolo (date,
   nomi, accordi, citazioni) non sono stati verificati da chi ha lavorato
   a questa sessione**: il testo è stato pubblicato così come consegnato,
   per istruzione esplicita, senza controllo di accuratezza giornalistica
@@ -136,6 +136,6 @@ confondere "il codice sembra corretto" con "è stato visto funzionare".
   e che i riquadri "Position Papers" e "Voices from Europe" si
   distinguono a colpo d'occhio.
 - **(2026-09-18) Foto dell'autrice non pubblicata, non verificabile.**
-  Non essendoci un file immagine raggiungibile (vedi @NOTE.md), non è
+  Non essendoci un file immagine raggiungibile (vedi @docs/NOTE.md), non è
   stato eseguito né il ridimensionamento con `sharp` né una verifica
   visiva del ritaglio a 400×400.
