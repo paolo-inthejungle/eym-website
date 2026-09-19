@@ -72,7 +72,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 1.5rem;
+            gap: 0.35rem;
             padding: 0.65rem 0;
         }
 
@@ -1037,8 +1037,8 @@ footer h4 {
         .ig-btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.4rem;
-            padding: 0.38rem 0.85rem;
+            gap: 0.25rem;
+            padding: 0.38rem 0.35rem;
             border-radius: 6px;
             border: 1px solid rgba(255,255,255,0.35);
             color: rgba(255,255,255,0.88);
@@ -1058,9 +1058,13 @@ footer h4 {
 
         .ig-btn svg { width: 15px; height: 15px; flex-shrink: 0; }
 
-        /* ── HEADER ACTION BUTTONS — equal size ── */
+        /* ── HEADER ACTION BUTTONS — each sized to its own content, not a
+           shared fixed width: at 1200px wide (desktop) a fixed 100px was
+           already too narrow for "WhatsApp"/"Instagram" (bled past the box,
+           hidden only by the old 24px gap) and too wide for "LinkedIn" or
+           the language switcher, wasting the space this fix needs back. ── */
         .header-action-btn {
-            width: 100px;
+            width: auto;
             box-sizing: border-box;
             justify-content: center;
         }
@@ -1107,9 +1111,6 @@ footer h4 {
 
             /* Compact auth button */
             .auth-btn { padding: 0.3rem 0.6rem; font-size: 0.78rem; }
-
-            /* Auto-size buttons below desktop width */
-            .header-action-btn { width: auto; }
         }
 
         @media (max-width: 768px) {
@@ -1446,14 +1447,14 @@ footer h4 {
         .lang-trigger {
             display: flex;
             align-items: center;
-            gap: 0.4rem;
+            gap: 0.25rem;
             background: transparent;
             border: 1px solid rgba(255,255,255,0.35);
             color: rgba(255,255,255,0.88);
             font-size: 0.82rem;
             font-weight: 600;
             letter-spacing: 0.02em;
-            padding: 0.38rem 0.85rem;
+            padding: 0.38rem 0.35rem;
             border-radius: 6px;
             cursor: pointer;
             transition: all 0.15s;
@@ -1560,8 +1561,8 @@ footer h4 {
             cursor: pointer;
             display: inline-flex;
             align-items: center;
-            gap: 0.4rem;
-            padding: 0.38rem 0.85rem;
+            gap: 0.25rem;
+            padding: 0.38rem 0.35rem;
             border-radius: 6px;
             color: rgba(255,255,255,0.88);
             font-size: 0.82rem;
