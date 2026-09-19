@@ -502,7 +502,7 @@ elementi già scritti nella pagina — nessun contenuto viene mai
 cancellato quando un interruttore è spento.
 
 **Dove sono, tutti e tre nello stesso posto**: `index.html`, dentro il
-`<script>` che contiene anche `VOICES_PUBLIC`, righe 3093/3096/3101 (le
+`<script>` che contiene anche `VOICES_PUBLIC`, righe 3101/3106/3112 (le
 righe si spostano se il file cambia sopra — cercare `TELEGRAM_ENABLED`
 per ritrovarle).
 
@@ -519,28 +519,29 @@ per ritrovarle).
   `<script src="/assets/js/i18n.js">`. **Se si riaccende
   `TELEGRAM_ENABLED` in `index.html`, va riacceso anche lì**, altrimenti
   i due file raccontano cose diverse.
-- **`WHATSAPP_GENERAL_ENABLED`** (oggi `true`): accende il link alla
-  community WhatsApp generale — oggi in due punti: piè di pagina
-  (colonna "Contatti") e sezione News (card dedicata). Gli elementi da
-  accendere/spegnere hanno la classe `js-whatsapp-general`. **Non è nella
-  barra di navigazione in alto**: è stato provato (sessione del
-  2026-09-19) e tolto — vedi @docs/NOTE.md per il motivo (in tedesco, a
-  certe larghezze di finestra, un terzo bottone in quella barra causava
-  scorrimento orizzontale).
-- **`WHATSAPP_GROUPS_ENABLED`** (oggi `false`): accende i sette bottoni
-  WhatsApp nelle card dei gruppi tematici (sezione `#policies`), oggi
-  con indirizzi segnaposto (`https://chat.whatsapp.com/PLACEHOLDER-<slug
-  del gruppo>`). Gli elementi hanno la classe `js-whatsapp-group`.
-  **Per attivare la community di un gruppo quando esiste davvero**:
+- **`WHATSAPP_COMMUNITY_ENABLED`** (oggi `true`): accende il link
+  all'UNICA community WhatsApp del Movimento — oggi in tre punti:
+  header, piè di pagina (colonna "Contatti") e sezione News (card
+  dedicata). Gli elementi da accendere/spegnere hanno la classe
+  `js-whatsapp-community`. Si chiama "community", non "gruppo generale":
+  è l'ambiente unico dove oggi si trova tutto il Movimento; i sette link
+  del punto successivo sono i gruppi tematici che vivranno DENTRO questa
+  stessa community, non community separate.
+- **`WHATSAPP_COMMUNITY_GROUPS_ENABLED`** (oggi `false`): accende i
+  sette bottoni WhatsApp nelle card dei gruppi tematici (sezione
+  `#policies`), oggi con indirizzi segnaposto
+  (`https://chat.whatsapp.com/PLACEHOLDER-<slug del gruppo>`). Gli
+  elementi hanno la classe `js-whatsapp-community-group`. **Per attivare
+  il gruppo di un tema quando esiste davvero dentro la community**:
   1. Cerca `PLACEHOLDER-<slug del gruppo>` in `index.html` (uno dei
      sette: `foreign-policy`, `defence-security`, `energy-environment`,
      `justice`, `education`, `healthcare`,
      `immigration-human-rights`) e sostituiscilo con l'indirizzo
-     `https://chat.whatsapp.com/...` reale di quella community.
-  2. Ripeti per ogni gruppo che ha già una community attiva — non serve
-     aspettare che ce l'abbiano tutti e sette: un indirizzo reale e sei
-     segnaposto ancora scritti `PLACEHOLDER-` restano innocui finché
-     l'interruttore è spento.
+     `https://chat.whatsapp.com/...` reale di quel gruppo.
+  2. Ripeti per ogni tema che ha già un proprio gruppo attivo dentro la
+     community — non serve aspettare che ce l'abbiano tutti e sette: un
+     indirizzo reale e sei segnaposto ancora scritti `PLACEHOLDER-`
+     restano innocui finché l'interruttore è spento.
   3. Solo quando ALMENO un indirizzo è stato sostituito, rimetti `true`
      qui. Se lo accendi lasciando dei `PLACEHOLDER-` non sostituiti,
      quei bottoni compaiono ma portano a un indirizzo che non esiste.

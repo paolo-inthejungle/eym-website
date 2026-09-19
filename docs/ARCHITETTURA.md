@@ -94,33 +94,38 @@ mano: non esiste una fonte unica.
 
 ## Interruttori social (Telegram/WhatsApp) e sezione News
 
-Dal 2026-09-19 il Movimento usa WhatsApp al posto di Telegram (una sola
-community generale attiva oggi, sette per i gruppi tematici non ancora
-esistenti). Tre costanti indipendenti in `index.html`
-(`TELEGRAM_ENABLED`, `WHATSAPP_GENERAL_ENABLED`,
-`WHATSAPP_GROUPS_ENABLED`), stesso meccanismo on/off di `VOICES_PUBLIC`:
-nessun link viene mai cancellato, solo mostrato o nascosto via classe
-CSS (`js-telegram-link`, `js-whatsapp-general`, `js-whatsapp-group`).
-Dettagli operativi (dove sono, come attivarli, la copia duplicata in
+Dal 2026-09-19 il Movimento usa WhatsApp al posto di Telegram: un'unica
+community WhatsApp attiva oggi per l'intero Movimento, con sette gruppi
+tematici — uno per Gruppo di Lavoro — pensati per vivere DENTRO quella
+stessa community, non ancora esistenti. Tre costanti indipendenti in
+`index.html` (`TELEGRAM_ENABLED`, `WHATSAPP_COMMUNITY_ENABLED`,
+`WHATSAPP_COMMUNITY_GROUPS_ENABLED`), stesso meccanismo on/off di
+`VOICES_PUBLIC`: nessun link viene mai cancellato, solo mostrato o
+nascosto via classe CSS (`js-telegram-link`, `js-whatsapp-community`,
+`js-whatsapp-community-group`). I nomi distinguono deliberatamente
+"community" (una sola, l'ambiente generale) da "group" (i sette dentro
+di essa): non sono sinonimi intercambiabili in questo codice. Dettagli
+operativi (dove sono, come attivarli, la copia duplicata in
 `policies/energy-environment.html`) in @docs/PROCEDURE.md, punto 11.
 
-Punto rilevante per chi tocca l'header in futuro: la barra di
-navigazione in alto ha SOLO Instagram e LinkedIn, non WhatsApp. È stata
-provata anche lì (stessa classe `header-action-btn`/`ig-btn` di
-Instagram/LinkedIn, per ereditarne il comportamento responsive) ma
-tolta perché, verificato con Chrome headless a più larghezze in
-tedesco, un terzo bottone in quella barra fa scorrere la pagina
-orizzontalmente a larghezze intermedie (circa 800-928px, es. una
-finestra affiancata a metà schermo) — non succede a piena larghezza
-desktop né a larghezza telefono, dove la barra passa già in modalità
-solo-icone. Vedi @docs/NOTE.md per la decisione e @docs/VERIFICHE.md
-per le larghezze misurate. WhatsApp resta comunque raggiungibile da
-piè di pagina e dalla sezione News.
+Punto storico per chi tocca l'header in futuro: il terzo bottone
+(WhatsApp, accanto a Instagram e LinkedIn) era stato provato e tolto il
+2026-09-19 perché, verificato con Chrome headless a più larghezze in
+tedesco, causava scorrimento orizzontale a larghezze intermedie (vedi
+@docs/NOTE.md per quella decisione). La causa reale non era il terzo
+bottone in sé ma uno spazio già insufficiente nella barra ancora prima
+di aggiungerlo: corretta la spaziatura (voce successiva in
+@docs/NOTE.md), il bottone WhatsApp è stato poi aggiunto davvero
+all'header, accanto a Instagram e LinkedIn, nello stesso ordine
+(WhatsApp, Instagram, LinkedIn) — oggi la barra li mostra tutti e tre
+su una riga sola a ogni larghezza da 1200px in su, in tutte e 5 le
+lingue. WhatsApp resta comunque raggiungibile anche da piè di pagina e
+dalla sezione News.
 
 La sezione `#news` di `index.html`, dal 2026-09-19, ha quattro card
 sempre visibili in griglia 2×2 (YouTube, WhatsApp, Instagram, LinkedIn
 — YouTube senza bottone/link, solo annuncio; WhatsApp mostrata/nascosta
-da `WHATSAPP_GENERAL_ENABLED` come il resto) più un riquadro
+da `WHATSAPP_COMMUNITY_ENABLED` come il resto) più un riquadro
 `<details class="news-disclosure">` chiuso di default, che raccoglie le
 due card precedenti (Press, Interviews) senza riscriverne il contenuto:
 si apre/chiude nativamente al click sul `<summary>`, senza libreria
