@@ -228,6 +228,12 @@ Apri `assets/data/voices.json` e cerca lo slug dell'autore fra gli
 - **Facoltativo `photo`**: percorso relativo, es.
   `"assets/images/authors/esther-miguez-aparicio.jpg"`. Senza foto compare
   l'icona generica 👤 — non è un difetto, è il comportamento previsto.
+  **Questo stesso campo alimenta anche l'anteprima social della pagina
+  dell'autore** (quella che compare condividendo
+  `voices/index.html?author=<slug>` su WhatsApp/Telegram/LinkedIn — vedi
+  @docs/ARCHITETTURA.md): con `photo`, l'anteprima mostra la foto vera
+  dell'autore; senza, mostra il logo EYM di riserva. Nessuna azione in
+  più da fare: basta che il campo sia compilato con il percorso giusto.
   **Prima di aggiungere foto, bio o bandiera di una persona vera, leggi
   il punto 9 qui sotto (consenso).**
 
@@ -430,6 +436,13 @@ scaricamento, utile anche se hai corretto un'anteprima sbagliata già
 condivisa in passato. In alternativa, mandati il link in una chat privata
 (a te stesso o a un collega) su WhatsApp o Telegram e guarda cosa
 compare prima di mandarlo a chiunque altro.
+
+Lo stesso controllo vale per il link `voices/index.html?author=<slug>`
+di ogni autore (quello che compare cliccando sul suo nome): la sua
+anteprima è generata dal server al momento della richiesta, non scritta
+a mano come quella dell'articolo — vedi @docs/ARCHITETTURA.md — ma va
+controllata allo stesso modo prima di condividerla, con lo stesso
+strumento.
 
 ## 8. Aggiungere un nuovo autore a Voices from Europe (senza un articolo pronto)
 

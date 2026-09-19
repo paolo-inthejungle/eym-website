@@ -168,3 +168,38 @@ confondere "il codice sembra corretto" con "è stato visto funzionare".
   pagina autore, pagina articolo, anteprime in home): tutte le verifiche
   "da telefono" fatte finora, in questa sessione e nelle precedenti, si
   fermano al limite di 500px dello strumento.
+- **(2026-09-19) La route dinamica di `server.js` per le anteprime degli
+  autori è stata provata per davvero, con richieste HTTP reali al
+  server avviato in locale, non solo leggendo il codice.** Servite e
+  controllate (codice HTTP e valore reale dei tag `og:*`, `curl` sul
+  server locale):
+  - le 8 pagine di base: home, `pages/signup.html`,
+    `pages/apply-coordinator.html`, `policies/foreign-policy.html`,
+    `voices/index.html` senza parametri, `voices/index.html?author=
+    esther-miguez-aparicio`, la pagina dell'articolo,
+    `area-utente.html` — tutte 200, tutte con contenuto (byte scaricati
+    controllati, non solo il codice di stato).
+  - i sei casi limite del LAVORO 3: slug inesistente, parametro `author`
+    vuoto e uno con caratteri di path-traversal/XSS (confermato anche
+    che quella stringa non compare da nessuna parte nella risposta),
+    autore senza `photo` (temporaneo, rimosso dopo il test), autore
+    senza `bio` (temporaneo, rimosso dopo il test), `voices.json`
+    assente/vuoto/JSON non valido (tre prove separate, file rinominato e
+    poi ripristinato ogni volta), richiesta senza nessun parametro. In
+    tutti e sei i casi: pagina servita, codice 200, anteprima
+    predefinita (o il campo giusto quando presente, per i due casi con
+    autore parziale).
+  - il server è rimasto in esecuzione, senza riavvii né errori nel log,
+    per tutta la sequenza dei test sopra (log del processo controllato
+    alla fine, non solo assunto).
+  - i dati reali prodotti per un articolo, per la pagina dell'autrice
+    vera e per una pagina qualsiasi (la home, non toccata da questo
+    lavoro) sono stati letti dalla risposta HTTP effettiva, non dedotti
+    dal codice — vedi il messaggio di chiusura di questa sessione per i
+    valori esatti.
+  - **Non verificato**: come appare l'anteprima per davvero dentro
+    WhatsApp, Telegram o LinkedIn (serve un dominio pubblico raggiungibile
+    da quei servizi, non disponibile da qui — solo il server locale). Il
+    formato dei tag è stato controllato contro le specifiche Open
+    Graph/Twitter Card, non contro il rendering reale di una singola
+    piattaforma.

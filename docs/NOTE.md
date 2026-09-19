@@ -385,3 +385,40 @@ decisione cambia, aggiungine una nuova che rimanda a quella vecchia.
     suo. Un autore può avere solo `bio` (biografia breve ovunque), non
     ha senso avere solo `bioLong` senza `bio` (biografia che salterebbe
     il primo paragrafo proprio dove serve di più, in cima all'articolo).
+
+25. **(2026-09-19) DECISIONE: le anteprime social per gli autori si
+    generano dal server, non con una pagina statica per autore.**
+    Aggiunte anteprime WhatsApp/Telegram/LinkedIn per gli articoli di
+    Voices from Europe (dati scritti a mano nel `<head>` di ciascun
+    articolo, vedi @docs/PROCEDURE.md) e per l'autrice pubblicata finora.
+    Per gli articoli è bastato scrivere i tag `og:*`/`twitter:*`
+    direttamente nel file HTML, perché ogni articolo È già un file HTML
+    a sé. La pagina autore invece è UNA SOLA
+    (`voices/index.html?author=<slug>`) che cambia contenuto via
+    JavaScript in base al parametro: i crawler dei social non eseguono
+    JavaScript, quindi senza intervento ogni autore condiviso avrebbe
+    mostrato la stessa anteprima generica.
+
+    Scartata l'alternativa di generare un file HTML statico per autore
+    (sul modello degli articoli): avrebbe richiesto un passo manuale in
+    più a ogni autore nuovo (facile da dimenticare, a differenza del
+    campo `bio`/`photo` in `voices.json` che serve comunque). Scelto
+    invece di far leggere `assets/data/voices.json` al server
+    (`server.js`) e sostituire i tag dell'anteprima al volo, così lo
+    stesso identico posto (l'indice) alimenta sia il sito che l'anteprima,
+    senza un secondo posto da tenere aggiornato.
+
+    **Il rischio è diverso da qualunque altro cambiamento fatto finora
+    su questo sito.** Fino al 2026-09-19, `server.js` serviva solo file
+    statici: un errore in un lavoro precedente produceva al massimo una
+    pagina sbagliata, mai un sito che smette di rispondere — non c'era
+    codice lato server capace di far cadere l'intero processo Node per
+    colpa di un singolo autore o di un JSON malformato. Da oggi c'è: se
+    la funzione che genera l'anteprima lanciasse un'eccezione non presa,
+    bloccherebbe l'intero sito, non solo la pagina interessata, per
+    tutti gli utenti registrati, finché qualcuno non se ne accorge (non
+    esiste staging). Per questo l'intera funzione è avvolta in un
+    `try/catch` che su qualunque errore fa proseguire la richiesta come
+    se non fosse successo nulla (vedi @docs/ARCHITETTURA.md per il
+    dettaglio, @docs/VERIFICHE.md per i casi provati davvero prima del
+    push).

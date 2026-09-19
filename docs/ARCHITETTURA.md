@@ -55,7 +55,11 @@ api/
   apply-coordinator.js     POST /api/apply-coordinator → email via Brevo SMTP
   auth.js                  Route autenticate (upload-url, documents) sotto
                            /api/auth/*, usano la service role key
-server.js                 Express: statico + monta le 4 route sopra
+server.js                 Express: statico + monta le 4 route sopra, più
+                          UNA route dinamica per le anteprime social di
+                          voices/index.html?author=<slug> (vedi sotto —
+                          è l'unico punto del sito che non si limita a
+                          servire file così come sono su disco)
 supabase/
   migration.sql            Schema v1 (profiles, whitelist — superata)
   migration_v2.sql         Schema v2 (wg_access, RLS su documents)
@@ -213,6 +217,53 @@ riguarda il codice:
   `voices.css` (`.article-main { max-width: 720px; }`): su schermi
   larghi il testo non si allarga a piena pagina. Non serve toccarla per
   ogni nuovo articolo.
+
+## `server.js` — non è più solo un file server (dal 2026-09-19)
+
+Fino a questa data, `server.js` serviva SOLO file statici (più le 4 route
+API sotto `/api/*`): qualunque pagina, qualunque parametro nell'indirizzo,
+il contenuto restituito era sempre esattamente il byte del file su disco.
+Un errore altrove nel sito produceva al massimo una pagina sbagliata, mai
+un sito che smette di rispondere.
+
+Dal 2026-09-19 c'è UNA eccezione: la richiesta
+`GET /voices/index.html?author=<slug>`. Questa pagina è una sola ma
+cambia contenuto lato client in base al parametro `author` — e i
+crawler dei social (WhatsApp, Telegram, LinkedIn) non eseguono
+JavaScript, quindi non vedono mai quel contenuto dinamico: senza
+intervento, ogni pagina autore condivisa mostrerebbe la stessa anteprima
+generica, indipendentemente da chi è l'autore.
+
+`server.js` intercetta questa unica rotta PRIMA del middleware statico
+(`app.get('/voices/index.html', ...)`, registrato prima di
+`express.static`) e:
+1. Legge il parametro `author` dalla query string. **Lo usa SOLO per
+   cercarlo** dentro `data.authors` (confronto `===` contro `a.slug`) —
+   mai per costruire un percorso di file, mai per inserirlo in pagina
+   senza prima passarlo da `escapeHtml()`.
+2. Se il parametro manca, è vuoto, non è una stringa, se
+   `assets/data/voices.json` non esiste/non si legge/non è JSON valido,
+   se l'autore non c'è nell'indice, o se il file `voices/index.html` non
+   contiene i marcatori attesi: chiama `next()` e lascia che
+   `express.static` serva il file così com'è, con l'anteprima
+   PREDEFINITA già scritta staticamente nell'HTML (logo EYM, testo
+   generico) — **nessuno di questi casi produce un errore o una pagina
+   non servita**, per costruzione (ogni ramo che devia dal caso felice
+   chiama `next()`, non lascia mai la richiesta senza risposta).
+3. Solo se l'autore esiste davvero, legge `voices/index.html`, sostituisce
+   il blocco fra i commenti `<!-- OG_START -->` / `<!-- OG_END -->` con
+   uno nuovo che contiene nome, bio (troncata a 200 caratteri) e foto di
+   quell'autore (foto assente → stesso logo di riserva), e restituisce
+   quell'HTML modificato al posto del file su disco.
+
+**Perché è rischioso in un modo che il resto del sito non è**: un bug
+in questa funzione non produce una pagina sbagliata isolata — se lancia
+un'eccezione non gestita o entra in un ciclo, può bloccare l'intero
+processo Node, e con lui OGNI pagina del sito, non solo
+`voices/index.html`. Per questo l'intera logica è avvolta in un
+`try/catch` che, su qualunque errore, chiama `next()` invece di
+propagare l'eccezione (vedi @docs/NOTE.md per la decisione e
+@docs/VERIFICHE.md per i casi provati per davvero).
 
 ## Dati scritti a mano nell'HTML (non nel database)
 
